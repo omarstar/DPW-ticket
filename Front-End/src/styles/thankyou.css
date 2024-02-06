@@ -1,0 +1,9 @@
+.img-thankyou {
+    aspect-ratio: 1.14;
+    object-fit: auto;
+    object-position: center;
+    width: 120px;
+    align-self: center;
+    max-width: 100%;
+    margin: 70px 0 0 27px;
+}

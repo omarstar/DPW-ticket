@@ -10,6 +10,18 @@
   .title-box {
     margin-top: 2rem;
   }
+  .mini-gray-text {
+    color: #777;
+    font: 900 0.8rem 'Montserrat-VariableFont', sans-serif;
+    text-align: center;
+    letter-spacing: 0.48px;
+    width: 100vw;
+  min-height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* modal exit home */
 .transparent-bg {
     background-color: rgba(0, 0, 0, 0.6);
@@ -51,6 +63,7 @@
     text-align: center;
     width: 204px;
   } */
+
   .space-modal-title {
     margin-top: 20px;
     /* border-bottom: white; */

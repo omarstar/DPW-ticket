@@ -34,8 +34,9 @@ console.log('ticket info: ', ticket)
         <div class="title-black">it's your turn</div>
         <div className='ticket-wrapper text-center'>
             <div className="m-0 alignment txt_color" >
-
-				<span className='proceed-tocounter-text'>Please Proceed to {servicePointName}</span>
+            <div className="myrounded text-center col-12">
+				<span className='mini-gray-text'>Please Proceed to {servicePointName}</span>
+            </div>
             </div>
             <div className='ticket-turn-box col-12 text-center'>
                 <h1 id="ticketNumber" className="ticket-text">{id}</h1>
@@ -43,6 +44,25 @@ console.log('ticket info: ', ticket)
             </div>
         </div>
         </>
+
+// return (
+//     <>
+//     <div class="title-black">Your position in line</div>
+//     <div className='ticket-wrapper text-center'>
+//         <div className="m-0 alignment txt_color" >
+
+//             <div className="myrounded text-center col-12">
+                
+//                 <Line2 activeNum={position} onClickFuntion={()=>{navigate('')}} />
+//             </div>
+//         </div>
+//         <div className='ticket-details-box col-12 text-center'>
+//             <h1 id="ticketNumber" className="ticket-text">{ticketId}</h1>
+//             <h1 id="serviceName" className="ticket-service">{currentServiceName}</h1>
+//         </div>
+//     </div>
+//     </>
+// )
         // <div className='h-70'>
         //     <div className='col-12 text-center mb-4'>
         //         {/* <h2> {turnText}</h2> */}

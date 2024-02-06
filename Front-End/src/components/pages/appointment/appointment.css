@@ -1,0 +1,36 @@
+.result-title {
+    color: #000;
+    font: 900 0.65rem 'Montserrat-VariableFont', sans-serif;
+    width: 90vw;
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px auto 0;
+}
+.ticket-applist-box {
+    border-radius: 2px;
+  border: 2px solid #999;
+  display: flex;
+  flex-direction: column;
+  color: var(--primary-blue, #0058a6);
+  font-weight: 700;
+  padding: 47px 36px;
+  margin-top: 8px;
+  min-height: 40vh;
+  width: 90vw;
+}
+.title-applist  {
+    color: var(--royal-text, #046cac);
+  font: 900 0.8rem 'Montserrat-VariableFont', sans-serif;
+  text-align: center
+}
+.mini-gray-apptext {
+    color: #777;
+  font: 900 0.6rem 'Montserrat-VariableFont', sans-serif;
+  text-align: center;
+  letter-spacing: 0.48px;
+  width: 90vw;
+  min-height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

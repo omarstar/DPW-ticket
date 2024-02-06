@@ -10,9 +10,12 @@ import Loading from '../includes/loading/loading'
 import Queue from '../pages/Queue'
 import Turn from '../pages/Turn'
 import { useSelector } from 'react-redux'
+import Line2 from '../includes/line/line2'
+import { useNavigate } from 'react-router'
 
 export default function TestLayout(params) {
 
+    const navigate = useNavigate();
     
     let {loading, ticket} = useSelector((state) => state.app);
     console.log('ticket', ticket)
@@ -25,19 +28,7 @@ export default function TestLayout(params) {
             </div>
             <div id="page" className="page-layout d-flex flex-column justify-content-start align-items-center">
                 <div class="title-box d-flex flex-column justify-content-center align-items-center">
-                    
-                    {
-                    loading ?
-                        <Loading hSpacer='h-50' />
-                    :
-                    (ticket && ticket.currentStatus==="IN_QUEUE" )? (
-                        <Queue ticket={ticket} branch='4' />
-                    )
-                    :(ticket && ticket.currentStatus==="CALLED" ) ?
-                        <Turn ticket={ticket} branch='4' />
-                    :
-                    <div>Nothing to show</div>
-                }
+                    <Queue ticket={ticket} branch='4' />
                 </div>
             </div>
             <div class="footer-section">
@@ -45,4 +36,7 @@ export default function TestLayout(params) {
             </div>
         </div>
     )
+
 };
+
+

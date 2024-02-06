@@ -14,6 +14,7 @@
     padding: 47px 36px;
     margin-top: 20px;
 }
+
 .ticket-turn-box {
     border-radius: 8px;
     /* border: 1px solid var(--primary-blue, #0058a6); */
@@ -33,6 +34,7 @@
     background: linear-gradient(60deg, var(--primary-color) 0%,  var(--btn-color) 48%, var(--text-color) 100%);
     color: var(--light-color);
 } */
+
 
 .ticket-number-text {
     color: var(--border-color);

@@ -1,28 +1,29 @@
 import React from 'react';
-import { getSessionValue} from '../../utils/index';
-import { Link} from 'react-router-dom';
+import '../includes/header/header.css'
+import '../includes/footer/footer.css'
+import jafzaLogoColor from '../../images/JAFZA_Logo_Color.svg'
+import footerBGshape from '../../images/footer-sky-bg.svg'
+// import shakehand from '../../images/shake-hand-svgrepo-com.svg'
+import '../common.css';
 
 export default function Thankyou() {
 
-    const branch = JSON.parse(getSessionValue('br_name','{}'));
+    // const branch = JSON.parse(getSessionValue('br_name','{}'));
 
     return (
-        <div className='row w-100 justify-content-center py-3'>
-
-            <div className='box thankyou-box d-flex'>
-                <div className='col-12 text-center'>
-                    <h5> Thank you for visiting us! </h5>
-                    <p>{branch?.name??""}</p>
-                    {/* <div className='my-5'>Thank you for visiting us!</div> */}
+        <div class="d-flex flex-column justify-content-center align-items-center bg-white">
+            <div class="header-section">
+                <img  srcset={jafzaLogoColor} class="header-img-bg" alt="jafza logo" />
+            </div>
+            <div id="page" className="page-layout d-flex flex-column justify-content-start align-items-center">
+                <div class="title-box d-flex flex-column justify-content-center align-items-center">
+                    {/* <div className='img-shakehand-box'><img srcset={shakehand} className='img-thankyou' alt="shake hand thank you"/></div> */}
+                    
                 </div>
             </div>
-            
-            <div className='getLineButton'>
-                <div className='col-12 mt-3'>
-                    <Link className='btn btn-dark btn-block col-12' to={'/'}> <h4> Get new ticket </h4> </Link>
-
-                </div>
+            <div class="footer-section">
+                <img id="footer-img-bg"  src={footerBGshape} class="footer-img-icon" alt="background shape" />
             </div>
         </div>
-    )
+    )   
 }
