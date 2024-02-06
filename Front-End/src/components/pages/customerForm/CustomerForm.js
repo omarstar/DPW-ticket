@@ -9,7 +9,7 @@ import '../../common.css';
 import PhoneNumberInput from '../../includes/phoneInput/PhoneNumberInput'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { isShowModal, setModal } from '../../../reducers'
+import { getPhonenumber, isShowModal, setModal, setPhonenumber } from '../../../reducers'
 import ModalExit from '../../includes/modal/ModalExit'
 
 export default function CustomerForm(params) {
@@ -20,6 +20,8 @@ export default function CustomerForm(params) {
     }
 
     const handleNewCustomerSubmit = () => {
+        //get the mobile number, remove +971 add 0
+        //call sendOtp
         navToOtpPage();
     }
 
@@ -90,7 +92,8 @@ export default function CustomerForm(params) {
                             <div id="alert-lname" class="alert-small-text"></div>
                             </div>
                             <div class="input-block">
-                                <PhoneNumberInput dynamicClass={{parent: 'input-customer-block d-flex justify-content-center', child:'input-box input-phone-width required'}} />
+                            {/* onChangeHandler={(nb)=>{dispatch(setPhonenumber)}} */}
+                                <PhoneNumberInput />
                             {/* <input id="input-walknew-mobilenumber" type="tel"  class="input-box input-fullwidth required" name="mobile" pattern="[0-9]*" placeholder="" onClick="this.select();" required /> */}
                             <div id="alert-mobile" class="alert-small-text"></div>
                             </div>

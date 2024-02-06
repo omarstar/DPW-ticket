@@ -10,7 +10,7 @@ import './walkOtp.css'
 
 import { useNavigate } from 'react-router-dom'
 import ModalExit from '../../includes/modal/ModalExit'
-import { isShowModal, setModal } from '../../../reducers'
+import { isShowModal, setModal, setPhonenumber } from '../../../reducers'
 import { useDispatch, useSelector } from 'react-redux'
 import InputOtp from '../otpPage/InputOtp'
 export default function WalkOtp(params) {
@@ -69,12 +69,14 @@ export default function WalkOtp(params) {
         console.log('will handle validate OTP')
         try {
             const validateResult = validateOtp(otp);
+            console.log('validateResult', validateResult)
             if(validateResult === 'valid'){
                 if(otp.length === 4){
                     let publicOtp = otp.join('');
                     console.log('publicOtp', publicOtp)
                     //navigate //test
                     // updateMainSession({phoneNumber: phoneNumberOtp.substring(2)})
+                    dispatch(setPhonenumber())
                     
 
                     // const apiValidateData = {
@@ -137,7 +139,7 @@ export default function WalkOtp(params) {
                         <div id="resend-message" class="resend-otp-text">Didn&apos;t receive OTP?</div>
                         <div id="timer" class="otp-time-text">01:59</div>
                     </div>
-                    <button id="btn-otp-submit" onClick={navToServices} class="button-wide button-fill-clr space-submit-otp">Submit</button>
+                    <button id="btn-otp-submit" onClick={handleSubmitOtp} class="button-wide button-fill-clr space-submit-otp">Submit</button>
                 </div>
             </div>
             <div class="footer-section">

@@ -159,7 +159,7 @@
   }
   .iti.iti--container {
     font-size: 12px !important;
-    height: 6.6%;
+    /* height: 6.6%; */
   }
   .iti--separate-dial-code .iti__selected-flag {
     background-color: rgba(0, 0, 0 , 0.02) !important;

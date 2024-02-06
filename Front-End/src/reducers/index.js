@@ -18,6 +18,7 @@ const initialState = {
   modal: false,
   // infoModal: false,
   CurrentLang: 'en',
+  phoneNumber: '',
   branchid: getbranchIdData
 }
 
@@ -52,6 +53,9 @@ export const counterSlice = createSlice({
     setBranchid: (state, action) => {
       state.branchid = action.payload
     },
+    setPhonenumber: (state, action) => {
+      state.branchid = action.payload
+    },
     toggleCurrentLang: (state, action) => {
       state.CurrentLang = state.CurrentLang === 'ar' ? 'en' : 'ar'
     }
@@ -59,7 +63,7 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setServices, setBranches , setLoading ,setBranchid, setThankyou, setTicket, setSplash, setModal, toggleCurrentLang } = counterSlice.actions
+export const { setServices, setBranches , setLoading ,setBranchid, setPhonenumber, setThankyou, setTicket, setSplash, setModal, toggleCurrentLang } = counterSlice.actions
 // selectors
 export const selectLanguage = (state) => {
   console.log('state.app.currentLang', state.app.CurrentLang)
@@ -67,6 +71,9 @@ export const selectLanguage = (state) => {
 }
 export const isShowModal = (state) => {
   return state.app.modal;
+}
+export const getPhonenumber = (state) => {
+  return state.app.phoneNumber;
 }
 
 export default counterSlice
