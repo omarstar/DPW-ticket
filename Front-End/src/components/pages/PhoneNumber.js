@@ -9,16 +9,17 @@ import '../common.css';
 import '../../styles/options.css'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { setLoading} from '../../reducers/index'
+import { isShowModal, setBranchid, setLoading, setModal, setTicket } from '../../reducers';
 import { api, getSessionValue, setSessionValue, vadidateForm } from '../../utils/index';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import $ from 'jquery';
 import PhoneNumberInput from '../includes/phoneInput/PhoneNumberInput';
+import ModalExit from '../includes/modal/ModalExit';
 
 export default function PhoneNumber() {
     const navigate = useNavigate();
     const [setshowAlert, setSetshowAlert] = useState(false);
-    const {loading} = useSelector((state) => state.index);
+    const {loading} = useSelector((state) => state.app);
     const dispatch = useDispatch();
 
     const handleMobileSubmit = () => {
@@ -28,6 +29,31 @@ export default function PhoneNumber() {
         console.log('validating mobile,sending otp')
         navigate('/DPW/otp');
     }
+    //modal exit
+  
+
+    const doShowModal = useSelector(isShowModal);
+
+    const modalExitData = {
+        titleText: "Are you sure you want to cancel and start the process over again?",
+        buttonOptions: [{
+            text: "Yes",
+            buttonAction: () => {
+                dispatch(setModal(false))
+                navigate("/")
+            }
+        },
+        {
+            text: "No",
+            buttonAction: () => {
+                dispatch(setModal(false))
+            }
+        }]
+    }
+    
+    const showModel = () => {
+        dispatch(setModal(true))
+    }
     const handlePhoneNumber = () =>{
         if($('#phoneNumber').val()){
             setSessionValue("phoneNumber",$('#phoneNumber').val())
@@ -89,7 +115,7 @@ export default function PhoneNumber() {
 
             <div class="d-flex flex-column justify-content-center align-items-center bg-white">
             <div class="header-section">
-                <img id="header-home-btn"  src={homeCircleImg} alt="home circle img" class="header-homecircle-img" />
+                <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" class="header-homecircle-img" />
                 <img  srcset={jafzaLogoColor} class="header-img-bg" alt="jafza logo" />
             </div>
             <div id="page" className="page-layout d-flex justify-content-center">
@@ -99,22 +125,18 @@ export default function PhoneNumber() {
                 {/* <div class="input-mobile-block d-flex justify-content-center">
                     <input id="input-app-mobilenumber" type="tel"  class="input-box input-fullwidth required" name="phone" placeholder="" onClick="this.select();" />
                 </div> */}
-                <div id="alert-wrongmobile" class="alert-wrongmobile-text">Wrong mobile number or no appointment found</div>
+                <div id="alert-wrongmobile" class="alert-text">Wrong mobile number or no appointment found</div>
                 <button id="btn-mobile-submit" onClick={handleMobileSubmit} class="button-wide button-fill-clr space-mobile-submit">Continue</button>
                 </div>
             </div>
             <div class="footer-section">
                 <img id="footer-img-bg"  src={footerBGshape} class="footer-img-icon" alt="background shape" />
             </div>
-            <div id="transparentmodal-exithome" class="transparent-bg flex-column w-100">
-                <div class="modal-box d-flex flex-column justify-content-center align-items-center px-4 pt-2">
-                    <div class="title-modal-white space-modal-title">Are you sure you want to cancel and start the process over again?</div>
-                </div>
-                <div class="modal-btns-box d-flex flex-column justify-content-around">
-                    <button id="btn-yes-modal" class="button-wide button-outline-clr space-btnmodal-yes bortder-0">Yes</button>
-                    <button id="btn-no-modal" class="button-wide button-outline-clr  space-btnmodal-no border-0">No</button>
-                </div>
-            </div>
+            {
+                    doShowModal && (
+                        <ModalExit data={modalExitData} />
+                    )
+               }
             </div>
 
 
