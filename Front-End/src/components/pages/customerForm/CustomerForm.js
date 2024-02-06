@@ -11,7 +11,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { getPhonenumber, isShowModal, setModal, setPhonenumber } from '../../../reducers'
 import ModalExit from '../../includes/modal/ModalExit'
-
+import $ from 'jquery';
+import { createCustomer } from '../../../utils/api'
 export default function CustomerForm(params) {
     const navigate = useNavigate();
 
@@ -22,8 +23,22 @@ export default function CustomerForm(params) {
     const handleNewCustomerSubmit = () => {
         //get the mobile number, remove +971 add 0
         //call sendOtp
-        navToOtpPage();
+        if(validateInputFields()){
+            let customer = {
+                firstName : $('#input-firstname').val(),
+                lastName : $('#input-lastname').val(),
+                phoneNum : $('#input-walknew-mobilenumber').val(),
+                email : $('#input-email').val(),
+                company : $('#input-companyName2').val()
+
+            };
+            createCustomer(customer).then(a=>{
+                console.log('createCustomer',a);
+                navToOtpPage();
+            })
+        }
     }
+   
 
     const handleExistingCusomterSearch =() => {
         console.log('searching...')
@@ -57,6 +72,91 @@ export default function CustomerForm(params) {
         dispatch(setModal(true))
     }
 
+    const validateInput = (input, errorElement, validationFunction) => {
+		// input.attr("name") 
+        console.log('validationFunction',validationFunction);
+		var value = input.val();
+		var isValid = validationFunction(value);
+
+		if (!isValid) {
+			if(value === "")
+			errorElement.text("This field is required");
+			else {
+				errorElement.text("Invalid format");
+			}	
+			errorElement.css('visibility', 'visible');
+			return false;
+		} else {
+			errorElement.text("");
+			errorElement.css('visibility', 'hidden');
+			return true;
+		}
+	}
+
+    const validateEmptyField = (inputValue) => {
+		return inputValue !== "";
+	}
+
+    const validateMobileInput = (input, errorElement) => {
+		// input.attr("name") 
+		var value = input.getNumber()
+		// var isValid = validationFunction(value);
+
+		if(input.isValidNumber()) {
+			errorElement.css('visibility', 'hidden');
+			return true;
+		}else{
+			if(value === ""){
+				errorElement.text("This field is required");
+			}else{
+				errorElement.text("Invalid format");
+			}
+			errorElement.css('visibility', 'visible');
+			return false;
+		}
+	}
+
+    const validateEmail = (email) => {
+		var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		return emailRegex.test(email);
+	}
+    const validateInputFields = () =>{
+
+		var valFn = validateInput($('#input-firstname'), $("#alert-firstname"), validateEmptyField);
+		var valLn = validateInput($('#input-lastname'), $("#alert-lastname"), validateEmptyField);
+		// var valM = validateInput($("#input-mobileNumber"), $("#alert-mobile"), validateEmptyField);
+		// var valM = validateMobileInput(phoneInput,$("#alert-mobile"));
+		var valM = true;
+		var valE = validateInput($('#input-email'), $("#alert-email"), validateEmptyField);
+		var valC = validateInput($('#input-companyName2'), $("#alert-companyName2"), validateEmptyField);
+
+		var isValidMobile = true;
+		// var isValidMobile = validateMobileInput(phoneInput,$("#alert-mobile"));
+		var isValidEmail = validateInput($("#input-email"), $("#alert-email"), validateEmail);
+		
+		if(!valFn || !valLn || !valM || !valE || !valC || !isValidMobile || !isValidEmail){
+			return false
+		}
+
+	
+		return true;
+	}
+    $("#input-email").on("blur", function() {
+        validateInput($(this), $("#alert-email"), validateEmail);
+    });
+    $("#input-walknew-mobilenumber").on("blur", function() {
+        // validateInput($(this), $("#alert-mobile"), validateMobileNumber);
+        // validateMobileInput(phoneInput,$("#alert-mobile"));
+    });
+    $("#input-firstname").on("blur", function() {
+        validateInput($(this), $("#alert-firstname"), validateEmptyField);
+    });
+    $("#input-lastname").on("blur", function() {
+        validateInput($(this), $("#alert-lastname"), validateEmptyField);
+    });
+    $("#input-companyName2").on("blur", function() {
+        validateInput($(this), $("#alert-companyName2"), validateEmptyField);
+    });
     return (
         <div class="d-flex flex-column justify-content-center align-items-center bg-white">
             
@@ -85,11 +185,11 @@ export default function CustomerForm(params) {
                         <form id="form-newcustomer">
                             <div class="input-block">
                             <input id="input-firstname" type="text" name="first name" class="input-box input-fullwidth" placeholder="FIRST NAME" />
-                            <div id="alert-fname" class="alert-small-text"></div>
+                            <div id="alert-firstname" class="alert-small-text"></div>
                             </div>
                             <div class="input-block">
                             <input id="input-lastname" type="text" name="last time" class="input-box input-fullwidth" placeholder="LAST NAME" />
-                            <div id="alert-lname" class="alert-small-text"></div>
+                            <div id="alert-lastname" class="alert-small-text"></div>
                             </div>
                             <div class="input-block">
                             {/* onChangeHandler={(nb)=>{dispatch(setPhonenumber)}} */}
@@ -103,7 +203,7 @@ export default function CustomerForm(params) {
                             </div>
                             <div class="input-block">
                             <input id="input-companyName2" type="text" name="company" class="input-box input-fullwidth" placeholder="COMPANY NAME" />
-                            <div id="alert-company2" class="alert-small-text"></div>
+                            <div id="alert-companyName2" class="alert-small-text"></div>
                             </div>
                         </form>
                         {/* <div id="alert-registration" class="alert-validation-text">all fields are required</div> */}
@@ -120,67 +220,10 @@ export default function CustomerForm(params) {
                     <ModalExit data={modalExitData} />
                 )
             }
-            {/* <div id="transparentmodal-exithome" class="transparent-bg flex-column w-100">
-                <div class="modal-box d-flex flex-column justify-content-center align-items-center px-4 pt-2">
-                    <div class="title-modal-white space-modal-title">Are you sure you want to cancel and start the process over again?</div>
-                </div>
-                <div class="modal-btns-box d-flex flex-column justify-content-around">
-                    <button id="btn-yes-modal" class="button-wide button-outline-clr space-btnmodal-yes bortder-0">Yes</button>
-                    <button id="btn-no-modal" class="button-wide button-outline-clr  space-btnmodal-no border-0">No</button>
-                </div>
-            </div> */}
         </div>
         
 
         
         
-            // <div className='customer-form-container'>
-            /* <div className="existingcustomer-box">
-            <div className="title-black title-form">EXISTING CUSTOMER</div>
-                <form>
-                <div className="input-block">
-                    <input id="input-companyName1" type="text" className="input-box input-fullwidth" placeholder="COMPANY NAME" />
-                </div>
-                </form>
-            <div id="alert-norecords" className="alert-norecords-text m-anr">NO RECORDS FOUND</div>
-            </div>
-            <button id="" className="button-default space-btn-form-search">search &amp; continue</button>
-
-            <div className="separate-line"></div>
-
-            <div className="newcustomer-box">
-                <div className="title-form">NEW CUSTOMER</div>
-                <form id="form-newcustomer">
-                    <div className="input-block2">
-                    <div className="d-flex justify-content-between">
-                        <div className="d-flex flex-column justify-content-center align-items-start">
-                        <input id="input-firstname" type="text" name="first name" className="input-box input-halfwidth" placeholder="FIRST NAME" />
-                        <div id="alert-fname" className="alert-small-text"></div>
-                        </div>
-                        <div className="d-flex flex-column justify-content-center align-items-start">
-                        <input id="input-lastname" type="text" name="last time" className="input-box input-halfwidth" placeholder="LAST NAME" />
-                        <div id="alert-lname" className="alert-small-text"></div>
-                        </div>
-                    </div>
-                    </div>
-                    <div className="input-block">
-                    {/* <input id="input-mobileNumber" type="number" name="mobile" pattern="[0-9]*" className="input-box input-fullwidth" placeholder="MOBILE NUMBER" required /> */
-                        /* <PhoneNumberInput />
-                        <div id="alert-mobile" className="alert-small-text">INCORRECT MOBILE NUMBER</div>
-                    </div>
-                    <div className="input-block">
-                    <input id="input-email" type="email" name="email" className="input-box input-fullwidth" placeholder="E-MAIL" required/>
-                    <div id="alert-email" className="alert-small-text">INCORRECT EMAIL FORMAT</div>
-                    </div>
-                    <div className="input-block">
-                    <input id="input-companyName2" type="text" name="company" className="input-box input-fullwidth" placeholder="COMPANY NAME" />
-                    <div id="alert-company2" className="alert-small-text"></div>
-                    </div>
-                </form>
-                <div id="alert-registration" className="alert-validation-text">all fields are required</div>
-            </div>
-            <button id="new_customer_proceed" onClick={navToOtpPage} className="button-default space-btn-form-proceed">PROCEED</button> */
-
-        // </div>
     )
 };

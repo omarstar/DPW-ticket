@@ -11,6 +11,13 @@ const fs = require('fs');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
 app.use(cors());
 app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -36,6 +43,7 @@ app.get('/rest/mobile/appointment/id/:id' , controller.getAppointment)
 app.post('/rest/mobile/appointment/checkin' , controller.checkInAppointment)
 app.get('/rest/mobile/visit/status' , controller.currentVisit)
 app.post('/rest/mobile/visit/create' , controller.createTicket)
+app.post('/rest/mobile/createCustomer' , controller.createCustomer)
 app.post('/rest/mobile/sendotp' , controller.sendOTP)
 app.post('/rest/mobile/validateotp' , controller.validateOTP)
 
