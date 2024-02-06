@@ -322,3 +322,6 @@ body {
   justify-content: center;
     align-items: center;
 }
+.otp-error{
+  margin-top: 35px;
+}

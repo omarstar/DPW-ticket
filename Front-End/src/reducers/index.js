@@ -31,12 +31,11 @@ export const counterSlice = createSlice({
     },
     setBranches: (state,action) => {
       state.branches = action.payload
-      localStorage.setItem("branch",JSON.stringify(state.cartItems));
     },
    
     setTicket: (state,action) => {
         state.ticket = action.payload
-        localStorage.setItem("ticket",JSON.stringify(state.cartItems));
+
       },
     setLoading: (state,action) => {
       state.loading = action.payload
@@ -54,7 +53,7 @@ export const counterSlice = createSlice({
       state.branchid = action.payload
     },
     setPhonenumber: (state, action) => {
-      state.branchid = action.payload
+      state.phoneNumber = action.payload
     },
     toggleCurrentLang: (state, action) => {
       state.CurrentLang = state.CurrentLang === 'ar' ? 'en' : 'ar'

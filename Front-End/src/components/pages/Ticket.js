@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../includes/header/header.css'
 import '../includes/footer/footer.css'
 import homeCircleImg from '../../images/home-circle.svg'
@@ -22,9 +22,10 @@ export default function Ticket() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     let ticketLeave = useRef(3);
-
+    const [ticketData, setTicketData] = useState(0);
     let {loading, ticket} = useSelector((state) => state.app);
-    console.log('ticket', ticket)
+    ticket = JSON.parse(ticket);
+
     // ticket = {currentStatus:"CALLED",position:4,id: "A0123", currentServiceName: "servccc plapla"}//test
     // dispatch(setTicket(ticket));//test
 
@@ -34,24 +35,29 @@ export default function Ticket() {
     let branchId = 4;
 
     const callVisitCheck = async() => {
+        console.log('ticket', ticket)
+
         const reqData = {
-            visitid: ticket.id?? 0,
+            visitId: ticket.id?? 0,
             checksum: ticket.checksum?? 0,
             branchId: 4
         }
 
         try {
-            const visitData = await callVisitCheck(reqData);//real api
+            const visitData = await getTicket(reqData);//real api
             console.log('reqData', reqData)
             if (visitData.status === 200) {
-                dispatch(setTicket(visitData.data))
-                dispatch(setLoading(false));
+                
+                // dispatch(setTicket(visitData.data))
+                // dispatch(setLoading(false));
             }
+            setTicketData(visitData);
 
         } catch (error) {
+            console.error(error);
             if(ticketLeave.current <= 0){
                 sessionStorage.clear();
-                return navigate("/DPW/thankyou")
+                // return navigate("/DPW/thankyou")
             }
             ticketLeave.current -= 1;
         }
@@ -74,6 +80,8 @@ export default function Ticket() {
 
     },[]);
 
+  
+
     return (
         <div class="d-flex flex-column justify-content-center align-items-center bg-white">
             <div class="header-section">
@@ -83,16 +91,16 @@ export default function Ticket() {
                 <div class="title-box d-flex flex-column justify-content-center align-items-center">
                     
                     {
-                    loading ?
+                    !ticketData ?
                         <Loading hSpacer='h-50' />
                     :
-                    (ticket && ticket.currentStatus==="IN_QUEUE" )? (
-                        <Queue ticket={ticket} branch={branchId} />
+                    ( ticketData && ticketData.currentStatus==="IN_QUEUE" )? (
+                        <Queue ticket={ticketData} branch={branchId} />
                     )
-                    :(ticket && ticket.currentStatus==="CALLED" ) ?
-                        <Turn ticket={ticket} branch={branchId}/>
+                    :( ticketData && ticketData.currentStatus==="CALLED" ) ?
+                        <Turn ticket={ticketData} branch={branchId}/>
                     :
-                    <div>Nothing to show</div>
+                    <div>Nothing to show </div>
                 }
                 </div>
             </div>

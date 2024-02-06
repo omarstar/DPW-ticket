@@ -12,10 +12,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getPhonenumber, isShowModal, setModal, setPhonenumber } from '../../../reducers'
 import ModalExit from '../../includes/modal/ModalExit'
 import $ from 'jquery';
-import { createCustomer } from '../../../utils/api'
+import { createCustomer, sendOTP } from '../../../services/api'
 export default function CustomerForm(params) {
     const navigate = useNavigate();
-
+    const Appstate = useSelector((state)=>state.app);
     const navToOtpPage = () => {
         navigate('/DPW/otp')
     }
@@ -27,13 +27,14 @@ export default function CustomerForm(params) {
             let customer = {
                 firstName : $('#input-firstname').val(),
                 lastName : $('#input-lastname').val(),
-                phoneNum : $('#input-walknew-mobilenumber').val(),
+                phoneNum : Appstate.phoneNumber,
                 email : $('#input-email').val(),
                 company : $('#input-companyName2').val()
 
             };
             createCustomer(customer).then(a=>{
                 console.log('createCustomer',a);
+                sendOTP(customer.phoneNum);
                 navToOtpPage();
             })
         }

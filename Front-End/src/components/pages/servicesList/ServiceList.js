@@ -147,7 +147,7 @@ export default function ServiceList(params) {
                 };
                let visit =  await axios.request(config)
                console.log('visit.data', visit.data)
-                dispatch(setTicket(visit.data))
+                dispatch(setTicket(JSON.stringify(visit.data)))
                 dispatch(setBranchid());
                 // setTimeout(() => {
                 //     dispatch(setLoading(true))
