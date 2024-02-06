@@ -14,6 +14,7 @@ import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import Queue from './Queue';
 import Turn from './Turn';
 import Loading from '../includes/loading/loading';
+import { getTicket } from '../../services/api';
 // import axios from 'axios';
 // import { getTicket } from '../../services/api';
 
