@@ -14,6 +14,19 @@
     padding: 47px 36px;
     margin-top: 20px;
 }
+.ticket-turn-box {
+    border-radius: 8px;
+    /* border: 1px solid var(--primary-blue, #0058a6); */
+    display: flex;
+    max-width: 286px;
+    flex-direction: column;
+    color: #fff;
+    background-color: rgba(0, 104, 169, 1);
+    font-weight: 700;
+    text-align: center;
+    padding: 47px 36px;
+    margin-top: 20px;
+}
 /* .ticket-details-box {
     border-radius: 15px;
     border: 1px solid var(--border-color);
