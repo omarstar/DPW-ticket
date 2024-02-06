@@ -1,0 +1,131 @@
+/* .title-sub-text {
+    color: var(--gray-text);
+    text-align: center;
+    letter-spacing: 2.4px;
+    margin-top: 66px;
+    width: 790px;
+    font: 500 25px Montserrat, sans-serif;
+  } */
+
+  /* .applist-container {
+    border-radius: 20px;
+    border: 4px solid var(--gray-text);
+    background-color: #fff;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    padding: 1px 50px 20px;
+    height: 870px;
+  } */
+
+  .applist-item {
+    border-radius: 8px;
+    background-color: #005eb8;
+    padding: 9px 4.5px 9px 7.5px;
+    margin-top: 8px;
+    width: 85vw;
+  }
+
+  .applist-item-inner {
+    gap: 6px;
+    display: flex;
+  }
+
+  .column-1 {
+
+    width: 30%;
+    margin-left: 0px;
+  }
+
+  .column-2 {
+    width: 36%;
+    margin-left: 6px;
+  }
+
+  .column-3 {
+    width: 31%;
+    margin-left: 6px;
+  }
+
+  .clm-box {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  .applist-branchname {
+    letter-spacing: 0.96px;
+    font: 700 7px Montserrat, sans-serif;
+  }
+
+  .applist-servicename {
+    letter-spacing: 0.72px;
+    margin-top: 9px;
+    font: 600 5.5px Montserrat, sans-serif;
+  }
+
+  .clm2-box {
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  .applist-date {
+    letter-spacing: 0.96px;
+    font: 700 7px Montserrat, sans-serif;
+  }
+
+  .applist-time {
+    letter-spacing: 0.72px;
+    align-self: center;
+    margin-top: 9px;
+    font: 600 5.5px Montserrat, sans-serif;
+  }
+
+  .clm3-box {
+    text-align: center;
+  }
+
+  .applist-elapsetime {
+    justify-content: center;
+    letter-spacing: 0.96px;
+    text-transform: capitalize;
+    font: 700 7px Montserrat, sans-serif;
+  }
+
+  .applist-status {
+    letter-spacing: 0.72px;
+    text-transform: uppercase;
+    align-self: center;
+    margin-top: 9px;
+    font: 600 5.5px Montserrat, sans-serif;
+  }
+
+  /* @media (max-width: 991px) {
+    .applist-item-inner {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0px;
+    }
+  } */
+
+  /* ex */
+  /* #app-item-2 {
+    background-color: #999;
+  }
+  #app-status {
+    color: red;
+  } */
+
+  .blue_bg {
+    background-color: #005eb8;;
+  }
+  .blue_gray {
+    background-color: #999;;
+  }
+
+  .bg-red {
+    color: red;
+  }

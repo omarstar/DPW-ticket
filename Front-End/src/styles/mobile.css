@@ -1,14 +1,14 @@
 
 
   .space-mobile-submit {
-    padding: 38px 60px;
-    margin-top: 375px;
+    /* padding: 38px 60px; */
+    margin-top: 80px;
   }
 
   /* input */
   .input-mobile-block {
-    margin-top: 166px;
-    width: 100%;
+    margin-top: 95px;
+    /* width: 100%; */
   }
 
   .alert-wrongmobile-text {

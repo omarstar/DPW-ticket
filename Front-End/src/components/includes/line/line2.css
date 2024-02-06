@@ -42,3 +42,13 @@
     color: #fff;
     text-align: center;
 }
+.line-bg {
+    background-color: rgba(62, 177, 200, 1);
+    border-radius: 8px;
+    position: absolute;
+    margin: auto;
+    width: 286px;
+    height: 5vh;
+    text-align: center;
+    z-index: 0;
+}

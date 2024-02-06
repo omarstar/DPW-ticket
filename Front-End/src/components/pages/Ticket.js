@@ -84,12 +84,12 @@ export default function Ticket() {
   
 
     return (
-        <div className="d-flex flex-column justify-content-center align-items-center bg-white">
-            <div className="header-section">
-                <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
+        <div class="d-flex flex-column justify-content-center align-items-center bg-white">
+            <div class="header-section">
+                <img  srcset={jafzaLogoColor} class="header-img-bg" alt="jafza logo" />
             </div>
             <div id="page" className="page-layout d-flex flex-column justify-content-start align-items-center">
-                <div className="title-box d-flex flex-column justify-content-center align-items-center">
+                <div class="title-box d-flex flex-column justify-content-center align-items-center">
                     
                     {
                     !ticketData ?
@@ -105,8 +105,8 @@ export default function Ticket() {
                 }
                 </div>
             </div>
-            <div className="footer-section">
-                <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
+            <div class="footer-section">
+                <img id="footer-img-bg"  src={footerBGshape} class="footer-img-icon" alt="background shape" />
             </div>
         </div>
     )

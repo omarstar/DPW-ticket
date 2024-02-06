@@ -8,7 +8,7 @@ const Line2 = ({ activeNum = 0, onClickFuntion}) => {
         <>
             <div id="parentBox" onClick={onClickFuntion} className="flex-row-reverse">
                     
-                    
+                    <div className="line-bg"></div>
                     {/* {
                         activeNum > 6 &&
                         <div id="greaterLine">
@@ -45,7 +45,7 @@ const Line2 = ({ activeNum = 0, onClickFuntion}) => {
                                 </div>
                             </div>
                         ) : (
-                            <div id="mainLine" className="col queue-item center-text parent-center selected hidden-color ">
+                            <div id="mainLine" className="col queue-item center-text parent-center other hidden-color ">
                                 <div className="child-center">
                                     <p className= "mainLineText " ></p>
                                     <p className= "mainLineText you-text" ></p>

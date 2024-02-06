@@ -12,6 +12,7 @@ import { isShowModal, setModal } from '../../../reducers'
 import { useNavigate } from 'react-router'
 import ModalExit from '../../includes/modal/ModalExit'
 import { calculateRemainingTime, checkArrivalTime, formatDate } from '../../../utils'
+import AppItem from './AppItem'
 
 export default function AppointmentList(params) {
 
@@ -58,8 +59,14 @@ export default function AppointmentList(params) {
                     <div className="title-applist mx=4">please select your confirmed face-to-face appointment to check-in.</div>
                     <span className='mini-gray-apptext'>You can check-in from 20 minutes before the time of the appointment</span>
                     <div className='result-title'>showing results for jafza lob 14</div>
-                    <div className="ticket-applist-box col-12 text-center">
-                        {
+                    <div className="ticket-applist-box col-12 text-center d-flex flex-column justify-content-center align-items-center">
+                        <AppItem />
+                        <AppItem />
+                        <AppItem />
+                        <AppItem />
+                        <AppItem />
+                        <AppItem />
+                        {/* {
                             appointments  ? appointments.map(appointment =>  (
         
                                 <button onClick={()=> handleClickApp(appointment,checkArrivalTime(appointment.startTime))}>
@@ -75,7 +82,7 @@ export default function AppointmentList(params) {
                             ))
                             : 
                             <></>
-                        }
+                        } */}
                         
                     </div>
                 </div>

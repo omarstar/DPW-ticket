@@ -6,12 +6,12 @@ import homeCircleImg from '../../images/home-circle.svg'
 import jafzaLogoColor from '../../images/JAFZA_Logo_Color.svg'
 import footerBGshape from '../../images/footer-sky-bg.svg'
 import '../common.css';
-import '../../styles/options.css'
+import '../../styles/mobile.css'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { isShowModal, setBranchid, setLoading, setModal, setTicket } from '../../reducers';
 import { api, getSessionValue, setSessionValue, vadidateForm } from '../../utils/index';
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import $ from 'jquery';
 import PhoneNumberInput from '../includes/phoneInput/PhoneNumberInput';
 import ModalExit from '../includes/modal/ModalExit';
@@ -22,11 +22,11 @@ export default function PhoneNumber() {
     
     const navigate = useNavigate();
     const [showAlert, setShowAlert] = useState(false);
-    const {loading,phoneNumber} = useSelector((state) => state.app);
+    const {phoneNumber} = useSelector((state) => state.app);
     const dispatch = useDispatch();
 
     const handleMobileSubmit = async () => {
-        setShowAlert(false);
+        // setShowAlert('');
         //validate
         //get appointments if exist eslse alert
         //send otp
@@ -34,7 +34,7 @@ export default function PhoneNumber() {
         // return getAppointments(phoneNumber);
         const Appointments = await getAppointments(phoneNumber);
         console.log('Appointments',Appointments);
-        if(Appointments.length>0){
+        if(Appointments.length > 0){
             dispatch(setAppointments(Appointments));
             sendOTP(phoneNumber);
             return navigate('/DPW/otp');
@@ -45,9 +45,26 @@ export default function PhoneNumber() {
         
         
     }
-    //modal exit
   
+     // validate
+     const [errorMessage, setErrorMessage] = useState('');
 
+     const handleValidationResult = (isValid, message) => {
+         if (!isValid) {
+         setErrorMessage(message);
+        if(message === 'This field is required'){
+            setShowAlert(message)
+        }
+        else{
+            setShowAlert("Wrong mobile number or no appointment found")
+        }
+         } else {
+         setErrorMessage('');
+         setShowAlert('');
+         }
+     };
+
+    // modal
     const doShowModal = useSelector(isShowModal);
 
     const modalExitData = {
@@ -70,59 +87,61 @@ export default function PhoneNumber() {
     const showModel = () => {
         dispatch(setModal(true))
     }
-    const handlePhoneNumber = () =>{
-        if($('#phoneNumber').val()){
-            setSessionValue("phoneNumber",$('#phoneNumber').val())
-            //create ticket
-            // navigate(`/ticket`);
-        }else{
-            $('#phone-num-error').show();
-        }
-    }
 
-    const createTicket = async () =>{
-        console.log('create clicked!')
-        dispatch(setLoading(true));
-        const selectedBranch = JSON.parse(getSessionValue('br_name'),'{}');
-        const selectedService = getSessionValue('serviceId');
-        console.log('ticketData',[selectedService,selectedBranch]);
-        // navigate('/ticket');//test
-        if(selectedService && selectedBranch){
-            try {
-                let data = JSON.stringify({
-                    "parameters": {
-                    "notificationType": "none",
-                    "print": "0",
-                    "phoneNumber": getSessionValue('phoneNumber'),
-                    "custom1": '',
-                    }
-                });
+
+    // const handlePhoneNumber = () =>{
+    //     if($('#phoneNumber').val()){
+    //         setSessionValue("phoneNumber",$('#phoneNumber').val())
+    //         //create ticket
+    //         // navigate(`/ticket`);
+    //     }else{
+    //         $('#phone-num-error').show();
+    //     }
+    // }
+
+    // const createTicket = async () =>{
+    //     console.log('create clicked!')
+    //     dispatch(setLoading(true));
+    //     const selectedBranch = JSON.parse(getSessionValue('br_name'),'{}');
+    //     const selectedService = getSessionValue('serviceId');
+    //     console.log('ticketData',[selectedService,selectedBranch]);
+    //     // navigate('/ticket');//test
+    //     if(selectedService && selectedBranch){
+    //         try {
+    //             let data = JSON.stringify({
+    //                 "parameters": {
+    //                 "notificationType": "none",
+    //                 "print": "0",
+    //                 "phoneNumber": getSessionValue('phoneNumber'),
+    //                 "custom1": '',
+    //                 }
+    //             });
                 
-                let config = {
-                    method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json'
-                    },
-                    body : data
-                };
-                const _url = api('create/ticket/')
-                const _urlTicket = _url + `?serviceId=${selectedService}&brancheId=${selectedBranch.id}`
-                const response = await fetch(_urlTicket, config);
+    //             let config = {
+    //                 method: 'POST',
+    //                 headers: { 
+    //                     'Content-Type': 'application/json'
+    //                 },
+    //                 body : data
+    //             };
+    //             const _url = api('create/ticket/')
+    //             const _urlTicket = _url + `?serviceId=${selectedService}&brancheId=${selectedBranch.id}`
+    //             const response = await fetch(_urlTicket, config);
                 
                 
-                const result = await response.json();
-                console.log('created ticket data ',result);
-                setSessionValue('sess_visit',JSON.stringify(result));
-                navigate('/ticket');
-            } catch (error) {
-                navigate('/');
-            }
+    //             const result = await response.json();
+    //             console.log('created ticket data ',result);
+    //             setSessionValue('sess_visit',JSON.stringify(result));
+    //             navigate('/ticket');
+    //         } catch (error) {
+    //             navigate('/');
+    //         }
             
-        }else{
-            navigate('/');
-        }
+    //     }else{
+    //         navigate('/');
+    //     }
         
-    }
+    // }
 
     return (
         
@@ -130,28 +149,29 @@ export default function PhoneNumber() {
 
 
             <div className="d-flex flex-column justify-content-center align-items-center bg-white">
-            <div className="header-section">
-                <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
-                <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
-            </div>
-            <div id="page" className="page-layout d-flex justify-content-center">
-                <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                <div className="title-black">Please enter your mobile number</div>
-                <div>
-                    <PhoneNumberInput dynamicClass={{parent: 'input-mobile-block d-flex justify-content-center',child:'input-box input-fullwidth required'}} />
+                <div className="header-section">
+                    <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
+                    <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
                 </div>
-                
+                <div id="page" className="page-layout d-flex justify-content-start align-items-center">
+                    <div className="title-box d-flex flex-column justify-content-center align-items-center">
+                        <div className="title-black">Please enter your mobile number</div>
+                        <div className="input-mobile-block">
+                            <PhoneNumberInput onValidationResult={handleValidationResult}  />
+                        </div>
+                    
+                        {/* {
+                            showAlert && <div id="alert-wrongmobile" className="alert-text mobile-alert"> {showAlert}</div>
+                        } */}
+                        <div id="alert-wrongmobile" className="alert-text mobile-alert">{showAlert}</div>
+                    
+                        <button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit">Continue</button>
+                    </div>
+                </div>
+                <div className="footer-section">
+                    <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
+                </div>
                 {
-                    showAlert && <div id="alert-wrongmobile" className="alert-text m-2"> {showAlert}</div>
-                }
-                
-                <button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit">Continue</button>
-                </div>
-            </div>
-            <div className="footer-section">
-                <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
-            </div>
-            {
                     doShowModal && (
                         <ModalExit data={modalExitData} />
                     )
