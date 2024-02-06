@@ -1,0 +1,22 @@
+#otpSpacer{
+    height: 15vh;
+    /* height: 40vh; */
+}
+
+.spacer-after-header {
+    height: 5vh;
+}
+
+.no-otp-text {
+    /* display: flex; */
+    /* justify-content: space-between; */
+    text-align: center;
+    height: 10vh;
+    width: 60vw;
+    margin: 0 auto;
+}
+
+.timeClr {
+    color: var(--primary);
+    margin: 5vw;
+}

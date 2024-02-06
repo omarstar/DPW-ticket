@@ -1,0 +1,105 @@
+.button-lang {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    color: var(--royal-blue);
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    white-space: nowrap;
+    border-radius: 10px;
+    background-color: #fff;
+    justify-content: center;
+    padding: 5px 15px;
+    font: 600 12px 'Montserrat-VariableFont';
+    width: 72px;
+    height: 27px;
+    border: 2px solid #fff;
+  }
+
+  /* .logo-wide-img {
+    aspect-ratio: 1.53;
+    object-fit: contain;
+    object-position: center;
+    width: 620px;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 72px 0 0;
+  } */
+
+  .button-getstarted {
+    color: var(--royal-blue);
+    width: 15rem;
+    max-width: 100%;
+    margin: 12rem 0 0;
+    padding: 10.25px 16.5px;
+    text-align: center;
+    letter-spacing: 1.2px;
+    /* text-transform: uppercase; */
+    border-radius: 10px;
+    background: #fff;
+    border: 2px solid #fff;
+    font: 900 15px 'Montserrat-VariableFont';
+    box-shadow: 2px 2px 0px var(--royal-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #btn-lang-box {
+    /* Add the following styles for centering */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+
+  /* .qrcode-scantext-box {
+    border-radius: 20px;
+    border: 2px solid var(--royal-blue, #005eb8);
+    background-color: #fff;
+    width: 200px;
+    max-width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: 80px 0 0;
+    padding: 35px 27px;
+  } */
+
+  .qrcode-scantext-title {
+    text-align: center;
+    letter-spacing: 0.8px;
+    /* text-transform: uppercase; */
+    align-self: center;
+    /* white-space: nowrap; */
+    font: 700 8px 'Montserrat-VariableFont';
+    margin-top: 25px;
+    width: 196px;
+    color: #fff;
+  }
+
+  .qrcode-img {
+    aspect-ratio: 1.08;
+    object-fit: contain;
+    object-position: center;
+    width: 5.5rem;
+    overflow: hidden;
+    align-self: center;
+    max-width: 100%;
+  }
+
+  /* .qrcode-mobile-text {
+    text-align: center;
+    letter-spacing: 1.2px;
+    margin-top: 66px;
+    font: 900 30px 'Montserrat-VariableFont';
+    color: #fff;
+  } */
+  .start-cover-bg {
+    background: url('../images/DP_mobile_wbg.svg') top center transparent no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }

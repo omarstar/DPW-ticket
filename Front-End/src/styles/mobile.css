@@ -1,0 +1,49 @@
+
+
+  .space-mobile-submit {
+    padding: 38px 60px;
+    margin-top: 375px;
+  }
+
+  /* input */
+  .input-mobile-block {
+    margin-top: 166px;
+    width: 100%;
+  }
+
+  .alert-wrongmobile-text {
+    color: #f00;
+    text-align: center;
+    letter-spacing: 1.04px;
+    text-transform: uppercase;
+    align-self: center;
+    margin-top: 174px;
+    white-space: nowrap;
+    font: 26px Montserrat, sans-serif;
+    opacity : 0
+  }
+
+
+  #input-app-mobilenumber {
+    letter-spacing: 1.5px !important;
+    font: normal 400px 30px Montserrat, -apple-system, Roboto, Helvetica,sans-serif;
+  }
+  
+  #input-app-mobilenumber::placeholder {
+    color: #999;
+    font-style: italic;
+    text-transform: uppercase;
+    padding: 0 0 15px;
+    margin-left: 20px !important;
+    font: italic 400 22px Montserrat, -apple-system, Roboto, Helvetica,
+      sans-serif;
+  }
+
+  /* .input-fullwidth {
+    width: 770px;
+  } */
+  
+  #input-app-mobilenumber {
+    padding-left: 172px !important;
+    /* height: 75px; */
+  }

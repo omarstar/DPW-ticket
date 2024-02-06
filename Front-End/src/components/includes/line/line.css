@@ -1,0 +1,77 @@
+#parentBox{
+    width: 100vw;
+    min-height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lineBox{
+    width:85vw;
+    height: 8vh;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    background: var(--sky-blue, rgba(62, 177, 200, 0.6))
+    /* background: linear-gradient(60deg, var(--primary-color) 0%,  var(--btn-color) 48%, var(--text-color) 100%); */
+}
+
+#mainLine{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* height: 100%;
+    width: 85%; */
+    /* padding-left: 0 3.5%; */
+}
+
+.mainLineText{
+    color: white;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+#greaterLine{
+    width: 20%;
+    border-left: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+#greaterLineText{
+    color: white;
+    font-size: 40px;
+    font-weight: 700;
+}
+/* .threeDots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+} */
+.threeDots{
+    position:relative;
+    text-align: center;
+}
+.threeDots::after{
+    content: "...";
+    font-size: 1.3rem !important;
+    position: absolute;
+    top: -5px; right: 0;
+    margin-right: -7px; height: 100%;
+    display:flex; flex-direction:row;
+    align-items: center; justify-content: center;
+    color: white;
+}
+.activeNum {
+    font-size: 3rem !important;
+}
+.nxtActiveNum{
+    font-size: 2rem !important;
+}
+.hideNum {
+    visibility: hidden;
+}

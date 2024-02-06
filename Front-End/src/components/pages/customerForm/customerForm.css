@@ -1,0 +1,242 @@
+/* .title-black {
+    color: #000;
+    font: 700 12px 'Montserrat-VariableFont';
+    text-align: center;
+    letter-spacing: 0.48px;
+    text-transform: uppercase; 
+    width: 140px;
+    height: 17px;
+  }
+  .title-form {
+    color: #0058a6;
+    font: italic 400 9px Montserrat, -apple-system, Roboto, Helvetica,
+    sans-serif;
+    text-align: center;
+    letter-spacing: 0.36px;
+    text-transform: uppercase;
+    align-self: start;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
+  .input-block {
+    margin-top: 35px;
+    width: 80%;
+  }
+
+  .input-block2 {
+    margin-top: 84px;
+    width: 100%;
+  }
+
+  .input-box {
+    color: var(--primary-blue, #0058a6);
+  text-align: center;
+  letter-spacing: 0.36px;
+  text-transform: uppercase;
+  align-self: start;
+  white-space: nowrap;
+  font: italic 400 9px Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+
+  }
+
+  .input-fullwidth {
+    width: 260px;
+    padding: 15px 0px 0.32px 0px;
+    display: flex;
+    padding: 15px 0px 0.32px 0px;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 10px; 
+  }
+
+  .input-halfwidth {
+    width: 120px;
+  }
+
+  .input-box::placeholder {
+    font-style: italic;
+    color: #0058A6;
+    text-transform: uppercase;
+    padding: 20px 0;
+    margin-left: 0;
+    letter-spacing: 0.36px;
+    text-align: center;
+    font: italic 400 9px Montserrat, -apple-system, Roboto, Helvetica,
+      sans-serif;
+  }
+
+  hr {
+    border: 1px solid #000;
+    margin: 20px 0;
+  }
+
+
+  .existingcustomer-box {
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    margin-top: 40px;
+  }
+
+  .newcustomer-box {
+    width: 100vw;
+    max-width: 100%;
+  }
+
+  .space-btn-form-search {
+    margin-top: 36px;
+    padding: 9px 58px;
+    width: 200px;
+
+  }
+
+  .space-btn-form-proceed {
+    letter-spacing: 0.56px;
+    margin-top: 42px;
+    padding: 18px 60px
+  }
+
+  .alert-norecords-text, .alert-validation-text {
+    color: #f00;
+    text-align: center;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    align-self: center;
+    white-space: nowrap;
+    font: 700 12px 'Montserrat-VariableFont';
+  }
+  .m-anr {
+    margin-top: 40px;
+  }
+
+  .alert-small-text {
+    color: #f00;
+    text-align: start;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    white-space: nowrap;
+    font: 700 8px 'Montserrat-VariableFont';
+  }
+  .customer-form-container {
+    overflow: auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+  } */
+  
+  /* form */
+  .title-form {
+    /* max-width: 325px; */
+    max-width: 80%;
+    color: #046cac;
+    font: 700 10px 'Montserrat-VariableFont', sans-serif;
+    letter-spacing: 0.85px;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  #input-companyName1 {
+    margin-top: 20px;
+  }
+  .input-block {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .input-block2 {
+    margin-top: 28px;
+    width: 100%;
+  }
+
+  
+
+  .input-fullwidth {
+    width: 290px;
+  }
+
+  .input-halfwidth {
+    width: 105px;
+  }
+
+  .input-box::placeholder {
+    color: var(--gray-text, #777);
+    font-style: italic;
+    text-transform: uppercase;
+    padding: 0 0 5px;
+    margin-left: 6.6 !important;
+    font-style: italic;
+    font-size: 08px;
+    font-weight: 400;
+    /* font: italic 400 8px Montserrat, -apple-system, Roboto, Helvetica; */
+  }
+  .input-box:focus {
+    outline: none;
+    box-shadow: none;
+    border: 2px solid transparent;
+    border-bottom: 2px solid #000;
+  }
+
+  hr {
+    border: 1px solid #000;
+    margin: 6.6px 0;
+  }
+
+  .separate-line {
+    width: 100%;
+    height: 1px;
+    background-color: #777;
+    margin: 33px 0;
+  }
+
+  .existingcustomer-box {
+    margin-top: 35px;
+    height: 23vh;
+  }
+
+  .newcustomer-box {
+    /* height: 165px; */
+  }
+
+  .space-btn-form-search {
+    margin-top: 13px;
+    padding: 8px 20px;
+
+  }
+
+  .space-btn-form-proceed {
+    margin-top: 42px;
+    padding: 18px 20px
+  }
+
+  .alert-norecords-text, .alert-validation-text {
+    color: #f00;
+    text-align: center;
+    letter-spacing: 1.04px;
+    text-transform: uppercase;
+    align-self: center;
+    margin-top: 22px;
+    white-space: nowrap;
+    font: 700 10px 'Montserrat-VariableFont', sans-serif;
+  }
+
+  .alert-small-text {
+    color: var(--alert-color, #dd4452);
+    text-align: start;
+    letter-spacing: 0.6px;
+    /* text-transform: uppercase; */
+    margin-top: 3px;
+    white-space: nowrap;
+    font: 700 8px 'Montserrat-VariableFont', sans-serif;
+  }
+ 
+  #input-walknew-mobilenumber {
+    padding-left: 56px !important;
+  }

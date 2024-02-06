@@ -1,0 +1,58 @@
+import React, { useRef } from 'react';
+import './input.css';
+
+function InputOtp({otpValue, onOtpChange, onKeyClick}) {
+
+  const inputRefs = useRef(Array.from({ length: 4 }).map(() => React.createRef()));
+
+    const handleOtpChange = (event, index) => {
+        const { value } = event.target;
+        const digits = value.replace(/\D/g, '');
+
+        onOtpChange((prevOtp) => {
+            const updatedOtp = [...prevOtp];
+            updatedOtp[index] = digits;
+
+            if(digits.length === 1 && index < 3){
+                const nextInput = event.target.nextSibling;
+                if(nextInput)
+                  nextInput.focus();
+            }
+            return updatedOtp;
+        })
+      };
+
+    const handleKeyDown = (event, index) => {
+      if(event.key === 'Enter'){
+        onKeyClick();
+      } else if (event.key === 'Backspace' && !otpValue[index] && index > 0) {
+        // Move focus to the previous input on Backspace press
+        inputRefs.current[index - 1].current.focus();
+      }
+    };
+
+    return (
+        <div className="otp-set-box h-10">
+          <div className="otp-dashes">
+          {Array.from({ length: 4 }, (_, index) => (
+            <input
+            key={index}
+            ref={inputRefs.current[index]}
+            type="text"
+            className="otp-num-input"
+            maxLength="1"
+            pattern="\d*"
+            inputMode="numeric"
+            autoComplete="one-time-code"
+            required
+            value={otpValue[index] || ''}
+            onChange={(event)=>handleOtpChange(event,index)}
+            onKeyDown={(event)=> handleKeyDown(event, index)}
+          />
+          ))}
+          </div>
+        </div>
+    );
+}
+
+export default InputOtp;

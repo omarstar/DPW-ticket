@@ -1,0 +1,79 @@
+
+    
+    #phoneNumberBox{
+        width: 80vw;
+        margin: 10px;
+        font-size: 3rem;
+        /* overflow-y: scroll;
+        display: flex;
+        height: 10vh;
+        align-items: center;
+        justify-content: center; */
+    }
+
+    .eidNumber{
+        height: 7vh;
+        width: 72vw;
+        outline: none;
+        border-radius: 100px;
+        background-color: white;
+        border: 2.5px var(--secondary-grey) solid;
+        font-size: 21px;
+        font-weight: 200;
+        text-align: center;
+
+    }
+    .phoneNumber{
+        height: 7vh;
+        width: 72vw;
+        outline: none;
+        border-radius: 100px;
+        background-color: white;
+        border: 2.5px var(--secondary-grey) solid;
+        font-size: 22px;
+        padding: 4px;
+        letter-spacing: 6px;
+        font-weight: 200;
+        text-align: center;
+
+    }
+    #phoneNumberBox::placeholder {
+        padding: 10px;
+        font-size: 2rem;
+    }
+
+    /* otp design */
+    .otp-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .otp-input {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        text-align: center;
+        border: none;
+        border-bottom: 2px solid #000;
+        outline: none;
+        padding: 5px;
+        margin-right: 10px;
+      }
+      
+      .otp-dashes {
+        display: flex;
+        width: 67vw;
+        justify-content: space-evenly;
+      }
+      
+      .otp-dashes span {
+        width: 10px;
+        height: 2px;
+        background-color: #000;
+        margin-right: 5px;
+      }
+      
+      .otp-dashes span.filled {
+        background-color: #0000ff;
+      }

@@ -1,0 +1,140 @@
+/* .title-box {
+    margin-top: 74px;
+  }
+
+  .otp-set-box {
+    margin-top: 61px;
+    height: 78px;
+    width: 280px;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 20px;
+  }
+
+  .otp-num-input {
+    color: var(--primary-blue, #0058a6);
+    text-align: center;
+    letter-spacing: 1.28px;
+    text-transform: uppercase;
+    font: 600 32px 'Montserrat-VariableFont';
+    border: 2px solid #0058a6;
+    width: 83px;
+    min-height: 40px;
+    padding: 1px 1px;
+  }
+
+  .resend-otp-box {
+    display: flex;
+    margin-top: 48px;
+    width: 222px;
+    max-width: 100%;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .resend-otp-text {
+    color: #000;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    flex-grow: 1;
+    flex-basis: auto;
+    font: 700 10px 'Montserrat-VariableFont';
+  }
+
+  .otp-time-text {
+    color: #000;
+    text-align: center;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    align-self: start;
+    font: 700 10px 'Montserrat-VariableFont';
+  }
+
+  .title-black {
+    color: #000;
+    font: 700 12px 'Montserrat-VariableFont';
+    text-align: center;
+    text-transform: uppercase; 
+    width: 240px;
+  }
+
+
+  .space-submit-otp {
+    padding: 32px 60px;
+    letter-spacing: 0.56px;
+    margin-top: 160px;
+  }
+  .title-otp-text {
+    letter-spacing: 0.48px;
+    width: 85%;
+
+  } */
+  /* .title-box {
+    margin-top: 216px;
+  } */
+
+  .otp-set-box {
+    margin-top: 46Px;
+    height: 24px;
+    width: 247px;
+    display: flex;
+    /* max-width: 362px; */
+    align-items: start;
+    justify-content: space-between;
+    gap: 6px;
+    padding: 0 6.6px;
+  }
+
+  .otp-num-input {
+    color: var(--royal-blue, #0068a9);
+    text-align: center;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font: 600 20px Montserrat, sans-serif;
+    border: 1px solid #046CAC;
+    width: 40px;
+    min-height: 40px;
+    border-radius: 10px;
+    padding: 5px 7px;
+  }
+
+  .resend-otp-box {
+    display: flex;
+    margin-top: 36px;
+    width: 129px;
+    max-width: 100%;
+    justify-content: space-between;
+    gap: 6.6px;
+  }
+
+  .resend-otp-text {
+    color: var(--gray, #6c757d);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    flex-grow: 1;
+    flex-basis: auto;
+    font: 700 10px Montserrat, sans-serif;
+  }
+
+  .otp-time-text {
+    color: #000;
+    text-align: center;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    align-self: start;
+    font: 700 10px Montserrat, sans-serif;
+  }
+
+  /* .title-modal-white {
+    color: white;
+    font: 700 15px Montserrat, sans-serif;
+    text-align: center;
+    width: 224px;
+  } */
+  .space-submit-otp {
+    padding: 12px 20px;
+    letter-spacing: 0.88px;
+    margin-top: 143px;
+  }

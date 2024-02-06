@@ -1,0 +1,28 @@
+.footer-container {
+    display: flex;
+    align-items: flex-end;
+}
+/* .footer-blue-section {
+    height: 15vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+} */
+.footer-img-icon {
+    aspect-ratio: 3.85;
+    object-fit: contain;
+    object-position: center;
+    width: 100%;
+    fill: var(--royal-blue, #005eb8);
+    margin: 0px 0px -10px 0px;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    z-index: 5;
+}
+
+.footer-section {
+    height: 15vh;
+    width: 100%;
+    
+}

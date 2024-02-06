@@ -1,0 +1,166 @@
+/* text title */
+.title-black {
+    color: var(--royal-text, #046cac);
+    font: 900 1rem 'Montserrat-VariableFont', sans-serif;
+    text-align: center;
+    letter-spacing: 0.48px;
+    width: 15rem;
+
+  }
+  .title-box {
+    margin-top: 2rem;
+  }
+/* modal exit home */
+.transparent-bg {
+    background-color: rgba(0, 0, 0, 0.6);
+    /* display: none; */
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 20;
+  }
+ 
+  .modal-box {
+    margin: auto auto 0px;
+    width: 15rem;
+    min-height: 7rem;
+    /* flex-shrink: 0;  */
+    margin-top: 11rem;
+    padding: 3rem 1rem;
+    border-radius: 15px;
+    border: 3px solid var(--royal-blue, #0058a6);
+    background-color: var(--royal-blue, #0058a6);
+    z-index: 10;
+    display: flex;
+    color: #fff;
+    align-self: center;
+
+  }
+  .title-modal-white {
+    color: white;
+    font: 700 12px 'Montserrat-VariableFont';
+    text-align: center;
+    width: 14rem;
+  }
+  /* .title-modal-white {
+    color: white;
+    font: 700 15px Montserrat, sans-serif;
+    text-align: center;
+    width: 204px;
+  } */
+  .space-modal-title {
+    margin-top: 20px;
+    /* border-bottom: white; */
+    /* border: 2px solid white;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0; */
+    padding-bottom: 6px;
+  }
+  .modal-btns-box {
+    margin-top: 1px;
+  }
+  .space-btnmodal-yes {
+    margin-top: 22px;
+    width: 15rem;
+    max-width: 100%;
+    align-items: center;
+    padding: 10rem 16.5rem;
+  }
+  .space-btnmodal-no {
+    margin-top: 9.6px;
+    width: 15rem;
+    max-width: 100%;
+    align-items: center;
+    padding: 10rem 16.5rem;
+  }
+  .space-btnmodal-proceed {
+    margin-top: 6.6px;
+    width: 15rem;
+    max-width: 100%;
+    align-items: center;
+    padding: 24px 16.5rem;
+  }
+  .space-btn-close {
+    margin-top: 6.6px;
+    width: 270px;
+    max-width: 100%;
+    align-items: center;
+    padding: 38px 60px;
+  }
+  /* input */
+  .input-box {
+    color: black;
+    letter-spacing: 0.72px;
+    text-transform: capitalize;
+    text-align: start;
+    border: 1px solid #000;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    font: normal 400 12px Montserrat, -apple-system, Roboto, Helvetica,
+      sans-serif;
+    height: 13px;
+  }
+  .input-box:focus {
+    outline: none;
+    box-shadow: none;
+    border: 1px solid transparent;
+    border-bottom: 1px solid #000;
+  }
+  /* buttons */
+  .header-homecircle-img {
+    position: fixed;
+    left: 35px;
+    top: 24px;
+    max-width: 30px;
+  }
+  .button-wide {
+    justify-content: center;
+      text-align: center;
+      letter-spacing: 1.2px;
+      border-radius: 12px;
+      align-self: center;
+      width: 15rem;
+      max-width: 100%;
+      font: 700 11px 'Montserrat-VariableFont';
+      z-index: 10;
+      padding: 9px 16.5px !important;
+      /* box-shadow: 1px 1px 0px var(--royal-blue); */
+  }
+  .button-outline-clr {
+    border: 1px solid var(--royal-blue, #0068a9);
+    background-color: #fff;
+    color: var(--royal-blue, #0068a9);
+  }
+  .button-fill-clr {
+    /* border: 1px solid #fff; */
+    border: none;
+    background-color: var(--royal-blue, #0068a9);
+    color: #fff;
+  }
+   /* phone international */
+   .iti__flag-container {
+    font-size: 8px !important;
+    padding: 0 0 3px !important;
+  }
+  .iti__flag {
+    scale: 1.8 !important;
+    margin-right: 5px;
+  }
+  .iti__flag-box, .iti__country-name {
+    margin-right: 9px !important;
+  }
+  .iti__dial-code {
+    font-size: 9px !important;
+  }
+  .iti.iti--container {
+    font-size: 12px !important;
+    height: 6.6%;
+  }
+  .iti--separate-dial-code .iti__selected-flag {
+    background-color: rgba(0, 0, 0 , 0.02) !important;
+  }
