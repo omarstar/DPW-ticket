@@ -13,7 +13,7 @@ import ModalExit from '../../includes/modal/ModalExit'
 import { getCurrentLang, getPhonenumber, isShowModal, setModal } from '../../../reducers'
 import { useDispatch, useSelector } from 'react-redux'
 import InputOtp from '../otpPage/InputOtp'
-import { callValidateOtp } from '../../../services/api'
+import { ValidateOtp, callValidateOtp } from '../../../services/api'
 import { vop } from '../../../utils'
 export default function WalkOtp(params) {
 
@@ -23,8 +23,9 @@ export default function WalkOtp(params) {
     // }
 
     let mobileNumber = useSelector(getPhonenumber);
-    mobileNumber = '0553208899'
+    
     console.log('mobileNumber', mobileNumber)
+
 
     const currentLang = useSelector(getCurrentLang);
     console.log('currentLang', currentLang)
@@ -76,7 +77,7 @@ export default function WalkOtp(params) {
         return "valid"
     }
 
-    const handleSubmitOtp = () => {
+    const handleSubmitOtp = async () => {
         setErrorFlag('');
         console.log('will handle validate OTP')
         try {
@@ -86,7 +87,19 @@ export default function WalkOtp(params) {
                 if(otp.length === 4){
                     let publicOtp = otp.join('');
                     console.log('publicOtp', publicOtp)
-                    navigate('/DPW/services')//test
+                    var ResultValidateOtp = ValidateOtp({
+                        phoneNumber:mobileNumber,
+                        otp:publicOtp,
+                    }).then(res=>{
+                        navigate('/DPW/services')//test
+                    }).catch(err=>{
+                        // console.log('asdasdsa',err);
+                        setErrorFlag("In valid OTP")
+
+                    })
+                    console.log('ResultValidateOtp', ResultValidateOtp);
+
+                    
                     
 
                     // const apiValidateData = {
@@ -109,7 +122,7 @@ export default function WalkOtp(params) {
                 }    
 
             }else {
-                setErrorFlag(validateResult)
+                setErrorFlag("In valid OTP")
             }
         } catch (error) {
             console.log('error in parsing data', error)
@@ -140,7 +153,12 @@ export default function WalkOtp(params) {
                         <input id="otp-input-4" class="otp-num-input" type="number" maxlength="1"/>
                     </div> */}
                     <InputOtp otpValue={otp} onOtpChange={handleOtpChange} onKeyClick={handleSubmitOtp} />
+                    
+                    {
+                        errorFlag && <div class="alert-text otp-error">{errorFlag} <br/> </div>
+                    }
                     <div class="resend-otp-box">
+                        
                         <div id="resend-message" class="resend-otp-text">Didn&apos;t receive OTP?</div>
                         <div id="timer" class="otp-time-text">01:59</div>
                     </div>
