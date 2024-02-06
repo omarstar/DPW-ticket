@@ -8,26 +8,28 @@ import '../common.css';
 import '../../styles/options.css'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { isShowModal, setModal } from '../../reducers'
+import { isShowModal, setFlow, setModal } from '../../reducers'
 import ModalExit from '../includes/modal/ModalExit'
 
 export default function OptionsPage(params) {
 
     const navigate = useNavigate();
-
+    const dispatch = useDispatch();
+    const doShowModal = useSelector(isShowModal);
     
 
     console.log('options page')
 
     const goToWalkinCustomer = () => {
+        dispatch(setFlow('walkin'));
         navigate('/DPW/customer')
     }
     const goToAppointmentMobile = () => {
+        dispatch(setFlow('app'));
         navigate('/DPW/mobile')
     }
 
-    const dispatch = useDispatch();
-    const doShowModal = useSelector(isShowModal);
+    
 
     const modalExitData = {
         titleText: "Are you sure you want to cancel and start the process over again?",

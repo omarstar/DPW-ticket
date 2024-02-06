@@ -34,6 +34,7 @@ export default function WalkOtp(params) {
     const dispatch = useDispatch();
 
     const doShowModal = useSelector(isShowModal);
+    const {flow} = useSelector((state) => state.app);
 
     const modalExitData = {
         titleText: "Are you sure you want to cancel and start the process over again?",
@@ -91,7 +92,11 @@ export default function WalkOtp(params) {
                         phoneNumber:mobileNumber,
                         otp:publicOtp,
                     }).then(res=>{
-                        navigate('/DPW/services')//test
+                        if(flow=='walkin'){
+                            return navigate('/DPW/services');//test
+                        }else{
+                            return navigate('/DPW/appointment');//test
+                        }
                     }).catch(err=>{
                         // console.log('asdasdsa',err);
                         setErrorFlag("In valid OTP")

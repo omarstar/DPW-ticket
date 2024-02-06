@@ -35,8 +35,8 @@ exports.getAppointment = async (req,res) => {
     let getAppointmentConfig = {
       method: 'get',
       maxBodyLength: Infinity,
-      url: `${qmaticApiUrl}/rest/appointment/appointments/search?/rest/appointment/appointments/search?branchId=4&fromDate=2024-01-28&toDate=2024-02-01`,
-      //url: `${qmaticApiUrl}/rest/appointment/appointments/search?branchId=${utilFunctions.branchId}&fromDate=${utilFunctions.getCurrentDate()}&toDate=${utilFunctions.getNextDayDate()}`,
+      url: `${qmaticApiUrl}/rest/appointment/appointments/search?/rest/appointment/appointments/search?branchId=4&fromDate=2024-01-28&toDate=2024-02-28`,
+      // url: `${qmaticApiUrl}/rest/appointment/appointments/search?branchId=${utilFunctions.branchId}&fromDate=${utilFunctions.getCurrentDate()}&toDate=${utilFunctions.getNextDayDate()}`,
       headers: {
         'auth-token': apiAuthToken
       }

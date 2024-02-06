@@ -5,7 +5,8 @@ const apiUrls = {
     validateOtp:  process.env.REACT_APP_API_URL + '/rest/mobile/validateotp',
     createCustomer:  process.env.REACT_APP_API_URL + '/rest/mobile/createCustomer',
     sendOTP:  process.env.REACT_APP_API_URL + '/rest/mobile/sendotp',
-    visitStatus: process.env.REACT_APP_API_URL + '/rest/mobile/visit/status'
+    visitStatus: process.env.REACT_APP_API_URL + '/rest/mobile/visit/status',
+    getAppointments: process.env.REACT_APP_API_URL + '/rest/mobile/appointment/id/'
 }
 
 export const ValidateOtp = async(reqData) => {
@@ -75,3 +76,22 @@ export const sendOTP = async(number) => {
         throw error; 
     }
 }
+
+
+export const getAppointments = async (phoneNum) => {
+    try {
+        const url = apiUrls['getAppointments'] + `${phoneNum}`;
+        let config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: url,
+            };
+        let getApnt = await axios.request(config);
+        console.log('result: ',getApnt.data);
+        return getApnt.data;
+    } catch (error) {
+        console.error(error);
+        throw error;        
+
+    }
+};

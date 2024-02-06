@@ -23,7 +23,12 @@
 .h-70 {
   height: 70vh;
 }
-
+.mt-2{
+  margin-top: 10px;
+}
+.m-2{
+  margin: 10px 0px;
+}
 :root {
   --royal-blue: #0068a9;
   --royal-text: #046cac;

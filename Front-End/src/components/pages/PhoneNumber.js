@@ -15,19 +15,35 @@ import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import $ from 'jquery';
 import PhoneNumberInput from '../includes/phoneInput/PhoneNumberInput';
 import ModalExit from '../includes/modal/ModalExit';
+import { getAppointments, sendOTP } from '../../services/api';
+import { setAppointments } from '../../reducers/appointments';
 
 export default function PhoneNumber() {
+    
     const navigate = useNavigate();
-    const [setshowAlert, setSetshowAlert] = useState(false);
-    const {loading} = useSelector((state) => state.app);
+    const [showAlert, setShowAlert] = useState(false);
+    const {loading,phoneNumber} = useSelector((state) => state.app);
     const dispatch = useDispatch();
 
-    const handleMobileSubmit = () => {
+    const handleMobileSubmit = async () => {
+        setShowAlert(false);
         //validate
         //get appointments if exist eslse alert
         //send otp
-        console.log('validating mobile,sending otp')
-        navigate('/DPW/otp');
+        console.log('validating mobile,sending otp');
+        // return getAppointments(phoneNumber);
+        const Appointments = await getAppointments(phoneNumber);
+        console.log('Appointments',Appointments);
+        if(Appointments.length>0){
+            dispatch(setAppointments(Appointments));
+            sendOTP(phoneNumber);
+            return navigate('/DPW/otp');
+        }else{
+            return setShowAlert('Wrong mobile number or no appointment found');
+        }
+        
+        
+        
     }
     //modal exit
   
@@ -121,11 +137,14 @@ export default function PhoneNumber() {
             <div id="page" className="page-layout d-flex justify-content-center">
                 <div class="title-box d-flex flex-column justify-content-center align-items-center">
                 <div class="title-black">Please enter your mobile number</div>
-                 <PhoneNumberInput dynamicClass={{parent: 'input-mobile-block d-flex justify-content-center',child:'input-box input-fullwidth required'}} />
-                {/* <div class="input-mobile-block d-flex justify-content-center">
-                    <input id="input-app-mobilenumber" type="tel"  class="input-box input-fullwidth required" name="phone" placeholder="" onClick="this.select();" />
-                </div> */}
-                <div id="alert-wrongmobile" class="alert-text">Wrong mobile number or no appointment found</div>
+                <div>
+                    <PhoneNumberInput dynamicClass={{parent: 'input-mobile-block d-flex justify-content-center',child:'input-box input-fullwidth required'}} />
+                </div>
+                
+                {
+                    showAlert && <div id="alert-wrongmobile" class="alert-text m-2"> {showAlert}</div>
+                }
+                
                 <button id="btn-mobile-submit" onClick={handleMobileSubmit} class="button-wide button-fill-clr space-mobile-submit">Continue</button>
                 </div>
             </div>
