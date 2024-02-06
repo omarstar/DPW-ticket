@@ -83,20 +83,29 @@ exports.checkInAppointment = async (req,res) => {
 }
 exports.createCustomer = async (req, res) => {
   try {
-          let data = req.body
-          let visitCreateConfig = {
+          let data = req.body;
+          let customerCreateConfig = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: `http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/rest/entrypoint/branches/4/entryPoints/${mobileEntryPointId}/visits`,
+            url: `http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/rest/entrypoint/customers`,
             headers: {
               'Referer': 'http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/',
               'Content-Type': 'application/json',
               'auth-token': apiAuthToken
             },
-            data : data
+            data : {
+              firstName : data.firstName,
+              lastName : data.lastName,
+              cardNumber : data.phoneNum,
+              properties :{ 
+                phoneNumber : data.phoneNum,
+                company : data.company,
+                email : data.email
+              }
+            }
           };
-        var visitCreate = await axios.request(visitCreateConfig);
-        return res.send(visitCreate.data);
+        var customerCreate = await axios.request(customerCreateConfig);
+        return res.send(customerCreate.data);
     } catch (error) {
         console.log('error', error)
         return res.status(500).send(JSON.stringify(error))
