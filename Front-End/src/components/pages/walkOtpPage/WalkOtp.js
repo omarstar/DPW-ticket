@@ -10,15 +10,24 @@ import './walkOtp.css'
 
 import { useNavigate } from 'react-router-dom'
 import ModalExit from '../../includes/modal/ModalExit'
-import { isShowModal, setModal, setPhonenumber } from '../../../reducers'
+import { getCurrentLang, getPhonenumber, isShowModal, setModal } from '../../../reducers'
 import { useDispatch, useSelector } from 'react-redux'
 import InputOtp from '../otpPage/InputOtp'
+import { callValidateOtp } from '../../../services/api'
+import { vop } from '../../../utils'
 export default function WalkOtp(params) {
 
     const navigate = useNavigate();
-    const navToServices = () => {
-        navigate('/DPW/services')
-    }
+    // const navToServices = () => {
+    //     navigate('/DPW/services')
+    // }
+
+    let mobileNumber = useSelector(getPhonenumber);
+    mobileNumber = '0553208899'
+    console.log('mobileNumber', mobileNumber)
+
+    const currentLang = useSelector(getCurrentLang);
+    console.log('currentLang', currentLang)
 
     // exit modal
     const dispatch = useDispatch();
@@ -56,11 +65,14 @@ export default function WalkOtp(params) {
       };
 
     const validateOtp = (input) => {
-    if(otp.length === 0)
+    if(input.length === 0)
         return "emptyField"
-    else if(otp.length < 4)
+    else if(input.length < 4)
         return "wrongFormat"
-    else 
+    else if (input.length > 0 && input[input.length -1] === ''){
+        input.pop();
+        return "wrongFormat"
+    }else 
         return "valid"
     }
 
@@ -76,31 +88,32 @@ export default function WalkOtp(params) {
                     console.log('publicOtp', publicOtp)
                     //navigate //test
                     // updateMainSession({phoneNumber: phoneNumberOtp.substring(2)})
-                    dispatch(setPhonenumber())
                     
 
-                    // const apiValidateData = {
-                    //     phoneNumber: phoneNumberOtp, 
-                    //     otpCode: publicOtp,
-                    //     lang: lang
-                    // }
+                    const apiValidateData = {
+                        phoneNumber: mobileNumber, 
+                        otp: publicOtp,
+                    }
 
-                    // callValidateOtp(apiValidateData)
-                    // .then(response => {
+                    callValidateOtp(apiValidateData)
+                    .then(response => {
 
-                    //     console.log('validate otp res ', response)
-                    //     if(vop(response)){
-                    //         setTimeout(() => {
-                    //             navigate(route)
-                    //         }, 500);
+                        console.log('validate otp res ', response)
+                        if(response.message !== "fail"){
+                            navigate('/DPW/services')
+                        }
+                        // if(vop(response)){
+                        //     setTimeout(() => {
+                        //         navigate('/DPW/services')
+                        //     }, 500);
 
-                    //     }else{
-                    //         setErrorFlag('inCorrectOtp')
-                    //     }
-                    // })
-                    // .catch(error => {
-                    //     console.log('error', error)
-                    // })
+                        // }else{
+                        //     setErrorFlag('inCorrectOtp')
+                        // }
+                    })
+                    .catch(error => {
+                        console.log('error', error)
+                    })
                     
                 }    
 
@@ -117,6 +130,7 @@ export default function WalkOtp(params) {
         
     }
 
+    console.log('the otp value', otp)
     return (
         <>
         <div class="d-flex flex-column justify-content-center align-items-center bg-white">

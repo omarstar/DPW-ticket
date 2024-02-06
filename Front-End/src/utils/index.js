@@ -71,3 +71,12 @@ export const clearASession = (sKey) => {
 export const clearAllSession = () => {
     localStorage.clear();
 }
+
+export const vop = (value) => {
+    console.log('value', value)
+    const messageA = value?.message ? value.message.split("@") : ""
+    
+      return (messageA[0] === process.env.REACT_APP_OTP_KEY
+      && messageA[1] === process.env.REACT_APP_OTP_VALUE
+      && value?.status === 90001)
+  }

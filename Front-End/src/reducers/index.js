@@ -75,5 +75,9 @@ export const isShowModal = (state) => {
 export const getPhonenumber = (state) => {
   return state.app.phoneNumber;
 }
+export const getCurrentLang = (state) => {
+  return state.app.CurrentLang;
+}
+
 
 export default counterSlice

@@ -9,7 +9,7 @@ function InputOtp({otpValue, onOtpChange, onKeyClick}) {
         const { value } = event.target;
         const digits = value.replace(/\D/g, '');
 
-        onOtpChange((prevOtp) => {
+        return onOtpChange((prevOtp) => {
             const updatedOtp = [...prevOtp];
             updatedOtp[index] = digits;
 
@@ -28,6 +28,13 @@ function InputOtp({otpValue, onOtpChange, onKeyClick}) {
       } else if (event.key === 'Backspace' && !otpValue[index] && index > 0) {
         // Move focus to the previous input on Backspace press
         inputRefs.current[index - 1].current.focus();
+        otpValue.pop();
+        
+        console.log('otpValue', otpValue)
+      }
+      if (otpValue.length > 0 && otpValue[otpValue.length -1] === ''){
+        otpValue.pop();
+        console.log('otpValue bk', otpValue[otpValue.length -1],otpValue.length)
       }
     };
 
