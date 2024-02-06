@@ -6,31 +6,43 @@ import jafzaLogoColor from '../../images/JAFZA_Logo_Color.svg'
 import footerBGshape from '../../images/footer-sky-bg.svg'
 import '../common.css';
 import '../../styles/options.css'
+import Loading from '../includes/loading/loading'
+import Queue from '../pages/Queue'
+import Turn from '../pages/Turn'
+import { useSelector } from 'react-redux'
 
 export default function TestLayout(params) {
+
+    
+    let {loading, ticket} = useSelector((state) => state.app);
+    console.log('ticket', ticket)
+    ticket = {currentStatus:"CALLED",position:4,id: "A0123", currentServiceName: "servccc plapla"}//test
+
     return (
-        <>
         <div class="d-flex flex-column justify-content-center align-items-center bg-white">
             <div class="header-section">
-                <img id="header-home-btn"  src={homeCircleImg} alt="home circle img" class="header-homecircle-img" />
                 <img  srcset={jafzaLogoColor} class="header-img-bg" alt="jafza logo" />
             </div>
-            <div id="page" className="page-layout d-flex justify-content-center">
-                hello
+            <div id="page" className="page-layout d-flex flex-column justify-content-start align-items-center">
+                <div class="title-box d-flex flex-column justify-content-center align-items-center">
+                    
+                    {
+                    loading ?
+                        <Loading hSpacer='h-50' />
+                    :
+                    (ticket && ticket.currentStatus==="IN_QUEUE" )? (
+                        <Queue ticket={ticket} branch='4' />
+                    )
+                    :(ticket && ticket.currentStatus==="CALLED" ) ?
+                        <Turn ticket={ticket} branch='4' />
+                    :
+                    <div>Nothing to show</div>
+                }
+                </div>
             </div>
             <div class="footer-section">
                 <img id="footer-img-bg"  src={footerBGshape} class="footer-img-icon" alt="background shape" />
             </div>
-            <div id="transparentmodal-exithome" class="transparent-bg flex-column w-100">
-                <div class="modal-box d-flex flex-column justify-content-center align-items-center px-4 pt-2">
-                    <div class="title-modal-white space-modal-title">Are you sure you want to cancel and start the process over again?</div>
-                </div>
-                <div class="modal-btns-box d-flex flex-column justify-content-around">
-                    <button id="btn-yes-modal" class="button-wide button-outline-clr space-btnmodal-yes bortder-0">Yes</button>
-                    <button id="btn-no-modal" class="button-wide button-outline-clr  space-btnmodal-no border-0">No</button>
-                </div>
-            </div>
         </div>
-        </>
     )
 };

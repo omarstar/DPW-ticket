@@ -86,34 +86,25 @@ export default function WalkOtp(params) {
                 if(otp.length === 4){
                     let publicOtp = otp.join('');
                     console.log('publicOtp', publicOtp)
-                    //navigate //test
-                    // updateMainSession({phoneNumber: phoneNumberOtp.substring(2)})
+                    navigate('/DPW/services')//test
                     
 
-                    const apiValidateData = {
-                        phoneNumber: mobileNumber, 
-                        otp: publicOtp,
-                    }
+                    // const apiValidateData = {
+                    //     phoneNumber: mobileNumber, 
+                    //     otp: publicOtp,
+                    // }
 
-                    callValidateOtp(apiValidateData)
-                    .then(response => {
+                    // callValidateOtp(apiValidateData)
+                    // .then(response => {
 
-                        console.log('validate otp res ', response)
-                        if(response.message !== "fail"){
-                            navigate('/DPW/services')
-                        }
-                        // if(vop(response)){
-                        //     setTimeout(() => {
-                        //         navigate('/DPW/services')
-                        //     }, 500);
-
-                        // }else{
-                        //     setErrorFlag('inCorrectOtp')
-                        // }
-                    })
-                    .catch(error => {
-                        console.log('error', error)
-                    })
+                    //     console.log('validate otp res ', response)
+                    //     if(response.message !== "fail"){
+                    //         navigate('/DPW/services')
+                    //     }
+                    // })
+                    // .catch(error => {
+                    //     console.log('error', error)
+                    // })
                     
                 }    
 

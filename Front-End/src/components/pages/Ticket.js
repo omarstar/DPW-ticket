@@ -15,6 +15,7 @@ import Queue from './Queue';
 import Turn from './Turn';
 import Loading from '../includes/loading/loading';
 import axios from 'axios';
+import { getTicket } from '../../services/api';
 
 export default function Ticket() {
 
@@ -24,56 +25,53 @@ export default function Ticket() {
 
     let {loading, ticket} = useSelector((state) => state.app);
     console.log('ticket', ticket)
-    ticket = {currentStatus:"CALLED",position:4,ticketId: "A0123", currentServiceName: "servccc plapla"}//test
-    dispatch(setTicket(ticket));//test
+    // ticket = {currentStatus:"CALLED",position:4,id: "A0123", currentServiceName: "servccc plapla"}//test
+    // dispatch(setTicket(ticket));//test
 
     // const visit = JSON.parse(getSessionValue('sess_visit','{}'));
     // const branch = JSON.parse(getSessionValue('br_name','{}'));
     // console.log('visit in session: ',visit,getSessionValue('sess_visit'));
     let branchId = 4;
 
+    const callVisitCheck = async() => {
+        const reqData = {
+            visitid: ticket.id?? 0,
+            checksum: ticket.checksum?? 0,
+            branchId: 4
+        }
+
+        try {
+            const visitData = await callVisitCheck(reqData);//real api
+            console.log('reqData', reqData)
+            if (visitData.status === 200) {
+                dispatch(setTicket(visitData.data))
+                dispatch(setLoading(false));
+            }
+
+        } catch (error) {
+            if(ticketLeave.current <= 0){
+                sessionStorage.clear();
+                return navigate("/DPW/thankyou")
+            }
+            ticketLeave.current -= 1;
+        }
+    }
+
     useEffect(() => {
         dispatch(setLoading(true));
 
-        const getTicket = async () => {
-            try {
-                // const url = process.env.REACT_APP_API_URL + `ticketStatus/?branchId=${branchId}&visitId=${ticket.id}&checksum=${ticket.checksum}`;
-                const url = process.env.REACT_APP_API_URL + `/rest/mobile/visit/status?branchId=${branchId}&visitId=${ticket.id}&checksum=${ticket.checksum}`;
-                let config = {
-                    method: 'get',
-                    maxBodyLength: Infinity,
-                    url: url,
-                    };
+        
+        callVisitCheck();
 
-                    let ticketStatus = await axios.request(config);
+        dispatch(setLoading(false));
 
-                console.log('visit status result: ',ticketStatus.data);
-                if (ticketStatus.status === 200) {
-                    dispatch(setTicket(ticketStatus.data))
-                    dispatch(setLoading(false));
-                }
-            } catch (error) {
-                console.error(error);
-                console.log('ticketLeave ref', ticketLeave.current)
-                if(ticketLeave.current <= 0){
-                    sessionStorage.clear();
-                    return navigate("/DPW/thankyou")
-                }
-                ticketLeave.current -= 1;
+        const ticketStatusInterval = setInterval(()=>{
+            callVisitCheck();
+        },6000);
+        return () => {
+            clearInterval(ticketStatusInterval);
+        }
 
-            }
-        };
-        // getTicket();//real
-        // dispatch(setLoading(false));
-        // const ticketStatusInterval = setInterval(()=>{
-        //     getTicket();
-        // },6000);
-        // return () => {
-        //     clearInterval(ticketStatusInterval);
-        // }
-        setTimeout(() => {
-            dispatch(setLoading(false))//test
-        }, 3000);
     },[]);
 
     return (
