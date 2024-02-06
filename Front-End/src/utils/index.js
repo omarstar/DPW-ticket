@@ -80,3 +80,117 @@ export const vop = (value) => {
       && messageA[1] === process.env.REACT_APP_OTP_VALUE
       && value?.status === 90001)
   }
+
+
+  export const checkArrivalTime = (targetTime) => {
+    var remaining_min  = calculateRemainingTime2(targetTime);
+    console.log('remaining_min',remaining_min);
+    var earlyOrLate = "";
+    
+    if (remaining_min>9) {
+      earlyOrLate = "early";
+    } 
+    else if (remaining_min<-20) {
+      earlyOrLate = "late"
+    } 
+    else {
+      earlyOrLate = "on time";
+    }
+    return earlyOrLate;
+  }
+
+  export const getCurrentTime = ()  =>{
+    var date = new Date();
+    var hours = date.getHours().toString();
+    var minutes = date.getMinutes().toString();
+    var seconds = date.getSeconds().toString();
+    
+    // Add leading zeros if needed
+    if (hours.length < 2) {
+      hours = "0" + hours;
+    }
+    if (minutes.length < 2) {
+      minutes = "0" + minutes;
+    }
+    if (seconds.length < 2) {
+      seconds = "0" + seconds;
+    }
+    
+    return hours + ":" + minutes + ":" + "00";
+  }
+
+
+export const parseAppointmentTime = (appointmentTime) => {
+const months = {
+  JAN: 0, FEB: 1, MAR: 2, APR: 3, MAY: 4, JUN: 5, JUL: 6, AUG: 7, SEP: 8, OCT: 9, NOV: 10, DEC: 11
+};
+
+const dateTimeParts = appointmentTime.split(" ");
+const dateStr = dateTimeParts[0];
+const timeStr = dateTimeParts[1];
+
+const dateParts = dateStr.split("/");
+const day = parseInt(dateParts[0], 10);
+const month = months[dateParts[1].toUpperCase()];
+const year = parseInt(dateParts[2], 10);
+
+const timeParts = timeStr.split(":");
+const hours = parseInt(timeParts[0], 10);
+const minutes = parseInt(timeParts[1], 10);
+const seconds = parseInt(timeParts[2], 10);
+
+return new Date(year, month, day, hours, minutes, seconds);
+}
+
+export const calculateRemainingTime = (dateString) => {
+var targetDate = new Date(dateString);
+
+var currentDate = new Date();
+console.log('targetDate',targetDate,currentDate);
+// Calculate the time difference in milliseconds
+var timeDifference = targetDate.getTime() - currentDate.getTime();
+console.log('timeDifference',timeDifference,targetDate,currentDate);
+// Calculate remaining hours, minutes, and seconds
+var remainingHours = Math.floor(timeDifference / (1000 * 60 * 60));
+var remainingMinutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+var remainingSeconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+if(remainingHours<0){
+    remainingHours = remainingHours + 1;
+}
+return remainingHours + " hr. : " + remainingMinutes + " min";
+}
+
+export const calculateRemainingTime2 = (dateString) => {
+var targetDate = new Date(dateString);
+
+var currentDate = new Date();
+console.log('targetDate',targetDate,currentDate);
+// Calculate the time difference in milliseconds
+var timeDifference = targetDate.getTime() - currentDate.getTime();
+console.log('timeDifference',timeDifference,targetDate,currentDate);
+// Calculate remaining hours, minutes, and seconds
+var remainingHours = Math.floor(timeDifference / (1000 * 60 * 60)) +1;
+var remainingMinutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+var remainingSeconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+return remainingHours+remainingMinutes;
+}
+
+export const formatDate = (dateString) => {
+// var dateString = "2024-01-12T08:30:00.000+0000";
+var dateObject = new Date(dateString);
+
+var options = {
+weekday: 'long',
+year: 'numeric',
+month: 'long',
+day: 'numeric',
+hour: 'numeric',
+minute: 'numeric',
+hour12: true
+};
+
+var formattedDate = dateObject.toLocaleDateString('en-US', options);
+
+return formattedDate;
+}
