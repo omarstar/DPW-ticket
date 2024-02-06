@@ -142,36 +142,36 @@ export default function WalkOtp(params) {
     console.log('the otp value', otp)
     return (
         <>
-        <div class="d-flex flex-column justify-content-center align-items-center bg-white">
-            <div class="header-section">
-                <img id="header-home-btn" onClick={showModel} src={homeCircleImg} alt="home circle img" class="header-homecircle-img" />
-                <img  srcset={jafzaLogoColor} class="header-img-bg" alt="jafza logo" />
+        <div className="d-flex flex-column justify-content-center align-items-center bg-white">
+            <div className="header-section">
+                <img id="header-home-btn" onClick={showModel} src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
+                <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
             </div>
             <div id="page" className="page-layout d-flex justify-content-center">
                 
-                <div class="title-box d-flex flex-column justify-content-center align-items-center">
-                    <div class="title-black">Please enter the otp sent to your mobile number</div>
-                    {/* <div class="otp-set-box">
-                        <input id="otp-input-1" class="otp-num-input" type="number" maxlength="1"/>
-                        <input id="otp-input-2" class="otp-num-input" type="number" maxlength="1"/>
-                        <input id="otp-input-3" class="otp-num-input" type="number" maxlength="1"/>
-                        <input id="otp-input-4" class="otp-num-input" type="number" maxlength="1"/>
+                <div className="title-box d-flex flex-column justify-content-center align-items-center">
+                    <div className="title-black">Please enter the otp sent to your mobile number</div>
+                    {/* <div className="otp-set-box">
+                        <input id="otp-input-1" className="otp-num-input" type="number" maxlength="1"/>
+                        <input id="otp-input-2" className="otp-num-input" type="number" maxlength="1"/>
+                        <input id="otp-input-3" className="otp-num-input" type="number" maxlength="1"/>
+                        <input id="otp-input-4" className="otp-num-input" type="number" maxlength="1"/>
                     </div> */}
                     <InputOtp otpValue={otp} onOtpChange={handleOtpChange} onKeyClick={handleSubmitOtp} />
                     
                     {
-                        errorFlag && <div class="alert-text otp-error">{errorFlag} <br/> </div>
+                        errorFlag && <div className="alert-text otp-error">{errorFlag} <br/> </div>
                     }
-                    <div class="resend-otp-box">
+                    <div className="resend-otp-box">
                         
-                        <div id="resend-message" class="resend-otp-text">Didn&apos;t receive OTP?</div>
-                        <div id="timer" class="otp-time-text">01:59</div>
+                        <div id="resend-message" className="resend-otp-text">Didn&apos;t receive OTP?</div>
+                        <div id="timer" className="otp-time-text">01:59</div>
                     </div>
-                    <button id="btn-otp-submit" onClick={handleSubmitOtp} class="button-wide button-fill-clr space-submit-otp">Submit</button>
+                    <button id="btn-otp-submit" onClick={handleSubmitOtp} className="button-wide button-fill-clr space-submit-otp">Submit</button>
                 </div>
             </div>
-            <div class="footer-section">
-                <img id="footer-img-bg"  src={footerBGshape} class="footer-img-icon" alt="background shape" />
+            <div className="footer-section">
+                <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
             </div>
 
            {

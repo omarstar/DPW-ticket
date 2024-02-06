@@ -5,12 +5,22 @@ import './phoneInput.css'
 import { setPhonenumber } from '../../../reducers';
 import { useDispatch } from 'react-redux';
 
-const PhoneNumberInput = () => {
+const PhoneNumberInput = ({onValidationResult}) => {
 
   const phoneInputField = useRef(null);
 
+  const validateMobileInput = (pv) => {
+    const value = pv.getNumber();
+
+    if (pv.isValidNumber()) {
+      onValidationResult(true, ''); // Validation succeeded
+    } else {
+      const errorMessage = value === "" ? 'This field is required' : 'Invalid format';
+      onValidationResult(false, errorMessage); // Validation failed
+    }
+  };
+
   const dispatch = useDispatch();
-  // const [phoneNumber, setPhoneNumber] = useState('');
 
   useEffect(() => {
 
@@ -28,7 +38,7 @@ const PhoneNumberInput = () => {
       console.log('loadUtils', loadUtils)//undefined!
 
       // if (loadUtils) {
-        const phoneInput = intlTelInput(phoneInputField.current, {
+          const phoneInput = intlTelInput(phoneInputField.current, {
           preferredCountries: ['ae'],
           separateDialCode: true,
           customPlaceholder: (selectedCountryPlaceholder, selectedCountryData) => {
@@ -39,8 +49,11 @@ const PhoneNumberInput = () => {
 
         phoneInputField.current.addEventListener('input', () => {
           const phoneNumber = phoneInput.getNumber();
-          console.log('mobile number', phoneNumber);
           dispatch(setPhonenumber(phoneNumber));
+        });
+
+        phoneInputField.current.addEventListener('blur', ()=>{
+          validateMobileInput(phoneInput);
         });
 
         return () => {

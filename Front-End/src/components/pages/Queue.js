@@ -13,7 +13,7 @@ export default function Queue({ticket,branch}) {
 
     return (
         <>
-        <div class="title-black">Your position in line</div>
+        <div className="title-black">Your position in line</div>
         <div className='ticket-wrapper text-center'>
             <div className="m-0 alignment txt_color" >
 

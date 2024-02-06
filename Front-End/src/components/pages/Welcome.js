@@ -34,19 +34,19 @@ const Welcome = () => {
     
 
     return ( 
-        <div class="start-cover-bg d-flex flex-column justify-content-center align-items-center bg-white">
+        <div className="start-cover-bg d-flex flex-column justify-content-center align-items-center bg-white">
         
-        <section class="header-section">
-        <button id="btn-lang-box" onClick={toggleLang} class="button-lang"><span id="btn-lang-content" >{buttonLangText}</span></button>
-        <img  src={headerLogoWhite} class="header-img-bg" alt="header logo" />
+        <section className="header-section">
+        <button id="btn-lang-box" onClick={toggleLang} className="button-lang"><span id="btn-lang-content" >{buttonLangText}</span></button>
+        <img  src={headerLogoWhite} className="header-img-bg" alt="header logo" />
         </section>
         
-        <button id="btn-getstarted" onClick={navToOptions} class="button-getstarted">
+        <button id="btn-getstarted" onClick={navToOptions} className="button-getstarted">
             {buttonstartText}
         </button>
     
-        <section class="footer-section">
-        <img id="footer-img-bg"  src={footerBGshape} class="footer-img-icon" alt="footer sky shape" />
+        <section className="footer-section">
+        <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="footer sky shape" />
         </section>
   </div>
      );

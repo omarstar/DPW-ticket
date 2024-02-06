@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './customerForm.css'
 import '../../includes/header/header.css'
 import '../../includes/footer/footer.css'
@@ -54,7 +54,6 @@ export default function CustomerForm(params) {
         buttonOptions: [{
             text: "Yes",
             buttonAction: () => {
-                // setShowModal(false)
                 dispatch(setModal(false))
                 navigate("/")
             }
@@ -62,17 +61,26 @@ export default function CustomerForm(params) {
         {
             text: "No",
             buttonAction: () => {
-                // setShowModal(false)
                 dispatch(setModal(false))
             }
         }]
     }
     
     const showModel = () => {
-        // setShowModal(true)
         dispatch(setModal(true))
     }
+    
+    // validation 
+    const [errorMessage, setErrorMessage] = useState('');
 
+    const handleValidationResult = (isValid, message) => {
+        if (!isValid) {
+          setErrorMessage(message);
+        } else {
+          setErrorMessage('');
+        }
+      };
+    
     const validateInput = (input, errorElement, validationFunction) => {
 		// input.attr("name") 
         console.log('validationFunction',validationFunction);
@@ -99,9 +107,7 @@ export default function CustomerForm(params) {
 	}
 
     const validateMobileInput = (input, errorElement) => {
-		// input.attr("name") 
 		var value = input.getNumber()
-		// var isValid = validationFunction(value);
 
 		if(input.isValidNumber()) {
 			errorElement.css('visibility', 'hidden');
@@ -116,6 +122,7 @@ export default function CustomerForm(params) {
 			return false;
 		}
 	}
+
 
     const validateEmail = (email) => {
 		var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -147,7 +154,8 @@ export default function CustomerForm(params) {
     });
     $("#input-walknew-mobilenumber").on("blur", function() {
         // validateInput($(this), $("#alert-mobile"), validateMobileNumber);
-        // validateMobileInput(phoneInput,$("#alert-mobile"));
+        // validateMobileInput($("#phonenumber"),$("#alert-mobile"));
+
     });
     $("#input-firstname").on("blur", function() {
         validateInput($(this), $("#alert-firstname"), validateEmptyField);
@@ -159,62 +167,62 @@ export default function CustomerForm(params) {
         validateInput($(this), $("#alert-companyName2"), validateEmptyField);
     });
     return (
-        <div class="d-flex flex-column justify-content-center align-items-center bg-white">
+        <div className="d-flex flex-column justify-content-center align-items-center bg-white">
             
-            <div class="header-section">
-                <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" class="header-homecircle-img" />
-                <img  srcset={jafzaLogoColor} class="header-img-bg" alt="jafza logo" />
+            <div className="header-section">
+                <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
+                <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
             </div>
-            <div class="page-layout">
+            <div className="page-layout">
                 <div id="customerpage" className="page-start-layout">
-                    <div class="existingcustomer-box">
-                        <div class="title-form">EXISTING CUSTOMER</div>
+                    <div className="existingcustomer-box">
+                        <div className="title-form">EXISTING CUSTOMER</div>
                         <form>
-                            <div class="input-block">
-                                <input id="input-srNumber" type="text" class="input-box input-fullwidth" placeholder="SR #" />
+                            <div className="input-block">
+                                <input id="input-srNumber" type="text" className="input-box input-fullwidth" placeholder="SR #" />
                             </div>
-                            <div class="input-block">
-                                <input id="input-companyName1" type="text" class="input-box input-fullwidth" placeholder="COMPANY NAME" />
+                            <div className="input-block">
+                                <input id="input-companyName1" type="text" className="input-box input-fullwidth" placeholder="COMPANY NAME" />
                             </div>
                         </form>
-                        <div id="alert-norecords" class="alert-norecords-text">No records found</div>
+                        <div id="alert-norecords" className="alert-norecords-text">No records found</div>
                     </div>
-                    <button id="" onClick={handleExistingCusomterSearch} class="button-wide button-fill-clr space-btn-form-search">Search &amp; Continue</button>
-                    <div class="separate-line"></div>
-                    <div class="newcustomer-box">
-                    <div class="title-form">NEW CUSTOMER</div>
+                    <button id="" onClick={handleExistingCusomterSearch} className="button-wide button-fill-clr space-btn-form-search">Search &amp; Continue</button>
+                    <div className="separate-line"></div>
+                    <div className="newcustomer-box">
+                    <div className="title-form">NEW CUSTOMER</div>
                         <form id="form-newcustomer">
-                            <div class="input-block">
-                            <input id="input-firstname" type="text" name="first name" class="input-box input-fullwidth" placeholder="FIRST NAME" />
-                            <div id="alert-firstname" class="alert-small-text"></div>
+                            <div className="input-block">
+                            <input id="input-firstname" type="text" name="first name" className="input-box input-fullwidth" placeholder="FIRST NAME" />
+                            <div id="alert-firstname" className="alert-small-text"></div>
                             </div>
-                            <div class="input-block">
-                            <input id="input-lastname" type="text" name="last time" class="input-box input-fullwidth" placeholder="LAST NAME" />
-                            <div id="alert-lastname" class="alert-small-text"></div>
+                            <div className="input-block">
+                            <input id="input-lastname" type="text" name="last time" className="input-box input-fullwidth" placeholder="LAST NAME" />
+                            <div id="alert-lastname" className="alert-small-text"></div>
                             </div>
-                            <div class="input-block">
+                            <div className="input-block">
                             {/* onChangeHandler={(nb)=>{dispatch(setPhonenumber)}} */}
-                                <PhoneNumberInput />
-                            {/* <input id="input-walknew-mobilenumber" type="tel"  class="input-box input-fullwidth required" name="mobile" pattern="[0-9]*" placeholder="" onClick="this.select();" required /> */}
-                            <div id="alert-mobile" class="alert-small-text"></div>
+                                <PhoneNumberInput  onValidationResult={handleValidationResult}  />
+                            {/* <input id="input-walknew-mobilenumber" type="tel"  className="input-box input-fullwidth required" name="mobile" pattern="[0-9]*" placeholder="" onClick="this.select();" required /> */}
+                            <div id="alert-mobile" className="alert-small-text">{errorMessage}</div>
                             </div>
-                            <div class="input-block">
-                            <input id="input-email" type="email" name="email" class="input-box input-fullwidth" placeholder="E-MAIL" required style={{textTransform: 'inherit'}} />
-                            <div id="alert-email" class="alert-small-text"></div>
+                            <div className="input-block">
+                            <input id="input-email" type="email" name="email" className="input-box input-fullwidth" placeholder="E-MAIL" required style={{textTransform: 'inherit'}} />
+                            <div id="alert-email" className="alert-small-text"></div>
                             </div>
-                            <div class="input-block">
-                            <input id="input-companyName2" type="text" name="company" class="input-box input-fullwidth" placeholder="COMPANY NAME" />
-                            <div id="alert-companyName2" class="alert-small-text"></div>
+                            <div className="input-block">
+                            <input id="input-companyName2" type="text" name="company" className="input-box input-fullwidth" placeholder="COMPANY NAME" />
+                            <div id="alert-companyName2" className="alert-small-text"></div>
                             </div>
                         </form>
-                        {/* <div id="alert-registration" class="alert-validation-text">all fields are required</div> */}
+                        {/* <div id="alert-registration" className="alert-validation-text">all fields are required</div> */}
                     </div>
-                    <button id="new_customer_proceed" onClick={handleNewCustomerSubmit} class="button-wide button-fill-clr space-btn-form-proceed">Proceed</button>
+                    <button id="new_customer_proceed" onClick={handleNewCustomerSubmit} className="button-wide button-fill-clr space-btn-form-proceed">Proceed</button>
                 </div>
             </div>
                 
-            <div class="footer-section">
-                <img id="footer-img-bg"  src={footerBGshape} class="footer-img-icon" alt="background shape" />
+            <div className="footer-section">
+                <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
             </div>
             {
                 doShowModal && (

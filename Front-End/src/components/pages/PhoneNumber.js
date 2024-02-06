@@ -129,27 +129,27 @@ export default function PhoneNumber() {
 
 
 
-            <div class="d-flex flex-column justify-content-center align-items-center bg-white">
-            <div class="header-section">
-                <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" class="header-homecircle-img" />
-                <img  srcset={jafzaLogoColor} class="header-img-bg" alt="jafza logo" />
+            <div className="d-flex flex-column justify-content-center align-items-center bg-white">
+            <div className="header-section">
+                <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
+                <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
             </div>
             <div id="page" className="page-layout d-flex justify-content-center">
-                <div class="title-box d-flex flex-column justify-content-center align-items-center">
-                <div class="title-black">Please enter your mobile number</div>
+                <div className="title-box d-flex flex-column justify-content-center align-items-center">
+                <div className="title-black">Please enter your mobile number</div>
                 <div>
                     <PhoneNumberInput dynamicClass={{parent: 'input-mobile-block d-flex justify-content-center',child:'input-box input-fullwidth required'}} />
                 </div>
                 
                 {
-                    showAlert && <div id="alert-wrongmobile" class="alert-text m-2"> {showAlert}</div>
+                    showAlert && <div id="alert-wrongmobile" className="alert-text m-2"> {showAlert}</div>
                 }
                 
-                <button id="btn-mobile-submit" onClick={handleMobileSubmit} class="button-wide button-fill-clr space-mobile-submit">Continue</button>
+                <button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit">Continue</button>
                 </div>
             </div>
-            <div class="footer-section">
-                <img id="footer-img-bg"  src={footerBGshape} class="footer-img-icon" alt="background shape" />
+            <div className="footer-section">
+                <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
             </div>
             {
                     doShowModal && (

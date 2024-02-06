@@ -47,15 +47,15 @@ export default function AppointmentList(params) {
     
     return (
         <>
-        <div class="d-flex flex-column justify-content-center align-items-center bg-white">
-            <div class="header-section">
-                <img id="header-home-btn" onClick={showModel} src={homeCircleImg} alt="home circle img" class="header-homecircle-img" />
-                <img  srcset={jafzaLogoColor} class="header-img-bg" alt="jafza logo" />
+        <div className="d-flex flex-column justify-content-center align-items-center bg-white">
+            <div className="header-section">
+                <img id="header-home-btn" onClick={showModel} src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
+                <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
             </div>
             <div id="page" className="page-layout d-flex justify-content-center">
                 
-                <div class="title-box d-flex flex-column justify-content-center align-items-center">
-                    <div class="title-applist mx=4">please select your confirmed face-to-face appointment to check-in.</div>
+                <div className="title-box d-flex flex-column justify-content-center align-items-center">
+                    <div className="title-applist mx=4">please select your confirmed face-to-face appointment to check-in.</div>
                     <span className='mini-gray-apptext'>You can check-in from 20 minutes before the time of the appointment</span>
                     <div className='result-title'>showing results for jafza lob 14</div>
                     <div className="ticket-applist-box col-12 text-center">
@@ -80,8 +80,8 @@ export default function AppointmentList(params) {
                     </div>
                 </div>
             </div>
-            <div class="footer-section">
-                <img id="footer-img-bg"  src={footerBGshape} class="footer-img-icon" alt="background shape" />
+            <div className="footer-section">
+                <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
             </div>
 
            {
