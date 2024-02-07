@@ -25,44 +25,47 @@ export default function PhoneNumber() {
     const {phoneNumber} = useSelector((state) => state.app);
     const dispatch = useDispatch();
 
-    const handleMobileSubmit = async () => {
-        // setShowAlert('');
-        //validate
-        //get appointments if exist eslse alert
-        //send otp
-        console.log('validating mobile,sending otp');
-        // return getAppointments(phoneNumber);
-        const Appointments = await getAppointments(phoneNumber);
-        console.log('Appointments',Appointments);
-        if(Appointments.length > 0){
-            dispatch(setAppointments(Appointments));
-            sendOTP(phoneNumber);
-            return navigate('/DPW/otp');
-        }else{
-            return setShowAlert('Wrong mobile number or no appointment found');
-        }
-        
-        
-        
-    }
+    
   
      // validate
-     const [errorMessage, setErrorMessage] = useState('');
+    //  const [errorMessage, setErrorMessage] = useState('');
 
      const handleValidationResult = (isValid, message) => {
          if (!isValid) {
-         setErrorMessage(message);
-        if(message === 'This field is required'){
-            setShowAlert(message)
-        }
-        else{
-            setShowAlert("Wrong mobile number or no appointment found")
-        }
+            // setErrorMessage(message);
+            if(message === 'This field is required'){
+                setShowAlert(message)
+            }
+            else{
+                setShowAlert("Wrong mobile number or no appointment found")
+            }
          } else {
-         setErrorMessage('');
-         setShowAlert('');
+        //  setErrorMessage('');
+         setShowAlert(false);
          }
      };
+
+     const handleMobileSubmit = async () => {
+        console.log('validating sending otp',phoneNumber);
+        console.log('validating mobile',showAlert);
+
+        let phoneValue = $('#phonenumber').val();
+        if(phoneValue !== ''){
+
+            const Appointments = await getAppointments(phoneNumber)?? [];
+            console.log('Appointments',Appointments);
+            if(Appointments.length > 0){
+                dispatch(setAppointments(Appointments));
+                sendOTP(phoneNumber);
+                return navigate('/DPW/otp');
+            }else{
+                return setShowAlert('Wrong mobile number or no appointment found');
+            }
+        }else{
+            setShowAlert('This field is required')
+        }
+  
+    }
 
     // modal
     const doShowModal = useSelector(isShowModal);
@@ -160,11 +163,7 @@ export default function PhoneNumber() {
                             <PhoneNumberInput onValidationResult={handleValidationResult}  />
                         </div>
                     
-                        {/* {
-                            showAlert && <div id="alert-wrongmobile" className="alert-text mobile-alert"> {showAlert}</div>
-                        } */}
                         <div id="alert-wrongmobile" className="alert-text mobile-alert">{showAlert}</div>
-                    
                         <button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit">Continue</button>
                     </div>
                 </div>

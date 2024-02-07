@@ -8,7 +8,7 @@ console.log('ticket info: ', ticket)
     const turnText = "It's your turn!";
     const messageText = "Please proceed to counter "//you will be served by
 
-    const {id, currentServiceName, servicePointName} = ticket;
+    const {ticketId, currentServiceName, servicePointName} = ticket;
 
     useEffect(() => {
         const audio = new Audio('../../../ding.mp3');
@@ -31,15 +31,15 @@ console.log('ticket info: ', ticket)
 
     return (
         <>
-        <div className="title-black">it's your turn</div>
+        <div className="title-black">It's your turn</div>
         <div className='ticket-wrapper text-center'>
             <div className="m-0 alignment txt_color" >
             <div className="myrounded text-center col-12">
-				<span className='mini-gray-text'>Please Proceed to {servicePointName}</span>
+				<span className='mini-gray-text'>Please proceed to {servicePointName}</span>
             </div>
             </div>
             <div className='ticket-turn-box col-12 text-center'>
-                <h1 id="ticketNumber" className="ticket-text">{id}</h1>
+                <h1 id="ticketNumber" className="ticket-text">{ticketId}</h1>
                 <h1 id="serviceName" className="ticket-service">{currentServiceName}</h1>
             </div>
         </div>

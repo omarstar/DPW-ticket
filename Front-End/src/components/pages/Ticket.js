@@ -58,7 +58,7 @@ export default function Ticket() {
             console.error(error);
             if(ticketLeave.current <= 0){
                 sessionStorage.clear();
-                // return navigate("/DPW/thankyou")
+                return navigate("/DPW/thankyou")
             }
             ticketLeave.current -= 1;
         }

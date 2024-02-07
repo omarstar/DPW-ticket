@@ -150,7 +150,7 @@ export default function WalkOtp(params) {
             <div id="page" className="page-layout d-flex justify-content-center">
                 
                 <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                    <div className="title-black">Please enter the otp sent to your mobile number</div>
+                    <div className="title-black">Please enter the OTP sent to your mobile number</div>
                     {/* <div className="otp-set-box">
                         <input id="otp-input-1" className="otp-num-input" type="number" maxlength="1"/>
                         <input id="otp-input-2" className="otp-num-input" type="number" maxlength="1"/>

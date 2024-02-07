@@ -21,8 +21,6 @@ export default function CustomerForm(params) {
     }
 
     const handleNewCustomerSubmit = () => {
-        //get the mobile number, remove +971 add 0
-        //call sendOtp
         if(validateInputFields()){
             let customer = {
                 firstName : $('#input-firstname').val(),
@@ -75,14 +73,13 @@ export default function CustomerForm(params) {
     }
     
     // validation 
-    const [errorMessage, setErrorMessage] = useState('');
-    let alertExistingText = ""
+    const [errorMessage, setErrorMessage] = useState(false);
 
     const handleValidationResult = (isValid, message) => {
         if (!isValid) {
           setErrorMessage(message);
         } else {
-          setErrorMessage('');
+          setErrorMessage(false);
         }
       };
     
@@ -139,15 +136,16 @@ export default function CustomerForm(params) {
 		var valLn = validateInput($('#input-lastname'), $("#alert-lastname"), validateEmptyField);
 		// var valM = validateInput($("#input-mobileNumber"), $("#alert-mobile"), validateEmptyField);
 		// var valM = validateMobileInput(phoneInput,$("#alert-mobile"));
-		var valM = true;
+		// var valM = errorMessage ? true : false;
 		var valE = validateInput($('#input-email'), $("#alert-email"), validateEmptyField);
 		var valC = validateInput($('#input-companyName2'), $("#alert-companyName2"), validateEmptyField);
-
-		var isValidMobile = true;
+		var isValidMobile =  errorMessage ? true : false;
+    console.log('isValidMobile', isValidMobile)
+    console.log('errorMessage', errorMessage)
 		// var isValidMobile = validateMobileInput(phoneInput,$("#alert-mobile"));
 		var isValidEmail = validateInput($("#input-email"), $("#alert-email"), validateEmail);
 		
-		if(!valFn || !valLn || !valM || !valE || !valC || !isValidMobile || !isValidEmail){
+		if(!valFn || !valLn || !valE || !valC || !isValidMobile || !isValidEmail){
 			return false
 		}
 
