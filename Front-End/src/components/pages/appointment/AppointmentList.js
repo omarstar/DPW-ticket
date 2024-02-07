@@ -8,11 +8,11 @@ import "./appointment.css"
 import '../../common.css';
 
 import { useDispatch, useSelector } from 'react-redux'
-import { isShowModal, setModal } from '../../../reducers'
+import { isShowModal, setModal, setTicket } from '../../../reducers'
 import { useNavigate } from 'react-router'
 import ModalExit from '../../includes/modal/ModalExit'
 import { calculateRemainingTime, checkArrivalTime, formatDate } from '../../../utils'
-import AppItem from './AppItem'
+import axios from 'axios'
 
 export default function AppointmentList(params) {
 
@@ -42,8 +42,77 @@ export default function AppointmentList(params) {
     const showModel = () => {
         dispatch(setModal(true))
     }
-    const handleClickApp = (app,status) => {
-        console.log(app,status);
+    async function handleClickApp(app,status) {
+        try {
+            if(status=='open'){
+                await checkInAppt(app);
+            }else{
+                await createTicket(app);
+            }
+        } catch (error) {
+            console.log('error in finding service', error)
+            navigate("/")
+        }
+    }
+    async function checkInAppt(app) {
+        try {
+            var servicesIds = [];
+            app.services.forEach(sr => {
+                servicesIds.push(sr.id);
+            });
+            let createTicketBody = {
+                    services : servicesIds,
+                    parameters : {
+                        custom1 : "1"
+                    }
+            }
+            let config = {
+                method: 'post',
+                maxBodyLength: Infinity,
+                url:  process.env.REACT_APP_API_URL + '/rest/mobile/appointment/checkin?branchId='+app.branchId+'&appointmentId='+app.id,
+                data : createTicketBody
+    
+                };
+                let visit =  await axios.request(config)
+                console.log('visit.data', visit.data)
+                dispatch(setTicket(JSON.stringify(visit.data)))
+                
+                return navigate('/DPW/ticket');
+
+        } catch (error) {
+            console.log('error in eticket create', error);
+            throw error;
+        }
+    }
+    async function createTicket(app) {
+        try {
+            var servicesIds = [];
+            app.services.forEach(sr => {
+                servicesIds.push(sr.id);
+            });
+            let createTicketBody = {
+                    services : servicesIds,
+                    parameters : {
+                        custom1 : "1"
+                    }
+            }
+            let config = {
+                method: 'post',
+                maxBodyLength: Infinity,
+                url:  process.env.REACT_APP_API_URL + '/rest/mobile/visit/create',
+                data : createTicketBody
+    
+                };
+                let visit =  await axios.request(config)
+                console.log('visit.data', visit.data)
+                dispatch(setTicket(JSON.stringify(visit.data)))
+                
+                return navigate('/DPW/ticket');
+
+        } catch (error) {
+            console.log('error in eticket create', error);
+            throw error;
+        }
     }
     
     return (
@@ -59,7 +128,7 @@ export default function AppointmentList(params) {
                     <div className="title-applist mx=4">please select your confirmed face-to-face appointment to check-in.</div>
                     <span className='mini-gray-apptext'>You can check-in from 20 minutes before the time of the appointment</span>
                     <div className='result-title'>showing results for jafza lob 14</div>
-                    <div className="ticket-applist-box col-12 text-center d-flex flex-column justify-content-center align-items-center">
+                    <div className="ticket-applist-box col-12 text-center d-flex flex-column align-items-center">
                         {/* <AppItem />
                         <AppItem />
                         <AppItem />
@@ -67,7 +136,44 @@ export default function AppointmentList(params) {
                         <AppItem /> */}
                         {
                             appointments  ? appointments.map(appointment =>  (
-                                <AppItem data={appointment} handleOnClick={handleClickApp} />
+                                <div id="app-item-1" class={"row applist-item "+checkArrivalTime(appointment.startTime)} onClick={()=>handleClickApp(appointment,checkArrivalTime(appointment.startTime))}>
+                                    <div class="applist-item-inner">
+                                        <div class="column-1 d-flex flex-column">
+                                            <div class="clm-box">
+                                                <div id="app-branchname" class="applist-branchname">{appointment.branch?.name??""}</div>
+                                                
+                                                    
+                                                        <div id="app-servicename" class="applist-servicename">
+                                                            { appointment.services.map(service =>  (
+                                                                    <div>
+                                                                    {service.name}
+                                                                    </div>
+                                                                ))
+                                                            }
+                                                        </div>
+                        
+                                                    {/* {services.map(service =>  (
+                                                    
+                                                        <div id="app-servicename" class="applist-servicename">
+                                                            {service.name}
+                                                        </div>
+                                                    ))} */}
+                                            </div>
+                                        </div>
+                                        <div class="column-2 d-flex flex-column">
+                                            <div class="clm-box">
+                                                <div id="app-date" class="applist-date">{formatDate(appointment.startTime)}</div>
+                                                {/* <div id="app-time" class="applist-time">08:20 AM</div> */}
+                                            </div>
+                                        </div>
+                                        <div class="column-3 d-flex flex-column">
+                                            <div class="clm-box">
+                                                <div id="app-elapsed" class="applist-elapsetime">{calculateRemainingTime(appointment.startTime)}</div>
+                                                <div id="app-status" class="applist-status">{checkArrivalTime(appointment.startTime)}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
         
                                 // <button onClick={()=> handleClickApp(appointment,checkArrivalTime(appointment.startTime))}>
                                 // Jafza lob 14 {formatDate(appointment.startTime)} {calculateRemainingTime(appointment.startTime)} <br/>

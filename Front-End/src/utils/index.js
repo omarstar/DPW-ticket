@@ -88,13 +88,13 @@ export const vop = (value) => {
     var earlyOrLate = "";
     
     if (remaining_min>9) {
-      earlyOrLate = "early";
+      earlyOrLate = "remianing";
     } 
     else if (remaining_min<-20) {
-      earlyOrLate = "late"
+      earlyOrLate = "overdue"
     } 
     else {
-      earlyOrLate = "on time";
+      earlyOrLate = "open";
     }
     return earlyOrLate;
   }
@@ -157,7 +157,7 @@ var remainingSeconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 if(remainingHours<0){
     remainingHours = remainingHours + 1;
 }
-return remainingHours + " hr. : " + remainingMinutes + " min";
+return remainingHours + " hr : " + Math.abs(remainingMinutes) + " min";
 }
 
 export const calculateRemainingTime2 = (dateString) => {

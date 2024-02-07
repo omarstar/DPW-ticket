@@ -21,19 +21,23 @@
 
   .applist-item {
     border-radius: 8px;
-    background-color: #005eb8;
+    background-color: #777777;
     padding: 9px 4.5px 9px 7.5px;
     margin-top: 8px;
     width: 85vw;
   }
-
+  .applist-item.open{
+    background-color: #005eb8;
+  }
+  .overdue .applist-status{
+    color: #FF0000;
+  }
   .applist-item-inner {
     gap: 6px;
     display: flex;
   }
 
   .column-1 {
-
     width: 30%;
     margin-left: 0px;
   }

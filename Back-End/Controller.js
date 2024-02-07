@@ -30,7 +30,8 @@ try {
 }
 exports.getAppointment = async (req,res) => {
   let phoneNumber = req.params.id
-
+  console.log();
+  const Branches = await getBranches();
   try {
     let getAppointmentConfig = {
       method: 'get',
@@ -43,7 +44,11 @@ exports.getAppointment = async (req,res) => {
     };
 
   let appointmentList = await axios.request(getAppointmentConfig);
-  let filteredAppointments = utilFunctions.filterAppointmentsByPhone(appointmentList.data , phoneNumber)
+  var filteredAppointments = utilFunctions.filterAppointmentsByPhone(appointmentList.data , phoneNumber);
+  filteredAppointments = filteredAppointments.map(ap=>{
+    ap.branch = Branches.find(b=> b.id==ap.branchId);
+    return ap;
+  })
   return res.send(filteredAppointments);
 } catch (error) {
   console.log('error', error)
@@ -83,33 +88,33 @@ exports.checkInAppointment = async (req,res) => {
 }
 exports.createCustomer = async (req, res) => {
   try {
-          let data = req.body;
-          let customerCreateConfig = {
-            method: 'post',
-            maxBodyLength: Infinity,
-            url: `http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/rest/entrypoint/customers`,
-            headers: {
-              'Referer': 'http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/',
-              'Content-Type': 'application/json',
-              'auth-token': apiAuthToken
-            },
-            data : {
-              firstName : data.firstName,
-              lastName : data.lastName,
-              cardNumber : data.phoneNum,
-              properties :{ 
-                phoneNumber : data.phoneNum,
-                company : data.company,
-                email : data.email
-              }
-            }
-          };
-        var customerCreate = await axios.request(customerCreateConfig);
-        return res.send(customerCreate.data);
-    } catch (error) {
-        console.log('error', error)
-        return res.status(500).send(JSON.stringify(error))
-    }
+      let data = req.body;
+      let customerCreateConfig = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: `http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/rest/entrypoint/customers`,
+        headers: {
+          'Referer': 'http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/',
+          'Content-Type': 'application/json',
+          'auth-token': apiAuthToken
+        },
+        data : {
+          firstName : data.firstName,
+          lastName : data.lastName,
+          cardNumber : data.phoneNum,
+          properties :{ 
+            phoneNumber : data.phoneNum,
+            company : data.company,
+            email : data.email
+          }
+        }
+      };
+    var customerCreate = await axios.request(customerCreateConfig);
+    return res.send(customerCreate.data);
+  } catch (error) {
+      console.log('error', error)
+      return res.status(500).send(JSON.stringify(error))
+  }
 }
 
 exports.createTicket = async (req,res) => {
@@ -215,9 +220,31 @@ exports.validateOTP = async (req,res) => {
 
 function generateOTP() {
   const min = 1000;
-const max = 9999;
-const random4DigitNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-return random4DigitNumber
+  const max = 9999;
+  const random4DigitNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+  return random4DigitNumber
+}
+
+async function getBranches() {
+  try {
+    let branchconfig = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: `http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/rest/entrypoint/branches/`,
+      headers: {
+        'Referer': 'http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/',
+        'Content-Type': 'application/json',
+        'auth-token': apiAuthToken
+      }
+    };
+
+    var branch = await axios.request(branchconfig);
+    return branch.data;
+  
+  } catch (error) {
+    console.log(error)
+  }
+
 }
 
 function sendOTPMessage(phoneNumber , otp) {
@@ -298,21 +325,19 @@ async function getOTPFromVariableAndValidate(customerData) {
       'Content-Type': 'application/json',
       'auth-token': apiAuthToken
     },
-    };
+  };
 
-try {
-    var variableData = await axios.request(variableDataConfig);
-    if(variableData.data.value == customerData.otp){
-      deleteOTPFromVariable(customerData)
-      return "sucess"
-    }else {
+  try {
+      var variableData = await axios.request(variableDataConfig);
+      if(variableData.data.value == customerData.otp){
+        deleteOTPFromVariable(customerData)
+        return "sucess"
+      }else {
+        return "wrong otp entered"
+      }
+  } catch (error) {
       return "wrong otp entered"
-    }
-
-} catch (error) {
-
-    return "wrong otp entered"
-}
+  }
 }
 async function deleteOTPFromVariable(customerData){
   let variableDataConfig = {
@@ -326,14 +351,12 @@ async function deleteOTPFromVariable(customerData){
     },
     };
 
-try {
+  try {
     var variableData = await axios.request(variableDataConfig);
-
     return variableData.data;
-} catch (error) {
-
-    return "fail"
-}
+  } catch (error) {
+      return "fail"
+  }
 }
 
 exports.listQueues = async (req,res) => {
