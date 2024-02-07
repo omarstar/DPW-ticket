@@ -232,18 +232,23 @@
     text-align: start;
     letter-spacing: 0.6px;
     /* text-transform: uppercase; */
-    margin-top: 3px;
+    /* margin-top: 3px; */
     white-space: nowrap;
     font: 700 8px 'Montserrat-VariableFont', sans-serif;
   }
   .alert-text {
     color: var(--alert-color, #dd4452);
-    text-align: start;
+    text-align: center;
     letter-spacing: 0.6px;
-    white-space: nowrap;
-    font: 700 16px 'Montserrat-VariableFont', sans-serif;
+    /* white-space: nowrap; */
+    font: 700 11px 'Montserrat-VariableFont', sans-serif;
   }
  
   #input-walknew-mobilenumber {
     padding-left: 56px !important;
+  }
+  .mobile-alert {
+    width: 80vw;
+    margin-top: 76px;
+    min-height: 24px;
   }

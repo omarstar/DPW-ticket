@@ -42,7 +42,11 @@ export default function CustomerForm(params) {
    
 
     const handleExistingCusomterSearch =() => {
+        //validation
+        //search call
+        //navigate to display
         console.log('searching...')
+        $('alert-norecords').text("No records found")
     }
 
     const dispatch = useDispatch();
@@ -72,6 +76,7 @@ export default function CustomerForm(params) {
     
     // validation 
     const [errorMessage, setErrorMessage] = useState('');
+    let alertExistingText = ""
 
     const handleValidationResult = (isValid, message) => {
         if (!isValid) {
@@ -166,6 +171,9 @@ export default function CustomerForm(params) {
     $("#input-companyName2").on("blur", function() {
         validateInput($(this), $("#alert-companyName2"), validateEmptyField);
     });
+
+    
+
     return (
         <div className="d-flex flex-column justify-content-center align-items-center bg-white">
             
@@ -185,7 +193,7 @@ export default function CustomerForm(params) {
                                 <input id="input-companyName1" type="text" className="input-box input-fullwidth" placeholder="COMPANY NAME" />
                             </div>
                         </form>
-                        <div id="alert-norecords" className="alert-norecords-text">No records found</div>
+                        <div id="alert-norecords" className="alert-norecords-text"></div>
                     </div>
                     <button id="" onClick={handleExistingCusomterSearch} className="button-wide button-fill-clr space-btn-form-search">Search &amp; Continue</button>
                     <div className="separate-line"></div>

@@ -92,7 +92,7 @@ export default function WalkOtp(params) {
                         phoneNumber:mobileNumber,
                         otp:publicOtp,
                     }).then(res=>{
-                        if(flow=='walkin'){
+                        if(flow === 'walkin'){
                             return navigate('/DPW/services');//test
                         }else{
                             return navigate('/DPW/appointment');//test

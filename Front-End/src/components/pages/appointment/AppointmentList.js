@@ -60,29 +60,29 @@ export default function AppointmentList(params) {
                     <span className='mini-gray-apptext'>You can check-in from 20 minutes before the time of the appointment</span>
                     <div className='result-title'>showing results for jafza lob 14</div>
                     <div className="ticket-applist-box col-12 text-center d-flex flex-column justify-content-center align-items-center">
+                        {/* <AppItem />
                         <AppItem />
                         <AppItem />
                         <AppItem />
-                        <AppItem />
-                        <AppItem />
-                        <AppItem />
-                        {/* {
+                        <AppItem /> */}
+                        {
                             appointments  ? appointments.map(appointment =>  (
+                                <AppItem data={appointment} handleOnClick={handleClickApp} />
         
-                                <button onClick={()=> handleClickApp(appointment,checkArrivalTime(appointment.startTime))}>
-                                Jafza lob 14 {formatDate(appointment.startTime)} {calculateRemainingTime(appointment.startTime)} <br/>
-                                { appointment.services.map(service =>  (
+                                // <button onClick={()=> handleClickApp(appointment,checkArrivalTime(appointment.startTime))}>
+                                // Jafza lob 14 {formatDate(appointment.startTime)} {calculateRemainingTime(appointment.startTime)} <br/>
+                                // { appointment.services.map(service =>  (
         
-                                        <div>
-                                        {service.name}
-                                        </div>
-                                    ))
-                                }
-                                </button>
+                                //         <div>
+                                //         {service.name}
+                                //         </div>
+                                //     ))
+                                // }
+                                // </button>
                             ))
                             : 
                             <></>
-                        } */}
+                        }
                         
                     </div>
                 </div>
