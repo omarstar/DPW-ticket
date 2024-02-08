@@ -16,13 +16,16 @@ export default function OptionsPage(params) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const doShowModal = useSelector(isShowModal);
+    const appState = useSelector((state)=>state.app);
     
-
-    console.log('options page')
 
     const goToWalkinCustomer = () => {
         dispatch(setFlow('walkin'));
-        navigate('/DPW/customer')
+        if(appState.branchPrefix=="LOB14"){
+            navigate('/DPW/mobile')
+        }else{
+            navigate('/DPW/customer')
+        }
     }
     const goToAppointmentMobile = () => {
         dispatch(setFlow('app'));

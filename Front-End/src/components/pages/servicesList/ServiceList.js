@@ -22,7 +22,7 @@ export default function ServiceList(params) {
     const [showModalInfo, setShowModalInfo] = useState(false);
     const [descText, setDescText] = useState("")
 
-    let {loading} = useSelector((state) => state.app);
+    let {loading,category} = useSelector((state) => state.app);
 
     let modalInfoData = {
         titleText: "Service info",
@@ -79,8 +79,16 @@ export default function ServiceList(params) {
             maxBodyLength: Infinity,
             url: process.env.REACT_APP_API_URL + '/rest/mobile/services',
             };
-           let serviceListResponse = await axios.request(config)
-           setServiceList(serviceListResponse.data)
+           let serviceListResponse = await axios.request(config);
+           serviceListResponse = serviceListResponse.data;
+           var ids = category.services;
+           console.log('category',category);
+           serviceListResponse = serviceListResponse.filter(srv => {
+            if(ids.find(id=>id==srv.id)){
+                return srv;
+            }
+        });
+           setServiceList(serviceListResponse)
         }
 
         function testLocal() {
@@ -175,7 +183,7 @@ export default function ServiceList(params) {
                 <div id="page" className="page-layout d-flex justify-content-center">
                     
                     <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                        <div className="title-black">please select a service</div>
+                        <div className="title-black">Please select a service</div>
                             <div id="walkin-services-list" className="services-list-box d-flex flex-column align-items-center">
                             {
                             loading ? (

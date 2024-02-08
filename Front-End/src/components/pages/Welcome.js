@@ -1,20 +1,19 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import headerLogoWhite from '../../images/JAFZA_Logo_White.svg'
 import footerBGshape from '../../images/footer-sky-bg.svg'
 import '../../styles/getStarted.css'
 import { useDispatch, useSelector } from "react-redux";
-import { selectLanguage, toggleCurrentLang } from "../../reducers";
+import { selectLanguage, setBranchPrefix, toggleCurrentLang } from "../../reducers";
 import { useState } from "react";
 
 const Welcome = () => {
-
-    const buttonstartText = "Get started"
-    
+    var {branch} = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const currentLanguage = useSelector(selectLanguage);
     console.log('currentLanguage', currentLanguage)
-    
+    dispatch(setBranchPrefix(branch??'LOB14'));
+    const buttonstartText = "Get started"
     
 
     const [lang, setLang] = useState(currentLanguage)
@@ -29,7 +28,7 @@ const Welcome = () => {
     
     const navToOptions = () => {
         console.log('clicked');
-        navigate('dpw/options')
+        navigate('/dpw/options')
     }
     
 

@@ -22,12 +22,15 @@ import OptionsPage from './components/pages/OptionsPage';
 import TestLayout from './components/testLayout/TestLayout';
 import AppointmentList from './components/pages/appointment/AppointmentList';
 import BookingSummary from './components/pages/bookingSummary/BookingSummary';
+import CategoryList from './components/pages/servicesList/CategoryList';
+import TicketRedirect from './components/pages/TicketRedirect';
 
 function App() {
   return (
     // <Router>
       <Routes>
         <Route path="/" element={<Welcome />} />
+        <Route path="/DPW/:branch" element={<Welcome />} />
         {/* <Route 
           path="/"
           element={
@@ -40,13 +43,16 @@ function App() {
         <Route path="/DPW/customer" element={<CustomerForm/>} />
         <Route path="/DPW/otp" element={<WalkOtp/>} />
         <Route path="/DPW/services" element={<ServiceList />} />
+        <Route path="/DPW/category" element={<CategoryList />} />
         <Route path="/DPW/appointment" element={<AppointmentList />} />
         <Route path="/DPW/summary" element={<BookingSummary />} />
         <Route path="/DPW/branches" element={<Branches/>} />
         {/* <Route path="/DPW/services/:id" element={<Services/>} /> */}
         <Route path="/DPW/mobile" element={<PhoneNumber/>} />
+        
         {/* <Route path="/DPW/survey" element={<Survey/>} /> */}
         <Route path="/DPW/ticket" element={<Ticket/>} />
+        <Route path="/DPW/redirect" element={<TicketRedirect/>} />
         <Route path="/DPW/thankyou" element={<Thankyou/>} />
         <Route path="/DPW/test" element={<TestLayout/>} />
       </Routes>

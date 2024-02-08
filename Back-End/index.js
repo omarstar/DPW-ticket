@@ -46,6 +46,7 @@ app.post('/rest/mobile/visit/create' , controller.createTicket)
 app.post('/rest/mobile/createCustomer' , controller.createCustomer)
 app.post('/rest/mobile/sendotp' , controller.sendOTP)
 app.post('/rest/mobile/validateotp' , controller.validateOTP)
+app.get('/rest/mobile/golobalVariables/:name' , controller.golobalVariables)
 
 // app.get('/admin/editactive' , controller.putVariable)
 // app.get('/admin/getactive' , controller.getVariable)

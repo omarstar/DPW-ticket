@@ -140,7 +140,7 @@ export default function WalkOtp(params) {
                         otp:publicOtp,
                     }).then(res=>{
                         if(flow === 'walkin'){
-                            return navigate('/DPW/services');//test
+                            return navigate('/DPW/category');//test
                         }else{
                             return navigate('/DPW/appointment');//test
                         }

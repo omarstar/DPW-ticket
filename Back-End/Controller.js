@@ -385,6 +385,31 @@ exports.listQueues = async (req,res) => {
     }
 }
 
+
+exports.golobalVariables = async (req,res) => {
+  try {
+    let name = req.params.name
+      let golobalVariablesConfig = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: `${qmaticApiUrl}/rest/entrypoint/variables/${name}`,
+      headers: {
+        'Referer': 'http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/',
+        'Content-Type': 'application/json',
+        'auth-token': apiAuthToken
+      },
+      };
+
+      var result = await axios.request(golobalVariablesConfig) ;
+      return res.send(result.data)
+  } catch (error) {
+      console.log('error', error)
+      return res.status(500).send(JSON.stringify(error))
+  }
+}
+
+
+
 // exports.deleteTicket = async (req,res) => {
 //     try {
 //         const {visitId, branchId, checksum} = req.query;

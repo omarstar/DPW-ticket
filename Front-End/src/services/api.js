@@ -6,6 +6,7 @@ const apiUrls = {
     createCustomer:  process.env.REACT_APP_API_URL + '/rest/mobile/createCustomer',
     sendOTP:  process.env.REACT_APP_API_URL + '/rest/mobile/sendotp',
     visitStatus: process.env.REACT_APP_API_URL + '/rest/mobile/visit/status',
+    golobalVariables: process.env.REACT_APP_API_URL + '/rest/mobile/golobalVariables',
     getAppointments: process.env.REACT_APP_API_URL + '/rest/mobile/appointment/id/'
 }
 
@@ -77,6 +78,24 @@ export const sendOTP = async(number) => {
     }
 }
 
+
+export const golobalVariables = async (name) => {
+    try {
+        const url = apiUrls['golobalVariables'] + `/${name}`;
+        let config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: url,
+            };
+        let getApnt = await axios.request(config);
+        console.log('result: ',getApnt.data);
+        return getApnt.data;
+    } catch (error) {
+        console.error(error);
+        throw error;        
+
+    }
+};
 
 export const getAppointments = async (phoneNum) => {
     try {

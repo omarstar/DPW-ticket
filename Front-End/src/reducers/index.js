@@ -11,6 +11,8 @@ const getbranchIdData = () => {
 const initialState = {
   branches: null,
   services: null,
+  branchPrefix : null,
+  category : null,
   flow: "",
   ticket: getLocalTicketData,
   splash: true,
@@ -40,7 +42,10 @@ export const counterSlice = createSlice({
     setTicket: (state,action) => {
         state.ticket = action.payload
 
-      },
+    },
+    setBranchPrefix: (state,action) => {
+      state.branchPrefix = action.payload
+    },
     setLoading: (state,action) => {
       state.loading = action.payload
     },
@@ -50,6 +55,10 @@ export const counterSlice = createSlice({
     setThankyou: (state,action) => {
       state.thankyou = action.payload
     },
+    setCategory: (state,action) => {
+      state.category = action.payload
+    },
+
     setModal: (state, action) => {
       state.modal = action.payload
     },
@@ -66,7 +75,7 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setServices, setBranches , setLoading ,setBranchid, setPhonenumber, setThankyou, setTicket, setSplash, setModal, toggleCurrentLang,setFlow } = counterSlice.actions
+export const { setServices, setBranches , setLoading ,setBranchid, setPhonenumber, setThankyou, setTicket, setSplash, setModal, toggleCurrentLang,setFlow,setBranchPrefix,setCategory } = counterSlice.actions
 // selectors
 export const selectLanguage = (state) => {
   console.log('state.app.currentLang', state.app.CurrentLang)
