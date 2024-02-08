@@ -6,10 +6,16 @@ import footerBGshape from '../../images/footer-sky-bg.svg'
 import shakehand from '../../images/shakehand.svg'
 import '../common.css';
 import '../../styles/thankyou.css'
+import { useNavigate } from 'react-router-dom';
 
 export default function Thankyou() {
 
     // const branch = JSON.parse(getSessionValue('br_name','{}'));
+    const navigate = useNavigate();
+    const handleReturnHome = ()=>{
+        localStorage.clear();
+        navigate('/')
+    }
 
     return (
         <div className="d-flex flex-column justify-content-center align-items-center bg-white">
@@ -20,7 +26,7 @@ export default function Thankyou() {
                 <div className="title-box d-flex flex-column justify-content-center align-items-center">
                     <div className='img-shakehand-box'><img srcset={shakehand} className='img-thankyou' alt="shake hand thank you"/></div>
                     <div className="title-thankyou">Thank you for visiting us today.</div>
-                    <button id="btn-otp-submit" className="button-wide button-fill-clr space-btn-thankyou">Return to homepage</button>
+                    <button id="btn-otp-submit" onClick={handleReturnHome} className="button-wide button-fill-clr space-btn-thankyou">Return to homepage</button>
                 </div>
             </div>
             <div className="footer-section">
