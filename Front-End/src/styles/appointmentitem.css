@@ -46,6 +46,10 @@
     width: 36%;
     margin-left: 6px;
   }
+  .column-x2 {
+    width: 66%;
+    /* margin-left: 6px; */
+  }
 
   .column-3 {
     width: 31%;
@@ -132,4 +136,16 @@
 
   .bg-red {
     color: red;
+  }
+  /*  */
+  .column-r1c1 {
+    width: 24%;
+  margin-left: 0px;
+  }
+  .column-r1c2 {
+    line-height: normal;
+    width: 40%;
+  }
+  .column-r1c3 {
+    width: 31%;
   }

@@ -162,10 +162,28 @@ export default function AppointmentList(params) {
                         {
                             appointments  ? appointments.map(appointment =>  (
                                 <div id="app-item-1" class={"row applist-item "+checkArrivalTime(appointment.startTime)} onClick={()=>handleClickApp(appointment,checkArrivalTime(appointment.startTime))}>
-                                    <div class="applist-item-inner">
-                                        <div class="column-1 d-flex flex-column">
-                                            <div class="clm-box">
-                                                <div id="app-branchname" class="applist-branchname">{appointment.branch?.name??""}</div>
+                                    <div class="applist-item-inner flex-column">
+                                        
+                                        <div class="row text-white">
+                                            <div class="column-r1c1 d-flex flex-column">
+                                                {/* <div class="clm-text-box"> */}
+                                                    <div id="app-branchname" class="applist-branchname">{appointment.branch?.name??""}</div>
+                                                {/* </div> */}
+                                            </div>
+                                            <div class="column-r1c2 d-flex flex-column">
+                                                {/* <div class="clm-box"> */}
+                                                    <div id="app-date" class="applist-date">{formatDate(appointment.startTime)}</div>
+                                                {/* </div> */}
+                                            </div>
+                                            <div class="column-3 d-flex flex-column">
+                                                {/* <div class="clm-box"> */}
+                                                    <div id="app-elapsed" class="applist-elapsetime">{calculateRemainingTime(appointment.startTime)}</div>
+                                                {/* </div> */}
+                                            </div>
+                                        </div>
+                                        <div class="row text-white">
+                                            <div class="column-x2 d-flex">
+                                                {/* <div class="clm-box"> */}
                                                     <div id="app-servicename" class="applist-servicename">
                                                         { appointment.services.map(service =>  (
                                                                 <div>
@@ -174,20 +192,16 @@ export default function AppointmentList(params) {
                                                             ))
                                                         }
                                                     </div>
+                                                {/* </div> */}
+                                            </div>
+                                            <div class="column-3 d-flex flex-column">
+                                                <div class="clm-box">
+                                                    <div id="app-status" class="applist-status">{checkArrivalTime(appointment.startTime)}</div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="column-2 d-flex flex-column">
-                                            <div class="clm-box">
-                                                <div id="app-date" class="applist-date">{formatDate(appointment.startTime)}</div>
-                                                {/* <div id="app-time" class="applist-time">08:20 AM</div> */}
-                                            </div>
-                                        </div>
-                                        <div class="column-3 d-flex flex-column">
-                                            <div class="clm-box">
-                                                <div id="app-elapsed" class="applist-elapsetime">{calculateRemainingTime(appointment.startTime)}</div>
-                                                <div id="app-status" class="applist-status">{checkArrivalTime(appointment.startTime)}</div>
-                                            </div>
-                                        </div>
+                                        
+{/* end */}
                                     </div>
                                 </div>
         
@@ -217,3 +231,28 @@ export default function AppointmentList(params) {
         </>
     )
 };
+// 
+{/* <div class="column-1 d-flex flex-column">
+        <div class="clm-box">
+            <div id="app-branchname" class="applist-branchname">{appointment.branch?.name??""}</div>
+                <div id="app-servicename" class="applist-servicename">
+                    { appointment.services.map(service =>  (
+                            <div>
+                            {service.name}
+                            </div>
+                        ))
+                    }
+                </div>
+        </div>
+    </div>
+    <div class="column-2 d-flex flex-column">
+        <div class="clm-box">
+            <div id="app-date" class="applist-date">{formatDate(appointment.startTime)}</div>
+        </div>
+    </div>
+    <div class="column-3 d-flex flex-column">
+        <div class="clm-box">
+            <div id="app-elapsed" class="applist-elapsetime">{calculateRemainingTime(appointment.startTime)}</div>
+            <div id="app-status" class="applist-status">{checkArrivalTime(appointment.startTime)}</div>
+        </div>
+    </div> */}
