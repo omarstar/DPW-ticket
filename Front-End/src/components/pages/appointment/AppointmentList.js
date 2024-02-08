@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router'
 import ModalExit from '../../includes/modal/ModalExit'
 import { calculateRemainingTime, checkArrivalTime, formatDate } from '../../../utils'
 import axios from 'axios'
+import { setSelectedAppointment } from '../../../reducers/appointments'
 
 export default function AppointmentList(params) {
 
@@ -64,7 +65,10 @@ export default function AppointmentList(params) {
     async function handleClickApp(app,status) {
         try {
             if(status==='open'){
-                await checkInAppt(app)
+                //navto booking summary selected app
+                dispatch(setSelectedAppointment(app));
+                navigate('/DPW/summary')
+                // await checkInAppt(app)
             }else if(status === 'walkin'){
                 await createTicket(app)
             }else{

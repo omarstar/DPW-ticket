@@ -21,6 +21,7 @@ import ServiceList from './components/pages/servicesList/ServiceList';
 import OptionsPage from './components/pages/OptionsPage';
 import TestLayout from './components/testLayout/TestLayout';
 import AppointmentList from './components/pages/appointment/AppointmentList';
+import BookingSummary from './components/pages/bookingSummary/BookingSummary';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path="/DPW/otp" element={<WalkOtp/>} />
         <Route path="/DPW/services" element={<ServiceList />} />
         <Route path="/DPW/appointment" element={<AppointmentList />} />
+        <Route path="/DPW/summary" element={<BookingSummary />} />
         <Route path="/DPW/branches" element={<Branches/>} />
         {/* <Route path="/DPW/services/:id" element={<Services/>} /> */}
         <Route path="/DPW/mobile" element={<PhoneNumber/>} />

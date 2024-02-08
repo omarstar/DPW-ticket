@@ -1,10 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-
-
-
 const initialState = {
    appointments: null,
+   selectedApp: {}
 }
 
 export const AppointmentSlice = createSlice({
@@ -13,13 +11,19 @@ export const AppointmentSlice = createSlice({
   reducers: {
     setAppointments: (state,action) => {
       state.appointments = action.payload
+    },
+    setSelectedAppointment: (state,action) => {
+      state.selectedApp = action.payload
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setAppointments } = AppointmentSlice.actions
+export const { setAppointments, setSelectedAppointment } = AppointmentSlice.actions
 
+export const getSelectedAppointment = (state) => {
+  return state.appointments.selectedApp;
+}
 
 
 export default AppointmentSlice
