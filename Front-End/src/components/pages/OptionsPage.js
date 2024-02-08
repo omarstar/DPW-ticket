@@ -21,7 +21,7 @@ export default function OptionsPage(params) {
 
     const goToWalkinCustomer = () => {
         dispatch(setFlow('walkin'));
-        if(appState.branchPrefix=="LOB14"){
+        if(appState.branchPrefix === "LOB14"){
             navigate('/DPW/mobile')
         }else{
             navigate('/DPW/customer')
@@ -64,9 +64,9 @@ export default function OptionsPage(params) {
                 <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
                 <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
             </div>
-            <div id="page" className="page-layout d-flex justify-content-center">
+            <div id="page" className="page-layout d-flex justify-content-center align-items-center">
                 <div className="title-center-box d-flex flex-column justify-content-center align-items-center">
-                    <div className="title-black">Please select an option</div>
+                    <div className="title-black ff-bold">Please select an option</div>
                     <button id="btn-appointment-flow" onClick={goToAppointmentMobile} className="button-wide button-fill-clr space-btn1">Check-in appointment</button>
                     <button id="btn-walkin-flow" onClick={goToWalkinCustomer} className="button-wide button-fill-clr space-btn2">Walk-in</button>
                 </div>

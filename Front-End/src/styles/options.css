@@ -2,20 +2,15 @@
     margin-top: 99px;
   } */
   /* font: 700 35px 'Montserrat-VariableFont', sans-serif; */
-  /* .title-black {
-    color: var(--royal-text, #046cac);
-    font-weight: 700;
-    font-size: 1rem;
-    text-align: center;
-    width: auto;
-    max-width: 300px;
-  } */
+ 
   .space-btn1 {
-    margin-top: 38px;
+    margin-top: 3.3rem;
+    /* margin-top: 6.25rem; */
     padding: 12px 20px;
 
   }
   .space-btn2 {
-    margin-top: 21px;
+    /* margin-top: 21px; */
+    margin-top: 1.25rem;
     padding: 12px 20px;
   }

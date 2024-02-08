@@ -1,14 +1,16 @@
 /* text title */
 .title-black {
     color: var(--royal-text, #046cac);
-    font: 900 1rem 'Montserrat-VariableFont', sans-serif;
+    /* font: 900 1rem 'Montserrat-VariableFont', sans-serif; */
     text-align: center;
-    letter-spacing: 0.48px;
+    letter-spacing: 0.6px;
     width: 15rem;
+    font-size: 15px;
 
   }
   .title-box {
     margin-top: 2rem;
+    /* margin-top: 5rem; */
   }
   .mini-gray-text {
     color: #777;
@@ -139,7 +141,7 @@
       align-self: center;
       width: 15rem;
       max-width: 100%;
-      font: 700 11px 'Montserrat-VariableFont';
+      font: 700 11px 'Montserrat-Bold';
       z-index: 10;
       padding: 9px 16.5px !important;
       /* box-shadow: 1px 1px 0px var(--royal-blue); */
