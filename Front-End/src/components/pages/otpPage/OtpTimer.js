@@ -50,7 +50,6 @@ const OtpTimer = ({noOtpText, onSendOtpAgain}) => {
     
   return ( 
       <div className="no-otp-text d-flex fs-sm">
-        {/* <div className={"clickable d-flex " + classFontFamily}  style={{ order: lang === 'en' ? 0 : 1 }}> */}
         <div className={"clickable d-flex "} >
           
           {/* { remainingTime<=0 ? 
@@ -65,7 +64,6 @@ const OtpTimer = ({noOtpText, onSendOtpAgain}) => {
             <p className="me-2">{noOtp}</p> 
             <span className="more-click-here">{clickHere}</span>
           </div>
-          {/* <p>{clickHere}</p> */}
         </div>
       </div>
     );

@@ -52,14 +52,18 @@ export default function PhoneNumber() {
         let phoneValue = $('#phonenumber').val();
         if(phoneValue !== ''){
 
-            const Appointments = await getAppointments(phoneNumber)?? [];
-            console.log('Appointments',Appointments);
-            if(Appointments.length > 0){
-                dispatch(setAppointments(Appointments));
-                sendOTP(phoneNumber);
-                return navigate('/DPW/otp');
-            }else{
-                return setShowAlert('Wrong mobile number or no appointment found');
+            try {
+                const Appointments = await getAppointments(phoneNumber)?? [];
+                console.log('Appointments',Appointments);
+                if(Appointments.length > 0){
+                    dispatch(setAppointments(Appointments));
+                    sendOTP(phoneNumber);
+                    return navigate('/DPW/otp');
+                }else{
+                    return setShowAlert('Wrong mobile number or no appointment found');
+                }
+            } catch (error) {
+                return setShowAlert('network temporarily unavailable');
             }
         }else{
             setShowAlert('This field is required')

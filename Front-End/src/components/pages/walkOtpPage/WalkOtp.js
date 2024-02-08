@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import '../../includes/header/header.css'
 import '../../includes/footer/footer.css'
@@ -13,7 +13,7 @@ import ModalExit from '../../includes/modal/ModalExit'
 import { getCurrentLang, getPhonenumber, isShowModal, setModal } from '../../../reducers'
 import { useDispatch, useSelector } from 'react-redux'
 import InputOtp from '../otpPage/InputOtp'
-import { ValidateOtp, callValidateOtp } from '../../../services/api'
+import { ValidateOtp, callValidateOtp, sendOTP } from '../../../services/api'
 import { vop } from '../../../utils'
 export default function WalkOtp(params) {
 
@@ -60,9 +60,56 @@ export default function WalkOtp(params) {
     // OTP
     const [otp, setOtp] = useState('');
     let [errorFlag, setErrorFlag] = useState('');
+    const [minutes, setMinutes] = useState(1)
+    const [seconds, setSeconds] = useState(0)
+    const [showResendButton, setShowResendButton] = useState(false);
+
+    useEffect(() => {
+
+        const updateTimer = () => {
+            if (minutes === 0 && seconds === 0) {
+              clearInterval(timerInterval);
+              setShowResendButton(true);
+              return;
+            }
+        
+            if (seconds === 0) {
+              setMinutes((prevMinutes) => prevMinutes - 1);
+              setSeconds(59);
+            } else {
+              setSeconds((prevSeconds) => prevSeconds - 1);
+            }
+    
+          };
+      
+     const timerInterval = setInterval(() => {
+            updateTimer();
+          }, 1000);
+
+          return () => {
+            clearInterval(timerInterval);
+          };
+    }, [minutes, seconds, showResendButton])
+    
+
+
+    
+
+       const resendOtpAndRestartTimer = async () => {
+            await sendOTP(mobileNumber);
+        
+            // Restart the countdown timer
+            setMinutes(1);
+            setSeconds(0);
+        
+            // Hide the resend button
+            setShowResendButton(false);
+      };
+
 
     const handleOtpChange = (updatedOtp) => {
         setErrorFlag('');
+        //need to hide the inputs
         setOtp(updatedOtp);
       };
 
@@ -99,38 +146,19 @@ export default function WalkOtp(params) {
                         }
                     }).catch(err=>{
                         // console.log('asdasdsa',err);
-                        setErrorFlag("In valid OTP")
+                        setErrorFlag("Wrong OTP number")
 
                     })
                     console.log('ResultValidateOtp', ResultValidateOtp);
 
-                    
-                    
-
-                    // const apiValidateData = {
-                    //     phoneNumber: mobileNumber, 
-                    //     otp: publicOtp,
-                    // }
-
-                    // callValidateOtp(apiValidateData)
-                    // .then(response => {
-
-                    //     console.log('validate otp res ', response)
-                    //     if(response.message !== "fail"){
-                    //         navigate('/DPW/services')
-                    //     }
-                    // })
-                    // .catch(error => {
-                    //     console.log('error', error)
-                    // })
-                    
                 }    
 
             }else {
-                setErrorFlag("In valid OTP")
+                setErrorFlag("Wrong OTP number")
             }
         } catch (error) {
             console.log('error in parsing data', error)
+            // setErrorFlag("network temporarily unavailable")
             // setTimeout(() => {
             //     clearMostSessions();
             //     navigate('/home')
@@ -138,6 +166,10 @@ export default function WalkOtp(params) {
         }
         
     }
+
+
+    const [showAlertElement, setShowAlertElement] = useState(false)
+    const [showResendElement, setShowResendElement] = useState(false)
 
     console.log('the otp value', otp)
     return (
@@ -159,15 +191,21 @@ export default function WalkOtp(params) {
                     </div> */}
                     <InputOtp otpValue={otp} onOtpChange={handleOtpChange} onKeyClick={handleSubmitOtp} />
                     
-                    {
+                    {/* {
                         errorFlag && <div className="alert-text otp-error">{errorFlag} <br/> </div>
-                    }
-                    <div className="resend-otp-box">
-                        
+                    } */}
+                    <div className="resend-otp-box" style={{opacity: showResendButton ? '0' : '1'}}>
                         <div id="resend-message" className="resend-otp-text">Didn&apos;t receive OTP?</div>
-                        <div id="timer" className="otp-time-text">01:59</div>
+                        <div id="timer" className="otp-time-text">{`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</div>
                     </div>
-                    <button id="btn-otp-submit" onClick={handleSubmitOtp} className="button-wide button-fill-clr space-submit-otp">Submit</button>
+                    <div id="alert-noappotp" style={{opacity: errorFlag ? '1' : '0'}} class="alert-noappotp-text">Wrong OTP number</div>
+                    <div class="otp-actions-box">
+                        <button id="btn-resendotp-submit" style={{display: showResendButton ? 'flex' : 'none'}}   onClick={resendOtpAndRestartTimer} class="button-wide button-fill-clr space-submit-resendotp">
+                            <span style={{"textTransform": "capitalize"}}>resend</span>
+                            <span style={{"textTransform": "uppercase"}}>otp</span>
+                        </button>
+                        <button id="btn-otp-submit" onClick={handleSubmitOtp} className="button-wide button-fill-clr space-submit-otp">Submit</button>
+                    </div>
                 </div>
             </div>
             <div className="footer-section">

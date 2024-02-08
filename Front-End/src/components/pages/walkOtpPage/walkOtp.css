@@ -103,7 +103,7 @@
   .resend-otp-box {
     display: flex;
     margin-top: 36px;
-    width: 129px;
+    width: 205px;
     max-width: 100%;
     justify-content: space-between;
     gap: 6.6px;
@@ -112,7 +112,7 @@
   .resend-otp-text {
     color: var(--gray, #6c757d);
     letter-spacing: 0.8px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     flex-grow: 1;
     flex-basis: auto;
     font: 700 10px Montserrat, sans-serif;
@@ -133,8 +133,30 @@
     text-align: center;
     width: 224px;
   } */
+  .otp-actions-box {
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
   .space-submit-otp {
-    padding: 12px 20px;
+    /* padding: 12px 20px; */
     letter-spacing: 0.88px;
-    margin-top: 143px;
+    /* margin-top: 12px; */
+  }
+  .space-submit-resendotp {
+    /* margin-top: 30px; */
+    margin-bottom: 10px;
+  }
+
+  .alert-noappotp-text {
+    color: #f00;
+    text-align: center;
+    letter-spacing: 1.04px;
+    /* text-transform: uppercase; */
+    align-self: center;
+    margin-top: 40px;
+    /* margin-bottom: 20px; */
+    white-space: nowrap;
+    font: 700 10px 'Montserrat-VariableFont', sans-serif;
   }
