@@ -134,7 +134,7 @@
     width: 224px;
   } */
   .otp-actions-box {
-    height: 20vh;
+    height: 18vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;

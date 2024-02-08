@@ -30,6 +30,7 @@ export default function CustomerForm(params) {
                 company : $('#input-companyName2').val()
 
             };
+            console.log('creating customer')
             createCustomer(customer).then(a=>{
                 console.log('createCustomer',a);
                 sendOTP(customer.phoneNum);
@@ -79,7 +80,7 @@ export default function CustomerForm(params) {
         if (!isValid) {
           setErrorMessage(message);
         } else {
-          setErrorMessage(false);
+          setErrorMessage(message);
         }
       };
     
@@ -139,7 +140,7 @@ export default function CustomerForm(params) {
 		// var valM = errorMessage ? true : false;
 		var valE = validateInput($('#input-email'), $("#alert-email"), validateEmptyField);
 		var valC = validateInput($('#input-companyName2'), $("#alert-companyName2"), validateEmptyField);
-		var isValidMobile =  errorMessage ? true : false;
+		var isValidMobile =  errorMessage === 'valid' ? true : false;
     console.log('isValidMobile', isValidMobile)
     console.log('errorMessage', errorMessage)
 		// var isValidMobile = validateMobileInput(phoneInput,$("#alert-mobile"));
@@ -210,7 +211,7 @@ export default function CustomerForm(params) {
                             {/* onChangeHandler={(nb)=>{dispatch(setPhonenumber)}} */}
                                 <PhoneNumberInput  onValidationResult={handleValidationResult}  />
                             {/* <input id="input-walknew-mobilenumber" type="tel"  className="input-box input-fullwidth required" name="mobile" pattern="[0-9]*" placeholder="" onClick="this.select();" required /> */}
-                            <div id="alert-mobile" className="alert-small-text">{errorMessage}</div>
+                            <div id="alert-mobile" className="alert-small-text">{errorMessage === 'valid' ? '' : errorMessage}</div>
                             </div>
                             <div className="input-block">
                             <input id="input-email" type="email" name="email" className="input-box input-fullwidth" placeholder="E-MAIL" required style={{textTransform: 'inherit'}} />

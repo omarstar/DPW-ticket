@@ -166,33 +166,25 @@ export default function AppointmentList(params) {
                                         
                                         <div class="row text-white">
                                             <div class="column-r1c1 d-flex flex-column">
-                                                {/* <div class="clm-text-box"> */}
                                                     <div id="app-branchname" class="applist-branchname">{appointment.branch?.name??""}</div>
-                                                {/* </div> */}
                                             </div>
                                             <div class="column-r1c2 d-flex flex-column">
-                                                {/* <div class="clm-box"> */}
                                                     <div id="app-date" class="applist-date">{formatDate(appointment.startTime)}</div>
-                                                {/* </div> */}
                                             </div>
                                             <div class="column-3 d-flex flex-column">
-                                                {/* <div class="clm-box"> */}
                                                     <div id="app-elapsed" class="applist-elapsetime">{calculateRemainingTime(appointment.startTime)}</div>
-                                                {/* </div> */}
                                             </div>
                                         </div>
                                         <div class="row text-white">
                                             <div class="column-x2 d-flex">
-                                                {/* <div class="clm-box"> */}
-                                                    <div id="app-servicename" class="applist-servicename">
-                                                        { appointment.services.map(service =>  (
-                                                                <div>
-                                                                {service.name}
-                                                                </div>
-                                                            ))
-                                                        }
-                                                    </div>
-                                                {/* </div> */}
+                                                <div id="app-servicename" class="applist-servicename">
+                                                    { appointment.services.map(service =>  (
+                                                            <div>
+                                                            {service.name}
+                                                            </div>
+                                                        ))
+                                                    }
+                                                </div>
                                             </div>
                                             <div class="column-3 d-flex flex-column">
                                                 <div class="clm-box">

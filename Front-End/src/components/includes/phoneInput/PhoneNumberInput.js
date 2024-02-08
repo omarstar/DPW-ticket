@@ -13,7 +13,7 @@ const PhoneNumberInput = ({onValidationResult}) => {
     const value = pv.getNumber();
 
     if (pv.isValidNumber()) {
-      onValidationResult(true, ''); // Validation succeeded
+      onValidationResult(true, 'valid'); // Validation succeeded
     } else {
       const errorMessage = value === "" ? 'This field is required' : 'Invalid format';
       onValidationResult(false, errorMessage); // Validation failed

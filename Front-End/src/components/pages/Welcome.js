@@ -18,8 +18,8 @@ const Welcome = () => {
 
     const [lang, setLang] = useState(currentLanguage)
     
-    let buttonLangText = lang === 'ar' ? 'عربي' : "English"
     // let buttonLangText = lang === 'ar' ? 'عربي' : "English"
+    let buttonLangText = lang === 'ar' ? 'Ar' : "En"
 
     const toggleLang = () => {
         dispatch(toggleCurrentLang());
@@ -36,11 +36,11 @@ const Welcome = () => {
         <div className="start-cover-bg d-flex flex-column justify-content-center align-items-center bg-white">
         
         <section className="header-section">
-        <button id="btn-lang-box" onClick={toggleLang} className="button-lang"><span id="btn-lang-content" >{buttonLangText}</span></button>
+        <button id="btn-lang-box" onClick={toggleLang} className="button-lang ff-semibold"><span id="btn-lang-content" >{buttonLangText}</span></button>
         <img  src={headerLogoWhite} className="header-img-bg" alt="header logo" />
         </section>
         
-        <button id="btn-getstarted" onClick={navToOptions} className="button-getstarted">
+        <button id="btn-getstarted" onClick={navToOptions} className="button-getstarted ff-bold">
             {buttonstartText}
         </button>
     

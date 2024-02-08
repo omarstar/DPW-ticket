@@ -11,10 +11,11 @@
     background-color: #fff;
     justify-content: center;
     padding: 5px 15px;
-    font: 600 12px 'Montserrat-VariableFont';
-    width: 72px;
-    height: 27px;
-    border: 2px solid #fff;
+    /* font: 600 12px 'Montserrat-VariableFont'; */
+    font-size: 12px;
+    width: 48px;
+    height: 33px;
+    /* border: 2px solid #fff; */
   }
 
   /* .logo-wide-img {
@@ -39,7 +40,8 @@
     border-radius: 10px;
     background: #fff;
     border: 2px solid #fff;
-    font: 900 15px 'Montserrat-VariableFont';
+    /* font: 900 15px 'Montserrat-VariableFont'; */
+    font-size: 12px;
     box-shadow: 2px 2px 0px var(--royal-blue);
     display: flex;
     align-items: center;

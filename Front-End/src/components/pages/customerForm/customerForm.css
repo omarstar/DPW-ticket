@@ -143,11 +143,11 @@
     text-transform: uppercase;
     text-align: left;
   }
-  #input-companyName1 {
+  /* #input-companyName1 {
     margin-top: 20px;
-  }
+  } */
   .input-block {
-    margin-top: 20px;
+    margin-top: 16px;
     width: 100%;
   }
 
@@ -198,7 +198,7 @@
 
   .existingcustomer-box {
     margin-top: 35px;
-    height: 23vh;
+    height: 21vh;
   }
 
   .newcustomer-box {

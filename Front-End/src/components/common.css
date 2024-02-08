@@ -14,7 +14,7 @@
     color: #777;
     font: 900 0.8rem 'Montserrat-VariableFont', sans-serif;
     text-align: center;
-    letter-spacing: 0.48px;
+    /* letter-spacing: 0.48px; */
     width: 100vw;
   min-height: 8vh;
   display: flex;
