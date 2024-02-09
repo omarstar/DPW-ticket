@@ -28,14 +28,14 @@ app.use(function(req, res, next) {
 });
 
 require('dotenv').config()
-const port = process.env.PORT || 85;
+const port = process.env.PORT || 3010;
 
-// app.use(express.static(path.join(__dirname, './dubai-police')));
+app.use(express.static(path.join(__dirname, '../Front-End/build')));
 
 
-// app.get('/admin', (req, res) => {
-//     res.sendFile(path.join(__dirname, './dubai-police', 'admin.html'));
-// });
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Front-End/build', 'index.html'));
+});
 // routes
 app.get('/list/queues' , controller.listQueues)
 app.get('/rest/mobile/services' , controller.listServices)
