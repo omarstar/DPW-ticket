@@ -18,8 +18,8 @@ const Welcome = () => {
 
     const [lang, setLang] = useState(currentLanguage)
     
-    // let buttonLangText = lang === 'ar' ? 'عربي' : "English"
-    let buttonLangText = lang === 'ar' ? 'Ar' : "En"
+    let buttonLangText = lang === 'ar' ? 'عربي' : "English"
+    // let buttonLangText = lang === 'ar' ? 'Ar' : "En"
 
     const toggleLang = () => {
         dispatch(toggleCurrentLang());

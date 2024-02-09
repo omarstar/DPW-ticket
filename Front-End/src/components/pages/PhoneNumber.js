@@ -22,7 +22,9 @@ export default function PhoneNumber() {
     
     const navigate = useNavigate();
     const [showAlert, setShowAlert] = useState(false);
-    const {phoneNumber} = useSelector((state) => state.app);
+    // const {phoneNumber} = useSelector((state) => state.app);
+    const {flow} = useSelector((state) => state.app);
+
     const dispatch = useDispatch();
 
     
@@ -37,7 +39,8 @@ export default function PhoneNumber() {
                 setShowAlert(message)
             }
             else{
-                setShowAlert("Wrong mobile number or no appointment found")
+                //flow? Wrong mobile number if app
+                setShowAlert(flow === "app" ? "Wrong mobile number or no appointment found" : "Wrong mobile number")
             }
          } else {
         //  setErrorMessage('');
@@ -46,27 +49,34 @@ export default function PhoneNumber() {
      };
 
      const handleMobileSubmit = async () => {
-        console.log('validating sending otp',phoneNumber);
-        console.log('validating mobile',showAlert);
-
+        console.log('validating mobile, do we show alert?',showAlert);
+        
         let phoneValue = $('#phonenumber').val();
-        if(phoneValue !== ''){
+        console.log('validating sending otp phone nb',phoneValue);
+        //not empty and it is valid
+        if(phoneValue !== '' && !showAlert){
 
             try {
-                const Appointments = await getAppointments(phoneNumber)?? [];
-                console.log('Appointments',Appointments);
-                if(Appointments.length > 0){
-                    dispatch(setAppointments(Appointments));
-                    sendOTP(phoneNumber);
+                if(flow === "app"){
+                    const Appointments = await getAppointments(phoneValue)?? [];
+                    console.log('Appointments',Appointments);
+                    if(Appointments.length > 0){
+                        dispatch(setAppointments(Appointments));
+                        
+                        sendOTP(phoneValue);
+                        return navigate('/DPW/otp');
+                    }else{
+                        return setShowAlert('Wrong mobile number or no appointment found');
+                    }
+                }else{  
+                    sendOTP(phoneValue);
                     return navigate('/DPW/otp');
-                }else{
-                    return setShowAlert('Wrong mobile number or no appointment found');
                 }
             } catch (error) {
                 return setShowAlert('network temporarily unavailable');
             }
         }else{
-            setShowAlert('This field is required')
+            // setShowAlert('This field is required')
         }
   
     }
@@ -158,7 +168,7 @@ export default function PhoneNumber() {
             <div className="d-flex flex-column justify-content-center align-items-center bg-white">
                 <div className="header-section">
                     <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
-                    <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
+                    <img  src={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
                 </div>
                 <div id="page" className="page-layout d-flex justify-content-start align-items-center">
                     <div className="title-box d-flex flex-column justify-content-center align-items-center">
