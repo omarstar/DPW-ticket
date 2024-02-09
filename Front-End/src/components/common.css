@@ -4,8 +4,9 @@
     /* font: 900 1rem 'Montserrat-VariableFont', sans-serif; */
     text-align: center;
     letter-spacing: 0.6px;
-    width: 15rem;
+    /* width: 15rem; */
     font-size: 15px;
+    max-width: 85vw;
 
   }
   .title-box {
@@ -40,7 +41,7 @@
   .modal-box {
     margin: auto auto 0px;
     width: 15rem;
-    min-height: 7rem;
+    min-height: 9rem;
     /* flex-shrink: 0;  */
     margin-top: 11rem;
     padding: 3rem 1rem;
@@ -55,9 +56,9 @@
   }
   .title-modal-white {
     color: white;
-    font: 700 12px 'Montserrat-VariableFont';
+    font: 700 11px 'Montserrat-Bold';
     text-align: center;
-    width: 14rem;
+    width: 13rem;
   }
   /* .title-modal-white {
     color: white;
@@ -126,6 +127,20 @@
     border: 1px solid transparent;
     border-bottom: 1px solid #000;
   }
+  .input-box::placeholder {
+    color: var(--gray-text, #777);
+    font-style: italic;
+    text-transform: uppercase;
+    padding: 0 0 15px;
+    margin-left: 6.6 !important;
+    margin-bottom: 2rem !important;
+    font-style: italic;
+    font-size: 10px;
+    font-weight: 400;
+  }
+  #phonenumber::placeholder {
+    height: 80px;
+  }
   /* buttons */
   .header-homecircle-img {
     position: fixed;
@@ -143,7 +158,7 @@
       max-width: 100%;
       font: 700 11px 'Montserrat-Bold';
       z-index: 10;
-      padding: 9px 16.5px !important;
+      padding: 11px 16.5px !important;
       /* box-shadow: 1px 1px 0px var(--royal-blue); */
   }
   .button-outline-clr {
@@ -163,7 +178,7 @@
     padding: 0 0 3px !important;
   }
   .iti__flag {
-    scale: 1.8 !important;
+    scale: 1.6 !important;
     margin-right: 5px;
   }
   .iti__flag-box, .iti__country-name {
@@ -173,9 +188,15 @@
     font-size: 9px !important;
   }
   .iti.iti--container {
-    font-size: 12px !important;
+    font-size: 15px !important;
     /* height: 6.6%; */
   }
   .iti--separate-dial-code .iti__selected-flag {
     background-color: rgba(0, 0, 0 , 0.02) !important;
+  }
+  .iti__dropdown-content {
+    height: 33%;
+  }
+  .iti__country-list {
+    width: 90vw;
   }

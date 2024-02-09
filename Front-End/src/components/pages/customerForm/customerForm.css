@@ -20,7 +20,7 @@
     margin-top: 84px;
     width: 100%;
   }
-
+/* 
   .input-box {
     color: var(--primary-blue, #0058a6);
   text-align: center;
@@ -30,9 +30,9 @@
   white-space: nowrap;
   font: italic 400 9px Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
 
-  }
+  } */
 
-  .input-fullwidth {
+  /* .input-fullwidth {
     width: 260px;
     padding: 15px 0px 0.32px 0px;
     display: flex;
@@ -41,23 +41,12 @@
     justify-content: flex-end;
     align-items: flex-start;
     gap: 10px; 
-  }
+  } */
 
   .input-halfwidth {
     width: 120px;
   }
 
-  .input-box::placeholder {
-    font-style: italic;
-    color: #0058A6;
-    text-transform: uppercase;
-    padding: 20px 0;
-    margin-left: 0;
-    letter-spacing: 0.36px;
-    text-align: center;
-    font: italic 400 9px Montserrat, -apple-system, Roboto, Helvetica,
-      sans-serif;
-  }
 
   hr {
     border: 1px solid #000;
@@ -158,23 +147,6 @@
     width: 105px;
   }
 
-  .input-box::placeholder {
-    color: var(--gray-text, #777);
-    font-style: italic;
-    text-transform: uppercase;
-    padding: 0 0 5px;
-    margin-left: 6.6 !important;
-    font-style: italic;
-    font-size: 08px;
-    font-weight: 400;
-    /* font: italic 400 8px Montserrat, -apple-system, Roboto, Helvetica; */
-  }
-  .input-box:focus {
-    outline: none;
-    box-shadow: none;
-    border: 2px solid transparent;
-    border-bottom: 2px solid #000;
-  }
 
   hr {
     border: 1px solid #000;
@@ -233,7 +205,8 @@
     text-align: center;
     letter-spacing: 0.6px;
     /* white-space: nowrap; */
-    font: 700 11px 'Montserrat-VariableFont', sans-serif;
+    font-size: 11px;
+    /* font: 700 11px 'Montserrat-VariableFont', sans-serif; */
   }
  
   #input-walknew-mobilenumber {
@@ -241,6 +214,7 @@
   }
   .mobile-alert {
     width: 80vw;
-    margin-top: 76px;
+    /* margin-top: 76px; */
+    margin-top: 5rem;
     min-height: 24px;
   }

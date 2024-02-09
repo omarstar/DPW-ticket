@@ -7,7 +7,8 @@
 
   /* input */
   .input-mobile-block {
-    margin-top: 95px;
+    /* margin-top: 95px; */
+    margin-top: 7.5rem;
     /* width: 100%; */
   }
 
@@ -35,7 +36,7 @@
     text-transform: uppercase;
     padding: 0 0 15px;
     margin-left: 20px !important;
-    font: italic 400 22px Montserrat, -apple-system, Roboto, Helvetica,
+    font: italic 400 22px 'Montserrat-Italic', -apple-system, Roboto, Helvetica,
       sans-serif;
   }
 

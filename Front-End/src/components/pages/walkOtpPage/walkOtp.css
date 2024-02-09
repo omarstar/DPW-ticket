@@ -70,7 +70,8 @@
   .otp-set-box {
     margin-top: 46Px;
     height: 24px;
-    width: 247px;
+    /* width: 247px; */
+    width: 70vw;
     display: flex;
     /* max-width: 362px; */
     align-items: start;

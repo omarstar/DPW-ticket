@@ -11,7 +11,7 @@
     color: var(--title-color, #046cac);
     letter-spacing: 0.6px;
     margin-top: 54px;
-    font: 700 15px Montserrat, sans-serif;
+    font: 700 15px 'Montserrat-Bold', sans-serif;
     width: 85vw;
 }
 .space-btn-thankyou {

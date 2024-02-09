@@ -162,13 +162,13 @@ export default function PhoneNumber() {
                 </div>
                 <div id="page" className="page-layout d-flex justify-content-start align-items-center">
                     <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                        <div className="title-black">Please enter your mobile number</div>
+                        <div className="title-black ff-bold">Please enter your mobile number</div>
                         <div className="input-mobile-block">
                             <PhoneNumberInput onValidationResult={handleValidationResult}  />
                         </div>
                     
-                        <div id="alert-wrongmobile" className="alert-text mobile-alert">{showAlert}</div>
-                        <button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit">Continue</button>
+                        <div id="alert-wrongmobile" className="alert-text ff-bold mobile-alert">{showAlert}</div>
+                        <div className='d-flex flex-column justify-content-end align-items-center h-15'><button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit">Continue</button></div>
                     </div>
                 </div>
                 <div className="footer-section">

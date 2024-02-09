@@ -7,6 +7,7 @@ import jafzaLogoColor from '../../../images/JAFZA_Logo_Color.svg'
 import footerBGshape from '../../../images/footer-sky-bg.svg'
 import '../../common.css';
 import "./servicesList.css"
+import catImg from '../../../images/service-svgrepo-white-com.svg'
 
 import axios from "axios"
 import { isShowModal, setBranchid, setCategory, setLoading, setModal, setTicket } from '../../../reducers';
@@ -95,17 +96,38 @@ export default function CategoryList(params) {
                             loading ? (
                                 <Loading hSpacer="h-25" />
                             ) : (
+                           
+                            categoryList && categoryList.map((cat, index) =>  (
+        
+                                <div key={index} className="button-category-item d-flex justify-content-between align-items-center">
+                                    <div onClick={()=>handlecategorySubmit(cat)} className="category-btn-box">
+                                        <button className="button-wide button-fill-clr">
+                                            <img clasName="img-fluid m-auto" src={catImg} alt="" />
+                                        </button>
+                                            <h6 className="mt-2">{cat.name}</h6>
+                                    </div>
+                                </div>
+                                ) )
+                            )}
+                        </div>
+                            {/* <div id="walkin-services-list" className="services-list-box d-flex flex-column align-items-center">
+                            {
+                            loading ? (
+                                <Loading hSpacer="h-25" />
+                            ) : (
                             
                             categoryList ? categoryList.map(cat =>  (
         
                                 <div className="button-category-item d-flex justify-content-between align-items-center">
                                     <div onClick={()=>handlecategorySubmit(cat)} className="category-btn-box">
-                                        <button className="button-wide button-fill-clr">{cat.name}</button>
+                                        <button className="button-wide button-fill-clr">
+                                            {cat.name}
+                                        </button>
                                     </div>
                                 </div>
                                 ) )   : console.log("error ===>")
                             )}
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className="footer-section">

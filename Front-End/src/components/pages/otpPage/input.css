@@ -38,8 +38,12 @@
 
     }
     #phoneNumberBox::placeholder {
-        padding: 10px;
+        /* padding: 10px; */
         font-size: 2rem;
+        padding: 0 0 15px;
+        margin-left: 20px !important;
+        font: italic 400 22px 'Montserrat-Italic', -apple-system, Roboto, Helvetica,
+          sans-serif;
     }
 
     /* otp design */

@@ -207,7 +207,9 @@
         flex-direction: column;
       }
 
-      
+      #walkin-services-list.button-wide {
+        font: 500 9px 'Montserrat-meduim'
+      }
   
       .services-list-box {
         margin-top: 16.5px;

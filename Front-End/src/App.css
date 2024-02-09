@@ -76,10 +76,19 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Montserrat-Italic';
+     src: url('./fonts/static/Montserrat-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   font: 700 22px 'Montserrat-VariableFont', sans-serif;
 }
 /*  */
+.ff-italic {
+  font-family: 'Montserrat-Italic' , -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+}
 .ff-vf {
   font-family: 'Montserrat-VariableFont' , -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
 }
@@ -254,9 +263,7 @@ body {
   color: red;
   /* display: none; */
 }
-.alert-error {
-  /* display: none; */
-}
+
 .text-red {
   color: red;
 }
@@ -280,14 +287,12 @@ body {
   width: 85%;
 }
 .iti {
-  display: block !important;
+  /* display: block !important; */
 }
 .gray-200 {
   background: #e9ecef !important;
 }
-/* #phonenumber {
-  border: 2px solid var(--btn-color)
-} */
+
 .branch-btn{
   border: 1px solid transparent;
   border-radius: 5px;

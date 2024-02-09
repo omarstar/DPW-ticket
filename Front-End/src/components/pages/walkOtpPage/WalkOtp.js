@@ -96,14 +96,22 @@ export default function WalkOtp(params) {
     
 
        const resendOtpAndRestartTimer = async () => {
+        try {
             await sendOTP(mobileNumber);
         
             // Restart the countdown timer
             setMinutes(1);
             setSeconds(0);
+  
+            setErrorFlag('');
+            setOtp('')
         
             // Hide the resend button
             setShowResendButton(false);
+            
+        } catch (error) {
+            setErrorFlag("network temporarily unavailable")
+        }
       };
 
 
@@ -112,6 +120,15 @@ export default function WalkOtp(params) {
         //need to hide the inputs
         setOtp(updatedOtp);
       };
+
+    // const handleInputFocus = (index) => {
+    // // Clear the OTP value for the focused input
+    // setOtp((prevOtpValue) => {
+    //     const newOtpValue = [...prevOtpValue];
+    //     newOtpValue[index] = '';
+    //     return newOtpValue;
+    // });
+    // };
 
     const validateOtp = (input) => {
     if(input.length === 0)
@@ -158,7 +175,7 @@ export default function WalkOtp(params) {
             }
         } catch (error) {
             console.log('error in parsing data', error)
-            // setErrorFlag("network temporarily unavailable")
+            setErrorFlag("network temporarily unavailable")
             // setTimeout(() => {
             //     clearMostSessions();
             //     navigate('/home')
@@ -182,7 +199,7 @@ export default function WalkOtp(params) {
             <div id="page" className="page-layout d-flex justify-content-center">
                 
                 <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                    <div className="title-black">Please enter the OTP sent to your mobile number</div>
+                    <div className="title-black ff-bold">Please enter the OTP sent to your mobile number</div>
                     {/* <div className="otp-set-box">
                         <input id="otp-input-1" className="otp-num-input" type="number" maxlength="1"/>
                         <input id="otp-input-2" className="otp-num-input" type="number" maxlength="1"/>
