@@ -28,24 +28,9 @@
     for (let i = 0; i < appointmentList.length; i++) {
       const appointment = appointmentList[i];
       const customerPhone = appointment.customers[0].properties.phoneNumber;
-      if(appointment.status == "CREATED"){
-      // Check if either the customer's phone or the provided phone is greater than 10 characters
-      if (customerPhone.length > 9 || phone.length > 9) {
-        // Slice the last 9 digits if the length is greater than 10
-        const slicedCustomerPhone = customerPhone.slice(-9);
-        const slicedPhone = phone.slice(-9);
-
-        // Check if the sliced customer's phone matches the sliced provided phone
-        if (slicedCustomerPhone === slicedPhone) {
-          filteredAppointments.push(appointment);
-        }
-      } else {
-        // If both phone numbers are less than or equal to 10 characters, perform a direct comparison
-        if (customerPhone === phone) {
-          filteredAppointments.push(appointment);
-        }
+      if(appointment.status == "CREATED" && parseInt(customerPhone) == parseInt(phone)){
+        filteredAppointments.push(appointment);
       }
-    }
     }
 
     return filteredAppointments;
