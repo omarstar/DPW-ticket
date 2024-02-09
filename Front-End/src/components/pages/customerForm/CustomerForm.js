@@ -9,7 +9,7 @@ import '../../common.css';
 import PhoneNumberInput from '../../includes/phoneInput/PhoneNumberInput'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { getPhonenumber, isShowModal, setModal, setPhonenumber } from '../../../reducers'
+import { getPhonenumber, isShowModal, setModal } from '../../../reducers'
 import ModalExit from '../../includes/modal/ModalExit'
 import $ from 'jquery';
 import { createCustomer, sendOTP } from '../../../services/api'
@@ -183,8 +183,8 @@ export default function CustomerForm(params) {
             <div className="page-layout">
                 <div id="customerpage" className="page-start-layout">
                     <div className="existingcustomer-box">
-                        <div className="title-form">EXISTING CUSTOMER</div>
-                        <form>
+                        <form className='d-flex flex-column align-items-start'>
+                            <div className="title-form">EXISTING CUSTOMER</div>
                             <div className="input-block">
                                 <input id="input-srNumber" type="text" className="input-box input-fullwidth" placeholder="SR #" />
                             </div>
@@ -197,8 +197,8 @@ export default function CustomerForm(params) {
                     <button id="" onClick={handleExistingCusomterSearch} className="button-wide button-fill-clr space-btn-form-search">Search &amp; Continue</button>
                     <div className="separate-line"></div>
                     <div className="newcustomer-box">
-                    <div className="title-form">NEW CUSTOMER</div>
-                        <form id="form-newcustomer">
+                        <form id="form-newcustomer" className='d-flex flex-column align-items-start'>
+                            <div className="title-form">NEW CUSTOMER</div>
                             <div className="input-block">
                             <input id="input-firstname" type="text" name="first name" className="input-box input-fullwidth" placeholder="FIRST NAME" />
                             <div id="alert-firstname" className="alert-small-text"></div>
@@ -208,7 +208,6 @@ export default function CustomerForm(params) {
                             <div id="alert-lastname" className="alert-small-text"></div>
                             </div>
                             <div className="input-block">
-                            {/* onChangeHandler={(nb)=>{dispatch(setPhonenumber)}} */}
                                 <PhoneNumberInput  onValidationResult={handleValidationResult}  />
                             {/* <input id="input-walknew-mobilenumber" type="tel"  className="input-box input-fullwidth required" name="mobile" pattern="[0-9]*" placeholder="" onClick="this.select();" required /> */}
                             <div id="alert-mobile" className="alert-small-text">{errorMessage === 'valid' ? '' : errorMessage}</div>
