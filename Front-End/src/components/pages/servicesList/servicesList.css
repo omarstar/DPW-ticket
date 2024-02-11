@@ -211,15 +211,48 @@
         font: 500 9px 'Montserrat-meduim'
       }
   
-      .services-list-box {
+      .services-list-box-2nd {
         margin-top: 16.5px;
         width: 100%;
         padding: 3px;
         height: 315px;
         overflow: auto;
         scroll-behavior: auto;
-  
       }
+      /* new cat design */
+      .services-list-box {
+        margin-top: 46px;
+        justify-content: center;
+        /* gap: 30px; */
+      }
+      .cat-img-box {
+        border-radius: 8px;
+        /* border: 1px solid var(--royal-blue, #0068a9); */
+        background-color: #0068a9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 25px 29px;
+      }
+      .cat-img{
+        aspect-ratio: 1;
+        object-fit: auto;
+        object-position: center;
+        width: 56px;
+      }
+      .cat-text {
+        color: var(--title-color, #046cac);
+        text-align: center;
+        letter-spacing: 0.28px;
+        text-transform: uppercase;
+        align-self: center;
+        /* margin-top: 9px; */
+        font: 600 8px 'Montserrat-SemiBold', sans-serif;
+      }
+
+
+
+/* end cat */
       .button-service-item {
         margin-top: 15px;
       }
