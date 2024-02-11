@@ -112,7 +112,7 @@
     align-items: center;
     text-align: center;
     flex-direction: column;
-  } */
+  } 
   
   /* form */
   .title-form {
@@ -165,9 +165,7 @@
     height: 21vh;
   }
 
-  .newcustomer-box {
-    /* height: 165px; */
-  }
+
 
   .space-btn-form-search {
     margin-top: 13px;
