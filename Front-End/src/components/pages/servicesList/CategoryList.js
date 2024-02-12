@@ -91,7 +91,7 @@ export default function CategoryList(params) {
                     
                     <div className="title-box d-flex flex-column justify-content-center align-items-center">
                         <div className="title-black">Please select a category</div>
-                            <div id="walkin-services-list" className="services-list-box d-flex flex-column align-items-center">
+                            <div id="walkin-services-list" className="services-list-box row mx-0">
                             {
                             loading ? (
                                 <Loading hSpacer="h-25" />
@@ -99,17 +99,18 @@ export default function CategoryList(params) {
                            
                             categoryList && categoryList.map((cat, index) =>  (
         
-                                <div key={index} className="button-category-item d-flex justify-content-between align-items-center">
+                                <div key={index} className="button-category-item col-5">
                                     <div onClick={()=>handlecategorySubmit(cat)} className="category-btn-box">
-                                        <button className="button-wide button-fill-clr">
-                                            <img clasName="img-fluid m-auto" src={catImg} alt="" />
+                                        <button className="button-wide button-fill-clr cat-img-box">
+                                            <img clasName="img-fluid cat-img m-auto" src={catImg} alt="" />
                                         </button>
-                                            <h6 className="mt-2">{cat.name}</h6>
+                                            <h6 className="mt-2 cat-text">{cat.name}</h6>
                                     </div>
                                 </div>
                                 ) )
                             )}
                         </div>
+                        {/* init design cat-list */}
                             {/* <div id="walkin-services-list" className="services-list-box d-flex flex-column align-items-center">
                             {
                             loading ? (
@@ -128,6 +129,24 @@ export default function CategoryList(params) {
                                 ) )   : console.log("error ===>")
                             )}
                         </div> */}
+                        {/* 2nd cat-list design */}
+                        {/* {
+                            loading ? (
+                                <Loading hSpacer="h-25" />
+                            ) : (
+                           
+                            categoryList && categoryList.map((cat, index) =>  (
+        
+                                <div key={index} className="button-category-item d-flex justify-content-between align-items-center">
+                                    <div onClick={()=>handlecategorySubmit(cat)} className="category-btn-box">
+                                        <button className="button-wide button-fill-clr">
+                                            <img clasName="img-fluid m-auto" src={catImg} alt="" />
+                                        </button>
+                                            <h6 className="mt-2">{cat.name}</h6>
+                                    </div>
+                                </div>
+                                ) )
+                            )} */}
                     </div>
                 </div>
                 <div className="footer-section">
