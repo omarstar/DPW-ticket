@@ -20,21 +20,21 @@ const Otp = () => {
     /** translation */
     const titleTextEn = {
         registeredMobile: "Please enter the OTP sent to your mobile number.",
-        // walkIn: "Please enter the OTP sent to your mobile number.",
+        // walkin: "Please enter the OTP sent to your mobile number.",
         updateProfile: "Please enter the OTP sent to your new mobile number.",
         buttonText: "Submit"
     }
     const titleTextAr = {
         registeredMobile: "الرجاء إدخال رمز المرور المرسل إلى رقم هاتفك المتحرك المسجل لدينا"+":",
-        // walkIn: ".الرجاء إدخال رمز المرور المرسل إلى رقم الهاتف المتحرك",
+        // walkin: ".الرجاء إدخال رمز المرور المرسل إلى رقم الهاتف المتحرك",
         updateProfile: "الرجاء إدخال رمز المرور المرسل إلى رقم هاتفك المتحرك الجديد"+":",
         buttonText: "تحقق وأرسل"
     }
 
     // const lang = getSessionValue('lang','ar');
     const lang = 'en';
-    // const flow = getSessionValue('flow','walkIn');
-    const flow = 'walkIn'
+    // const flow = getSessionValue('flow','walkin');
+    const flow = 'walkin'
 
     let titleText;
     let noOtpText = {
@@ -43,8 +43,8 @@ const Otp = () => {
     }
     let buttonText = (lang === 'en') ? titleTextEn['buttonText'] : titleTextAr['buttonText'];
 
-    if(flow === 'walkIn'){
-        titleText = (lang === 'en') ? titleTextEn['walkIn'] : titleTextAr['walkIn'];
+    if(flow === 'walkin'){
+        titleText = (lang === 'en') ? titleTextEn['walkin'] : titleTextAr['walkin'];
     } else if(flow === 'appointmentIn' || flow === 'cancelAppointment') {
         titleText = (lang === 'en') ? titleTextEn['registeredMobile'] : titleTextAr['registeredMobile'];
     } else if(flow === 'updateProfile') {
@@ -54,7 +54,7 @@ const Otp = () => {
     const navigate = useNavigate();
 
     switch (flow) {
-        case 'walkIn':
+        case 'walkin':
             route = '/ticket'
             break;
         case 'appointmentIn':
