@@ -15,7 +15,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import $ from 'jquery';
 import PhoneNumberInput from '../includes/phoneInput/PhoneNumberInput';
 import ModalExit from '../includes/modal/ModalExit';
-import { getAppointments, sendOTP } from '../../services/api';
+import { createCustomer, getAppointments, sendOTP } from '../../services/api';
 import { setAppointments } from '../../reducers/appointments';
 
 export default function PhoneNumber() {
@@ -23,7 +23,7 @@ export default function PhoneNumber() {
     const navigate = useNavigate();
     const [showAlert, setShowAlert] = useState(false);
     // const {phoneNumber} = useSelector((state) => state.app);
-    const {flow} = useSelector((state) => state.app);
+    const {flow , branchPrefix} = useSelector((state) => state.app);
 
     const dispatch = useDispatch();
     useEffect(() => {
@@ -73,6 +73,13 @@ export default function PhoneNumber() {
                         return setShowAlert('Wrong mobile number or no appointment found');
                     }
                 }else{  
+                    let customer = {
+                        firstName : $('#input-walkin-name').val(),
+                        phoneNum : mobileNumber,
+                        email : $('#input-walkin-email').val(),
+        
+                    };
+                    await createCustomer(customer);
                     await sendOTP(mobileNumber);
                     return navigate('/DPW/otp');
                 }
@@ -180,7 +187,22 @@ export default function PhoneNumber() {
                         <div className="input-mobile-block">
                             <PhoneNumberInput onValidationResult={handleValidationResult}  />
                         </div>
-                    
+                        
+                        {
+                            (flow=='walkin' && branchPrefix=="LOB14" ) ?
+                            <div id='lob14walkinFields'>
+                                <div class="input-block">
+                                    <input id="input-walkin-name" type="text" name="name" class="input-box input-fullwidth" placeholder="NAME" />
+                                    <div id="alert-walkin-name" class="alert-small-text"></div>
+                                </div>
+                                <div class="input-block">
+                                <input id="input-walkin-email" type="email" name="email" class="input-box input-fullwidth" placeholder="E-MAIL" required/>
+                                <div id="alert-walkin-email" class="alert-small-text"></div>
+                                </div>
+                            </div>
+                            :
+                            <></>
+                        }    
                         <div id="alert-wrongmobile" className="alert-text ff-bold mobile-alert">{showAlert}</div>
                         <div className='d-flex flex-column justify-content-end align-items-center h-15'><button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit">Continue</button></div>
                     </div>

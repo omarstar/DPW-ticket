@@ -1,10 +1,9 @@
 import axios from "axios";
 const APPURL = process.env.REACT_APP_API_URL??"";
 const apiUrls = {
-    sendOtp:  'http://epgqsys-1.norwayeast.cloudapp.azure.com:3010/'+'/rest/mobile/sendotp',
+    sendOTP:  'http://epgqsys-1.norwayeast.cloudapp.azure.com:3010'+'/rest/mobile/sendotp',
     validateOtp:  APPURL + '/rest/mobile/validateotp',
     createCustomer:  APPURL + '/rest/mobile/createCustomer',
-    sendOTP:  APPURL + '/rest/mobile/sendotp',
     visitStatus: APPURL + '/rest/mobile/visit/status',
     golobalVariables: APPURL + '/rest/mobile/golobalVariables',
     getAppointments: APPURL + '/rest/mobile/appointment/id/'
