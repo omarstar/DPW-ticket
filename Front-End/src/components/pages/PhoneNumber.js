@@ -9,7 +9,7 @@ import '../common.css';
 import '../../styles/mobile.css'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { isShowModal, setBranchid, setLoading, setModal, setTicket } from '../../reducers';
+import { getPhonenumber, isShowModal, setBranchid, setLoading, setModal, setTicket } from '../../reducers';
 import { api, getSessionValue, setSessionValue, vadidateForm } from '../../utils/index';
 import { useNavigate, useParams } from 'react-router-dom';
 import $ from 'jquery';
@@ -27,7 +27,7 @@ export default function PhoneNumber() {
 
     const dispatch = useDispatch();
 
-    
+    let mobileNumber = useSelector(getPhonenumber);
   
      // validate
     //  const [errorMessage, setErrorMessage] = useState('');
@@ -49,27 +49,25 @@ export default function PhoneNumber() {
      };
 
      const handleMobileSubmit = async () => {
-        console.log('validating mobile, do we show alert?',showAlert);
         
-        let phoneValue = $('#phonenumber').val();
-        console.log('validating sending otp phone nb',phoneValue);
+        console.log('validating sending otp phone nb',mobileNumber);
         //not empty and it is valid
-        if(phoneValue !== '' && !showAlert){
+        if(mobileNumber !== '' && !showAlert){
 
             try {
                 if(flow === "app"){
-                    const Appointments = await getAppointments(phoneValue)?? [];
+                    const Appointments = await getAppointments(mobileNumber)?? [];
                     console.log('Appointments',Appointments);
                     if(Appointments.length > 0){
                         dispatch(setAppointments(Appointments));
                         
-                        sendOTP(phoneValue);
+                        sendOTP(mobileNumber);
                         return navigate('/DPW/otp');
                     }else{
                         return setShowAlert('Wrong mobile number or no appointment found');
                     }
                 }else{  
-                    sendOTP(phoneValue);
+                    sendOTP(mobileNumber);
                     return navigate('/DPW/otp');
                 }
             } catch (error) {

@@ -1,13 +1,13 @@
 import axios from "axios";
-
+const APPURL = process.env.REACT_APP_API_URL??"";
 const apiUrls = {
-    sendOtp:  process.env.REACT_APP_API_URL+'/rest/mobile/sendotp',
-    validateOtp:  process.env.REACT_APP_API_URL + '/rest/mobile/validateotp',
-    createCustomer:  process.env.REACT_APP_API_URL + '/rest/mobile/createCustomer',
-    sendOTP:  process.env.REACT_APP_API_URL + '/rest/mobile/sendotp',
-    visitStatus: process.env.REACT_APP_API_URL + '/rest/mobile/visit/status',
-    golobalVariables: process.env.REACT_APP_API_URL + '/rest/mobile/golobalVariables',
-    getAppointments: process.env.REACT_APP_API_URL + '/rest/mobile/appointment/id/'
+    sendOtp:  APPURL+'/rest/mobile/sendotp',
+    validateOtp:  APPURL + '/rest/mobile/validateotp',
+    createCustomer:  APPURL + '/rest/mobile/createCustomer',
+    sendOTP:  APPURL + '/rest/mobile/sendotp',
+    visitStatus: APPURL + '/rest/mobile/visit/status',
+    golobalVariables: APPURL + '/rest/mobile/golobalVariables',
+    getAppointments: APPURL + '/rest/mobile/appointment/id/'
 }
 
 export const ValidateOtp = async(reqData) => {
