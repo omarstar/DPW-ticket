@@ -19,23 +19,12 @@ app.use(function(req, res, next) {
     next();
 });
 app.use(cors());
-app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-});
+
 
 require('dotenv').config()
 const port = process.env.PORT || 3010;
 
-app.use(express.static(path.join(__dirname, '../Front-End/build')));
 
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../Front-End/build', 'index.html'));
-});
 // routes
 app.get('/list/queues' , controller.listQueues)
 app.get('/rest/mobile/services' , controller.listServices)
@@ -52,10 +41,12 @@ app.get('/rest/mobile/golobalVariables/:name' , controller.golobalVariables)
 // app.get('/admin/getactive' , controller.getVariable)
 // app.get('/delete/ticket' , controller.deleteTicket)
 
+app.use(express.static(path.join(__dirname, '../Front-End/build')));
 
-// app.get('/*', (req, res) => {
-//     res.sendFile(path.join(__dirname, './dubai-police', 'index.html'));
-// });
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Front-End/build', 'index.html'));
+});
 
 // const httpsOptions = {
 //     key :fs.readFileSync(__dirname + "/cert/epg_root_key.key"),
