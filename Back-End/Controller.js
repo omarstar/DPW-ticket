@@ -191,10 +191,13 @@ exports.sendOTP = async (req,res) => {
     let variableResponse = await putOTPIntoVarables(customerData,otpValue)
     let messageResponse = await sendOTPMessage(customerData.phoneNumber, otpValue)
     res.status("201").send({
-      message : "accepted"
+      message : "accepted",
+      data : messageResponse
     })
   } catch (error) {
-    res.status(500).send("error");
+    console.error(error);
+
+    res.status(500).send(error);
   }
 }
 exports.validateOTP = async (req,res) => {
@@ -247,46 +250,99 @@ async function getBranches() {
 
 }
 
-function sendOTPMessage(phoneNumber , otp) {
+async function sendOTPMessage(phoneNumber , otp) {
   try {
-    let smsBody = {
-      "apiver": "1.0",
-        "sms": {
-        "ver": "2.0",
-          "dlr": {
-          "url": ""
-        },
-        "messages": [{
-          "udh": "0",
-          "text": `Your OTP is ${otp}. It is valid for 2 minutes. Please do not share this OTP with anyone.`,
-          "property": 0,
-          "id": "1",
-          "addresses": [{
-            "from": "NAKHEEL",
-            "to": phoneNumber,
-            "seq": "1",
-            "tag": "Nakheel"
-          }]
-        }]
-      }
-    }
-     let config = {
+    let data = JSON.stringify({
+      "username": "JAFZACS",
+      "password": "Dubai@2020"
+    });
+
+    let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: `https://meapi.goinfinito.me/unified/v2/send`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJJbmZpbml0byIsImlhdCI6MTY3NDExMTUzMiwic3ViIjoibmFraGVlbGluZmluaXRvZTdiYmUzdnc2In0.QcZUC9bNSEbSgf0nf0X-N3g_Ex4GehCX9NjzAf0soS4"
+      url: 'https://smartmessaging.etisalat.ae:5676/login/user/',
+      headers: { 
+        'Content-Type': 'application/json', 
       },
-      data : smsBody
-     }
-     let response = axios.request(config)
-     return response.data
+      data : data
+    };
+
+    const result = await axios.request(config);
+
+    const AuthRes = result.data;
+    if(AuthRes.token){
+      let data = JSON.stringify({
+        "msgCategory": "4.5",
+        "contentType": "3.1",
+        "senderAddr": "Jafza",
+        "priority": 1,
+        "recipient": phoneNumber,
+        "msg":  `Your OTP is ${otp}. Please do not share this OTP with anyone.`,
+        "dr": "1"
+      });
+
+      let config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'https://smartmessaging.etisalat.ae:5676/campaigns/submissions/sms/nb',
+        headers: { 
+          'Authorization': `bearer ${AuthRes.token}`, 
+          'Content-Type': 'application/json', 
+        },
+        data : data
+      };
+
+      const SmsRes = await axios.request(config);
+      return SmsRes.data;
+    }
+    return result.data;
+
   } catch (error) {
+    console.error(error);
     console.log(error)
   }
-
 }
+
+// function sendOTPMessage(phoneNumber , otp) {
+//   try {
+//     let smsBody = {
+//       "apiver": "1.0",
+//         "sms": {
+//         "ver": "2.0",
+//           "dlr": {
+//           "url": ""
+//         },
+//         "messages": [{
+//           "udh": "0",
+//           "text": `Your OTP is ${otp}. Please do not share this OTP with anyone.`,
+//           "property": 0,
+//           "id": "1",
+//           "addresses": [{
+//             "from": "NAKHEEL",
+//             "to": phoneNumber,
+//             "seq": "1",
+//             "tag": "Nakheel"
+//           }]
+//         }]
+//       }
+//     }
+//      let config = {
+//       method: 'post',
+//       maxBodyLength: Infinity,
+//       url: `https://meapi.goinfinito.me/unified/v2/send`,
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'Authorization': "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJJbmZpbml0byIsImlhdCI6MTY3NDExMTUzMiwic3ViIjoibmFraGVlbGluZmluaXRvZTdiYmUzdnc2In0.QcZUC9bNSEbSgf0nf0X-N3g_Ex4GehCX9NjzAf0soS4"
+//       },
+//       data : smsBody
+//      }
+//      let response = axios.request(config)
+//      return response.data
+//   } catch (error) {
+//     console.log(error)
+//   }
+
+// }
 
 async function  putOTPIntoVarables(customerData,otpValue) {
   let body = {
