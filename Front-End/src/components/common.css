@@ -107,6 +107,9 @@
     align-items: center;
     padding: 38px 60px;
   }
+  .more-bold {
+    font-weight: 800;
+  }
   /* input */
   .input-box {
     color: black;

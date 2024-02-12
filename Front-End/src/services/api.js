@@ -68,6 +68,7 @@ export const sendOTP = async(number) => {
     const customerData = {
         phoneNumber : number,
     }
+    console.log('customerData', customerData)
     try {
         const response = await axios.post(apiUrls['sendOTP'], customerData)
         console.log('rs: validate ', response.data)

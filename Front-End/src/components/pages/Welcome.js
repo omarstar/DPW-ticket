@@ -4,26 +4,28 @@ import footerBGshape from '../../images/footer-sky-bg.svg'
 import '../../styles/getStarted.css'
 import { useDispatch, useSelector } from "react-redux";
 import { selectLanguage, setBranchPrefix, toggleCurrentLang } from "../../reducers";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Welcome = () => {
     var {branch} = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const currentLanguage = useSelector(selectLanguage);
-    console.log('currentLanguage', currentLanguage)
     dispatch(setBranchPrefix(branch??'LOB14'));
     const buttonstartText = "Get started"
     
-
+    const currentLanguage = useSelector(selectLanguage);
+    console.log('currentLanguage', currentLanguage)
     const [lang, setLang] = useState(currentLanguage)
+
+    useEffect(() => {
+        setLang(currentLanguage);
+      }, [currentLanguage]);
     
-    let buttonLangText = lang === 'ar' ? 'عربي' : "English"
+    let buttonLangText = lang === 'en' ? 'عربي' : "English"
     // let buttonLangText = lang === 'ar' ? 'Ar' : "En"
 
     const toggleLang = () => {
         dispatch(toggleCurrentLang());
-        setLang(currentLanguage);
     };
     
     const navToOptions = () => {
@@ -31,12 +33,13 @@ const Welcome = () => {
         navigate('/dpw/options')
     }
     
+    const moreBold = lang === 'en' ? 'more-bold' : '';
 
     return ( 
         <div className="start-cover-bg d-flex flex-column justify-content-center align-items-center bg-white">
         
         <section className="header-section">
-        <button id="btn-lang-box" onClick={toggleLang} className="button-lang ff-semibold"><span id="btn-lang-content" >{buttonLangText}</span></button>
+        <button id="btn-lang-box" onClick={toggleLang} className={"button-lang ff-semibold " + moreBold}><span id="btn-lang-content" >{buttonLangText}</span></button>
         <img  src={headerLogoWhite} className="header-img-bg" alt="header logo" />
         </section>
         
