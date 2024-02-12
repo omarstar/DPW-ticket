@@ -219,7 +219,7 @@ export default function WalkOtp(params) {
                     <div class="otp-actions-box">
                         <button id="btn-resendotp-submit" style={{display: showResendButton ? 'flex' : 'none'}}   onClick={resendOtpAndRestartTimer} class="button-wide button-fill-clr space-submit-resendotp">
                             <span style={{"textTransform": "capitalize"}}>resend</span>
-                            <span style={{"textTransform": "uppercase"}}>otp</span>
+                            <span style={{"textTransform": "uppercase"}}> otp</span>
                         </button>
                         <button id="btn-otp-submit" onClick={handleSubmitOtp} className="button-wide button-fill-clr space-submit-otp">Submit</button>
                     </div>
