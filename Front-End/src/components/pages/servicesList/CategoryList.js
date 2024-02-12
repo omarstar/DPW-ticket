@@ -9,11 +9,9 @@ import '../../common.css';
 import "./servicesList.css"
 import catImg from '../../../images/service-svgrepo-white-com.svg'
 
-import axios from "axios"
-import { isShowModal, setBranchid, setCategory, setLoading, setModal, setTicket } from '../../../reducers';
+import { isShowModal, setCategory, setLoading, setModal } from '../../../reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import ModalExit from '../../includes/modal/ModalExit'
-import ModalInfo from '../../includes/modal/ModalInfo'
 import { useNavigate } from 'react-router-dom'
 import Loading from '../../includes/loading/loading'
 import { golobalVariables } from '../../../services/api'
