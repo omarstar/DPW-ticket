@@ -1,7 +1,7 @@
 import axios from "axios";
 const APPURL = process.env.REACT_APP_API_URL??"";
 const apiUrls = {
-    sendOtp:  APPURL+'/rest/mobile/sendotp',
+    sendOtp:  'http://epgqsys-1.norwayeast.cloudapp.azure.com:3010/'+'/rest/mobile/sendotp',
     validateOtp:  APPURL + '/rest/mobile/validateotp',
     createCustomer:  APPURL + '/rest/mobile/createCustomer',
     sendOTP:  APPURL + '/rest/mobile/sendotp',
