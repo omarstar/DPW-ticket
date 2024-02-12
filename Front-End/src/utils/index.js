@@ -14,6 +14,36 @@ export function randomStr(length) {
     return result;
 }
 
+export function validateEmptyField(inputValue) {
+  console.log('inputValue', inputValue)
+  return inputValue !== "";
+}
+
+export  const validateEmail = (email) => {
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+export const validateInput = (input, errorElement, validationFunction) => {
+  // input.attr("name") 
+      console.log('validationFunction',validationFunction);
+  var value = input.val();
+  var isValid = validationFunction(value);
+
+  if (!isValid) {
+    if(value === "")
+    errorElement.text("This field is required");
+    else {
+      errorElement.text("Invalid format");
+    }	
+    errorElement.css('visibility', 'visible');
+    return false;
+  } else {
+    errorElement.text("");
+    errorElement.css('visibility', 'hidden');
+    return true;
+  }
+}
 
 export function vadidateForm($,currentSection) {
   var requires = currentSection.find('.required');

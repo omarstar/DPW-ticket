@@ -13,6 +13,7 @@ import { getPhonenumber, isShowModal, setModal } from '../../../reducers'
 import ModalExit from '../../includes/modal/ModalExit'
 import $ from 'jquery';
 import { createCustomer, sendOTP } from '../../../services/api'
+import { validateInput } from '../../../utils'
 export default function CustomerForm(params) {
     const navigate = useNavigate();
     const Appstate = useSelector((state)=>state.app);
@@ -84,26 +85,26 @@ export default function CustomerForm(params) {
         }
       };
     
-    const validateInput = (input, errorElement, validationFunction) => {
-		// input.attr("name") 
-        console.log('validationFunction',validationFunction);
-		var value = input.val();
-		var isValid = validationFunction(value);
+    // const validateInput = (input, errorElement, validationFunction) => {
+	// 	// input.attr("name") 
+    //     console.log('validationFunction',validationFunction);
+	// 	var value = input.val();
+	// 	var isValid = validationFunction(value);
 
-		if (!isValid) {
-			if(value === "")
-			errorElement.text("This field is required");
-			else {
-				errorElement.text("Invalid format");
-			}	
-			errorElement.css('visibility', 'visible');
-			return false;
-		} else {
-			errorElement.text("");
-			errorElement.css('visibility', 'hidden');
-			return true;
-		}
-	}
+	// 	if (!isValid) {
+	// 		if(value === "")
+	// 		errorElement.text("This field is required");
+	// 		else {
+	// 			errorElement.text("Invalid format");
+	// 		}	
+	// 		errorElement.css('visibility', 'visible');
+	// 		return false;
+	// 	} else {
+	// 		errorElement.text("");
+	// 		errorElement.css('visibility', 'hidden');
+	// 		return true;
+	// 	}
+	// }
 
     const validateEmptyField = (inputValue) => {
 		return inputValue !== "";
@@ -186,10 +187,10 @@ export default function CustomerForm(params) {
                         <form className='d-flex flex-column align-items-start'>
                             <div className="title-form">EXISTING CUSTOMER</div>
                             <div className="input-block">
-                                <input id="input-srNumber" type="text" className="input-box input-fullwidth" placeholder="SR #" />
+                                <input id="input-srNumber" type="text" className="input-box tt-cap input-fullwidth" placeholder="SR #" />
                             </div>
                             <div className="input-block">
-                                <input id="input-companyName1" type="text" className="input-box input-fullwidth" placeholder="COMPANY NAME" />
+                                <input id="input-companyName1" type="text" className="input-box tt-cap input-fullwidth" placeholder="COMPANY NAME" />
                             </div>
                         </form>
                         <div id="alert-norecords" className="alert-norecords-text"></div>
@@ -200,11 +201,11 @@ export default function CustomerForm(params) {
                         <form id="form-newcustomer" className='d-flex flex-column align-items-start'>
                             <div className="title-form">NEW CUSTOMER</div>
                             <div className="input-block">
-                            <input id="input-firstname" type="text" name="first name" className="input-box input-fullwidth" placeholder="FIRST NAME" />
+                            <input id="input-firstname" type="text" name="first name" className="input-box tt-cap input-fullwidth" placeholder="FIRST NAME" />
                             <div id="alert-firstname" className="alert-small-text"></div>
                             </div>
                             <div className="input-block">
-                            <input id="input-lastname" type="text" name="last time" className="input-box input-fullwidth" placeholder="LAST NAME" />
+                            <input id="input-lastname" type="text" name="last time" className="input-box tt-cap input-fullwidth" placeholder="LAST NAME" />
                             <div id="alert-lastname" className="alert-small-text"></div>
                             </div>
                             <div className="input-block">
@@ -217,7 +218,7 @@ export default function CustomerForm(params) {
                             <div id="alert-email" className="alert-small-text"></div>
                             </div>
                             <div className="input-block">
-                            <input id="input-companyName2" type="text" name="company" className="input-box input-fullwidth" placeholder="COMPANY NAME" />
+                            <input id="input-companyName2" type="text" name="company" className="input-box tt-cap input-fullwidth" placeholder="COMPANY NAME" />
                             <div id="alert-companyName2" className="alert-small-text"></div>
                             </div>
                         </form>

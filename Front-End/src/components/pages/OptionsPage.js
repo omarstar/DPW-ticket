@@ -22,7 +22,7 @@ export default function OptionsPage(params) {
     const goToWalkinCustomer = () => {
         dispatch(setFlow('walkin'));
         if(appState.branchPrefix === "LOB14"){
-            navigate('/DPW/mobile')
+            navigate('/DPW/walkin-mobile')
         }else{
             navigate('/DPW/customer')
         }

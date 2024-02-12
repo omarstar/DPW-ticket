@@ -44,7 +44,7 @@ export const counterSlice = createSlice({
 
     },
     setBranchPrefix: (state,action) => {
-      state.branchPrefix = action.payload
+      state.branchPrefix = action.payload.toUpperCase();
     },
     setLoading: (state,action) => {
       state.loading = action.payload

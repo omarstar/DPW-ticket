@@ -18,11 +18,11 @@ import ModalExit from '../includes/modal/ModalExit';
 import { createCustomer, getAppointments, sendOTP } from '../../services/api';
 import { setAppointments } from '../../reducers/appointments';
 
-export default function PhoneNumber() {
+export default function WalkinPhoneNumber() {
     
     const navigate = useNavigate();
     const [showAlert, setShowAlert] = useState(false);
-    // const [errorMessage, setErrorMessage] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(false);
 
     // const {phoneNumber} = useSelector((state) => state.app);
     const {flow , branchPrefix} = useSelector((state) => state.app);
@@ -41,34 +41,51 @@ export default function PhoneNumber() {
     //  const [errorMessage, setErrorMessage] = useState('');
 
      const handleValidationResult = (isValid, message) => {
+        console.log('handle mobile valid?', isValid)
          if (!isValid) {
-            // setErrorMessage(message);
             if(message === 'This field is required'){
-                setShowAlert(message)
+                setErrorMessage(message)
             }
             else{
-                //flow? Wrong mobile number if app
-                setShowAlert(flow === "app" ? "Wrong mobile number or no appointment found" : "Wrong mobile number")
+                setErrorMessage("Wrong mobile number")
             }
          } else {
+         setErrorMessage(message);
         //  setErrorMessage('');
          setShowAlert(false);
          }
      };
     
-    //  $("#input-walkin-name").on("blur", function() {
-    //     validateInput($(this), $("#alert-walkin-name"), validateEmptyField);
-    // });
-    //  $("#input-walkin-email").on("blur", function() {
-    //     validateInput($(this), $("#alert-walkin-email"), validateEmail);
-    // });
+     $("#input-walkin-name").on("blur", function() {
+        validateInput($(this), $("#alert-walkin-name"), validateEmptyField);
+    });
+     $("#input-walkin-email").on("blur", function() {
+        validateInput($(this), $("#alert-walkin-email"), validateEmail);
+    });
+
+    function allFieldsValidated() {
+        const valN = validateInput($("#input-walkin-name"), $("#alert-walkin-name"), validateEmptyField);
+        const valE = validateInput($("#input-walkin-email"), $("#alert-walkin-email"), validateEmptyField);
+        const valEi = validateInput($("#input-walkin-email"), $("#alert-walkin-email"), validateEmail);
+       
+        console.log('errorMessage', errorMessage)
+        if(mobileNumber == ''){
+            setErrorMessage("This field is required")
+        }else{
+            var isValidMobile =  errorMessage === 'valid' ? true : false;
+        }
+
+        if(!valN || !valE || !isValidMobile || !valEi){
+            return false
+        }
+        return true;
+    }
 
      const handleMobileSubmit = async () => {
         
         console.log('validating sending otp phone nb',mobileNumber);
         //not empty and it is valid
-        if(mobileNumber !== '' && !showAlert){
-
+        if(allFieldsValidated()){
             try {
                 if(flow === "app"){
                     const Appointments = await getAppointments(mobileNumber)?? [];
@@ -95,9 +112,13 @@ export default function PhoneNumber() {
             } catch (error) {
                 return setShowAlert('network temporarily unavailable');
             }
-        }else{
-            // setShowAlert('This field is required')
         }
+        // if(mobileNumber !== '' && !showAlert){
+        //     setShowAlert('')
+            
+        // }else{
+        //     // setShowAlert('These fields are required')
+        // }
   
     }
 
@@ -141,23 +162,18 @@ export default function PhoneNumber() {
                         <div className="title-black ff-bold">Please enter your mobile number</div>
                         <div className="input-mobile-block">
                             <PhoneNumberInput onValidationResult={handleValidationResult}  />
+                            <div id="alert-walkin-mobile" className="alert-small-text">{errorMessage === 'valid' ? '' : errorMessage}</div>
                         </div>
-                        
-                        {/* {
-                            (flow == 'walkin' && branchPrefix == "LOB14" ) ?
-                            <div id='lob14walkinFields' className='h-15'>
-                                <div class="input-block">
-                                    <input id="input-walkin-name" type="text" name="name" class="input-box tt-cap input-fullwidth" placeholder="NAME" />
-                                    <div id="alert-walkin-name" class="alert-small-text"></div>
-                                </div>
-                                <div class="input-block">
-                                <input id="input-walkin-email" type="email" name="email" class="input-box input-fullwidth" placeholder="E-MAIL" required/>
-                                <div id="alert-walkin-email" class="alert-small-text"></div>
-                                </div>
+                        <div id='lob14walkinFields' className='h-15'>
+                            <div className="input-block">
+                                <input id="input-walkin-name" type="text" name="name" className="input-box tt-cap input-fullwidth" placeholder="NAME" />
+                                <div id="alert-walkin-name" className="alert-small-text"></div>
                             </div>
-                            :
-                            <div className='h-15'></div>
-                        }     */}
+                            <div className="input-block">
+                            <input id="input-walkin-email" type="email" name="email" className="input-box input-fullwidth" placeholder="E-MAIL" required/>
+                            <div id="alert-walkin-email" className="alert-small-text"></div>
+                            </div>
+                        </div>
                         <div id="alert-wrongmobile" className="alert-text ff-bold mobile-alert">{showAlert}</div>
                         <div className='d-flex flex-column justify-content-end align-items-center h-15'><button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit">Continue</button></div>
                     </div>
@@ -172,32 +188,5 @@ export default function PhoneNumber() {
                }
             </div>
 
-
-
-
-
-            /*<div id="phoneNumberpage" className='py-3'>
-             <div className="w-100 myrounded-top-only bg-light position-relative text-start h-70">
-            <div className="px-4 pt-4 w-100 h-100" data-scrollbar="true">
-                <form id="login" className="d-flex flex-column justify-content-around">
-                	<p id="message" className='text-red'></p>
-                    <div className="alert alert-error text-red"></div>
-                    <div className="mb-4">
-                        <PhoneNumberInput />
-                    </div>
-                    <div>
-                        <ul>
-                            <li>You will receive an SMS with your ticket number.</li>
-                        </ul>
-                    </div>
-                    <div className="mb-4 text-center submit-phone-btn">
-                        <button type="button" onClick={createTicket} className="btn shadow m-auto branch-btn w-100 mt-4 btnshadow">
-                            <span className="col-12">Send Information</span></button>
-                    </div>
-                    
-                </form>
-            </div>
-        </div> 
-        </div> */
     )
 }

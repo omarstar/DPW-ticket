@@ -110,11 +110,14 @@
   .more-bold {
     font-weight: 800;
   }
+  .tt-cap {
+    text-transform: capitalize;
+  }
   /* input */
   .input-box {
     color: black;
     letter-spacing: 0.72px;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
     text-align: start;
     border: 1px solid #000;
     border-top: 0px;

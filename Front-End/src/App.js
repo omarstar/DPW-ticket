@@ -24,6 +24,7 @@ import AppointmentList from './components/pages/appointment/AppointmentList';
 import BookingSummary from './components/pages/bookingSummary/BookingSummary';
 import CategoryList from './components/pages/servicesList/CategoryList';
 import TicketRedirect from './components/pages/TicketRedirect';
+import WalkinPhoneNumber from './components/pages/WalkinPhoneNumer';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Route path="/DPW/summary" element={<BookingSummary />} />
         <Route path="/DPW/branches" element={<Branches/>} />
         {/* <Route path="/DPW/services/:id" element={<Services/>} /> */}
+        <Route path="/DPW/walkin-mobile" element={<WalkinPhoneNumber/>} />
         <Route path="/DPW/mobile" element={<PhoneNumber/>} />
         
         {/* <Route path="/DPW/survey" element={<Survey/>} /> */}
