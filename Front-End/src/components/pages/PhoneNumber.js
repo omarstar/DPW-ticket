@@ -9,7 +9,7 @@ import '../common.css';
 import '../../styles/mobile.css'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { getPhonenumber, isShowModal, setBranchid, setLoading, setModal, setTicket } from '../../reducers';
+import { getPhonenumber, isShowModal, setBranchid, setLoading, setModal, setPhonenumber, setTicket } from '../../reducers';
 import { api, getSessionValue, setSessionValue, vadidateForm } from '../../utils/index';
 import { useNavigate, useParams } from 'react-router-dom';
 import $ from 'jquery';
@@ -26,8 +26,14 @@ export default function PhoneNumber() {
     const {flow} = useSelector((state) => state.app);
 
     const dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(setPhonenumber(''))
+    
+    }, [])
+    
 
     let mobileNumber = useSelector(getPhonenumber);
+    console.log('init mobileNumber', mobileNumber)
   
      // validate
     //  const [errorMessage, setErrorMessage] = useState('');
@@ -61,13 +67,13 @@ export default function PhoneNumber() {
                     if(Appointments.length > 0){
                         dispatch(setAppointments(Appointments));
                         
-                        sendOTP(mobileNumber);
+                        await sendOTP(mobileNumber);
                         return navigate('/DPW/otp');
                     }else{
                         return setShowAlert('Wrong mobile number or no appointment found');
                     }
                 }else{  
-                    sendOTP(mobileNumber);
+                    await sendOTP(mobileNumber);
                     return navigate('/DPW/otp');
                 }
             } catch (error) {
