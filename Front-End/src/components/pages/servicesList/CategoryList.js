@@ -15,6 +15,7 @@ import ModalExit from '../../includes/modal/ModalExit'
 import { useNavigate } from 'react-router-dom'
 import Loading from '../../includes/loading/loading'
 import { golobalVariables } from '../../../services/api'
+import { categoryListObject } from '../../../utils/constants'
 
 export default function CategoryList(params) {
     // category list
@@ -45,6 +46,7 @@ export default function CategoryList(params) {
     }
 
     let [categoryList , setcategoryList] = useState()
+    // categoryList = categoryListObject;//test
 
     useEffect( () => {
         dispatch(setLoading(true));
@@ -97,10 +99,10 @@ export default function CategoryList(params) {
                            
                             categoryList && categoryList.map((cat, index) =>  (
         
-                                <div key={index} className="button-category-item col-5">
+                                <div key={index} id="cat-img-btn" className="button-category-item col-5">
                                     <div onClick={()=>handlecategorySubmit(cat)} className="category-btn-box">
                                         <button className="button-wide button-fill-clr cat-img-box">
-                                            <img clasName="img-fluid cat-img m-auto" src={catImg} alt="" />
+                                            <img clasName="img-fluid img-rat m-auto" src={catImg} alt="" />
                                         </button>
                                             <h6 className="mt-2 cat-text">{cat.name}</h6>
                                     </div>

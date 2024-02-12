@@ -227,19 +227,20 @@
       }
       .cat-img-box {
         border-radius: 8px;
-        /* border: 1px solid var(--royal-blue, #0068a9); */
         background-color: #0068a9;
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 25px 29px;
       }
-      .cat-img{
-        aspect-ratio: 1;
+
+      #cat-img-btn.img-rat{
         object-fit: auto;
         object-position: center;
-        width: 56px;
+        width: 5.5rem;
+        aspect-ratio: 1.4;
       }
+
       .cat-text {
         color: var(--title-color, #046cac);
         text-align: center;
