@@ -136,38 +136,31 @@ export default function CustomerForm(params) {
 
 		var valFn = validateInput($('#input-firstname'), $("#alert-firstname"), validateEmptyField);
 		var valLn = validateInput($('#input-lastname'), $("#alert-lastname"), validateEmptyField);
-		// var valM = validateInput($("#input-mobileNumber"), $("#alert-mobile"), validateEmptyField);
-		// var valM = validateMobileInput(phoneInput,$("#alert-mobile"));
-		// var valM = errorMessage ? true : false;
-		var valE = validateInput($('#input-email'), $("#alert-email"), validateEmptyField);
+
+        var valE = validateInput($('#input-email'), $("#alert-email"), validateEmptyField);
 		var valC = validateInput($('#input-companyName2'), $("#alert-companyName2"), validateEmptyField);
 		var isValidMobile =  errorMessage === 'valid' ? true : false;
-    console.log('isValidMobile', isValidMobile)
-    console.log('errorMessage', errorMessage)
-		// var isValidMobile = validateMobileInput(phoneInput,$("#alert-mobile"));
-		var isValidEmail = validateInput($("#input-email"), $("#alert-email"), validateEmail);
+		
+        var isValidEmail = validateInput($("#input-email"), $("#alert-email"), validateEmail);
 		
 		if(!valFn || !valLn || !valE || !valC || !isValidMobile || !isValidEmail){
 			return false
 		}
 
-	
 		return true;
 	}
     $("#input-email").on("blur", function() {
         validateInput($(this), $("#alert-email"), validateEmail);
     });
-    $("#input-walknew-mobilenumber").on("blur", function() {
-        // validateInput($(this), $("#alert-mobile"), validateMobileNumber);
-        // validateMobileInput($("#phonenumber"),$("#alert-mobile"));
 
-    });
     $("#input-firstname").on("blur", function() {
         validateInput($(this), $("#alert-firstname"), validateEmptyField);
     });
+    
     $("#input-lastname").on("blur", function() {
         validateInput($(this), $("#alert-lastname"), validateEmptyField);
     });
+    
     $("#input-companyName2").on("blur", function() {
         validateInput($(this), $("#alert-companyName2"), validateEmptyField);
     });

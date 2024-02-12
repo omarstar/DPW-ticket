@@ -24,6 +24,12 @@
     opacity : 0
   }
 
+  .mobile-app-alert {
+    width: 80vw;
+    margin-top: 7rem;
+    min-height: 24px;
+  }
+
 
   #input-app-mobilenumber {
     letter-spacing: 1.5px !important;

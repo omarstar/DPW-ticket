@@ -158,7 +158,7 @@ export default function PhoneNumber() {
                             :
                             <div className='h-15'></div>
                         }     */}
-                        <div id="alert-wrongmobile" className="alert-text ff-bold mobile-alert">{showAlert}</div>
+                        <div id="alert-wrongmobile" className="alert-text ff-bold mobile-app-alert">{showAlert}</div>
                         <div className='d-flex flex-column justify-content-end align-items-center h-15'><button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit">Continue</button></div>
                     </div>
                 </div>
