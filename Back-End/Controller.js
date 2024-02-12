@@ -276,7 +276,7 @@ async function sendOTPMessage(phoneNumber , otp) {
         "contentType": "3.1",
         "senderAddr": "Jafza",
         "priority": 1,
-        "recipient": phoneNumber,
+        "recipient": parseInt(phoneNumber),
         "msg":  `Your OTP is ${otp}. Please do not share this OTP with anyone.`,
         "dr": "1"
       });
