@@ -90,7 +90,7 @@ export default function CategoryList(params) {
                 <div id="page" className="page-layout d-flex justify-content-center">
                     
                     <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                        <div className="title-black">Please select a category</div>
+                        <div className="title-black ff-bold">Please select a category</div>
                             <div id="walkin-services-list" className="services-list-box row mx-0">
                             {
                             loading ? (

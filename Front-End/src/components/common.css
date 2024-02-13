@@ -15,7 +15,7 @@
   }
   .mini-gray-text {
     color: #777;
-    font: 900 0.8rem 'Montserrat-VariableFont', sans-serif;
+    font: 900 0.8rem 'Montserrat-Bold', sans-serif;
     text-align: center;
     /* letter-spacing: 0.48px; */
     width: 100vw;
@@ -123,7 +123,7 @@
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
-    font: normal 400 12px Montserrat, -apple-system, Roboto, Helvetica,
+    font: normal 400 12px "Montserrat-Bold", -apple-system, Roboto, Helvetica,
       sans-serif;
     height: 13px;
   }
@@ -136,6 +136,7 @@
   .input-box::placeholder {
     color: var(--gray-text, #777);
     font-style: italic;
+    font: italic 9px 'Montserrat-Italic';
     text-transform: uppercase;
     padding: 0 0 15px;
     margin-left: 6.6 !important;

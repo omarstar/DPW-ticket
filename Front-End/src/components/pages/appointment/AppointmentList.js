@@ -14,6 +14,7 @@ import ModalExit from '../../includes/modal/ModalExit'
 import { calculateRemainingTime, checkArrivalTime, formatDate } from '../../../utils'
 import axios from 'axios'
 import { setSelectedAppointment } from '../../../reducers/appointments'
+import { appiontmentsList } from '../../../utils/constants'
 
 export default function AppointmentList(params) {
 
@@ -23,7 +24,8 @@ export default function AppointmentList(params) {
     const [showAppStatusModal, setShowAppStatusModal] = useState(false);
 
     const doShowModal = useSelector(isShowModal);
-    const {appointments} = useSelector((state) => state.appointments);
+    let {appointments} = useSelector((state) => state.appointments);
+    // appointments = appiontmentsList;//test only
     console.log('appointments',appointments);
     
     const modalAppProceedData = {
@@ -76,7 +78,7 @@ export default function AppointmentList(params) {
                 if(status === 'remaining'){
                     setShowAppStatusModal({title:'It is not time to check-in to your appointment yet',app})
                 }else if(status === 'overdue'){
-                    setShowAppStatusModal({title:'You have missed your appointment.',app})
+                    setShowAppStatusModal({title:'You have missed your appointment',app})
                 }
             }
         } catch (error) {
@@ -144,6 +146,8 @@ export default function AppointmentList(params) {
             throw error;
         }
     }
+
+    const branchName = "JAFZA LOB 14"
     
     return (
         <>
@@ -155,9 +159,9 @@ export default function AppointmentList(params) {
             <div id="page" className="page-layout d-flex justify-content-center">
                 
                 <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                    <div className="title-applist mx=4">please select your confirmed face-to-face appointment to check-in.</div>
-                    <span className='mini-gray-apptext'>You can check-in from 20 minutes before the time of the appointment</span>
-                    <div className='result-title'>showing results for jafza lob 14</div>
+                    <div className="title-applist mx=4">Please select your confirmed face-to-face appointment to check-in.</div>
+                    <span className='mini-gray-apptext'>You can check-in from 20 minutes before the time of the appointment.</span>
+                    <div className='result-title'>Showing results for {<branchName></branchName>}</div>
                     <div className="ticket-applist-box col-12 text-center d-flex flex-column align-items-center">
                         {
                             appointments  ? appointments.map(appointment =>  (

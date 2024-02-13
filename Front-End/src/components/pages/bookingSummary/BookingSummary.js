@@ -93,33 +93,33 @@ export default function BookingSummary(params) {
             </div>
             <div id="page" className="page-layout d-flex flex-column justify-content-start align-items-center">
                 <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                    <div className="title-black">Your appointment summary</div>
+                    <div className="title-black ff-bold">Your appointment summary</div>
                     <div class="appsummary-box col-12 text-center d-flex flex-column align-items-center">
                         <div class="row summary-container">
                             <div class="labels">
                             <div class="column">
                                 <div class="label-box">
-                                <div class="label-name">name</div>
+                                <div class="label-name ">name</div>
                                 <div class="label-dots">:</div>
-                                <div id="name-val" class="label-value">{selectedApp.customers[0].firstName + " " + selectedApp.customers[0].lastName}</div>
+                                <div id="name-val" class="label-value">{selectedApp.customers[0]?.firstName + " " + selectedApp.customers[0]?.lastName}</div>
                                 {/* <div id="name-val" class="label-value">John Doe</div> */}
                                 </div>
                                 <div class="label-box">
                                 <div class="label-name">Mobile</div>
                                 <div class="label-dots">:</div>
-                                <div id="mobile-val" class="label-value">{selectedApp.customers[0].properties?.phoneNumber}</div>
+                                <div id="mobile-val" class="label-value">{selectedApp.customers[0]?.properties?.phoneNumber ?? 'N/A'}</div>
                                 {/* <div id="mobile-val" class="label-value">+971 55 123 1234</div> */}
                                 </div>
                                 <div class="label-box">
                                 <div class="label-name">E-Mail</div>
                                 <div class="label-dots">:</div>
-                                <div id="email-val" class="label-value">{selectedApp.customers[0].properties?.email}</div>
+                                <div id="email-val" class="label-value">{selectedApp.customers[0]?.properties?.email ?? 'N/A'}</div>
                                 {/* <div id="email-val" class="label-value">John.doe@office365.com</div> */}
                                 </div>
                                 <div class="label-box">
                                 <div class="label-name">Company</div>
                                 <div class="label-dots">:</div>
-                                <div id="company-val" class="label-value">{selectedApp.customers[0].properties?.company}</div>
+                                <div id="company-val" class="label-value">{selectedApp.customers[0]?.properties?.company ?? 'N/A'}</div>
                                 {/* <div id="company-val" class="label-value">XYZ Middle East Fze</div> */}
                                 </div>
                                 <div class="label-box">
@@ -131,7 +131,7 @@ export default function BookingSummary(params) {
                                 <div class="label-box">
                                 <div class="label-name">Service name</div>
                                 <div class="label-dots">:</div>
-                                <div id="service-service-val" class="label-value">{selectedApp.services[0].name}</div>
+                                <div id="service-service-val" class="label-value">{selectedApp.services[0]?.name ?? 'N/A'}</div>
                                 {/* <div id="service-service-val" class="label-value">Admin services - employee affairs</div> */}
                                 </div>
                                 <div class="label-box">
@@ -144,7 +144,7 @@ export default function BookingSummary(params) {
                             </div>
                         </div>
                     </div>
-                    <button id="btn-otp-submit" onClick={handleProceedCheckinApp} className="space-proceed-appsummary">Confirm &amp; proceed</button>
+                    <button id="btn-otp-submit" onClick={handleProceedCheckinApp} className="space-proceed-appsummary">Confirm &amp; Proceed</button>
                 </div>
             </div>
             <div className="footer-section">

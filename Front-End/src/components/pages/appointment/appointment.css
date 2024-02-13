@@ -1,6 +1,6 @@
 .result-title {
     color: #000;
-    font: 900 0.65rem 'Montserrat-VariableFont', sans-serif;
+    font: 900 0.65rem 'Montserrat-Medium', sans-serif;
     width: 90vw;
     display: flex;
     justify-content: flex-start;
@@ -17,12 +17,12 @@
 }
 .title-applist  {
     color: var(--royal-text, #046cac);
-  font: 900 0.8rem 'Montserrat-VariableFont', sans-serif;
+  font: 700 0.8rem 'Montserrat-Bold', sans-serif;
   text-align: center
 }
 .mini-gray-apptext {
     color: #777;
-  font: 900 0.6rem 'Montserrat-VariableFont', sans-serif;
+  font: 500 0.6rem 'Montserrat-Medium', sans-serif;
   text-align: center;
   letter-spacing: 0.48px;
   width: 90vw;

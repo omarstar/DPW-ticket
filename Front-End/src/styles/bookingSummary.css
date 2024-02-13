@@ -45,7 +45,7 @@
   }
 
   .label-name {
-    font-family: Montserrat, sans-serif;
+    font-family: "Montserrat-Bold", sans-serif;
     flex-grow: 1;
     flex-basis: auto;
     margin-left: 20px;
@@ -55,10 +55,10 @@
 
   .label-dots {
     justify-content: center;
-    font-family: Montserrat, sans-serif;
+    font-family: "Montserrat-Regular", sans-serif;
   }
   .label-value {
-    font-family: Montserrat, sans-serif;
+    font: 600 7px "Montserrat-SemiBold", sans-serif;
     flex-grow: 1;
     flex-basis: auto;
     margin-left: 20px;
@@ -114,5 +114,5 @@
     text-align: center;
     letter-spacing: 0.36px;
     padding: 11px 60px;
-    font: 900 9px Montserrat, sans-serif;
+    font: 700 11px "Montserrat-Bold", sans-serif;
   }

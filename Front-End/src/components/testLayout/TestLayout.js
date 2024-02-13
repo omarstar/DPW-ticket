@@ -29,7 +29,7 @@ export default function TestLayout(params) {
             </div>
             <div id="page" className="page-layout d-flex flex-column justify-content-start align-items-center">
                 <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                    <div className="title-applist mx=4">please select your confirmed face-to-face appointment to check-in.</div>
+                    <div className="title-applist mx=4">Please select your confirmed face-to-face appointment to check-in.</div>
                     <span className='mini-gray-apptext'>You can check-in from 20 minutes before the time of the appointment</span>
                     <div className='result-title'>showing results for jafza lob 14</div>
                     <div className="ticket-applist-box col-12 text-center">

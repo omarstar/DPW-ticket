@@ -183,7 +183,7 @@ export default function ServiceList(params) {
                 <div id="page" className="page-layout d-flex justify-content-center">
                     
                     <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                        <div className="title-black">Please select a service</div>
+                        <div className="title-black ff-bold">Please select a service</div>
                             <div id="walkin-services-list" className="services-list-box d-flex flex-column align-items-center">
                             {
                             loading ? (

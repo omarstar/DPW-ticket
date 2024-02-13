@@ -31,7 +31,7 @@ console.log('ticket info: ', ticket)
 
     return (
         <>
-        <div className="title-black">It's your turn</div>
+        <div className="title-black ff-bold">It's your turn</div>
         <div className='ticket-wrapper text-center'>
             <div className="m-0 alignment txt_color" >
             <div className="myrounded text-center col-12">

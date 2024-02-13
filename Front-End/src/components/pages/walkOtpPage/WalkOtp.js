@@ -185,8 +185,8 @@ export default function WalkOtp(params) {
     }
 
 
-    const [showAlertElement, setShowAlertElement] = useState(false)
-    const [showResendElement, setShowResendElement] = useState(false)
+    // const [showAlertElement, setShowAlertElement] = useState(false)
+    // const [showResendElement, setShowResendElement] = useState(false)
 
     console.log('the otp value', otp)
     return (

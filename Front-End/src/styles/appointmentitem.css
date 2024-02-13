@@ -66,13 +66,13 @@
 
   .applist-branchname {
     letter-spacing: 0.96px;
-    font: 700 7px Montserrat, sans-serif;
+    font: 700 7px 'Montserrat-Bold', sans-serif;
   }
 
   .applist-servicename {
     letter-spacing: 0.72px;
     margin-top: 9px;
-    font: 600 5.5px Montserrat, sans-serif;
+    font: 600 5.5px 'Montserrat-SemiBold', sans-serif;
   }
 
   .clm2-box {
@@ -82,14 +82,14 @@
 
   .applist-date {
     letter-spacing: 0.96px;
-    font: 700 7px Montserrat, sans-serif;
+    font: 700 7px 'Montserrat-Bold', sans-serif;
   }
 
   .applist-time {
     letter-spacing: 0.72px;
     align-self: center;
     margin-top: 9px;
-    font: 600 5.5px Montserrat, sans-serif;
+    font: 600 5.5px 'Montserrat-SemiBold', sans-serif;
   }
 
   .clm3-box {
@@ -100,7 +100,7 @@
     justify-content: center;
     letter-spacing: 0.96px;
     text-transform: capitalize;
-    font: 700 7px Montserrat, sans-serif;
+    font: 700 7px "Montserrat-Bold", sans-serif;
   }
 
   .applist-status {
@@ -108,7 +108,7 @@
     text-transform: uppercase;
     align-self: center;
     margin-top: 9px;
-    font: 600 5.5px Montserrat, sans-serif;
+    font: 600 5.5px "Montserrat-SemiBold", sans-serif;
   }
 
   /* @media (max-width: 991px) {

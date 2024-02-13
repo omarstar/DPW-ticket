@@ -63,6 +63,10 @@ export default function PhoneNumber() {
     //     validateInput($(this), $("#alert-walkin-email"), validateEmail);
     // });
 
+    // function isFieldValidated(){
+    //     return showAlert === 'valid';
+    // }
+
      const handleMobileSubmit = async () => {
         
         console.log('validating sending otp phone nb',mobileNumber);
@@ -139,7 +143,7 @@ export default function PhoneNumber() {
                 <div id="page" className="page-layout d-flex justify-content-start align-items-center">
                     <div className="title-box d-flex flex-column justify-content-center align-items-center">
                         <div className="title-black ff-bold">Please enter your mobile number</div>
-                        <div className="input-mobile-block">
+                        <div className="input-appmobile-block">
                             <PhoneNumberInput onValidationResult={handleValidationResult}  />
                         </div>
                         
@@ -159,7 +163,7 @@ export default function PhoneNumber() {
                             <div className='h-15'></div>
                         }     */}
                         <div id="alert-wrongmobile" className="alert-text ff-bold mobile-app-alert">{showAlert}</div>
-                        <div className='d-flex flex-column justify-content-end align-items-center h-15'><button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit">Continue</button></div>
+                        <div className='d-flex flex-column justify-content-end align-items-center btn-appmobile-box'><button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit">Continue</button></div>
                     </div>
                 </div>
                 <div className="footer-section">

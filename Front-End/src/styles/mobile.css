@@ -7,9 +7,10 @@
 
   /* input */
   .input-mobile-block {
-    /* margin-top: 95px; */
     margin-top: 3rem;
-    /* width: 100%; */
+  }
+  .input-appmobile-block {
+    margin-top: 7rem;
   }
 
   .alert-wrongmobile-text {
@@ -26,10 +27,12 @@
 
   .mobile-app-alert {
     width: 80vw;
-    margin-top: 7rem;
+    margin-top: 4rem;
     min-height: 24px;
   }
-
+.btn-appmobile-box {
+  height: 17vh;
+}
 
   #input-app-mobilenumber {
     letter-spacing: 1.5px !important;
