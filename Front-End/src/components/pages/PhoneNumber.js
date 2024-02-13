@@ -93,7 +93,7 @@ export default function PhoneNumber() {
                     return navigate('/DPW/otp');
                 }
             } catch (error) {
-                return setShowAlert('network temporarily unavailable');
+                return setShowAlert('Network temporarily unavailable');
             }
         }else{
             // setShowAlert('This field is required')

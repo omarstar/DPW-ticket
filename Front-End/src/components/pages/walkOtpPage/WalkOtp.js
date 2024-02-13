@@ -110,7 +110,7 @@ export default function WalkOtp(params) {
             setShowResendButton(false);
             
         } catch (error) {
-            setErrorFlag("network temporarily unavailable")
+            setErrorFlag("Network temporarily unavailable")
         }
       };
 
@@ -175,7 +175,7 @@ export default function WalkOtp(params) {
             }
         } catch (error) {
             console.log('error in parsing data', error)
-            setErrorFlag("network temporarily unavailable")
+            setErrorFlag("Network temporarily unavailable")
             // setTimeout(() => {
             //     clearMostSessions();
             //     navigate('/home')
@@ -218,8 +218,7 @@ export default function WalkOtp(params) {
                     <div id="alert-noappotp" style={{opacity: errorFlag ? '1' : '0'}} class="alert-noappotp-text">Wrong OTP number</div>
                     <div class="otp-actions-box">
                         <button id="btn-resendotp-submit" style={{display: showResendButton ? 'flex' : 'none'}}   onClick={resendOtpAndRestartTimer} class="button-wide button-fill-clr space-submit-resendotp">
-                            <span style={{"textTransform": "capitalize"}}>resend</span>
-                            <span style={{"textTransform": "uppercase"}}> otp</span>
+                            <span>Resend OTP</span>
                         </button>
                         <button id="btn-otp-submit" onClick={handleSubmitOtp} className="button-wide button-fill-clr space-submit-otp">Submit</button>
                     </div>

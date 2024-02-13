@@ -68,12 +68,7 @@ export default function WalkinPhoneNumber() {
         const valE = validateInput($("#input-walkin-email"), $("#alert-walkin-email"), validateEmptyField);
         const valEi = validateInput($("#input-walkin-email"), $("#alert-walkin-email"), validateEmail);
        
-        console.log('errorMessage', errorMessage)
-        if(mobileNumber == ''){
-            setErrorMessage("This field is required")
-        }else{
-            var isValidMobile =  errorMessage === 'valid' ? true : false;
-        }
+        var isValidMobile =  errorMessage === 'valid' ? true : false;
 
         if(!valN || !valE || !isValidMobile || !valEi){
             return false
@@ -98,19 +93,19 @@ export default function WalkinPhoneNumber() {
                     }else{
                         return setShowAlert('Wrong mobile number or no appointment found');
                     }
-                }else{  
+                }else{ 
                     let customer = {
                         firstName : $('#input-walkin-name').val(),
                         phoneNum : mobileNumber,
                         email : $('#input-walkin-email').val(),
-        
+                        
                     };
                     await createCustomer(customer);
                     await sendOTP(mobileNumber);
                     return navigate('/DPW/otp');
                 }
             } catch (error) {
-                return setShowAlert('network temporarily unavailable');
+                return setShowAlert('Network temporarily unavailable');
             }
         }
         // if(mobileNumber !== '' && !showAlert){
