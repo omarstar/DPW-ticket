@@ -5,13 +5,14 @@ import '../../styles/getStarted.css'
 import { useDispatch, useSelector } from "react-redux";
 import { selectLanguage, setBranchPrefix, toggleCurrentLang } from "../../reducers";
 import { useEffect, useState } from "react";
+import Text from "../Text";
 
 const Welcome = () => {
     var {branch} = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     dispatch(setBranchPrefix(branch??'LOB14'));
-    const buttonstartText = "Get started"
+
     
     const currentLanguage = useSelector(selectLanguage);
     console.log('currentLanguage', currentLanguage)
@@ -44,7 +45,7 @@ const Welcome = () => {
         </section>
         
         <button id="btn-getstarted" onClick={navToOptions} className="button-getstarted ff-bold">
-            {buttonstartText}
+            <Text name="getStarted" />
         </button>
     
         <section className="footer-section">
