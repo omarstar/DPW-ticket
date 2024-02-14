@@ -8,8 +8,14 @@ import footerBGshape from '../../../images/footer-sky-bg.svg'
 import '../../common.css';
 import "./servicesList.css"
 import catImg from '../../../images/service-svgrepo-white-com.svg'
-import catLease from '../../../images/catIcons/handshake-svgrepo-com.png'
-import catCs from '../../../images/catIcons/customer-service-svgrepo-com.svg'
+import catLease from '../../../images/catIcons/contract-sign-line-svgrepo-com.svg'
+import catCs from '../../../images/catIcons/customer-service-woman-svgrepo-com.svg'
+import catManagement from '../../../images/catIcons/customer-management-line-svgrepo-com.svg'
+import catEmployee from '../../../images/catIcons/development-human-network-svgrepo-com.svg'
+import catLicense from '../../../images/catIcons/license-maintenance-svgrepo-com.svg'
+import catProperty from '../../../images/catIcons/property-svgrepo-com.svg'
+import catRegister from '../../../images/catIcons/register-svgrepo-com.svg'
+import catSales from '../../../images/catIcons/sales-amount-svgrepo-com.svg'
 
 import { isShowModal, setCategory, setLoading, setModal } from '../../../reducers';
 import { useDispatch, useSelector } from 'react-redux';
@@ -49,7 +55,7 @@ export default function CategoryList(params) {
     }
 
     let [categoryList , setcategoryList] = useState()
-    categoryList = categoryListObject;//test
+    // categoryList = categoryListObject;//test
 
     useEffect( () => {
         dispatch(setLoading(true));
@@ -112,22 +118,22 @@ export default function CategoryList(params) {
                                         imgCatRelated = catCs;
                                         break;
                                     case 'Employee Affairs':
-                                        imgCatRelated = catLease;
+                                        imgCatRelated = catEmployee;
                                         break;
                                     case 'Asset & Property Management':
-                                        imgCatRelated = catLease;
+                                        imgCatRelated = catProperty;
                                         break;
                                     case 'Licensing':
-                                        imgCatRelated = catLease;
+                                        imgCatRelated = catLicense;
                                         break;
                                     case 'Registration & Offshore':
-                                        imgCatRelated = catLease;
+                                        imgCatRelated = catRegister;
                                         break;
                                     case 'Sales':
-                                        imgCatRelated = catLease;
+                                        imgCatRelated = catSales;
                                         break;
                                     case 'Workforce Affairs':
-                                        imgCatRelated = catLease;
+                                        imgCatRelated = catManagement;
                                         break;
 
                                     default:
