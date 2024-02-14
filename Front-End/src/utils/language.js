@@ -57,8 +57,8 @@ const locals = {
         "ar" : "الرجاء إختيار الموعد المؤكد للتسجيل"
     },
     'noteAppCheckin' : {
-        "en" : "You can check-in from 20 minutes before the time of the appointment.",
-        "ar" : "بإستطاعتك التسجيل قبل الموعد ب 20 دقيقة."
+        "en" : "You can check-in from 20 minutes before the time of the appointment",
+        "ar" : "بإستطاعتك التسجيل قبل الموعد ب 20 دقيقة"
     },
     'modalAppEarly' : {
         "en" : "It is not time to check-in to your appointment yet",
@@ -78,7 +78,7 @@ const locals = {
     },
     'titleBookingSummary' : {
         "en" : "Your appointment summary",
-        "ar" : "تسجيل وصول للموعد"
+        "ar" : "ملخص موعدك"
     },
     'btnWalkinFlow' : {
         "en" : "Walk-in",
@@ -189,12 +189,12 @@ const locals = {
         "ar" : "الشبكة غير متاحة مؤقتًا"
     },
     'alertNoAppWrongMobile' : {
-        "en" : "Wrong mobile number or no appointment found",
+        "en" : "Wrong mobile number, no appointment found",
         "ar" : "لا يوجد مواعيد او رقم هاتفك المتحرك غير صحيح"
     },
     'alertWrongOtp' : {
         "en" : "Wrong OTP number",
-        "ar" : "رمز مرور غير صحيح"
+        "ar" : "رمز المرور غير صحيح"
     },
     'alertNoRecords' : {
         "en" : "No records found",
@@ -206,7 +206,7 @@ const locals = {
     },
     'txtCustomerExist' : {
         "en" : "Existing customer",
-        "ar" : "زبون حالي"
+        "ar" : "زبون الحالي"
     }
 }
 
