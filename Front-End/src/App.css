@@ -371,3 +371,35 @@ body {
 .otp-error{
   margin-top: 35px;
 }
+.directionRtL{
+  direction: rtl;
+  text-align: right;
+}
+
+#loading_wrap{
+  display:block;
+   position:absolute;
+   background-color:#000000;
+   text-align: center;
+  vertical-align: middle;
+  height:100%;
+   width:100%;
+   top:0;
+   left:0;
+   opacity: 0.8;
+   filter: alpha(opacity=80);
+   z-index: 100002000;
+
+}
+
+#loading-inner{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+
+}
+
+#loading-inner svg{
+  width: 30%;
+}

@@ -8,7 +8,7 @@ import "./appointment.css"
 import '../../common.css';
 
 import { useDispatch, useSelector } from 'react-redux'
-import { isShowModal, setModal, setTicket } from '../../../reducers'
+import { isShowModal, setLoading, setModal, setTicket } from '../../../reducers'
 import { useNavigate } from 'react-router'
 import ModalExit from '../../includes/modal/ModalExit'
 import { calculateRemainingTime, checkArrivalTime, formatDate } from '../../../utils'
@@ -16,6 +16,7 @@ import axios from 'axios'
 import { setSelectedAppointment } from '../../../reducers/appointments'
 // import { appiontmentsList } from '../../../utils/constants'
 import Text from '../../Text'
+import Loading from '../../includes/loading/loading'
 
 export default function AppointmentList(params) {
 
@@ -26,6 +27,8 @@ export default function AppointmentList(params) {
 
     const doShowModal = useSelector(isShowModal);
     let {appointments} = useSelector((state) => state.appointments);
+    const {loading} = useSelector((state) => state.app);
+
     // appointments = appiontmentsList;//test only
     console.log('appointments',appointments);
     
@@ -66,10 +69,13 @@ export default function AppointmentList(params) {
         dispatch(setModal(true))
     }
     async function handleClickApp(app,status) {
+
         try {
             if(status==='open'){
                 //navto booking summary selected app
+                
                 dispatch(setSelectedAppointment(app));
+
                 navigate('/DPW/summary')
                 // await checkInAppt(app)
             }else if(status === 'walkin'){
@@ -121,6 +127,8 @@ export default function AppointmentList(params) {
     }
     async function createTicket(app) {
         try {
+            dispatch(setLoading(true));
+
             var servicesIds = [];
             app.services.forEach(sr => {
                 servicesIds.push(sr.id);
@@ -141,6 +149,7 @@ export default function AppointmentList(params) {
                 let visit =  await axios.request(config)
                 console.log('visit.data', visit.data)
                 dispatch(setTicket(JSON.stringify(visit.data)))
+                dispatch(setLoading(false));
                 
                 return navigate('/DPW/ticket');
 
@@ -154,6 +163,7 @@ export default function AppointmentList(params) {
     
     return (
         <>
+       
         <div className="d-flex flex-column justify-content-center align-items-center bg-white">
             <div className="header-section">
                 <img id="header-home-btn" onClick={showModel} src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />

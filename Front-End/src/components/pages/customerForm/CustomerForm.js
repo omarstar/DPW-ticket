@@ -10,7 +10,7 @@ import '../../common.css';
 import PhoneNumberInput from '../../includes/phoneInput/PhoneNumberInput'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { isShowModal, setModal } from '../../../reducers'
+import { isShowModal, setLoading, setModal } from '../../../reducers'
 import ModalExit from '../../includes/modal/ModalExit'
 import $ from 'jquery';
 import { createCustomer, sendOTP } from '../../../services/api'
@@ -26,7 +26,7 @@ export default function CustomerForm(params) {
         navigate('/DPW/otp')
     }
 
-    const handleNewCustomerSubmit = () => {
+    const handleNewCustomerSubmit =  () => {
         if(validateInputFields()){
             let customer = {
                 firstName : $('#input-firstname').val(),
@@ -37,11 +37,20 @@ export default function CustomerForm(params) {
 
             };
             console.log('creating customer')
+            dispatch(setLoading(true))
             createCustomer(customer).then(a=>{
                 console.log('createCustomer',a);
-                sendOTP(customer.phoneNum);
+                sendOTP(customer.phoneNum).then(res=>{
+                    dispatch(setLoading(false));
+                }).catch(err=>{
+                    console.error(err);
+                    dispatch(setLoading(false));
+                });
                 navToOtpPage();
-            })
+            }).catch(err=>{
+                console.error(err);
+                dispatch(setLoading(false));
+            });
         }
     }
    

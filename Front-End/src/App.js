@@ -25,10 +25,18 @@ import BookingSummary from './components/pages/bookingSummary/BookingSummary';
 import CategoryList from './components/pages/servicesList/CategoryList';
 import TicketRedirect from './components/pages/TicketRedirect';
 import WalkinPhoneNumber from './components/pages/WalkinPhoneNumer';
+import { useSelector } from 'react-redux';
+import Loading from './components/includes/loading/loading';
 
 function App() {
+  const {loading} = useSelector((state) => state.app);
+
   return (
     // <Router>
+      <>
+      {
+        loading && <Loading/>
+      }
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/DPW/:branch" element={<Welcome />} />
@@ -58,6 +66,7 @@ function App() {
         <Route path="/DPW/thankyou" element={<Thankyou/>} />
         <Route path="/DPW/test" element={<TestLayout/>} />
       </Routes>
+      </>
     // </Router>
   );
 }

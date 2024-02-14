@@ -3,19 +3,25 @@ import headerLogoWhite from '../../images/JAFZA_Logo_White.svg'
 import footerBGshape from '../../images/footer-sky-bg.svg'
 import '../../styles/getStarted.css'
 import { useDispatch, useSelector } from "react-redux";
-import { selectLanguage, setBranchPrefix, toggleCurrentLang } from "../../reducers";
+import { selectLanguage, setBranchPrefix, setLoading, toggleCurrentLang } from "../../reducers";
 import { useEffect, useState } from "react";
 import Text from "../Text";
-
+import $ from 'jquery'
 const Welcome = () => {
     var {branch} = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    console.log('branch at welcome', branch)
-    dispatch(setBranchPrefix(branch??'LOB14'));
-
-    
     const currentLanguage = useSelector(selectLanguage);
+    var {branchPrefix} = useSelector((state) => state.app)
+    console.log('branch at welcome', branch)
+    if(branch){
+        dispatch(setBranchPrefix(branch));
+    }else{
+        if(!branchPrefix){
+            dispatch(setBranchPrefix('LOB14'));
+        }
+    }
+    dispatch(setLoading(false));
     console.log('currentLanguage', currentLanguage)
     const [lang, setLang] = useState(currentLanguage)
 
@@ -28,6 +34,14 @@ const Welcome = () => {
 
     const toggleLang = () => {
         dispatch(toggleCurrentLang());
+        $('.language').each(function(){
+            if(currentLanguage=="en"){
+                $(this).parent().removeClass('directionRtL')
+            }else{
+                $(this).parent().addClass('directionRtL')
+            }
+        })
+        
     };
     
     const navToOptions = () => {
