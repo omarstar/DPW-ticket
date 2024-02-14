@@ -8,6 +8,8 @@ import footerBGshape from '../../../images/footer-sky-bg.svg'
 import '../../common.css';
 import "./servicesList.css"
 import catImg from '../../../images/service-svgrepo-white-com.svg'
+import catLease from '../../../images/catIcons/handshake-svgrepo-com.png'
+import catCs from '../../../images/catIcons/customer-service-svgrepo-com.svg'
 
 import { isShowModal, setCategory, setLoading, setModal } from '../../../reducers';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,7 +17,7 @@ import ModalExit from '../../includes/modal/ModalExit'
 import { useNavigate } from 'react-router-dom'
 import Loading from '../../includes/loading/loading'
 import { golobalVariables } from '../../../services/api'
-// import { categoryListObject } from '../../../utils/constants'
+import { categoryListObject } from '../../../utils/constants'
 import Text from '../../Text'
 
 export default function CategoryList(params) {
@@ -47,7 +49,7 @@ export default function CategoryList(params) {
     }
 
     let [categoryList , setcategoryList] = useState()
-    // categoryList = categoryListObject;//test
+    categoryList = categoryListObject;//test
 
     useEffect( () => {
         dispatch(setLoading(true));
@@ -98,17 +100,50 @@ export default function CategoryList(params) {
                                 <Loading hSpacer="h-25" />
                             ) : (
                            
-                            categoryList && categoryList.map((cat, index) =>  (
-        
-                                <div key={index} id="cat-img-btn" className="button-category-item col-5">
-                                    <div onClick={()=>handlecategorySubmit(cat)} className="category-btn-box">
-                                        <button className="button-wide button-fill-clr cat-img-box">
-                                            <img clasName="img-fluid img-rat m-auto" src={catImg} alt="" />
-                                        </button>
-                                            <h6 className="mt-2 cat-text">{cat.name}</h6>
+                            categoryList && categoryList.map((cat, index) =>  {
+
+                                let imgCatRelated;
+
+                                switch(cat.name){
+                                    case 'Contracts & Leasing':
+                                        imgCatRelated = catLease;
+                                        break;
+                                    case 'Customer Service':
+                                        imgCatRelated = catCs;
+                                        break;
+                                    case 'Employee Affairs':
+                                        imgCatRelated = catLease;
+                                        break;
+                                    case 'Asset & Property Management':
+                                        imgCatRelated = catLease;
+                                        break;
+                                    case 'Licensing':
+                                        imgCatRelated = catLease;
+                                        break;
+                                    case 'Registration & Offshore':
+                                        imgCatRelated = catLease;
+                                        break;
+                                    case 'Sales':
+                                        imgCatRelated = catLease;
+                                        break;
+                                    case 'Workforce Affairs':
+                                        imgCatRelated = catLease;
+                                        break;
+
+                                    default:
+                                        imgCatRelated = catImg;
+                                };
+                                return (
+                                    <div key={index} id="cat-img-btn" className="button-category-item col-5">
+                                        <div onClick={()=>handlecategorySubmit(cat)} className="category-btn-box">
+                                            <button className="button-wide button-fill-clr cat-img-box">
+                                                <img clasName="img-fluid img-rat m-auto" src={imgCatRelated} alt="" />
+                                            </button>
+                                                <h6 className="mt-2 cat-text">{cat.name}</h6>
+                                        </div>
                                     </div>
-                                </div>
-                                ) )
+                                )
+                            })
                             )}
                         </div>
                         {/* init design cat-list */}
