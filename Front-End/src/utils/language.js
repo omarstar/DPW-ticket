@@ -212,10 +212,16 @@ const locals = {
 
 
 export function getLocalTranslate(key,lang) {
-
-    console.log(key);
-    console.log(locals[key]);
-    return lang == 'en' ? locals[key]["en"] : locals[key]["ar"];
+    if(locals[key]){
+        if(lang == 'en'){
+            return locals[key]["en"]?locals[key]["en"]:""
+        }else{
+            return locals[key]["ar"]?locals[key]["ar"]:""
+        }
+    }
+    // console.log(key);
+    // console.log(locals[key]);
+    // return lang == 'en' ? locals[key]["en"] : locals[key]["ar"];
 }
 
 /*

@@ -181,7 +181,7 @@ export default function ServiceList(params) {
                     <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
                     <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
                 </div>
-                <div id="page" className="page-layout d-flex justify-content-center">
+                <div id="page" className="page-layout d-flex">
                     
                     <div className="title-box d-flex flex-column justify-content-center align-items-center">
                         <div className="title-black ff-bold"><Text name="titleSelectService" /></div>

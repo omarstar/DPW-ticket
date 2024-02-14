@@ -10,12 +10,13 @@ import './walkOtp.css'
 
 import { useNavigate } from 'react-router-dom'
 import ModalExit from '../../includes/modal/ModalExit'
-import { getCurrentLang, getPhonenumber, isShowModal, setModal } from '../../../reducers'
+import { getCurrentLang, getPhonenumber, isShowModal, setLoading, setModal } from '../../../reducers'
 import { useDispatch, useSelector } from 'react-redux'
 import InputOtp from '../otpPage/InputOtp'
 import { ValidateOtp, callValidateOtp, sendOTP } from '../../../services/api'
 import { vop } from '../../../utils'
 import Text from '../../Text'
+import Loading from '../../includes/loading/loading'
 export default function WalkOtp(params) {
 
     const navigate = useNavigate();
@@ -98,8 +99,9 @@ export default function WalkOtp(params) {
 
        const resendOtpAndRestartTimer = async () => {
         try {
+            dispatch(setLoading(true));
             await sendOTP(mobileNumber);
-        
+            dispatch(setLoading(false));
             // Restart the countdown timer
             setMinutes(1);
             setSeconds(0);
@@ -146,7 +148,9 @@ export default function WalkOtp(params) {
 
     const handleSubmitOtp = async () => {
         setErrorFlag('');
-        console.log('will handle validate OTP')
+        console.log('will handle validate OTP');
+        dispatch(setLoading(true));
+
         try {
             const validateResult = validateOtp(otp);
             console.log('validateResult', validateResult)
@@ -158,12 +162,14 @@ export default function WalkOtp(params) {
                         phoneNumber:mobileNumber,
                         otp:publicOtp,
                     }).then(res=>{
+                        dispatch(setLoading(false));
                         if(flow === 'walkin'){
                             return navigate('/DPW/category');//test
                         }else{
                             return navigate('/DPW/appointment');//test
                         }
                     }).catch(err=>{
+                        dispatch(setLoading(false));
                         setErrorFlag(<Text name="alertWrongOtp" />)
                         // setErrorFlag("Wrong OTP number")
 
@@ -173,6 +179,7 @@ export default function WalkOtp(params) {
                 }    
 
             }else {
+                dispatch(setLoading(false));
                 setErrorFlag(<Text name="alertWrongOtp" />)
             }
         } catch (error) {
@@ -191,6 +198,7 @@ export default function WalkOtp(params) {
     return (
         <>
         <div className="d-flex flex-column justify-content-center align-items-center bg-white">
+           
             <div className="header-section">
                 <img id="header-home-btn" onClick={showModel} src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
                 <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
@@ -211,7 +219,7 @@ export default function WalkOtp(params) {
                     {/* {
                         errorFlag && <div className="alert-text otp-error">{errorFlag} <br/> </div>
                     } */}
-                    <div className="resend-otp-box" style={{opacity: showResendButton ? '0' : '1'}}>
+                    <div className={`resend-otp-box ${currentLang=='en'?'':'directionRtL'}`} style={{opacity: showResendButton ? '0' : '1'}}>
                         <div id="resend-message" className="resend-otp-text"><Text name="noteReceiveOtp" /></div>
                         {/* <div id="resend-message" className="resend-otp-text">Didn&apos;t receive OTP?</div> */}
                         <div id="timer" className="otp-time-text">{`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</div>

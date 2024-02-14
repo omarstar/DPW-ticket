@@ -9,7 +9,7 @@ import '../common.css';
 import '../../styles/mobile.css'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { getPhonenumber, isShowModal, setModal, setPhonenumber } from '../../reducers';
+import { getPhonenumber, isShowModal, setLoading, setModal, setPhonenumber } from '../../reducers';
 import { validateEmail, validateEmptyField, validateInput } from '../../utils/index';
 import { useNavigate } from 'react-router-dom';
 import $ from 'jquery';
@@ -84,6 +84,7 @@ export default function WalkinPhoneNumber() {
         console.log('validating sending otp phone nb',mobileNumber);
         //not empty and it is valid
         if(allFieldsValidated()){
+            dispatch(setLoading(true));
             try {
                 if(flow === "app"){
                     const Appointments = await getAppointments(mobileNumber)?? [];
@@ -105,6 +106,7 @@ export default function WalkinPhoneNumber() {
                     };
                     await createCustomer(customer);
                     await sendOTP(mobileNumber);
+                    dispatch(setLoading(false));
                     return navigate('/DPW/otp');
                 }
             } catch (error) {
@@ -126,7 +128,7 @@ export default function WalkinPhoneNumber() {
     const modalExitData = {
         titleText: <Text name="titleExitModal" />,
         buttonOptions: [{
-            text: <Text name="BtnYes" />,
+            text: <Text name="btnYes" />,
             buttonAction: () => {
                 dispatch(setModal(false))
                 navigate("/")
