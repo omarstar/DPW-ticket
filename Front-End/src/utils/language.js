@@ -78,7 +78,7 @@ const locals = {
     },
     'btnWalkinFlow' : {
         "en" : "Walk-in",
-        "ar" : "خدمة حضور"
+        "ar" : "خدمة الحضور"
     },
     'btnContinue' : {
         "en" : "Continue",
@@ -86,7 +86,7 @@ const locals = {
     },
     'btnAppFlow' : {
         "en" : "Check-in appointment",
-        "ar" : "تسجيل وصول للموعد"
+        "ar" : "تسجيل الوصول للموعد"
     },
     'btnSearchContinue' : {
         "en" : "Search & Continue",
@@ -112,6 +112,10 @@ const locals = {
         "en" : "Proceed as walk-in",
         "ar" : "المتابعة لخدمة الحضور"
     },
+    'btnProceed' : {
+        "en" : "Proceed",
+        "ar" : "المتابعة"
+    },
     'btnReturnHomepage' : {
         "en" : "Return to homepage",
         "ar" : "العودة إلى الصفحة الرئيسية"
@@ -127,6 +131,14 @@ const locals = {
     'txtYou' : {
         "en" : "you",
         "ar" : "أنت"
+    },
+    'txtFirstName' : {
+        "en" : "First name",
+        "ar" : "الاسم"
+    },
+    'txtLastName' : {
+        "en" : "Last Name",
+        "ar" : "الاسم"
     },
     'txtName' : {
         "en" : "Name",
@@ -183,6 +195,14 @@ const locals = {
     'alertNoRecords' : {
         "en" : "No records found",
         "ar" : "لم يتم العثور على السجلات"
+    },
+    'txtCustomerNew' : {
+        "en" : "New customer",
+        "ar" : "زبون جديد"
+    },
+    'txtCustomerExist' : {
+        "en" : "Existing customer",
+        "ar" : "زبون حالي"
     }
 }
 

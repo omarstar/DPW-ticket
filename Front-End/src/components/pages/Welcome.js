@@ -11,6 +11,7 @@ const Welcome = () => {
     var {branch} = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    console.log('branch at welcome', branch)
     dispatch(setBranchPrefix(branch??'LOB14'));
 
     

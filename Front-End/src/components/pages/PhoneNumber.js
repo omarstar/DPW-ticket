@@ -26,7 +26,7 @@ export default function PhoneNumber() {
 
     // const {phoneNumber} = useSelector((state) => state.app);
     const {flow , branchPrefix} = useSelector((state) => state.app);
-
+console.log('branchPrefix in app phone', branchPrefix)
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(setPhonenumber(''))

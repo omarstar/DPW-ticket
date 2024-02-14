@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { isShowModal, setFlow, setModal } from '../../reducers'
 import ModalExit from '../includes/modal/ModalExit'
+import Text from '../Text'
 
 export default function OptionsPage(params) {
 
@@ -35,9 +36,10 @@ export default function OptionsPage(params) {
     
 
     const modalExitData = {
-        titleText: "Are you sure you want to cancel and start the process over again?",
+        // titleText: "Are you sure you want to cancel and start the process over again?",
+        titleText: <Text name="titleExitModal" />,
         buttonOptions: [{
-            text: "Yes",
+            text: <Text name="btnYes" />,
             buttonAction: () => {
                 // setShowModal(false)
                 dispatch(setModal(false))
@@ -45,7 +47,7 @@ export default function OptionsPage(params) {
             }
         },
         {
-            text: "No",
+            text: <Text name="btnNo" />,
             buttonAction: () => {
                 // setShowModal(false)
                 dispatch(setModal(false))
@@ -66,9 +68,9 @@ export default function OptionsPage(params) {
             </div>
             <div id="page" className="page-layout d-flex justify-content-center align-items-center">
                 <div className="title-center-box d-flex flex-column justify-content-center align-items-center">
-                    <div className="title-black ff-bold">Please select an option</div>
-                    <button id="btn-appointment-flow" onClick={goToAppointmentMobile} className="button-wide button-fill-clr space-btn1">Check-in appointment</button>
-                    <button id="btn-walkin-flow" onClick={goToWalkinCustomer} className="button-wide button-fill-clr space-btn2">Walk-in</button>
+                    <div className="title-black ff-bold"><Text name="titleSelectOptions" /></div>
+                    <button id="btn-appointment-flow" onClick={goToAppointmentMobile} className="button-wide button-fill-clr space-btn1"><Text name="btnAppFlow" /></button>
+                    <button id="btn-walkin-flow" onClick={goToWalkinCustomer} className="button-wide button-fill-clr space-btn2"><Text name="btnWalkinFlow" /></button>
                 </div>
             </div>
             <div className="footer-section">

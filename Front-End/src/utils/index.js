@@ -1,3 +1,5 @@
+import Text from "../components/Text";
+
 export function api(endpoint) {
     return process.env.REACT_APP_API_URL + endpoint;
 }
@@ -32,6 +34,7 @@ export const validateInput = (input, errorElement, validationFunction) => {
 
   if (!isValid) {
     if(value === "")
+    // errorElement.text(JSON.stringify(<Text name="alertEmptyField" />));
     errorElement.text("This field is required");
     else {
       errorElement.text("Invalid format");

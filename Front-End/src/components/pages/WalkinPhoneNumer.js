@@ -17,6 +17,7 @@ import PhoneNumberInput from '../includes/phoneInput/PhoneNumberInput';
 import ModalExit from '../includes/modal/ModalExit';
 import { createCustomer, getAppointments, sendOTP } from '../../services/api';
 import { setAppointments } from '../../reducers/appointments';
+import Text from '../Text';
 
 export default function WalkinPhoneNumber() {
     
@@ -44,10 +45,10 @@ export default function WalkinPhoneNumber() {
         console.log('handle mobile valid?', isValid)
          if (!isValid) {
             if(message === 'This field is required'){
-                setErrorMessage(message)
+                setErrorMessage(<Text name="alertEmptyField" />)
             }
             else{
-                setErrorMessage("Wrong mobile number")
+                setErrorMessage(<Text name="alertWrongMobile" />)
             }
          } else {
          setErrorMessage(message);
@@ -91,7 +92,7 @@ export default function WalkinPhoneNumber() {
                         await sendOTP(mobileNumber);
                         return navigate('/DPW/otp');
                     }else{
-                        return setShowAlert('Wrong mobile number or no appointment found');
+                        return setShowAlert(<Text name="alertNoAppWrongMobile" />);
                     }
                 }else{ 
                     let customer = {
@@ -105,7 +106,7 @@ export default function WalkinPhoneNumber() {
                     return navigate('/DPW/otp');
                 }
             } catch (error) {
-                return setShowAlert('Network temporarily unavailable');
+                return setShowAlert(<Text name="alertNetwork" />);
             }
         }
         // if(mobileNumber !== '' && !showAlert){
@@ -154,7 +155,7 @@ export default function WalkinPhoneNumber() {
                 </div>
                 <div id="page" className="page-layout d-flex justify-content-start align-items-center">
                     <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                        <div className="title-black ff-bold">Please enter your mobile number</div>
+                        <div className="title-black ff-bold"><Text name="titleEnterMobile" /></div>
                         <div className="input-mobile-block">
                             <PhoneNumberInput onValidationResult={handleValidationResult}  />
                             <div id="alert-walkin-mobile" className="alert-small-text">{errorMessage === 'valid' ? '' : errorMessage}</div>
@@ -170,7 +171,7 @@ export default function WalkinPhoneNumber() {
                             </div>
                         </div>
                         <div id="alert-wrongmobile" className="alert-text ff-bold mobile-alert">{showAlert}</div>
-                        <div className='d-flex flex-column justify-content-end align-items-center h-15'><button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit">Continue</button></div>
+                        <div className='d-flex flex-column justify-content-end align-items-center h-15'><button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit"><Text name="btnContinue" /></button></div>
                     </div>
                 </div>
                 <div className="footer-section">

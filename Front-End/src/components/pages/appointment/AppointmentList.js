@@ -15,6 +15,7 @@ import { calculateRemainingTime, checkArrivalTime, formatDate } from '../../../u
 import axios from 'axios'
 import { setSelectedAppointment } from '../../../reducers/appointments'
 import { appiontmentsList } from '../../../utils/constants'
+import Text from '../../Text'
 
 export default function AppointmentList(params) {
 
@@ -31,30 +32,30 @@ export default function AppointmentList(params) {
     const modalAppProceedData = {
         titleText: showAppStatusModal.title,
         buttonOptions: [{
-            text: "Proceed as walk-in",
+            text: <Text name="btnProceedWalkin" />,
             buttonAction: () => {
                 setShowAppStatusModal(false)
                 handleClickApp(showAppStatusModal.app, 'walkin')
             }
         },
         {
-            text: "Close",
+            text: <Text name="btnClose" />,
             buttonAction: () => {
                 setShowAppStatusModal(false)
             }
         }]
     }
     const modalExitData = {
-        titleText: "Are you sure you want to cancel and start the process over again?",
+        titleText: <Text name="titleExitModal" />,
         buttonOptions: [{
-            text: "Yes",
+            text: <Text name="btnYes" />,
             buttonAction: () => {
                 dispatch(setModal(false))
                 navigate("/")
             }
         },
         {
-            text: "No",
+            text: <Text name="btnNo" />,
             buttonAction: () => {
                 dispatch(setModal(false))
             }
@@ -76,9 +77,11 @@ export default function AppointmentList(params) {
             }else{
                 // await createTicket(app);
                 if(status === 'remaining'){
-                    setShowAppStatusModal({title:'It is not time to check-in to your appointment yet',app})
+                    setShowAppStatusModal({title: <Text name="modalAppEarly" /> ,app})
+                    // setShowAppStatusModal({title:'It is not time to check-in to your appointment yet',app})
                 }else if(status === 'overdue'){
-                    setShowAppStatusModal({title:'You have missed your appointment',app})
+                    setShowAppStatusModal({title: <Text name="modalAppLate" />,app})
+                    // setShowAppStatusModal({title:'You have missed your appointment',app})
                 }
             }
         } catch (error) {
@@ -159,9 +162,9 @@ export default function AppointmentList(params) {
             <div id="page" className="page-layout d-flex justify-content-center">
                 
                 <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                    <div className="title-applist mx=4">Please select your confirmed face-to-face appointment to check-in.</div>
-                    <span className='mini-gray-apptext'>You can check-in from 20 minutes before the time of the appointment.</span>
-                    <div className='result-title'>Showing results for {<branchName></branchName>}</div>
+                    <div className="title-applist mx=4"><Text name="titleSelectApp" /></div>
+                    <span className='mini-gray-apptext'><Text name="noteAppCheckin" /></span>
+                    <div className='result-title'><Text name="noteShowResults" realign />{branchName}</div>
                     <div className="ticket-applist-box col-12 text-center d-flex flex-column align-items-center">
                         {
                             appointments  ? appointments.map(appointment =>  (

@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import InputOtp from '../otpPage/InputOtp'
 import { ValidateOtp, callValidateOtp, sendOTP } from '../../../services/api'
 import { vop } from '../../../utils'
+import Text from '../../Text'
 export default function WalkOtp(params) {
 
     const navigate = useNavigate();
@@ -37,16 +38,16 @@ export default function WalkOtp(params) {
     const {flow} = useSelector((state) => state.app);
 
     const modalExitData = {
-        titleText: "Are you sure you want to cancel and start the process over again?",
+        titleText: <Text name="titleExitModal" />,
         buttonOptions: [{
-            text: "Yes",
+            text: <Text name="btnYes" />,
             buttonAction: () => {
                 dispatch(setModal(false))
                 navigate("/")
             }
         },
         {
-            text: "No",
+            text: <Text name="btnNo" />,
             buttonAction: () => {
                 dispatch(setModal(false))
             }
@@ -110,7 +111,8 @@ export default function WalkOtp(params) {
             setShowResendButton(false);
             
         } catch (error) {
-            setErrorFlag("Network temporarily unavailable")
+            setErrorFlag(<Text name="alertNetwork" />)
+            // setErrorFlag("Network temporarily unavailable")
         }
       };
 
@@ -162,8 +164,8 @@ export default function WalkOtp(params) {
                             return navigate('/DPW/appointment');//test
                         }
                     }).catch(err=>{
-                        // console.log('asdasdsa',err);
-                        setErrorFlag("Wrong OTP number")
+                        setErrorFlag(<Text name="alertWrongOtp" />)
+                        // setErrorFlag("Wrong OTP number")
 
                     })
                     console.log('ResultValidateOtp', ResultValidateOtp);
@@ -171,15 +173,12 @@ export default function WalkOtp(params) {
                 }    
 
             }else {
-                setErrorFlag("Wrong OTP number")
+                setErrorFlag(<Text name="alertWrongOtp" />)
             }
         } catch (error) {
             console.log('error in parsing data', error)
-            setErrorFlag("Network temporarily unavailable")
-            // setTimeout(() => {
-            //     clearMostSessions();
-            //     navigate('/home')
-            // }, 4000);
+            setErrorFlag(<Text name="alertNetwork" />)
+            // setErrorFlag("Network temporarily unavailable")
         }
         
     }
@@ -199,7 +198,8 @@ export default function WalkOtp(params) {
             <div id="page" className="page-layout d-flex justify-content-center">
                 
                 <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                    <div className="title-black ff-bold">Please enter the OTP sent to your mobile number</div>
+                    <div className="title-black ff-bold"><Text name="titleEnterOtp" /></div>
+                    {/* <div className="title-black ff-bold">Please enter the OTP sent to your mobile number</div> */}
                     {/* <div className="otp-set-box">
                         <input id="otp-input-1" className="otp-num-input" type="number" maxlength="1"/>
                         <input id="otp-input-2" className="otp-num-input" type="number" maxlength="1"/>
@@ -212,15 +212,17 @@ export default function WalkOtp(params) {
                         errorFlag && <div className="alert-text otp-error">{errorFlag} <br/> </div>
                     } */}
                     <div className="resend-otp-box" style={{opacity: showResendButton ? '0' : '1'}}>
-                        <div id="resend-message" className="resend-otp-text">Didn&apos;t receive OTP?</div>
+                        <div id="resend-message" className="resend-otp-text"><Text name="noteReceiveOtp" /></div>
+                        {/* <div id="resend-message" className="resend-otp-text">Didn&apos;t receive OTP?</div> */}
                         <div id="timer" className="otp-time-text">{`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</div>
                     </div>
-                    <div id="alert-noappotp" style={{opacity: errorFlag ? '1' : '0'}} class="alert-noappotp-text">Wrong OTP number</div>
+                    <div id="alert-noappotp" style={{opacity: errorFlag ? '1' : '0'}} class="alert-noappotp-text"><Text name="alertWrongOtp" /></div>
                     <div class="otp-actions-box">
                         <button id="btn-resendotp-submit" style={{display: showResendButton ? 'flex' : 'none'}}   onClick={resendOtpAndRestartTimer} class="button-wide button-fill-clr space-submit-resendotp">
-                            <span>Resend OTP</span>
+                            <span><Text name="btnResendOtp" /></span>
+                            {/* <span>Resend OTP</span> */}
                         </button>
-                        <button id="btn-otp-submit" onClick={handleSubmitOtp} className="button-wide button-fill-clr space-submit-otp">Submit</button>
+                        <button id="btn-otp-submit" onClick={handleSubmitOtp} className="button-wide button-fill-clr space-submit-otp"><Text name="btnSubmit" /></button>
                     </div>
                 </div>
             </div>

@@ -14,6 +14,8 @@ import ModalExit from '../../includes/modal/ModalExit'
 import $ from 'jquery';
 import { createCustomer, sendOTP } from '../../../services/api'
 import { validateInput } from '../../../utils'
+import Text from '../../Text'
+import { locals } from '../../../utils/language'
 export default function CustomerForm(params) {
     const navigate = useNavigate();
     const Appstate = useSelector((state)=>state.app);
@@ -46,6 +48,7 @@ export default function CustomerForm(params) {
         //search call
         //navigate to display
         console.log('searching...')
+        // $('alert-norecords').text(locals["alertNoRecords"]["en"])
         $('alert-norecords').text("No records found")
     }
 
@@ -54,16 +57,16 @@ export default function CustomerForm(params) {
     const doShowModal = useSelector(isShowModal);
 
     const modalExitData = {
-        titleText: "Are you sure you want to cancel and start the process over again?",
+        titleText: <Text name="titleExitModal" />,
         buttonOptions: [{
-            text: "Yes",
+            text: <Text name="btnYes" />,
             buttonAction: () => {
                 dispatch(setModal(false))
                 navigate("/")
             }
         },
         {
-            text: "No",
+            text: <Text name="btnNo" />,
             buttonAction: () => {
                 dispatch(setModal(false))
             }
@@ -118,7 +121,8 @@ export default function CustomerForm(params) {
 			return true;
 		}else{
 			if(value === ""){
-				errorElement.text("This field is required");
+				errorElement.text(<Text name="alertEmptyField" />);
+				// errorElement.text("This field is required");
 			}else{
 				errorElement.text("Invalid format");
 			}
@@ -178,7 +182,7 @@ export default function CustomerForm(params) {
                 <div id="customerpage" className="page-start-layout">
                     <div className="existingcustomer-box">
                         <form className='d-flex flex-column align-items-start'>
-                            <div className="title-form">EXISTING CUSTOMER</div>
+                            <div className="title-form"><Text name="txtCustomerExist" /></div>
                             <div className="input-block">
                                 <input id="input-srNumber" type="text" className="input-box tt-cap input-fullwidth" placeholder="SR #" />
                             </div>
@@ -188,11 +192,12 @@ export default function CustomerForm(params) {
                         </form>
                         <div id="alert-norecords" className="alert-norecords-text"></div>
                     </div>
-                    <button id="" onClick={handleExistingCusomterSearch} className="button-wide button-fill-clr space-btn-form-search">Search &amp; Continue</button>
+                    <button id="" onClick={handleExistingCusomterSearch} className="button-wide button-fill-clr space-btn-form-search"><Text name="btnSearchContinue" /></button>
+                    {/* <button id="" onClick={handleExistingCusomterSearch} className="button-wide button-fill-clr space-btn-form-search">Search &amp; Continue</button> */}
                     <div className="separate-line"></div>
                     <div className="newcustomer-box">
                         <form id="form-newcustomer" className='d-flex flex-column align-items-start'>
-                            <div className="title-form">NEW CUSTOMER</div>
+                            <div className="title-form"><Text name="txtCustomerNew" /></div>
                             <div className="input-block">
                             <input id="input-firstname" type="text" name="first name" className="input-box tt-cap input-fullwidth" placeholder="FIRST NAME" />
                             <div id="alert-firstname" className="alert-small-text"></div>
@@ -217,7 +222,7 @@ export default function CustomerForm(params) {
                         </form>
                         {/* <div id="alert-registration" className="alert-validation-text">all fields are required</div> */}
                     </div>
-                    <button id="new_customer_proceed" onClick={handleNewCustomerSubmit} className="button-wide button-fill-clr space-btn-form-proceed">Proceed</button>
+                    <button id="new_customer_proceed" onClick={handleNewCustomerSubmit} className="button-wide button-fill-clr space-btn-form-proceed"><Text name="btnProceed" /></button>
                 </div>
             </div>
                 

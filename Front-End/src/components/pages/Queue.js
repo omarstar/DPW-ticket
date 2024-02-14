@@ -1,8 +1,7 @@
 import React from 'react';
-// import Line from '../includes/line/line';
 import Line2 from '../includes/line/line2';
 import { useNavigate } from 'react-router-dom';
-// import { setModal } from '../../reducers';
+import Text from '../Text';
 
 
 export default function Queue({ticket,branch}) {
@@ -13,7 +12,7 @@ export default function Queue({ticket,branch}) {
 
     return (
         <>
-        <div className="title-black ff-bold">Your position in line</div>
+        <div className="title-black ff-bold"><Text name="titlePosition" /></div>
         <div className='ticket-wrapper text-center'>
             <div className="m-0 alignment txt_color" >
 
