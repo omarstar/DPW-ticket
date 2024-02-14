@@ -51,13 +51,13 @@
     text-transform: uppercase;
     align-self: center;
     margin-top: 15px;
-    font: 45px Montserrat, sans-serif;
+    font: 45px "Montserrat-Bold", sans-serif;
 }
 .ticket-service {
     letter-spacing: 0.56px;
     text-transform: capitalize;
     margin-top: 47px;
-    font: 700 15px Montserrat, sans-serif;
+    font: 700 15px "Montserrat-Bold", sans-serif;
 }
 .hidden-square {
     

@@ -1,15 +1,4 @@
 
-  .title-form {
-    color: #0058a6;
-    font: italic 400 9px Montserrat, -apple-system, Roboto, Helvetica,
-    sans-serif;
-    text-align: center;
-    letter-spacing: 0.36px;
-    text-transform: uppercase;
-    align-self: start;
-    white-space: nowrap;
-    text-transform: uppercase;
-  }
 
   .input-block {
     margin-top: 35px;
@@ -85,13 +74,16 @@
   
   /* form */
   .title-form {
-    /* max-width: 325px; */
-    max-width: 80%;
+    /* max-width: 80%; */
+    width: 100%;
+    display: flex;
     color: #046cac;
     font: 700 10px 'Montserrat-Bold', sans-serif;
     letter-spacing: 0.85px;
     text-transform: uppercase;
     text-align: left;
+    align-self: start;
+    white-space: nowrap;
   }
   /* #input-companyName1 {
     margin-top: 20px;

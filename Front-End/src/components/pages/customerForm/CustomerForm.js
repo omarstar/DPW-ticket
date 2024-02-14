@@ -199,7 +199,7 @@ export default function CustomerForm(params) {
                 <div id="customerpage" className="page-start-layout">
                     <div className="existingcustomer-box">
                         <form className='d-flex flex-column align-items-start'>
-                            <div className="title-form"><Text name="txtCustomerExist" /></div>
+                            <div className={"title-form " + (CurrentLang === 'en' ? 'justify-content-start' : 'justify-content-end') }><Text name="txtCustomerExist" /></div>
                             <div className="input-block">
                                 <input id="input-srNumber" type="text" className="input-box tt-cap input-fullwidth" placeholder="SR #" />
                             </div>
@@ -214,7 +214,7 @@ export default function CustomerForm(params) {
                     <div className="separate-line"></div>
                     <div className="newcustomer-box">
                         <form id="form-newcustomer" className='d-flex flex-column align-items-start'>
-                            <div className="title-form"><Text name="txtCustomerNew" /></div>
+                            <div className={"title-form " + (CurrentLang === 'en' ? 'justify-content-start' : 'justify-content-end') }><Text name="txtCustomerNew" /></div>
                             <div className="input-block">
                                 <PhoneNumberInput  onValidationResult={handleValidationResult}  />
                             {/* <input id="input-walknew-mobilenumber" type="tel"  className="input-box input-fullwidth required" name="mobile" pattern="[0-9]*" placeholder="" onClick="this.select();" required /> */}

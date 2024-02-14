@@ -21,7 +21,7 @@
     align-self: center;
     margin-top: 174px;
     white-space: nowrap;
-    font: 26px Montserrat, sans-serif;
+    font: 26px "Montserrat-Bold", sans-serif;
     opacity : 0
   }
 
@@ -36,7 +36,7 @@
 
   #input-app-mobilenumber {
     letter-spacing: 1.5px !important;
-    font: normal 400px 30px Montserrat, -apple-system, Roboto, Helvetica,sans-serif;
+    font: normal 400px 30px "Montserrat-Bold", -apple-system, Roboto, Helvetica,sans-serif;
   }
   
   #input-app-mobilenumber::placeholder {
