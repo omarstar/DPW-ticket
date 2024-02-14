@@ -1,3 +1,4 @@
+import Text from "../../Text";
 import "./line.css"
 import "./line2.css"
 
@@ -24,7 +25,7 @@ const Line2 = ({ activeNum = 0, onClickFuntion}) => {
                                 activeNum === nb ? (
                                     <div className="child-center">
                                         <p className= "mainLineText " >{nb}</p>
-                                        <p className= "mainLineText you-text" >You</p>
+                                        <p className= "mainLineText you-text" ><Text name="txtYou" /></p>
 
                                     </div>
                                 ) : (

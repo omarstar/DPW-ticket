@@ -216,17 +216,17 @@ export default function CustomerForm(params) {
                         <form id="form-newcustomer" className='d-flex flex-column align-items-start'>
                             <div className="title-form"><Text name="txtCustomerNew" /></div>
                             <div className="input-block">
+                                <PhoneNumberInput  onValidationResult={handleValidationResult}  />
+                            {/* <input id="input-walknew-mobilenumber" type="tel"  className="input-box input-fullwidth required" name="mobile" pattern="[0-9]*" placeholder="" onClick="this.select();" required /> */}
+                                <div id="alert-mobile" className="alert-small-text">{errorMessage === 'valid' ? '' : errorMessage}</div>
+                            </div>
+                            <div className="input-block">
                             <input id="input-firstname" type="text" name="first name" className="input-box tt-cap input-fullwidth" placeholder="FIRST NAME" />
                             <div id="alert-firstname" className="alert-small-text"></div>
                             </div>
                             <div className="input-block">
                             <input id="input-lastname" type="text" name="last time" className="input-box tt-cap input-fullwidth" placeholder="LAST NAME" />
                             <div id="alert-lastname" className="alert-small-text"></div>
-                            </div>
-                            <div className="input-block">
-                                <PhoneNumberInput  onValidationResult={handleValidationResult}  />
-                            {/* <input id="input-walknew-mobilenumber" type="tel"  className="input-box input-fullwidth required" name="mobile" pattern="[0-9]*" placeholder="" onClick="this.select();" required /> */}
-                            <div id="alert-mobile" className="alert-small-text">{errorMessage === 'valid' ? '' : errorMessage}</div>
                             </div>
                             <div className="input-block">
                             <input id="input-email" type="email" name="email" className="input-box input-fullwidth" placeholder="E-MAIL" required style={{textTransform: 'inherit'}} />
@@ -236,6 +236,7 @@ export default function CustomerForm(params) {
                             <input id="input-companyName2" type="text" name="company" className="input-box tt-cap input-fullwidth" placeholder="COMPANY NAME" />
                             <div id="alert-companyName2" className="alert-small-text"></div>
                             </div>
+                            
                         </form>
                         {/* <div id="alert-registration" className="alert-validation-text">all fields are required</div> */}
                     </div>

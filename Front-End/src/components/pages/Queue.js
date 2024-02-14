@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Text from '../Text';
 
 
-export default function Queue({ticket,branch}) {
+export default function Queue({ticket}) {
 
     const {position, ticketId, currentServiceName} = ticket;
     const navigate = useNavigate();

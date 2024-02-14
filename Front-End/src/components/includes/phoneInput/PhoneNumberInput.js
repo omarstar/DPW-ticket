@@ -85,7 +85,8 @@ const PhoneNumberInput = ({onValidationResult}) => {
         id="phonenumber"
         ref={phoneInputField}
         type="tel"
-        className='input-box input-fullwidth required'
+        maxlength="15"
+        className='input-box input-mobile-box input-fullwidth required'
         name="phone"
       />
     </div>

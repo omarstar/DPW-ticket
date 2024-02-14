@@ -142,10 +142,10 @@ const locals = {
     },
     'txtLastName' : {
         "en" : "Last Name",
-        "ar" : "الاسم"
+        "ar" : "الشهرة"
     },
     'txtName' : {
-        "en" : "FULLName",
+        "en" : "Fullname",
         "ar" : "الاسم الكامل"
     },
     'txtMobile' : {
@@ -209,7 +209,6 @@ const locals = {
         "ar" : "زبون الحالي"
     }
 }
-
 
 export function getLocalTranslate(key,lang) {
     if(locals[key]){

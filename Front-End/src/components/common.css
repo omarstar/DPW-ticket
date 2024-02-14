@@ -117,18 +117,23 @@
     text-transform: capitalize;
   }
   /* input */
+  .input-mobile-box {
+    padding-bottom: 12px !important;
+  }
   .input-box {
     color: black;
-    letter-spacing: 0.72px;
+    /* letter-spacing: 0.72px; */
+    letter-spacing: 4.6px !important;
+    
     /* text-transform: capitalize; */
     text-align: start;
-    border: 1px solid #000;
+    border: 1px solid #777;
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
-    font: normal 400 12px "Montserrat-Bold", -apple-system, Roboto, Helvetica,
+    font: normal 500 11px "Montserrat-Bold", -apple-system, Roboto, Helvetica,
       sans-serif;
-    height: 13px;
+    /* height: 16px; */
   }
   .input-box:focus {
     outline: none;
@@ -141,12 +146,13 @@
     font-style: italic;
     font: italic 9px 'Montserrat-Italic';
     text-transform: uppercase;
-    padding: 0 0 15px;
+    letter-spacing: 4.6px !important;
+    padding: 0 0 12px;
     margin-left: 6.6 !important;
     margin-bottom: 2rem !important;
     font-style: italic;
     font-size: 10px;
-    font-weight: 400;
+    font-weight: 500;
   }
   #phonenumber::placeholder {
     height: 80px;
@@ -202,6 +208,9 @@
     /* height: 6.6%; */
   }
   .iti--separate-dial-code .iti__selected-flag {
+    font-weight: bold;
+    letter-spacing: 3.75px;
+    font-size: 8.25px;
     background-color: rgba(0, 0, 0 , 0.02) !important;
   }
   .iti__dropdown-content {
