@@ -30,7 +30,7 @@ const Welcome = () => {
       }, [currentLanguage]);
     
     // let buttonLangText = lang === 'en' ? 'العربية' : "English"
-    let buttonLangText = lang === 'ar' ? 'ع' : "EN"
+    let buttonLangText = lang === 'en' ? 'ع' : "EN"
 
     const toggleLang = () => {
         dispatch(toggleCurrentLang());
