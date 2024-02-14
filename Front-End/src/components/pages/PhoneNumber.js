@@ -10,13 +10,13 @@ import '../../styles/mobile.css'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { getPhonenumber, isShowModal, setModal, setPhonenumber } from '../../reducers';
-import { validateEmail, validateEmptyField, validateInput } from '../../utils/index';
 import { useNavigate } from 'react-router-dom';
 import $ from 'jquery';
 import PhoneNumberInput from '../includes/phoneInput/PhoneNumberInput';
 import ModalExit from '../includes/modal/ModalExit';
 import { createCustomer, getAppointments, sendOTP } from '../../services/api';
 import { setAppointments } from '../../reducers/appointments';
+import Text from '../Text';
 
 export default function PhoneNumber() {
     
@@ -42,30 +42,19 @@ console.log('branchPrefix in app phone', branchPrefix)
 
      const handleValidationResult = (isValid, message) => {
          if (!isValid) {
-            // setErrorMessage(message);
             if(message === 'This field is required'){
-                setShowAlert(message)
+                setShowAlert(<Text name="alertEmptyField" />)
+                // setShowAlert(message)
             }
             else{
                 //flow? Wrong mobile number if app
-                setShowAlert(flow === "app" ? "Wrong mobile number or no appointment found" : "Wrong mobile number")
+                setShowAlert(flow === "app" ? <Text name="alertNoAppWrongMobile" /> : <Text name="alertWrongMobile" />)
             }
          } else {
         //  setErrorMessage('');
          setShowAlert(false);
          }
      };
-    
-    //  $("#input-walkin-name").on("blur", function() {
-    //     validateInput($(this), $("#alert-walkin-name"), validateEmptyField);
-    // });
-    //  $("#input-walkin-email").on("blur", function() {
-    //     validateInput($(this), $("#alert-walkin-email"), validateEmail);
-    // });
-
-    // function isFieldValidated(){
-    //     return showAlert === 'valid';
-    // }
 
      const handleMobileSubmit = async () => {
         
@@ -83,7 +72,7 @@ console.log('branchPrefix in app phone', branchPrefix)
                         await sendOTP(mobileNumber);
                         return navigate('/DPW/otp');
                     }else{
-                        return setShowAlert('Wrong mobile number or no appointment found');
+                        return setShowAlert(<Text name="alertNoAppWrongMobile" />);
                     }
                 }else{  
                     let customer = {
@@ -97,7 +86,7 @@ console.log('branchPrefix in app phone', branchPrefix)
                     return navigate('/DPW/otp');
                 }
             } catch (error) {
-                return setShowAlert('Network temporarily unavailable');
+                return setShowAlert(<Text name="alertNetwork" />);
             }
         }else{
             // setShowAlert('This field is required')
@@ -109,16 +98,16 @@ console.log('branchPrefix in app phone', branchPrefix)
     const doShowModal = useSelector(isShowModal);
 
     const modalExitData = {
-        titleText: "Are you sure you want to cancel and start the process over again?",
+        titleText: <Text name="titleExitModal" />,
         buttonOptions: [{
-            text: "Yes",
+            text: <Text name="btnYes" />,
             buttonAction: () => {
                 dispatch(setModal(false))
                 navigate("/")
             }
         },
         {
-            text: "No",
+            text: <Text name="btnNo" />,
             buttonAction: () => {
                 dispatch(setModal(false))
             }
@@ -142,7 +131,7 @@ console.log('branchPrefix in app phone', branchPrefix)
                 </div>
                 <div id="page" className="page-layout d-flex justify-content-start align-items-center">
                     <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                        <div className="title-black ff-bold">Please enter your mobile number</div>
+                        <div className="title-black ff-bold"><Text name="titleEnterMobile" /></div>
                         <div className="input-appmobile-block">
                             <PhoneNumberInput onValidationResult={handleValidationResult}  />
                         </div>
@@ -163,7 +152,7 @@ console.log('branchPrefix in app phone', branchPrefix)
                             <div className='h-15'></div>
                         }     */}
                         <div id="alert-wrongmobile" className="alert-text ff-bold mobile-app-alert">{showAlert}</div>
-                        <div className='d-flex flex-column justify-content-end align-items-center btn-appmobile-box'><button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit">Continue</button></div>
+                        <div className='d-flex flex-column justify-content-end align-items-center btn-appmobile-box'><button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit"><Text name="btnContinue" /></button></div>
                     </div>
                 </div>
                 <div className="footer-section">

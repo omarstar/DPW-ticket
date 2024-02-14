@@ -16,6 +16,7 @@ import ModalExit from '../../includes/modal/ModalExit'
 import ModalInfo from '../../includes/modal/ModalInfo'
 import { useNavigate } from 'react-router-dom'
 import Loading from '../../includes/loading/loading'
+import Text from '../../Text'
 
 export default function ServiceList(params) {
 
@@ -25,10 +26,10 @@ export default function ServiceList(params) {
     let {loading,category} = useSelector((state) => state.app);
 
     let modalInfoData = {
-        titleText: "Service info",
-        descText: descText?? "No additional info found for this service",
+        titleText: <Text name="titleServiceModal" />,
+        descText: descText?? <Text name="noteNoServiceInfo" />,
         buttonOptions: [{
-            text: "Close",
+            text: <Text name="btnClose" />,
             buttonAction: () => {
                 // dispatch(setModal(false))
                 setShowModalInfo(false);
@@ -47,16 +48,16 @@ export default function ServiceList(params) {
     const doShowModal = useSelector(isShowModal);
 
     const modalExitData = {
-        titleText: "Are you sure you want to cancel and start the process over again?",
+        titleText: <Text name="titleExitModal" />,
         buttonOptions: [{
-            text: "Yes",
+            text: <Text name="btnYes" />,
             buttonAction: () => {
                 dispatch(setModal(false))
                 navigate("/")
             }
         },
         {
-            text: "No",
+            text: <Text name="btnNo" />,
             buttonAction: () => {
                 dispatch(setModal(false))
             }
@@ -183,7 +184,7 @@ export default function ServiceList(params) {
                 <div id="page" className="page-layout d-flex justify-content-center">
                     
                     <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                        <div className="title-black ff-bold">Please select a service</div>
+                        <div className="title-black ff-bold"><Text name="titleSelectService" /></div>
                             <div id="walkin-services-list" className="services-list-box d-flex flex-column align-items-center">
                             {
                             loading ? (

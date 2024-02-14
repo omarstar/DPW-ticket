@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom'
 import ModalExit from '../../includes/modal/ModalExit'
 import axios from 'axios'
 import { getSelectedAppointment } from '../../../reducers/appointments'
+import Text from '../../Text'
 
 export default function BookingSummary(params) {
 
@@ -22,16 +23,16 @@ export default function BookingSummary(params) {
     const doShowModal = useSelector(isShowModal);
 
     const modalExitData = {
-        titleText: "Are you sure you want to cancel and start the process over again?",
+        titleText: <Text name="titleExitModal" />,
         buttonOptions: [{
-            text: "Yes",
+            text: <Text name="btnYes" />,
             buttonAction: () => {
                 dispatch(setModal(false))
                 navigate("/")
             }
         },
         {
-            text: "No",
+            text: <Text name="btnNo" />,
             buttonAction: () => {
                 dispatch(setModal(false))
             }
@@ -93,49 +94,49 @@ export default function BookingSummary(params) {
             </div>
             <div id="page" className="page-layout d-flex flex-column justify-content-start align-items-center">
                 <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                    <div className="title-black ff-bold">Your appointment summary</div>
+                    <div className="title-black ff-bold"><Text name="titleBookingSummary" /></div>
                     <div class="appsummary-box col-12 text-center d-flex flex-column align-items-center">
                         <div class="row summary-container">
                             <div class="labels">
                             <div class="column">
                                 <div class="label-box">
-                                <div class="label-name ">name</div>
-                                <div class="label-dots">:</div>
-                                <div id="name-val" class="label-value">{selectedApp.customers[0]?.firstName + " " + selectedApp.customers[0]?.lastName}</div>
+                                    <div class="label-name "><Text name="txtName" /></div>
+                                    <div class="label-dots">:</div>
+                                    <div id="name-val" class="label-value">{selectedApp.customers[0]?.firstName + " " + selectedApp.customers[0]?.lastName}</div>
                                 {/* <div id="name-val" class="label-value">John Doe</div> */}
                                 </div>
                                 <div class="label-box">
-                                <div class="label-name">Mobile</div>
+                                <div class="label-name"><Text name="txtMobile" /></div>
                                 <div class="label-dots">:</div>
                                 <div id="mobile-val" class="label-value">{selectedApp.customers[0]?.properties?.phoneNumber ?? 'N/A'}</div>
                                 {/* <div id="mobile-val" class="label-value">+971 55 123 1234</div> */}
                                 </div>
                                 <div class="label-box">
-                                <div class="label-name">E-Mail</div>
+                                <div class="label-name"><Text name="txtEmail" /></div>
                                 <div class="label-dots">:</div>
                                 <div id="email-val" class="label-value">{selectedApp.customers[0]?.properties?.email ?? 'N/A'}</div>
                                 {/* <div id="email-val" class="label-value">John.doe@office365.com</div> */}
                                 </div>
                                 <div class="label-box">
-                                <div class="label-name">Company</div>
+                                <div class="label-name"><Text name="txtCompany" /></div>
                                 <div class="label-dots">:</div>
                                 <div id="company-val" class="label-value">{selectedApp.customers[0]?.properties?.company ?? 'N/A'}</div>
                                 {/* <div id="company-val" class="label-value">XYZ Middle East Fze</div> */}
                                 </div>
                                 <div class="label-box">
-                                <div class="label-name">Branch name</div>
+                                <div class="label-name"><Text name="txtBranch" /></div>
                                 <div class="label-dots">:</div>
                                 <div id="service-branch-val" class="label-value">{selectedApp.branch['name']}</div>
                                 {/* <div id="service-branch-val" class="label-value">Admin services</div> */}
                                 </div>
                                 <div class="label-box">
-                                <div class="label-name">Service name</div>
+                                <div class="label-name"><Text name="txtService" /></div>
                                 <div class="label-dots">:</div>
                                 <div id="service-service-val" class="label-value">{selectedApp.services[0]?.name ?? 'N/A'}</div>
                                 {/* <div id="service-service-val" class="label-value">Admin services - employee affairs</div> */}
                                 </div>
                                 <div class="label-box">
-                                <div class="label-name">Appointment date / time</div>
+                                <div class="label-name"><Text name="txtAppDatetime" /></div>
                                 <div class="label-dots">:</div>
                                 <div id="selectedApp-datetime-val" class="label-value">{new Date(selectedApp.startTime).toLocaleString()}</div>
                                 {/* <div id="appointment-datetime-val" class="label-value">16/1/2024, 12:30 PM</div> */}
@@ -144,7 +145,8 @@ export default function BookingSummary(params) {
                             </div>
                         </div>
                     </div>
-                    <button id="btn-otp-submit" onClick={handleProceedCheckinApp} className="space-proceed-appsummary">Confirm &amp; Proceed</button>
+                    <button id="btn-otp-submit" onClick={handleProceedCheckinApp} className="space-proceed-appsummary"><Text name="btnConfirmProceed" /></button>
+                    {/* <button id="btn-otp-submit" onClick={handleProceedCheckinApp} className="space-proceed-appsummary">Confirm &amp; Proceed</button> */}
                 </div>
             </div>
             <div className="footer-section">

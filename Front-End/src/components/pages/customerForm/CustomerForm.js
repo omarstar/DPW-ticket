@@ -6,19 +6,22 @@ import homeCircleImg from '../../../images/home-circle.svg'
 import jafzaLogoColor from '../../../images/JAFZA_Logo_Color.svg'
 import footerBGshape from '../../../images/footer-sky-bg.svg'
 import '../../common.css';
+
 import PhoneNumberInput from '../../includes/phoneInput/PhoneNumberInput'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { getPhonenumber, isShowModal, setModal } from '../../../reducers'
+import { isShowModal, setModal } from '../../../reducers'
 import ModalExit from '../../includes/modal/ModalExit'
 import $ from 'jquery';
 import { createCustomer, sendOTP } from '../../../services/api'
 import { validateInput } from '../../../utils'
 import Text from '../../Text'
-import { locals } from '../../../utils/language'
+
 export default function CustomerForm(params) {
     const navigate = useNavigate();
     const Appstate = useSelector((state)=>state.app);
+    const {CurrentLang} = Appstate;
+
     const navToOtpPage = () => {
         navigate('/DPW/otp')
     }
@@ -42,14 +45,13 @@ export default function CustomerForm(params) {
         }
     }
    
-
     const handleExistingCusomterSearch =() => {
         //validation
         //search call
         //navigate to display
         console.log('searching...')
         // $('alert-norecords').text(locals["alertNoRecords"]["en"])
-        $('alert-norecords').text("No records found")
+        $('alert-norecords').text(<Text name="alertNoRecords" />)
     }
 
     const dispatch = useDispatch();
@@ -82,7 +84,13 @@ export default function CustomerForm(params) {
 
     const handleValidationResult = (isValid, message) => {
         if (!isValid) {
-          setErrorMessage(message);
+            if(message === 'This field is required'){
+                setErrorMessage(<Text name="alertEmptyField" />)
+            }
+            else{
+                setErrorMessage(<Text name="alertWrongMobile" />)
+            }
+        //   setErrorMessage(message);
         } else {
           setErrorMessage(message);
         }
@@ -124,7 +132,7 @@ export default function CustomerForm(params) {
 				errorElement.text(<Text name="alertEmptyField" />);
 				// errorElement.text("This field is required");
 			}else{
-				errorElement.text("Invalid format");
+				errorElement.text(<Text name="alertInvalidFormat" />);
 			}
 			errorElement.css('visibility', 'visible');
 			return false;
@@ -138,14 +146,14 @@ export default function CustomerForm(params) {
 	}
     const validateInputFields = () =>{
 
-		var valFn = validateInput($('#input-firstname'), $("#alert-firstname"), validateEmptyField);
-		var valLn = validateInput($('#input-lastname'), $("#alert-lastname"), validateEmptyField);
+		var valFn = validateInput($('#input-firstname'), $("#alert-firstname"), validateEmptyField, CurrentLang);
+		var valLn = validateInput($('#input-lastname'), $("#alert-lastname"), validateEmptyField, CurrentLang);
 
-        var valE = validateInput($('#input-email'), $("#alert-email"), validateEmptyField);
-		var valC = validateInput($('#input-companyName2'), $("#alert-companyName2"), validateEmptyField);
+        var valE = validateInput($('#input-email'), $("#alert-email"), validateEmptyField, CurrentLang);
+		var valC = validateInput($('#input-companyName2'), $("#alert-companyName2"), validateEmptyField, CurrentLang);
 		var isValidMobile =  errorMessage === 'valid' ? true : false;
 		
-        var isValidEmail = validateInput($("#input-email"), $("#alert-email"), validateEmail);
+        var isValidEmail = validateInput($("#input-email"), $("#alert-email"), validateEmail, CurrentLang);
 		
 		if(!valFn || !valLn || !valE || !valC || !isValidMobile || !isValidEmail){
 			return false
@@ -154,19 +162,19 @@ export default function CustomerForm(params) {
 		return true;
 	}
     $("#input-email").on("blur", function() {
-        validateInput($(this), $("#alert-email"), validateEmail);
+        validateInput($(this), $("#alert-email"), validateEmail, CurrentLang);
     });
 
     $("#input-firstname").on("blur", function() {
-        validateInput($(this), $("#alert-firstname"), validateEmptyField);
+        validateInput($(this), $("#alert-firstname"), validateEmptyField, CurrentLang);
     });
     
     $("#input-lastname").on("blur", function() {
-        validateInput($(this), $("#alert-lastname"), validateEmptyField);
+        validateInput($(this), $("#alert-lastname"), validateEmptyField, CurrentLang);
     });
     
     $("#input-companyName2").on("blur", function() {
-        validateInput($(this), $("#alert-companyName2"), validateEmptyField);
+        validateInput($(this), $("#alert-companyName2"), validateEmptyField, CurrentLang);
     });
 
     

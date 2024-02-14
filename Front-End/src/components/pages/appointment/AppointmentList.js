@@ -14,7 +14,7 @@ import ModalExit from '../../includes/modal/ModalExit'
 import { calculateRemainingTime, checkArrivalTime, formatDate } from '../../../utils'
 import axios from 'axios'
 import { setSelectedAppointment } from '../../../reducers/appointments'
-import { appiontmentsList } from '../../../utils/constants'
+// import { appiontmentsList } from '../../../utils/constants'
 import Text from '../../Text'
 
 export default function AppointmentList(params) {

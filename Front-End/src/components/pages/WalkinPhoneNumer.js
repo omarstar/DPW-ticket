@@ -25,6 +25,8 @@ export default function WalkinPhoneNumber() {
     const [showAlert, setShowAlert] = useState(false);
     const [errorMessage, setErrorMessage] = useState(false);
 
+    let {CurrentLang} = useSelector((state) => state.app);
+
     // const {phoneNumber} = useSelector((state) => state.app);
     const {flow , branchPrefix} = useSelector((state) => state.app);
 
@@ -58,16 +60,16 @@ export default function WalkinPhoneNumber() {
      };
     
      $("#input-walkin-name").on("blur", function() {
-        validateInput($(this), $("#alert-walkin-name"), validateEmptyField);
+        validateInput($(this), $("#alert-walkin-name"), validateEmptyField, CurrentLang);
     });
      $("#input-walkin-email").on("blur", function() {
-        validateInput($(this), $("#alert-walkin-email"), validateEmail);
+        validateInput($(this), $("#alert-walkin-email"), validateEmail, CurrentLang);
     });
 
     function allFieldsValidated() {
-        const valN = validateInput($("#input-walkin-name"), $("#alert-walkin-name"), validateEmptyField);
-        const valE = validateInput($("#input-walkin-email"), $("#alert-walkin-email"), validateEmptyField);
-        const valEi = validateInput($("#input-walkin-email"), $("#alert-walkin-email"), validateEmail);
+        const valN = validateInput($("#input-walkin-name"), $("#alert-walkin-name"), validateEmptyField, CurrentLang);
+        const valE = validateInput($("#input-walkin-email"), $("#alert-walkin-email"), validateEmptyField, CurrentLang);
+        const valEi = validateInput($("#input-walkin-email"), $("#alert-walkin-email"), validateEmail, CurrentLang);
        
         var isValidMobile =  errorMessage === 'valid' ? true : false;
 
@@ -122,16 +124,16 @@ export default function WalkinPhoneNumber() {
     const doShowModal = useSelector(isShowModal);
 
     const modalExitData = {
-        titleText: "Are you sure you want to cancel and start the process over again?",
+        titleText: <Text name="titleExitModal" />,
         buttonOptions: [{
-            text: "Yes",
+            text: <Text name="BtnYes" />,
             buttonAction: () => {
                 dispatch(setModal(false))
                 navigate("/")
             }
         },
         {
-            text: "No",
+            text: <Text name="btnNo" />,
             buttonAction: () => {
                 dispatch(setModal(false))
             }
@@ -162,7 +164,7 @@ export default function WalkinPhoneNumber() {
                         </div>
                         <div id='lob14walkinFields' className='h-15'>
                             <div className="input-block">
-                                <input id="input-walkin-name" type="text" name="name" className="input-box tt-cap input-fullwidth" placeholder="NAME" />
+                                <input id="input-walkin-name" type="text" name="name" className="input-box tt-cap input-fullwidth" placeholder="FULLNAME" />
                                 <div id="alert-walkin-name" className="alert-small-text"></div>
                             </div>
                             <div className="input-block">
@@ -171,7 +173,7 @@ export default function WalkinPhoneNumber() {
                             </div>
                         </div>
                         <div id="alert-wrongmobile" className="alert-text ff-bold mobile-alert">{showAlert}</div>
-                        <div className='d-flex flex-column justify-content-end align-items-center h-15'><button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit"><Text name="btnContinue" /></button></div>
+                        <div className='d-flex flex-column justify-content-end align-items-center h-12'><button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit"><Text name="btnContinue" /></button></div>
                     </div>
                 </div>
                 <div className="footer-section">

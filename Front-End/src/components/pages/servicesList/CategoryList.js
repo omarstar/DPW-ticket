@@ -15,7 +15,8 @@ import ModalExit from '../../includes/modal/ModalExit'
 import { useNavigate } from 'react-router-dom'
 import Loading from '../../includes/loading/loading'
 import { golobalVariables } from '../../../services/api'
-import { categoryListObject } from '../../../utils/constants'
+// import { categoryListObject } from '../../../utils/constants'
+import Text from '../../Text'
 
 export default function CategoryList(params) {
     // category list
@@ -25,16 +26,16 @@ export default function CategoryList(params) {
     const doShowModal = useSelector(isShowModal);
 
     const modalExitData = {
-        titleText: "Are you sure you want to cancel and start the process over again?",
+        titleText: <Text name="titleExitModal" />,
         buttonOptions: [{
-            text: "Yes",
+            text: <Text name="btnYes" />,
             buttonAction: () => {
                 dispatch(setModal(false))
                 navigate("/")
             }
         },
         {
-            text: "No",
+            text: <Text name="btnNo" />,
             buttonAction: () => {
                 dispatch(setModal(false))
             }
@@ -90,7 +91,7 @@ export default function CategoryList(params) {
                 <div id="page" className="page-layout d-flex justify-content-center">
                     
                     <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                        <div className="title-black ff-bold">Please select a category</div>
+                        <div className="title-black ff-bold"><Text name="titleSelectCategory" /></div>
                             <div id="walkin-services-list" className="services-list-box row mx-0">
                             {
                             loading ? (

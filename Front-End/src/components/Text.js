@@ -8,6 +8,6 @@ export default function Text({name, realign = false}) {
     const reorderStyle = realign ? (CurrentLang === 'ar' ?"reorder-text ml-2" : 'mr-2') : '';
     
     return (
-        <div>{getLocalTranslate(name,CurrentLang)}</div>
+        <div className='direction'>{getLocalTranslate(name,CurrentLang)}</div>
     )
 }

@@ -1,4 +1,5 @@
-import Text from "../components/Text";
+// import Text from "../components/Text";
+import { getLocalTranslate } from "./language";
 
 export function api(endpoint) {
     return process.env.REACT_APP_API_URL + endpoint;
@@ -26,7 +27,7 @@ export  const validateEmail = (email) => {
   return emailRegex.test(email);
 }
 
-export const validateInput = (input, errorElement, validationFunction) => {
+export const validateInput = (input, errorElement, validationFunction,lang) => {
   // input.attr("name") 
       console.log('validationFunction',validationFunction);
   var value = input.val();
@@ -34,8 +35,8 @@ export const validateInput = (input, errorElement, validationFunction) => {
 
   if (!isValid) {
     if(value === "")
-    // errorElement.text(JSON.stringify(<Text name="alertEmptyField" />));
-    errorElement.text("This field is required");
+    errorElement.text(getLocalTranslate("alertEmptyField",lang));
+    // errorElement.text("This field is required");
     else {
       errorElement.text("Invalid format");
     }	

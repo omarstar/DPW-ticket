@@ -49,8 +49,8 @@ const locals = {
         "ar" : "الرجاء التوجه الى"
     },
     'titleThankyou' : {
-        "en" : "Thank you for visiting us today.",
-        "ar" : "شكرا لكم على الزيارة."
+        "en" : "Thank you for visiting us today",
+        "ar" : "شكرا لكم على الزيارة"
     },
     'titleSelectApp' : {
         "en" : "Please select your confirmed face-to-face appointment to check-in.",
@@ -71,6 +71,10 @@ const locals = {
     'noteShowResults' : {
         "en" : "Showing results for ",
         "ar" : "عرض النتائج لفرع "
+    },
+    'noteNoServiceInfo' : {
+        "en" : "No additional info found for this service",
+        "ar" : "لا معلومات إضافية لهذه الخدمة"
     },
     'titleBookingSummary' : {
         "en" : "Your appointment summary",
@@ -141,8 +145,8 @@ const locals = {
         "ar" : "الاسم"
     },
     'txtName' : {
-        "en" : "Name",
-        "ar" : "الاسم"
+        "en" : "FULLName",
+        "ar" : "الاسم الكامل"
     },
     'txtMobile' : {
         "en" : "mobile",
@@ -208,7 +212,9 @@ const locals = {
 
 
 export function getLocalTranslate(key,lang) {
-    // console.log(locals[key]);
+
+    console.log(key);
+    console.log(locals[key]);
     return lang == 'en' ? locals[key]["en"] : locals[key]["ar"];
 }
 
