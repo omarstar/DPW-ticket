@@ -145,7 +145,7 @@
     color: var(--gray-text, #777);
     font-style: italic;
     font: italic 9px 'Montserrat-Italic';
-    text-transform: uppercase;
+    text-transform: capitalize;
     letter-spacing: 4.6px !important;
     padding: 0 0 12px;
     margin-left: 6.6 !important;
