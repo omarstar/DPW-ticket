@@ -7,6 +7,6 @@ export default function Text({name, realign = false}) {
     const reorderStyle = realign ? (CurrentLang === 'ar' ?"reorder-text mx-2" : 'mx-2') : '';
     
     return (
-        <div className={reorderStyle}>{getLocalTranslate(name,CurrentLang)}</div>
+        <div className={reorderStyle} dangerouslySetInnerHTML={{ __html: getLocalTranslate(name,CurrentLang)}} />
     )
 }

@@ -88,8 +88,15 @@ export default function ServiceList(params) {
             if(ids.find(id=>id==srv.id)){
                 return srv;
             }
-        });
-           setServiceList(serviceListResponse)
+            });
+            serviceListResponse = serviceListResponse.map(s=>{
+                if(!s.internalName.toLowerCase().includes('follow-up')){
+                    s.internalName = s.internalName.split('-')[1]??s.internalName;
+                }
+                return s;
+            });
+            serviceListResponse = serviceListResponse.sort((a, b) => a.internalName.localeCompare(b.internalName))
+            setServiceList(serviceListResponse)
         }
 
         function testLocal() {
@@ -194,7 +201,7 @@ export default function ServiceList(params) {
                             serviceList ? serviceList.map(srv =>  (
         
                                 <div className="button-service-item d-flex justify-content-between align-items-center">
-                                    <div onClick={()=>handleServiceSubmit(srv.id)} id={srv.id} className="service-btn-box"><button id={srv.id} className="button-wide button-fill-clr">{srv.internalName}</button></div>
+                                    <div onClick={()=>handleServiceSubmit(srv.id)} id={srv.id} className="service-btn-box"><button id={srv.id} className="button-wide button-fill-clr">{srv.externalName}</button></div>
                                     <img id={`img-` + srv.id} onClick={()=>infoButtonClicked(srv.id)} className="service-info-icon" src={srvcInfoIcon} alt="info service" />
                                 </div>
                                     ) )   : console.log("error ===>")

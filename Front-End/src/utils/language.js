@@ -25,7 +25,7 @@ const locals = {
         "ar" : "الرجاء إدخال رقم هاتفك المتحرك"
     },
     'titleEnterOtp' : {
-        "en" : "Please enter the OTP sent to your mobile number",
+        "en" : "Please enter the OTP sent <br> to your mobile.",
         "ar" : "الرجاء إدخال رمز المرور المرسل الى رقم هاتفك المتحرك"
     },
     'noteReceiveOtp' : {
@@ -37,7 +37,7 @@ const locals = {
         "ar" : "هل تريد إلغاء العملية والبدء من جديد؟"
     },
     'titleSelectCategory' : {
-        "en" : "Please select a category",
+        "en" : "How can we help you today?",
         "ar" : "الرجاء تحديد الفئة"
     },
     'titleSelectService' : {
