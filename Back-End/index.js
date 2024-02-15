@@ -6,7 +6,10 @@ const controller = require('./Controller');
 const path = require('path');
 const https = require('https');
 const fs = require('fs');
-
+const httpsOptions = {
+    key :fs.readFileSync(__dirname + "/cert/epg_root_key.key"),
+    cert :fs.readFileSync(__dirname + "/cert/epg_root_key.crt")
+}
 
 const app = express();
 app.use(bodyParser.json());
@@ -48,24 +51,14 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../Front-End/build', 'index.html'));
 });
 
-// const httpsOptions = {
-//     key :fs.readFileSync(__dirname + "/cert/epg_root_key.key"),
-//     cert :fs.readFileSync(__dirname + "/cert/epg_root_key.crt")
-// }
 
-// const server = https.createServer(httpsOptions , app)
-
-// const options = {
-//   key: fs.readFileSync('./cert/c2ac13265c238eb0.pem'),
-//   cert: fs.readFileSync('./cert/c2ac13265c238eb0.crt')
-// };
+if(process.env.REACT_APP_TESTING){
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    });
+}else{
+    const server = https.createServer(httpsOptions , app)
+    server.listen(port , ()=> console.log('> Server is up and running on port : ' + port))
+}
 
 
-// const server = https.createServer(options, app);
-
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
-
-
-// server.listen(port , ()=> console.log('> Server is up and running on port : ' + port))
