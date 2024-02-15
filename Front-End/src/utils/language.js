@@ -1,7 +1,15 @@
 //<Text name="" />
 const locals = {
     'getStarted' : {
-        "en" : "Get started",
+        "en" : "Get Started",
+        "ar" : "ابدأ هنا"
+    },
+    'WelcomeLOB14' : {
+        "en" : "Welcome to Jafza Service Center",
+        "ar" : "ابدأ هنا"
+    },
+    'WelcomeLOB15' : {
+        "en" : "Welcome to Jafza Sales Center",
         "ar" : "ابدأ هنا"
     },
     'titleSelectOptions' : {
@@ -10,6 +18,10 @@ const locals = {
     },
     'titleEnterMobile' : {
         "en" : "Please enter your mobile number",
+        "ar" : "الرجاء إدخال رقم هاتفك المتحرك"
+    },
+    'enterDetails' : {
+        "en" : "Please enter your details",
         "ar" : "الرجاء إدخال رقم هاتفك المتحرك"
     },
     'titleEnterOtp' : {
@@ -89,7 +101,7 @@ const locals = {
         "ar" : "استمرار"
     },
     'btnAppFlow' : {
-        "en" : "Check-in appointment",
+        "en" : "Check-in Appointment",
         "ar" : "تسجيل الوصول للموعد"
     },
     'btnSearchContinue' : {

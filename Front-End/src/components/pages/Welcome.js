@@ -58,7 +58,7 @@ const Welcome = () => {
         <button id="btn-lang-box" onClick={toggleLang} className={"button-lang ff-semibold " + moreBold}><span id="btn-lang-content" >{buttonLangText}</span></button>
         <img  src={headerLogoWhite} className="header-img-bg" alt="header logo" />
         </section>
-        
+        <h1 id="welcomeNote"><Text name={branchPrefix=='LOB14'?"WelcomeLOB14":"WelcomeLOB15"} /></h1>
         <button id="btn-getstarted" onClick={navToOptions} className="button-getstarted ff-bold">
             <Text name="getStarted" />
         </button>

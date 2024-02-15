@@ -403,3 +403,13 @@ body {
 #loading-inner svg{
   width: 30%;
 }
+#walkinShare{
+  margin-bottom: 3rem;
+}
+#welcomeNote{
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  position: fixed;
+  margin-top: 60px;
+}

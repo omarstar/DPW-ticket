@@ -102,7 +102,7 @@ export default function WalkinPhoneNumber() {
                         firstName : $('#input-walkin-name').val(),
                         phoneNum : mobileNumber,
                         email : $('#input-walkin-email').val(),
-                        
+                        company : $('#input-walkin-company').val(), 
                     };
                     await createCustomer(customer);
                     await sendOTP(mobileNumber);
@@ -159,19 +159,27 @@ export default function WalkinPhoneNumber() {
                 </div>
                 <div id="page" className="page-layout d-flex justify-content-start align-items-center">
                     <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                        <div className="title-black ff-bold"><Text name="titleEnterMobile" /></div>
+                        <div className="title-black ff-bold" id='walkinShare'><Text name="enterDetails" /></div>
+                        <div className='lob14walkinFields'>
+
+                            <div className="input-block">
+                                    <input id="input-walkin-name" type="text" name="name" className="input-box tt-cap input-fullwidth" placeholder="Name" />
+                                    <div id="alert-walkin-name" className="alert-small-text"></div>
+                            </div>
+                        </div>
                         <div className="input-mobile-block">
                             <PhoneNumberInput onValidationResult={handleValidationResult}  />
                             <div id="alert-walkin-mobile" className="alert-small-text">{errorMessage === 'valid' ? '' : errorMessage}</div>
                         </div>
-                        <div id='lob14walkinFields' className='h-15'>
+                        <div className='lob14walkinFields h-15'>
+                            
                             <div className="input-block">
-                                <input id="input-walkin-name" type="text" name="name" className="input-box tt-cap input-fullwidth" placeholder="FULLNAME" />
-                                <div id="alert-walkin-name" className="alert-small-text"></div>
+                            <input id="input-walkin-email" type="email" name="email" className="input-box input-fullwidth" placeholder="E-mail" required/>
+                            <div id="alert-walkin-email" className="alert-small-text"></div>
                             </div>
                             <div className="input-block">
-                            <input id="input-walkin-email" type="email" name="email" className="input-box input-fullwidth" placeholder="E-MAIL" required/>
-                            <div id="alert-walkin-email" className="alert-small-text"></div>
+                                <input id="input-walkin-company" type="text" name="company" className="input-box tt-cap input-fullwidth" placeholder="Company Name" />
+                                <div id="alert-walkin-company" className="alert-small-text"></div>
                             </div>
                         </div>
                         <div id="alert-wrongmobile" className="alert-text ff-bold mobile-alert">{showAlert}</div>
