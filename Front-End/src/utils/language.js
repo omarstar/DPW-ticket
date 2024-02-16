@@ -223,6 +223,10 @@ const locals = {
     'btnBack' : {
         "en" : "Back",
         "ar" : "للعودة"
+    },
+    'textConnectWorldOpportunities' : {
+        "en" : "Connecting you to a world of opportunities",
+        "ar" : "نوصلك إلى عالم من الفرص"
     }
 }
 

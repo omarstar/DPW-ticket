@@ -235,6 +235,7 @@ export default function WalkOtp(params) {
                 </div>
             </div>
             <div className="footer-section">
+                    <p className="footer-text-connectWorld"><Text name="textConnectWorldOpportunities" /></p>
                 <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
             </div>
 

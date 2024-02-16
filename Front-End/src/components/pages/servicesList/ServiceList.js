@@ -189,8 +189,7 @@ export default function ServiceList(params) {
 
             <div className="d-flex flex-column justify-content-center align-items-center bg-white">
                 <div className="header-section">
-                    <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecirclebk-img" />
-                    <img id="header-back-btn" onClick={HandleBack}  src={backCircleImg} alt="back circle img" className="header-backcircle-img" />
+                    <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
                     <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
                 </div>
                 <div id="page" className="page-layout d-flex">
@@ -214,7 +213,9 @@ export default function ServiceList(params) {
                         </div>
                     </div>
                 </div>
+                <button id="btn-otp-submit" onClick={HandleBack} className="button-wide button-fill-clr space-btn-back"><Text name="btnBack" /></button>
                 <div className="footer-section">
+                    <p className="footer-text-connectWorld"><Text name="textConnectWorldOpportunities" /></p>
                     <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
                 </div>
                 {

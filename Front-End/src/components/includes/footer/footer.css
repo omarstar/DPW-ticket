@@ -26,3 +26,16 @@
     width: 100%;
     
 }
+
+.footer-text-connectWorld {
+    position: fixed;
+    bottom: 0.2rem;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    transform: translateY(50%);
+    z-index: 6;
+    font: 500 12px "Montserrat-Bold";
+}

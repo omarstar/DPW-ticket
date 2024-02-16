@@ -158,8 +158,7 @@ const HandleBack = () => {
 
             <div className="d-flex flex-column justify-content-center align-items-center bg-white">
                 <div className="header-section">
-                    <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecirclebk-img" />
-                    <img id="header-back-btn" onClick={HandleBack}  src={backCircleImg} alt="back circle img" className="header-backcircle-img" />
+                    <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
 
                     <img  src={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
                 </div>
@@ -193,6 +192,7 @@ const HandleBack = () => {
                     </div>
                 </div>
                 <div className="footer-section">
+                    <p className="footer-text-connectWorld"><Text name="textConnectWorldOpportunities" /></p>
                     <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
                 </div>
                 {
