@@ -54,7 +54,7 @@ app.get('*', (req, res) => {
 
 if(process.env.REACT_APP_TESTING){
     app.listen(port, () => {
-        console.log(`Server is running on port ${port}`);
+        console.log(`Server is running for testing on port ${port}`);
     });
 }else{
     const server = https.createServer(httpsOptions , app)

@@ -219,6 +219,10 @@ const locals = {
     'txtCustomerExist' : {
         "en" : "Existing customer",
         "ar" : "زبون الحالي"
+    },
+    'btnBack' : {
+        "en" : "Back",
+        "ar" : "للعودة"
     }
 }
 
