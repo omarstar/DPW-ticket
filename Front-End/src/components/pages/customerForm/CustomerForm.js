@@ -201,7 +201,7 @@ export default function CustomerForm(params) {
             </div>
             <div className="page-layout">
                 <div id="customerpage" className="page-start-layout">
-                    <div className="existingcustomer-box">
+                    {/* <div className="existingcustomer-box">
                         <form className='d-flex flex-column align-items-start'>
                             <div className={"title-form " + (CurrentLang === 'en' ? 'justify-content-start' : 'justify-content-end') }><Text name="txtCustomerExist" /></div>
                             <div className="input-block">
@@ -214,8 +214,7 @@ export default function CustomerForm(params) {
                         <div id="alert-norecords" className="alert-norecords-text"></div>
                     </div>
                     <button id="" onClick={handleExistingCusomterSearch} className="button-wide button-fill-clr space-btn-form-search"><Text name="btnSearchContinue" /></button>
-                    {/* <button id="" onClick={handleExistingCusomterSearch} className="button-wide button-fill-clr space-btn-form-search">Search &amp; Continue</button> */}
-                    <div className="separate-line"></div>
+                    <div className="separate-line"></div> */}
                     <div className="newcustomer-box">
                         <form id="form-newcustomer" className='d-flex flex-column align-items-start'>
                             <div className={"title-form " + (CurrentLang === 'en' ? 'justify-content-start' : 'justify-content-end') }><Text name="txtCustomerNew" /></div>
