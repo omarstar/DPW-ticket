@@ -3,6 +3,7 @@ import './customerForm.css'
 import '../../includes/header/header.css'
 import '../../includes/footer/footer.css'
 import homeCircleImg from '../../../images/home-circle.svg'
+import backCircleImg from '../../../images/backarrow.svg'
 import jafzaLogoColor from '../../../images/JAFZA_Logo_Color.svg'
 import footerBGshape from '../../../images/footer-sky-bg.svg'
 import '../../common.css';
@@ -59,7 +60,6 @@ export default function CustomerForm(params) {
         //search call
         //navigate to display
         console.log('searching...')
-        // $('alert-norecords').text(locals["alertNoRecords"]["en"])
         $('alert-norecords').text(<Text name="alertNoRecords" />)
     }
 
@@ -186,18 +186,22 @@ export default function CustomerForm(params) {
         validateInput($(this), $("#alert-companyName2"), validateEmptyField, CurrentLang);
     });
 
-    
+    const HandleBack = () => {
+        navigate("/DPW/options");
+    }
 
     return (
         <div className="d-flex flex-column justify-content-center align-items-center bg-white">
             
             <div className="header-section">
-                <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
+                {/* <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" /> */}
+                <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecirclebk-img" />
+                    <img id="btn-back-btn" src={backCircleImg} onClick={HandleBack} alt="back circle img" className="header-backcircle-img" />
                 <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
             </div>
             <div className="page-layout">
                 <div id="customerpage" className="page-start-layout">
-                    <div className="existingcustomer-box">
+                    {/* <div className="existingcustomer-box">
                         <form className='d-flex flex-column align-items-start'>
                             <div className={"title-form " + (CurrentLang === 'en' ? 'justify-content-start' : 'justify-content-end') }><Text name="txtCustomerExist" /></div>
                             <div className="input-block">
@@ -210,8 +214,7 @@ export default function CustomerForm(params) {
                         <div id="alert-norecords" className="alert-norecords-text"></div>
                     </div>
                     <button id="" onClick={handleExistingCusomterSearch} className="button-wide button-fill-clr space-btn-form-search"><Text name="btnSearchContinue" /></button>
-                    {/* <button id="" onClick={handleExistingCusomterSearch} className="button-wide button-fill-clr space-btn-form-search">Search &amp; Continue</button> */}
-                    <div className="separate-line"></div>
+                    <div className="separate-line"></div> */}
                     <div className="newcustomer-box">
                         <form id="form-newcustomer" className='d-flex flex-column align-items-start'>
                             <div className={"title-form " + (CurrentLang === 'en' ? 'justify-content-start' : 'justify-content-end') }><Text name="txtCustomerNew" /></div>
@@ -245,6 +248,7 @@ export default function CustomerForm(params) {
             </div>
                 
             <div className="footer-section">
+                    <p className="footer-text-connectWorld"><Text name="textConnectWorldOpportunities" /></p>
                 <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
             </div>
             {

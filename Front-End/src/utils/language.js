@@ -25,8 +25,8 @@ const locals = {
         "ar" : "الرجاء إدخال رقم هاتفك المتحرك"
     },
     'titleEnterOtp' : {
-        "en" : "Please enter the OTP sent <br> to your mobile.",
-        "ar" : "الرجاء إدخال رمز المرور المرسل الى رقم هاتفك المتحرك"
+        "en" : "Please enter the OTP sent <br> to your mobile and email.",
+        "ar" : "الرجاء إدخال رمز المرور المرسل الى رقم هاتفك المتحرك والبريد الألكتروني"
     },
     'noteReceiveOtp' : {
         "en" : "Didn't receive OTP?",
@@ -219,6 +219,14 @@ const locals = {
     'txtCustomerExist' : {
         "en" : "Existing customer",
         "ar" : "زبون الحالي"
+    },
+    'btnBack' : {
+        "en" : "Back",
+        "ar" : "للعودة"
+    },
+    'textConnectWorldOpportunities' : {
+        "en" : "Connecting you to a world of opportunities",
+        "ar" : "نوصلك إلى عالم من الفرص"
     }
 }
 

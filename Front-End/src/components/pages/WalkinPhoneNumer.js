@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import '../includes/header/header.css'
 import '../includes/footer/footer.css'
 import homeCircleImg from '../../images/home-circle.svg'
+import backCircleImg from '../../images/backarrow.svg'
 import jafzaLogoColor from '../../images/JAFZA_Logo_Color.svg'
 import footerBGshape from '../../images/footer-sky-bg.svg'
 import '../common.css';
@@ -70,8 +71,8 @@ export default function WalkinPhoneNumber() {
         const valN = validateInput($("#input-walkin-name"), $("#alert-walkin-name"), validateEmptyField, CurrentLang);
         const valE = validateInput($("#input-walkin-email"), $("#alert-walkin-email"), validateEmptyField, CurrentLang);
         const valEi = validateInput($("#input-walkin-email"), $("#alert-walkin-email"), validateEmail, CurrentLang);
-       
         var isValidMobile =  errorMessage === 'valid' ? true : false;
+        
 
         if(!valN || !valE || !isValidMobile || !valEi){
             return false
@@ -93,8 +94,10 @@ export default function WalkinPhoneNumber() {
                         dispatch(setAppointments(Appointments));
                         
                         await sendOTP(mobileNumber);
+                        dispatch(setLoading(false));
                         return navigate('/DPW/otp');
                     }else{
+                        dispatch(setLoading(false));
                         return setShowAlert(<Text name="alertNoAppWrongMobile" />);
                     }
                 }else{ 
@@ -107,9 +110,11 @@ export default function WalkinPhoneNumber() {
                     await createCustomer(customer);
                     await sendOTP(mobileNumber);
                     dispatch(setLoading(false));
+
                     return navigate('/DPW/otp');
                 }
             } catch (error) {
+                dispatch(setLoading(false));
                 return setShowAlert(<Text name="alertNetwork" />);
             }
         }
@@ -146,6 +151,15 @@ export default function WalkinPhoneNumber() {
         dispatch(setModal(true))
     }
 
+const HandleBack = () => {
+    navigate("/DPW/options");
+}
+
+const handleKeyDown = (event) => {
+    if(event.key === 'Enter'){
+        handleMobileSubmit();
+    }
+}
 
     return (
         
@@ -154,7 +168,9 @@ export default function WalkinPhoneNumber() {
 
             <div className="d-flex flex-column justify-content-center align-items-center bg-white">
                 <div className="header-section">
-                    <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
+                    {/* <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" /> */}
+                    <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecirclebk-img" />
+                    <img id="btn-back-btn" src={backCircleImg} onClick={HandleBack} alt="back circle img" className="header-backcircle-img" />
                     <img  src={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
                 </div>
                 <div id="page" className="page-layout d-flex justify-content-start align-items-center">
@@ -178,7 +194,7 @@ export default function WalkinPhoneNumber() {
                             <div id="alert-walkin-email" className="alert-small-text"></div>
                             </div>
                             <div className="input-block">
-                                <input id="input-walkin-company" type="text" name="company" className="input-box tt-cap input-fullwidth" placeholder="Company Name" />
+                                <input id="input-walkin-company" type="text" name="company" className="input-box tt-cap input-fullwidth" placeholder="Company Name" onKeyDown={(e)=>handleKeyDown(e)} />
                                 <div id="alert-walkin-company" className="alert-small-text"></div>
                             </div>
                         </div>
@@ -187,6 +203,7 @@ export default function WalkinPhoneNumber() {
                     </div>
                 </div>
                 <div className="footer-section">
+                    <p className="footer-text-connectWorld"><Text name="textConnectWorldOpportunities" /></p>
                     <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
                 </div>
                 {

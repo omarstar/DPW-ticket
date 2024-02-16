@@ -64,7 +64,8 @@ const Welcome = () => {
         </button>
     
         <section className="footer-section">
-        <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="footer sky shape" />
+            <p className="footer-text-connectWorld"><Text name="textConnectWorldOpportunities" /></p>
+            <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="footer sky shape" />
         </section>
   </div>
      );

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import '../../includes/header/header.css'
 import '../../includes/footer/footer.css'
 import homeCircleImg from '../../../images/home-circle.svg'
+import backCircleImg from '../../../images/backarrow.svg'
 import jafzaLogoColor from '../../../images/JAFZA_Logo_Color.svg'
 import footerBGshape from '../../../images/footer-sky-bg.svg'
 import srvcInfoIcon from "../../../images/icon-service-info.svg"
@@ -179,20 +180,25 @@ export default function ServiceList(params) {
     }
 
    
+    const HandleBack = () => {
+        navigate("/DPW/category");
+    }
 
     return (
         <>
 
             <div className="d-flex flex-column justify-content-center align-items-center bg-white">
                 <div className="header-section">
-                    <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
+                    {/* <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" /> */}
+                    <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecirclebk-img" />
+                    <img id="btn-back-btn" src={backCircleImg} alt="back circle img" className="header-backcircle-img" />
                     <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
                 </div>
                 <div id="page" className="page-layout d-flex">
                     
                     <div className="title-box d-flex flex-column justify-content-center align-items-center">
                         <div className="title-black ff-bold"><Text name="titleSelectService" /></div>
-                            <div id="walkin-services-list" className="services-list-box d-flex flex-column align-items-center">
+                            <div id="walkin-services-list" className="services-list-box d-flex flex-column align-items-center justify-content-start">
                             {
                             loading ? (
                                 <Loading hSpacer="h-25" />
@@ -208,8 +214,15 @@ export default function ServiceList(params) {
                             )}
                         </div>
                     </div>
+                    {/* <div className='btn-black-box'>
+                        <button id="btn-otp-submit" onClick={HandleBack} className="button-wide button-outline-clr space-btn-back"><Text name="btnBack" />
+                            <img id="btn-back-btn" src={backCircleImg} alt="back circle img" className="btn-backcircle-img" />
+                        </button>
+                    </div> */}
                 </div>
+
                 <div className="footer-section">
+                    <p className="footer-text-connectWorld"><Text name="textConnectWorldOpportunities" /></p>
                     <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
                 </div>
                 {
