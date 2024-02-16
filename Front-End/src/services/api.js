@@ -1,7 +1,7 @@
 import axios from "axios";
 const APPURL = process.env.REACT_APP_API_URL??"";
 const apiUrls = {
-    sendOTP:  'http://epgqsys-1.norwayeast.cloudapp.azure.com:3010'+'/rest/mobile/sendotp',
+    sendOTP:  'https://epgqsys-1.norwayeast.cloudapp.azure.com:3010'+'/rest/mobile/sendotp',
     validateOtp:  APPURL + '/rest/mobile/validateotp',
     createCustomer:  APPURL + '/rest/mobile/createCustomer',
     visitStatus: APPURL + '/rest/mobile/visit/status',
@@ -29,6 +29,7 @@ export const ValidateOtp = async(reqData) => {
 
 export const getTicket = async ({branchId = 4, visitId = 0, checksum = ''}) => {
     try {
+        console.log(apiUrls['visitStatus']);
         const url = apiUrls['visitStatus'] + `?branchId=${branchId}&visitId=${visitId}&checksum=${checksum}`;
         let config = {
             method: 'get',

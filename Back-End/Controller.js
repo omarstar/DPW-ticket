@@ -179,7 +179,7 @@ exports.currentVisit = async (req,res) => {
 
         return res.send(visits.data);
     } catch (error) {
-
+      console.log(error);
         res.status(500).send("error");
     }
 }
@@ -189,14 +189,18 @@ exports.sendOTP = async (req,res) => {
   let otpValue = generateOTP()
   try {
     let variableResponse = await putOTPIntoVarables(customerData,otpValue)
-    let messageResponse = await sendOTPMessage(customerData.phoneNumber, otpValue)
-    res.status("201").send({
-      message : "accepted",
-      data : messageResponse
-    })
+    let messageResponse = await sendOTPMessage(customerData.phoneNumber, otpValue);
+    if(messageResponse){
+      return res.status("201").send({
+        message : "accepted",
+        data : messageResponse
+      })
+    }else{
+      res.status(500).send('Error');
+    }
+    
   } catch (error) {
     console.error(error);
-
     res.status(500).send(error);
   }
 }
@@ -299,9 +303,7 @@ async function sendOTPMessage(phoneNumber , otp) {
 
   } catch (error) {
     console.error(error);
-    res.status(401).send({
-      message : "fail"
-    })
+    return false
   }
 }
 
