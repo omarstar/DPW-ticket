@@ -299,7 +299,9 @@ async function sendOTPMessage(phoneNumber , otp) {
 
   } catch (error) {
     console.error(error);
-    console.log(error)
+    res.status(401).send({
+      message : "fail"
+    })
   }
 }
 
