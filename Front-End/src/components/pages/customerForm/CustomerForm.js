@@ -3,6 +3,7 @@ import './customerForm.css'
 import '../../includes/header/header.css'
 import '../../includes/footer/footer.css'
 import homeCircleImg from '../../../images/home-circle.svg'
+import backCircleImg from '../../../images/backarrow.svg'
 import jafzaLogoColor from '../../../images/JAFZA_Logo_Color.svg'
 import footerBGshape from '../../../images/footer-sky-bg.svg'
 import '../../common.css';
@@ -186,13 +187,16 @@ export default function CustomerForm(params) {
         validateInput($(this), $("#alert-companyName2"), validateEmptyField, CurrentLang);
     });
 
-    
+    const HandleBack = () => {
+        navigate("/DPW/options");
+    }
 
     return (
         <div className="d-flex flex-column justify-content-center align-items-center bg-white">
             
             <div className="header-section">
-                <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
+                <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecirclebk-img" />
+                <img id="header-back-btn" onClick={HandleBack}  src={backCircleImg} alt="back circle img" className="header-backcircle-img" />
                 <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
             </div>
             <div className="page-layout">

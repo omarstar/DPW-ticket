@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import '../includes/header/header.css'
 import '../includes/footer/footer.css'
 import homeCircleImg from '../../images/home-circle.svg'
+import backCircleImg from '../../images/backarrow.svg'
 import jafzaLogoColor from '../../images/JAFZA_Logo_Color.svg'
 import footerBGshape from '../../images/footer-sky-bg.svg'
 import '../common.css';
@@ -124,6 +125,10 @@ export default function PhoneNumber() {
         dispatch(setModal(true))
     }
 
+const HandleBack = () => {
+    navigate("/DPW/options");
+}
+
 
     return (
         
@@ -133,7 +138,9 @@ export default function PhoneNumber() {
                 
                 
                 <div className="header-section">
-                    <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
+                    <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecirclebk-img" />
+                    <img id="header-back-btn" onClick={HandleBack}  src={backCircleImg} alt="back circle img" className="header-backcircle-img" />
+
                     <img  src={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
                 </div>
                 <div id="page" className="page-layout d-flex justify-content-start align-items-center">
