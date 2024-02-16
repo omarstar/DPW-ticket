@@ -51,8 +51,8 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../Front-End/build', 'index.html'));
 });
 
-
-if(process.env.REACT_APP_TESTING){
+console.log(process.env.REACT_APP_TESTING);
+if(process.env.REACT_APP_TESTING==1){
     app.listen(port, () => {
         console.log(`Server is running for testing on port ${port}`);
     });
