@@ -175,6 +175,17 @@
     top: 24px;
     max-width: 30px;
   }
+
+  .btn-black-box {
+    margin-top: 3rem;
+  }
+  .btn-backcircle-img {
+    max-width: 30px;
+  }
+
+  .half-width {
+    width: 9rem !important;
+  }
   .button-wide {
     justify-content: center;
       text-align: center;

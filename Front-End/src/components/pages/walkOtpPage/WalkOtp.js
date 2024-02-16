@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import '../../includes/header/header.css'
 import '../../includes/footer/footer.css'
 import homeCircleImg from '../../../images/home-circle.svg'
+import backCircleImg from '../../../images/backarrow.svg'
 import jafzaLogoColor from '../../../images/JAFZA_Logo_Color.svg'
 import footerBGshape from '../../../images/footer-sky-bg.svg'
 import '../../common.css';
@@ -14,9 +15,8 @@ import { getCurrentLang, getPhonenumber, isShowModal, setLoading, setModal } fro
 import { useDispatch, useSelector } from 'react-redux'
 import InputOtp from '../otpPage/InputOtp'
 import { ValidateOtp, callValidateOtp, sendOTP } from '../../../services/api'
-import { vop } from '../../../utils'
 import Text from '../../Text'
-import Loading from '../../includes/loading/loading'
+// import Loading from '../../includes/loading/loading'
 export default function WalkOtp(params) {
 
     const navigate = useNavigate();
@@ -36,7 +36,7 @@ export default function WalkOtp(params) {
     const dispatch = useDispatch();
 
     const doShowModal = useSelector(isShowModal);
-    const {flow} = useSelector((state) => state.app);
+    const {flow, branchPrefix} = useSelector((state) => state.app);
 
     const modalExitData = {
         titleText: <Text name="titleExitModal" />,
@@ -190,6 +190,17 @@ export default function WalkOtp(params) {
         
     }
 
+    const HandleBack = () => {
+        if(flow === "app"){
+            navigate('/DPW/mobile')
+        }else if(flow === "walkin"){
+            if(branchPrefix === "LOB14"){
+                navigate('/DPW/walkin-mobile')
+            }else{
+                navigate('/DPW/customer')
+            }
+        }
+    }
 
     // const [showAlertElement, setShowAlertElement] = useState(false)
     // const [showResendElement, setShowResendElement] = useState(false)
@@ -200,7 +211,9 @@ export default function WalkOtp(params) {
         <div className="d-flex flex-column justify-content-center align-items-center bg-white">
            
             <div className="header-section">
-                <img id="header-home-btn" onClick={showModel} src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
+                {/* <img id="header-home-btn" onClick={showModel} src={homeCircleImg} alt="home circle img" className="header-homecircle-img" /> */}
+                <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecirclebk-img" />
+                <img id="btn-back-btn" onClick={HandleBack} src={backCircleImg} alt="back circle img" className="header-backcircle-img" />
                 <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
             </div>
             <div id="page" className="page-layout d-flex justify-content-center">
@@ -228,8 +241,11 @@ export default function WalkOtp(params) {
                     <div class="otp-actions-box">
                         <button id="btn-resendotp-submit" style={{display: showResendButton ? 'flex' : 'none'}}   onClick={resendOtpAndRestartTimer} class="button-wide button-fill-clr space-submit-resendotp">
                             <span><Text name="btnResendOtp" /></span>
-                            {/* <span>Resend OTP</span> */}
                         </button>
+                        {/* <div className='d-flex justify-content-center align-items-center gap-3'>
+                            <button id="btn-otp-submit" onClick={HandleBack} className="button-wide half-width button-outline-clr space-btn-back"><Text name="btnBack" /></button>
+                            <button id="btn-otp-submit" onClick={handleSubmitOtp} className="button-wide half-width button-fill-clr space-submit-otp"><Text name="btnSubmit" /></button>
+                        </div> */}
                         <button id="btn-otp-submit" onClick={handleSubmitOtp} className="button-wide button-fill-clr space-submit-otp"><Text name="btnSubmit" /></button>
                     </div>
                 </div>

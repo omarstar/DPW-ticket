@@ -225,7 +225,7 @@
         justify-content: center;
         overflow-y: auto;
         scroll-behavior: auto;
-        /* height: 30rem; */
+        height: 22rem;
         /* border-bottom: 1px solid #777; */
       }
       .cat-img-box {
@@ -255,7 +255,6 @@
       }
 
       .space-btn-back {
-        margin-top: 2rem;
         letter-spacing: 0.36px;
         padding: 14px 60px 8px;
         font: 700 11px 'Montserrat-Bold', sans-serif;

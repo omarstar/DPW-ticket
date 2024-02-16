@@ -93,6 +93,7 @@ export default function PhoneNumber() {
                     return navigate('/DPW/otp');
                 }
             } catch (error) {
+                dispatch(setLoading(false));
                 return setShowAlert(<Text name="alertNetwork" />);
             }
         }else{
@@ -138,7 +139,9 @@ const HandleBack = () => {
                 
                 
                 <div className="header-section">
-                    <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
+                    {/* <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" /> */}
+                    <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecirclebk-img" />
+                    <img id="btn-back-btn" src={backCircleImg} onClick={HandleBack} alt="back circle img" className="header-backcircle-img" />
 
                     <img  src={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
                 </div>

@@ -60,7 +60,6 @@ export default function CustomerForm(params) {
         //search call
         //navigate to display
         console.log('searching...')
-        // $('alert-norecords').text(locals["alertNoRecords"]["en"])
         $('alert-norecords').text(<Text name="alertNoRecords" />)
     }
 
@@ -195,7 +194,9 @@ export default function CustomerForm(params) {
         <div className="d-flex flex-column justify-content-center align-items-center bg-white">
             
             <div className="header-section">
-                <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
+                {/* <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" /> */}
+                <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecirclebk-img" />
+                    <img id="btn-back-btn" src={backCircleImg} onClick={HandleBack} alt="back circle img" className="header-backcircle-img" />
                 <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
             </div>
             <div className="page-layout">
