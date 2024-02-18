@@ -8,6 +8,7 @@ import '../common.css';
 import '../../styles/thankyou.css'
 import { useNavigate } from 'react-router-dom';
 import Text from '../Text';
+import Footer from '../includes/footer/Footer';
 
 export default function Thankyou() {
 
@@ -29,10 +30,7 @@ export default function Thankyou() {
                     <button id="btn-otp-submit" onClick={handleReturnHome} className="button-wide button-fill-clr space-btn-thankyou"><Text name="btnReturnHomepage" /></button>
                 </div>
             </div>
-            <div className="footer-section">
-                    <p className="footer-text-connectWorld"><Text name="textConnectWorldOpportunities" /></p>
-                <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
-            </div>
+            < Footer />
         </div>
     )   
 }

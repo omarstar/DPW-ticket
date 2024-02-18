@@ -18,6 +18,7 @@ import ModalInfo from '../../includes/modal/ModalInfo'
 import { useNavigate } from 'react-router-dom'
 import Loading from '../../includes/loading/loading'
 import Text from '../../Text'
+import Footer from '../../includes/footer/Footer'
 
 export default function ServiceList(params) {
 
@@ -97,6 +98,7 @@ export default function ServiceList(params) {
                 return s;
             });
             serviceListResponse = serviceListResponse.sort((a, b) => a.internalName.localeCompare(b.internalName))
+            console.log('serviceListResponse>> ', serviceListResponse)
             setServiceList(serviceListResponse)
         }
 
@@ -191,7 +193,7 @@ export default function ServiceList(params) {
                 <div className="header-section">
                     {/* <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" /> */}
                     <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecirclebk-img" />
-                    <img id="btn-back-btn" src={backCircleImg} alt="back circle img" className="header-backcircle-img" />
+                    <img id="btn-back-btn" src={backCircleImg} onClick={HandleBack} alt="back circle img" className="header-backcircle-img" />
                     <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
                 </div>
                 <div id="page" className="page-layout d-flex">
@@ -221,10 +223,7 @@ export default function ServiceList(params) {
                     </div> */}
                 </div>
 
-                <div className="footer-section">
-                    <p className="footer-text-connectWorld"><Text name="textConnectWorldOpportunities" /></p>
-                    <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
-                </div>
+                < Footer />
                 {
                     doShowModal && (
                         <ModalExit data={modalExitData} />

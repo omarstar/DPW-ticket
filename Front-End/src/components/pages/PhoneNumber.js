@@ -19,6 +19,7 @@ import { createCustomer, getAppointments, sendOTP } from '../../services/api';
 import { setAppointments } from '../../reducers/appointments';
 import Text from '../Text';
 import Loading from '../includes/loading/loading';
+import Footer from '../includes/footer/Footer';
 
 export default function PhoneNumber() {
     
@@ -157,10 +158,7 @@ const HandleBack = () => {
                         <div className='d-flex flex-column justify-content-end align-items-center btn-appmobile-box'><button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit"><Text name="btnContinue" /></button></div>
                     </div>
                 </div>
-                <div className="footer-section">
-                    <p className="footer-text-connectWorld"><Text name="textConnectWorldOpportunities" /></p>
-                    <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
-                </div>
+                < Footer />
                 {
                     doShowModal && (
                         <ModalExit data={modalExitData} />

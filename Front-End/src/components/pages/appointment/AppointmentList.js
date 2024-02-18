@@ -17,6 +17,7 @@ import { setSelectedAppointment } from '../../../reducers/appointments'
 // import { appiontmentsList } from '../../../utils/constants'
 import Text from '../../Text'
 import Loading from '../../includes/loading/loading'
+import Footer from '../../includes/footer/Footer'
 
 export default function AppointmentList(params) {
 
@@ -222,10 +223,7 @@ export default function AppointmentList(params) {
                     </div>
                 </div>
             </div>
-            <div className="footer-section">
-                    <p className="footer-text-connectWorld"><Text name="textConnectWorldOpportunities" /></p>
-                <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
-            </div>
+            < Footer />
 
            {
                 doShowModal && (

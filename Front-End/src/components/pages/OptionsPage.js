@@ -3,7 +3,6 @@ import '../includes/header/header.css'
 import '../includes/footer/footer.css'
 import homeCircleImg from '../../images/home-circle.svg'
 import jafzaLogoColor from '../../images/JAFZA_Logo_Color.svg'
-import footerBGshape from '../../images/footer-sky-bg.svg'
 import '../common.css';
 import '../../styles/options.css'
 import { useNavigate } from 'react-router-dom'
@@ -11,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { isShowModal, setFlow, setModal } from '../../reducers'
 import ModalExit from '../includes/modal/ModalExit'
 import Text from '../Text'
+import Footer from '../includes/footer/Footer'
 
 export default function OptionsPage(params) {
 
@@ -73,10 +73,7 @@ export default function OptionsPage(params) {
                     <button id="btn-walkin-flow" onClick={goToWalkinCustomer} className="button-wide button-fill-clr space-btn2"><Text name="btnWalkinFlow" /></button>
                 </div>
             </div>
-            <div className="footer-section">
-                <p className="footer-text-connectWorld"><Text name="textConnectWorldOpportunities" /></p>
-                <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
-            </div>
+            < Footer />
             {
                 doShowModal && (
                     <ModalExit data={modalExitData} />

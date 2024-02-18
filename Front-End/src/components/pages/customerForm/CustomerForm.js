@@ -17,6 +17,7 @@ import $ from 'jquery';
 import { createCustomer, sendOTP } from '../../../services/api'
 import { validateInput } from '../../../utils'
 import Text from '../../Text'
+import Footer from '../../includes/footer/Footer'
 
 export default function CustomerForm(params) {
     const navigate = useNavigate();
@@ -247,10 +248,7 @@ export default function CustomerForm(params) {
                 </div>
             </div>
                 
-            <div className="footer-section">
-                    <p className="footer-text-connectWorld"><Text name="textConnectWorldOpportunities" /></p>
-                <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
-            </div>
+            < Footer />
             {
                 doShowModal && (
                     <ModalExit data={modalExitData} />

@@ -6,11 +6,11 @@ const locals = {
     },
     'WelcomeLOB14' : {
         "en" : "Welcome to Jafza Service Center",
-        "ar" : "ابدأ هنا"
+        "ar" : "أهلا بك في المنطقة الحرة لجبل علي - مركز الخدمات"
     },
     'WelcomeLOB15' : {
         "en" : "Welcome to Jafza Sales Center",
-        "ar" : "ابدأ هنا"
+        "ar" : "أهلا بك في المنطقة الحرة لجبل علي - مركز المبيعات"
     },
     'titleSelectOptions' : {
         "en" : "Please select an option",

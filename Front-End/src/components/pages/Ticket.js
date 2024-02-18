@@ -14,6 +14,8 @@ import Queue from './Queue';
 import Turn from './Turn';
 import Loading from '../includes/loading/loading';
 import { getTicket } from '../../services/api';
+import Text from '../Text';
+import Footer from '../includes/footer/Footer';
 
 export default function Ticket() {
 
@@ -102,9 +104,7 @@ export default function Ticket() {
                 }
                 </div>
             </div>
-            <div class="footer-section">
-                <img id="footer-img-bg"  src={footerBGshape} class="footer-img-icon" alt="background shape" />
-            </div>
+            < Footer />
         </div>
     )
 }

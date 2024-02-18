@@ -12,7 +12,7 @@ export default function Queue({ticket}) {
 
     return (
         <>
-        <div className="title-black ff-bold"><Text name="titlePosition" /></div>
+        <div className="title-black ff-bold mtop-25"><Text name="titlePosition" /></div>
         <div className='ticket-wrapper text-center'>
             <div className="m-0 alignment txt_color" >
 

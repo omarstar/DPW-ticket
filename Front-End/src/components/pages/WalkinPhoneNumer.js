@@ -19,6 +19,7 @@ import ModalExit from '../includes/modal/ModalExit';
 import { createCustomer, getAppointments, sendOTP } from '../../services/api';
 import { setAppointments } from '../../reducers/appointments';
 import Text from '../Text';
+import Footer from '../includes/footer/Footer';
 
 export default function WalkinPhoneNumber() {
     
@@ -72,7 +73,6 @@ export default function WalkinPhoneNumber() {
         const valE = validateInput($("#input-walkin-email"), $("#alert-walkin-email"), validateEmptyField, CurrentLang);
         const valEi = validateInput($("#input-walkin-email"), $("#alert-walkin-email"), validateEmail, CurrentLang);
         var isValidMobile =  errorMessage === 'valid' ? true : false;
-        
 
         if(!valN || !valE || !isValidMobile || !valEi){
             return false
@@ -202,10 +202,7 @@ const handleKeyDown = (event) => {
                         <div className='d-flex flex-column justify-content-end align-items-center h-12'><button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit"><Text name="btnContinue" /></button></div>
                     </div>
                 </div>
-                <div className="footer-section">
-                    <p className="footer-text-connectWorld"><Text name="textConnectWorldOpportunities" /></p>
-                    <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
-                </div>
+                < Footer /> 
                 {
                     doShowModal && (
                         <ModalExit data={modalExitData} />

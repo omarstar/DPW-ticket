@@ -7,6 +7,7 @@ import { selectLanguage, setBranchPrefix, setLoading, toggleCurrentLang } from "
 import { useEffect, useState } from "react";
 import Text from "../Text";
 import $ from 'jquery'
+import Footer from "../includes/footer/Footer";
 const Welcome = () => {
     var {branch} = useParams();
     const navigate = useNavigate();
@@ -63,10 +64,7 @@ const Welcome = () => {
             <Text name="getStarted" />
         </button>
     
-        <section className="footer-section">
-            <p className="footer-text-connectWorld"><Text name="textConnectWorldOpportunities" /></p>
-            <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="footer sky shape" />
-        </section>
+        < Footer />
   </div>
      );
 }

@@ -14,6 +14,7 @@ import ModalExit from '../../includes/modal/ModalExit'
 import axios from 'axios'
 import { getSelectedAppointment } from '../../../reducers/appointments'
 import Text from '../../Text'
+import Footer from '../../includes/footer/Footer'
 
 export default function BookingSummary(params) {
 
@@ -149,9 +150,7 @@ export default function BookingSummary(params) {
                     {/* <button id="btn-otp-submit" onClick={handleProceedCheckinApp} className="space-proceed-appsummary">Confirm &amp; Proceed</button> */}
                 </div>
             </div>
-            <div className="footer-section">
-                <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
-            </div>
+            < Footer />
             {
                 doShowModal && (
                     <ModalExit data={modalExitData} />

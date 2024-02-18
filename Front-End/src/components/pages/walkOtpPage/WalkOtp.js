@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import InputOtp from '../otpPage/InputOtp'
 import { ValidateOtp, callValidateOtp, sendOTP } from '../../../services/api'
 import Text from '../../Text'
+import Footer from '../../includes/footer/Footer'
 // import Loading from '../../includes/loading/loading'
 export default function WalkOtp(params) {
 
@@ -250,10 +251,7 @@ export default function WalkOtp(params) {
                     </div>
                 </div>
             </div>
-            <div className="footer-section">
-                    <p className="footer-text-connectWorld"><Text name="textConnectWorldOpportunities" /></p>
-                <img id="footer-img-bg"  src={footerBGshape} className="footer-img-icon" alt="background shape" />
-            </div>
+            < Footer />
 
            {
                 doShowModal && (

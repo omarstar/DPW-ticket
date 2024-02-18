@@ -1,7 +1,14 @@
 .ticket-wrapper {
     /* height: 65vh; */
-    margin-top: 35px;
+    margin-top: 10px;
 }
+.ticket-wrapper-turn{
+
+}
+.mtop-25 {
+    margin-top: 25px;
+}
+
 .ticket-details-box {
     border-radius: 8px;
     border: 1px solid var(--primary-blue, #0058a6);
