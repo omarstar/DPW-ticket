@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './input.css';
 
 function InputOtp({otpValue, onOtpChange, onKeyClick}) {
@@ -37,6 +37,11 @@ function InputOtp({otpValue, onOtpChange, onKeyClick}) {
         console.log('otpValue bk', otpValue[otpValue.length -1],otpValue.length)
       }
     };
+
+    useEffect(() => {
+      // Focus on the first input after the first render
+      inputRefs.current[0].current.focus();
+    }, []);
 
     return (
         <div className="otp-set-box h-10">
