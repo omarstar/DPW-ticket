@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { counterSlice } from './reducers/index'
 import { AppointmentSlice } from './reducers/appointments'
-
+// import { composeWithDevTools } from 'redux-devtools-extension';
 import storage from 'redux-persist/lib/storage'
 import { persistReducer, persistStore } from 'redux-persist'
 
@@ -19,8 +19,13 @@ const rootReducer = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
+
+
+
 const store = configureStore({
   reducer: persistedReducer,
+  // devTools: process.env.NODE_ENV !== 'production', // Enable/disable devtools based on environment
+  // enhancers: [composeWithDevTools()],
 })
 
 export const persistor = persistStore(store);

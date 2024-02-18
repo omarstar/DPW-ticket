@@ -114,6 +114,7 @@ export default function WalkOtp(params) {
             setShowResendButton(false);
             
         } catch (error) {
+            dispatch(setLoading(false));
             setErrorFlag(<Text name="alertNetwork" />)
             // setErrorFlag("Network temporarily unavailable")
         }
@@ -185,6 +186,7 @@ export default function WalkOtp(params) {
             }
         } catch (error) {
             console.log('error in parsing data', error)
+            dispatch(setLoading(false));
             setErrorFlag(<Text name="alertNetwork" />)
             // setErrorFlag("Network temporarily unavailable")
         }
