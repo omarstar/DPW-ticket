@@ -142,7 +142,7 @@ export default function CategoryList(params) {
                                         imgCatRelated = catImg;
                                 };
                                 return (
-                                    <div key={index} id="cat-img-btn" className="button-category-item col-5">
+                                    <div key={index} id="cat-img-btn" className="button-category-item col-5 d-flex justify-content-center">
                                         <div onClick={()=>handlecategorySubmit(cat)} className="category-btn-box">
                                             <button className="button-wide button-fill-clr cat-img-box">
                                                 <img clasName="img-fluid img-rat m-auto" src={imgCatRelated} alt="" />

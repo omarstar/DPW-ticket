@@ -66,7 +66,8 @@ const locals = {
         "ar" : "شكرا لكم على الزيارة"
     },
     'titleSelectApp' : {
-        "en" : "Please select your confirmed face-to-face appointment to check-in.",
+        // "en" : "Please select your confirmed face-to-face appointment to check-in.",
+        "en" : "Please confirm your appointment check-in",
         "ar" : "الرجاء إختيار الموعد المؤكد للتسجيل"
     },
     'noteAppCheckin' : {
@@ -90,7 +91,7 @@ const locals = {
         "ar" : "لا معلومات إضافية لهذه الخدمة"
     },
     'titleBookingSummary' : {
-        "en" : "Your appointment summary",
+        "en" : "Your Appointment Summary",
         "ar" : "ملخص موعدك"
     },
     'btnWalkinFlow' : {
@@ -150,7 +151,7 @@ const locals = {
         "ar" : "أنت"
     },
     'txtFirstName' : {
-        "en" : "First name",
+        "en" : "First Name",
         "ar" : "الاسم"
     },
     'txtLastName' : {
@@ -158,11 +159,11 @@ const locals = {
         "ar" : "الشهرة"
     },
     'txtName' : {
-        "en" : "Fullname",
+        "en" : "Full Name",
         "ar" : "الاسم الكامل"
     },
     'txtMobile' : {
-        "en" : "mobile",
+        "en" : "Mobile",
         "ar" : "الهاتف الجوال"
     },
     'txtEmail' : {
@@ -174,15 +175,15 @@ const locals = {
         "ar" : "الشركة"
     },
     'txtBranch' : {
-        "en" : "Branch name",
+        "en" : "Branch Name",
         "ar" : "الفرع"
     },
     'txtService' : {
-        "en" : "Service name",
+        "en" : "Service Name",
         "ar" : "الخدمة"
     },
     'txtAppDatetime' : {
-        "en" : "Appointment date / time",
+        "en" : "Appointment Date / Time",
         "ar" : "تاريخ ووقت الموعد"
     },
     'alertEmptyField' : {

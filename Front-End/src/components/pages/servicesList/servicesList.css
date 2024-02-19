@@ -282,3 +282,9 @@
       background-color: var(--gray-text);
       margin: 3px 0;
     }
+
+    .category-btn-box {
+      width: 7rem;
+      max-width: 10rem;
+      aspect-ratio: 1/1;
+    }

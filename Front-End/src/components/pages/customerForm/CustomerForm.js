@@ -234,11 +234,7 @@ export default function CustomerForm(params) {
                     <div className="newcustomer-box">
                         <form id="form-newcustomer" className='d-flex flex-column align-items-start'>
                             <div className={"title-form " + (CurrentLang === 'en' ? 'justify-content-start' : 'justify-content-end') }><Text name="txtCustomerNew" /></div>
-                            <div className="input-block">
-                                <PhoneNumberInput ref={phoneInputRef} onValidationResult={handleValidationResult}  />
-                            {/* <input id="input-walknew-mobilenumber" type="tel"  className="input-box input-fullwidth required" name="mobile" pattern="[0-9]*" placeholder="" onClick="this.select();" required /> */}
-                                <div id="alert-mobile" className="alert-small-text">{errorMessage === 'valid' ? '' : errorMessage}</div>
-                            </div>
+                            
                             <div className="input-block">
                             <input id="input-firstname" type="text" name="first name" className="input-box tt-cap input-fullwidth" placeholder="FIRST NAME" />
                             <div id="alert-firstname" className="alert-small-text"></div>
@@ -246,6 +242,11 @@ export default function CustomerForm(params) {
                             <div className="input-block">
                             <input id="input-lastname" type="text" name="last time" className="input-box tt-cap input-fullwidth" placeholder="LAST NAME" />
                             <div id="alert-lastname" className="alert-small-text"></div>
+                            </div>
+                            <div className="input-block">
+                                <PhoneNumberInput ref={phoneInputRef} onValidationResult={handleValidationResult}  />
+                            {/* <input id="input-walknew-mobilenumber" type="tel"  className="input-box input-fullwidth required" name="mobile" pattern="[0-9]*" placeholder="" onClick="this.select();" required /> */}
+                                <div id="alert-mobile" className="alert-small-text">{errorMessage === 'valid' ? '' : errorMessage}</div>
                             </div>
                             <div className="input-block">
                             <input id="input-email" type="email" name="email" className="input-box input-fullwidth" placeholder="E-MAIL" required style={{textTransform: 'inherit'}} />
