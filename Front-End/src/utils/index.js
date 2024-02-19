@@ -121,10 +121,10 @@ export const vop = (value) => {
     console.log('remaining_min',remaining_min);
     var earlyOrLate = "";
     
-    if (remaining_min>9) {
+    if (remaining_min>14) {
       earlyOrLate = "remaining";
     } 
-    else if (remaining_min<-20) {
+    else if (remaining_min<-30) {
       earlyOrLate = "overdue"
     } 
     else {
