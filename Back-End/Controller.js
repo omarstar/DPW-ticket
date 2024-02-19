@@ -1,4 +1,5 @@
 const { default: axios } = require('axios');
+var nodemailer = require('nodemailer');
 const utilFunctions = require('./util');
 var qmaticApiUrl = "http://epgqsys-1.norwayeast.cloudapp.azure.com:9090";
 var qmaticMobileUrl = "http://epgqsys-1.norwayeast.cloudapp.azure.com:81";
@@ -136,6 +137,7 @@ exports.createTicket = async (req,res) => {
 
         var visitCreate = await axios.request(visitCreateConfig);
         return res.send(visitCreate.data);
+        
 
     } catch (error) {
         console.log('error', error)
@@ -189,8 +191,10 @@ exports.sendOTP = async (req,res) => {
   let otpValue = generateOTP()
   try {
     let variableResponse = await putOTPIntoVarables(customerData,otpValue)
-    let messageResponse = await sendOTPMessage(customerData.phoneNumber, otpValue);
-    if(messageResponse){
+    const otpMessage = `Welcome to Jafza! \nYour OTP is ${otpValue}. Please do not share this OTP with anyone.`;
+    let messageResponse = await sendMessage(customerData.phoneNumber, otpMessage);
+    let messageResponseEmail = await sendEmail(customerData.email, otpMessage);
+    if(messageResponse || messageResponseEmail){
       return res.status("201").send({
         message : "accepted",
         data : messageResponse
@@ -254,7 +258,40 @@ async function getBranches() {
 
 }
 
-async function sendOTPMessage(phoneNumber , otp) {
+async function sendEmail(email , message) {
+  console.log(email,message);
+  const transporter = nodemailer.createTransport({
+    host: "smtp.office365.com",
+    port: 587,
+    secureConnection: false,
+    auth: {
+      // TODO: replace `user` and `pass` values from <https://forwardemail.net>
+      user: 'kamal@infracommunication.com',
+      pass: "M1n@s!234",
+    },
+    tls: {
+      ciphers:'SSLv3'
+    }
+  });
+
+  var mailOptions = {
+    from: 'kamal@infracommunication.com',
+    to: email,
+    subject: 'Jafza',
+    text: message
+  };
+
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+      return false
+    } else {
+      console.log('Email sent: ' + info.response);
+      return true;
+    }
+  });
+}
+async function sendMessage(phoneNumber , message) {
   try {
     let data = JSON.stringify({
       "username": "JAFZACS",
@@ -281,7 +318,7 @@ async function sendOTPMessage(phoneNumber , otp) {
         "senderAddr": "Jafza",
         "priority": 1,
         "recipient": parseInt(phoneNumber),
-        "msg":  `Welcome to Jafza! \nYour OTP is ${otp}. Please do not share this OTP with anyone.`,
+        "msg":  message,
         "dr": "1"
       });
 
