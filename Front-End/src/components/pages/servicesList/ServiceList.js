@@ -25,7 +25,7 @@ export default function ServiceList(params) {
     const [showModalInfo, setShowModalInfo] = useState(false);
     const [descText, setDescText] = useState("")
 
-    let {loading,category} = useSelector((state) => state.app);
+    let {loading, category, branchPrefix} = useSelector((state) => state.app);
 
     let modalInfoData = {
         titleText: <Text name="titleServiceModal" />,
@@ -136,13 +136,37 @@ export default function ServiceList(params) {
     }
 
     async function  handleServiceSubmit(srvid) {
-
+        //
         try {
+            
             const service = serviceList.find(srv => srv.id === srvid);
             console.log('service', service)
+            console.log('branchPrefix', branchPrefix)
             if(service){
-                await createTicket(srvid)
+                if([[77,78,79,80]].find(id => id === service.id)){
+                    setDescText("Please book an online appointment for this service.")
+                    return setShowModalInfo(true);
+
+                }else if(branchPrefix === 'LOB14'){
+                    
+                    if([72,73,74,75,76].find(id => id === service.id )){
+                        setDescText("Please proceed to the Sales Centre JAFZA 15 branch to select this service.")
+                        return setShowModalInfo(true);
+                    }else{
+                        await createTicket(srvid)
+                    }
+    
+                }else if(branchPrefix === 'LOB15'){
+    
+                    if([72,73,74,75,76].find(id => id === service.id )){
+                        await createTicket(srvid)
+                    }else{
+                        setDescText("Please proceed to the Sales Centre JAFZA 15 branch to select this service.")
+                        return setShowModalInfo(true);
+                    }
+                }
             }
+
         } catch (error) {
             console.log('error in finding service', error)
             navigate("/")
