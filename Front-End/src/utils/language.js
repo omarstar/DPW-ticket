@@ -22,7 +22,7 @@ const locals = {
     },
     'enterDetails' : {
         "en" : "Please enter your details",
-        "ar" : "الرجاء إدخال رقم هاتفك المتحرك"
+        "ar" : "الرجاء إدخال معلوماتك الشخصية"
     },
     'titleEnterOtp' : {
         "en" : "Please enter the OTP sent <br> to your mobile and email.",

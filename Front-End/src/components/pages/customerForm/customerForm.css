@@ -78,7 +78,7 @@
     width: 100%;
     display: flex;
     color: #046cac;
-    font: 700 10px 'Montserrat-Bold', sans-serif;
+    font: 700 15px 'Montserrat-Bold', sans-serif;
     letter-spacing: 0.85px;
     text-transform: uppercase;
     text-align: left;
@@ -154,8 +154,7 @@
     color: var(--alert-color, #dd4452);
     text-align: start;
     letter-spacing: 0.6px;
-    /* text-transform: uppercase; */
-    /* margin-top: 3px; */
+    min-height: 10px;
     white-space: nowrap;
     font: 700 8px 'Montserrat-Bold', sans-serif;
   }
@@ -173,7 +172,6 @@
   }
   .mobile-alert {
     width: 80vw;
-    /* margin-top: 76px; */
-    margin-top: 3.5rem;
+    margin-top: 2.5rem;
     min-height: 24px;
   }

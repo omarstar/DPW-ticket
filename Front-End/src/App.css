@@ -1,4 +1,7 @@
 /* layout styles */
+.h-10 {
+  height: 10vh;
+}
 .h-12 {
   height: 12vh;
 }

@@ -199,7 +199,7 @@ const handleKeyDown = (event) => {
                             </div>
                         </div>
                         <div id="alert-wrongmobile" className="alert-text ff-bold mobile-alert">{showAlert}</div>
-                        <div className='d-flex flex-column justify-content-end align-items-center h-12'><button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit"><Text name="btnContinue" /></button></div>
+                        <div className='d-flex flex-column justify-content-end align-items-center h-10'><button id="btn-mobile-submit" onClick={handleMobileSubmit} className="button-wide button-fill-clr space-mobile-submit"><Text name="btnContinue" /></button></div>
                     </div>
                 </div>
                 < Footer /> 

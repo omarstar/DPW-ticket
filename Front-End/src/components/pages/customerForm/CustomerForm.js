@@ -201,7 +201,7 @@ export default function CustomerForm(params) {
                 <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
             </div>
             <div className="page-layout">
-                <div id="customerpage" className="page-start-layout">
+                <div id="customerpage" className="page-start-layout title-box d-flex flex-column justify-content-center align-items-center">
                     {/* <div className="existingcustomer-box">
                         <form className='d-flex flex-column align-items-start'>
                             <div className={"title-form " + (CurrentLang === 'en' ? 'justify-content-start' : 'justify-content-end') }><Text name="txtCustomerExist" /></div>
@@ -244,7 +244,9 @@ export default function CustomerForm(params) {
                         </form>
                         {/* <div id="alert-registration" className="alert-validation-text">all fields are required</div> */}
                     </div>
-                    <button id="new_customer_proceed" onClick={handleNewCustomerSubmit} className="button-wide button-fill-clr space-btn-form-proceed"><Text name="btnProceed" /></button>
+                    <div className='btn-form-proceed d-flex flex-column justify-content-end align-items-center h-10'>
+                        <button id="new_customer_proceed" onClick={handleNewCustomerSubmit} className="button-wide button-fill-clr space-btn-form-proceed"><Text name="btnProceed" /></button>
+                    </div>
                 </div>
             </div>
                 

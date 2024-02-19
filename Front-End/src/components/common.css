@@ -189,7 +189,7 @@
   .button-wide {
     justify-content: center;
       text-align: center;
-      letter-spacing: 1.2px;
+      letter-spacing: 1px;
       border-radius: 12px;
       align-self: center;
       width: 15rem;
@@ -209,6 +209,9 @@
     border: none;
     background-color: var(--royal-blue, #0068a9);
     color: #fff;
+  }
+  .btn-form-proceed {
+    margin-top: 2.5rem;
   }
    /* phone international */
    .iti__flag-container {

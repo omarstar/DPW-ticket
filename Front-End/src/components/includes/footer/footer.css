@@ -28,7 +28,9 @@
 }
 
 .footer-ff-ar {
-    font: 800 12px "Montserrat-Black";
+    font-family: "Montserrat-Black";
+    font-weight: 900;
+    /* font: 900 12px "Montserrat-Black"; */
 }
 
 .footer-text-connectWorld {
