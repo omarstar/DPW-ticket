@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './customerForm.css'
 import '../../includes/header/header.css'
 import '../../includes/footer/footer.css'
@@ -18,6 +18,7 @@ import { createCustomer, sendOTP } from '../../../services/api'
 import { validateInput } from '../../../utils'
 import Text from '../../Text'
 import Footer from '../../includes/footer/Footer'
+import { getLocalTranslate } from '../../../utils/language'
 
 export default function CustomerForm(params) {
     const navigate = useNavigate();
@@ -27,6 +28,8 @@ export default function CustomerForm(params) {
     const navToOtpPage = () => {
         navigate('/DPW/otp')
     }
+
+    const phoneInputRef = useRef();
 
     const handleNewCustomerSubmit =  () => {
         if(validateInputFields()){
@@ -161,8 +164,20 @@ export default function CustomerForm(params) {
 
         var valE = validateInput($('#input-email'), $("#alert-email"), validateEmptyField, CurrentLang);
 		var valC = validateInput($('#input-companyName2'), $("#alert-companyName2"), validateEmptyField, CurrentLang);
-		var isValidMobile =  errorMessage === 'valid' ? true : false;
 		
+        const isMobileEmpty = phoneInputRef.current.isInputEmpty();
+        console.log('isMobileEmpty', isMobileEmpty)
+        
+        const isMobileValid = phoneInputRef.current.isValidNumber();
+        console.log('isMobileValid', isMobileValid)
+
+        if(isMobileEmpty)
+            setErrorMessage(<Text name="alertEmptyField" />)
+        else if(!isMobileValid)
+            setErrorMessage(<Text name="alertInvalidFormat" />)
+        
+		// var isValidMobile =  errorMessage === 'valid' ? true : false;
+        var isValidMobile = !isMobileEmpty && isMobileValid
         var isValidEmail = validateInput($("#input-email"), $("#alert-email"), validateEmail, CurrentLang);
 		
 		if(!valFn || !valLn || !valE || !valC || !isValidMobile || !isValidEmail){
@@ -220,7 +235,7 @@ export default function CustomerForm(params) {
                         <form id="form-newcustomer" className='d-flex flex-column align-items-start'>
                             <div className={"title-form " + (CurrentLang === 'en' ? 'justify-content-start' : 'justify-content-end') }><Text name="txtCustomerNew" /></div>
                             <div className="input-block">
-                                <PhoneNumberInput  onValidationResult={handleValidationResult}  />
+                                <PhoneNumberInput ref={phoneInputRef} onValidationResult={handleValidationResult}  />
                             {/* <input id="input-walknew-mobilenumber" type="tel"  className="input-box input-fullwidth required" name="mobile" pattern="[0-9]*" placeholder="" onClick="this.select();" required /> */}
                                 <div id="alert-mobile" className="alert-small-text">{errorMessage === 'valid' ? '' : errorMessage}</div>
                             </div>

@@ -38,7 +38,8 @@ const locals = {
     },
     'titleSelectCategory' : {
         "en" : "How can we help you today?",
-        "ar" : "الرجاء تحديد الفئة"
+        "ar" : "كيف يمكننا مساعدتك؟"
+        // "ar" : "الرجاء تحديد الفئة"
     },
     'titleSelectService' : {
         "en" : "Please select a service",

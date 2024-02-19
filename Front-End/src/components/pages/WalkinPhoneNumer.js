@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import '../includes/header/header.css'
 import '../includes/footer/footer.css'
@@ -32,6 +32,8 @@ export default function WalkinPhoneNumber() {
     // const {phoneNumber} = useSelector((state) => state.app);
     const {flow , branchPrefix} = useSelector((state) => state.app);
 
+    const phoneInputRef = useRef();
+    
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(setPhonenumber(''))
@@ -72,7 +74,20 @@ export default function WalkinPhoneNumber() {
         const valN = validateInput($("#input-walkin-name"), $("#alert-walkin-name"), validateEmptyField, CurrentLang);
         const valE = validateInput($("#input-walkin-email"), $("#alert-walkin-email"), validateEmptyField, CurrentLang);
         const valEi = validateInput($("#input-walkin-email"), $("#alert-walkin-email"), validateEmail, CurrentLang);
-        var isValidMobile =  errorMessage === 'valid' ? true : false;
+        
+        const isMobileEmpty = phoneInputRef.current.isInputEmpty();
+        console.log('isMobileEmpty', isMobileEmpty)
+        
+        const isMobileValid = phoneInputRef.current.isValidNumber();
+        console.log('isMobileValid', isMobileValid)
+
+        if(isMobileEmpty)
+            setErrorMessage(<Text name="alertEmptyField" />)
+        else if(!isMobileValid)
+            setErrorMessage(<Text name="alertInvalidFormat" />)
+
+        var isValidMobile = !isMobileEmpty && isMobileValid
+        // var isValidMobile =  errorMessage === 'valid' ? true : false;
 
         if(!valN || !valE || !isValidMobile || !valEi){
             return false
@@ -184,7 +199,7 @@ const handleKeyDown = (event) => {
                             </div>
                         </div>
                         <div className="input-mobile-block">
-                            <PhoneNumberInput onValidationResult={handleValidationResult}  />
+                            <PhoneNumberInput ref={phoneInputRef} onValidationResult={handleValidationResult}  />
                             <div id="alert-walkin-mobile" className="alert-small-text">{errorMessage === 'valid' ? '' : errorMessage}</div>
                         </div>
                         <div className='lob14walkinFields h-15'>

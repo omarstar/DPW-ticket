@@ -1,14 +1,16 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState, forwardRef, useImperativeHandle  } from 'react';
 import intlTelInput from 'intl-tel-input';
 import 'intl-tel-input/build/css/intlTelInput.css';
 import './phoneInput.css'
 import { setPhonenumber } from '../../../reducers';
 import { useDispatch } from 'react-redux';
 
-const PhoneNumberInput = ({onValidationResult}) => {
-
+const PhoneNumberInput = forwardRef(({onValidationResult}, ref) => {
+  
   const phoneInputField = useRef(null);
   const phoneInputInitialized = useRef(false);
+
+  const [phoneInput, setPhoneInput] = useState(null);
 
   const validateMobileInput = (pv) => {
     const value = pv.getNumber();
@@ -21,6 +23,16 @@ const PhoneNumberInput = ({onValidationResult}) => {
       onValidationResult(false, errorMessage); // Validation failed
     }
   };
+
+    // Expose a method to check if the input is empty
+    const isInputEmpty = () => {
+      return phoneInput && phoneInput.getNumber().trim() === '';
+    };
+  
+    // Expose a method to check if the input is a valid number
+    const isValidNumber = () => {
+      return phoneInput && phoneInput.isValidNumber();
+    };
 
   const dispatch = useDispatch();
 
@@ -45,7 +57,7 @@ const PhoneNumberInput = ({onValidationResult}) => {
         console.log('loadUtils', loadUtils)//undefined!
 
         if (phoneInputField.current) {
-            const phoneInput = intlTelInput(phoneInputField.current, {
+             const phoneInputInstance = intlTelInput(phoneInputField.current, {
             preferredCountries: ['ae'],
             separateDialCode: true,
             customPlaceholder: (selectedCountryPlaceholder, selectedCountryData) => {
@@ -53,21 +65,23 @@ const PhoneNumberInput = ({onValidationResult}) => {
             },
             utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js',
           });
+
+          setPhoneInput(phoneInputInstance);
   
           phoneInputField.current.addEventListener('input', () => {
-            // const phoneNumber = phoneInput.getNumber();
+            // const phoneNumber = phoneInputInstance.getNumber();
             // dispatch(setPhonenumber(phoneNumber));
           });
   
           phoneInputField.current.addEventListener('blur', ()=>{
-            validateMobileInput(phoneInput);
+            validateMobileInput(phoneInputInstance);
           });
   
           phoneInputInitialized.current = true;
   
           return () => {
             // Cleanup code if necessary
-            phoneInput.destroy();
+            phoneInputInstance.destroy();
           };
         }
       }
@@ -77,7 +91,12 @@ const PhoneNumberInput = ({onValidationResult}) => {
 
     initializePhoneNumberInput();
 
-  }, [phoneInputField]);
+  }, []);
+
+  useImperativeHandle(ref, () => ({
+    isInputEmpty,
+    isValidNumber,
+  }));
 
   return (
     <div className="input-block">
@@ -91,6 +110,6 @@ const PhoneNumberInput = ({onValidationResult}) => {
       />
     </div>
   );
-};
+});
 
 export default PhoneNumberInput;

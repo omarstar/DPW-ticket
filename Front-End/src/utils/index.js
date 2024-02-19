@@ -38,7 +38,7 @@ export const validateInput = (input, errorElement, validationFunction,lang) => {
     errorElement.text(getLocalTranslate("alertEmptyField",lang));
     // errorElement.text("This field is required");
     else {
-      errorElement.text("Invalid format");
+      errorElement.text(getLocalTranslate("alertInvalidFormat",lang));
     }	
     errorElement.css('visibility', 'visible');
     return false;
