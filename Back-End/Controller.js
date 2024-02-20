@@ -90,31 +90,56 @@ exports.checkInAppointment = async (req,res) => {
 exports.createCustomer = async (req, res) => {
   try {
       let data = req.body;
-      let customerCreateConfig = {
-        method: 'post',
+      const getCustomer = await searchCustomer(data.phoneNum);
+      if(getCustomer.length == 0 ){
+        let customerCreateConfig = {
+          method: 'post',
+          maxBodyLength: Infinity,
+          url: `http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/rest/entrypoint/customers`,
+          headers: {
+            'Referer': 'http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/',
+            'Content-Type': 'application/json',
+            'auth-token': apiAuthToken
+          },
+          data : {
+            firstName : data.firstName,
+            lastName : data.lastName,
+            cardNumber : data.phoneNum,
+            properties :{ 
+              phoneNumber : data.phoneNum,
+              company : data.company,
+              email : data.email
+            }
+          }
+        };
+        var customerCreate = await axios.request(customerCreateConfig);
+        return res.send(customerCreate.data);
+      }else{
+        return res.send(getCustomer[0]);
+      }
+  } catch (error) {
+      console.log('error', error)
+      return res.status(500).send(JSON.stringify(error))
+  }
+}
+
+async function  searchCustomer(phoneNumber) {
+  try {
+      let customerSearchConfig = {
+        method: 'get',
         maxBodyLength: Infinity,
-        url: `http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/rest/entrypoint/customers`,
+        url: `http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/rest/entrypoint/customers/advancedSearch/?text=${parseInt(phoneNumber)}&option=EXACT`,
         headers: {
           'Referer': 'http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/',
           'Content-Type': 'application/json',
           'auth-token': apiAuthToken
-        },
-        data : {
-          firstName : data.firstName,
-          lastName : data.lastName,
-          cardNumber : data.phoneNum,
-          properties :{ 
-            phoneNumber : data.phoneNum,
-            company : data.company,
-            email : data.email
-          }
         }
       };
-    var customerCreate = await axios.request(customerCreateConfig);
-    return res.send(customerCreate.data);
+    var customerSearch = await axios.request(customerSearchConfig);
+    return customerSearch.data;
   } catch (error) {
       console.log('error', error)
-      return res.status(500).send(JSON.stringify(error))
+      throw error;
   }
 }
 
