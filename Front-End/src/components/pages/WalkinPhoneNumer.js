@@ -10,7 +10,7 @@ import '../common.css';
 import '../../styles/mobile.css'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { getPhonenumber, isShowModal, setEmail, setLoading, setModal, setPhonenumber } from '../../reducers';
+import { getPhonenumber, isShowModal, setCustomer, setEmail, setLoading, setModal, setPhonenumber } from '../../reducers';
 import { validateEmail, validateEmptyField, validateInput } from '../../utils/index';
 import { useNavigate } from 'react-router-dom';
 import $ from 'jquery';
@@ -107,10 +107,18 @@ export default function WalkinPhoneNumber() {
                     console.log('Appointments',Appointments);
                     if(Appointments.length > 0){
                         dispatch(setAppointments(Appointments));
+                        try {
+                            const sendOTPRes =  await sendOTP(mobileNumber,email);
+                            dispatch(setLoading(false));
+                            if(sendOTPRes.message=="accepted"){
+                                return navigate('/DPW/otp');
+                            }else{
+                                return setShowAlert(<Text name="alertNoAppWrongMobile" />);
+                            }
+                        } catch (error) {
+                            return setShowAlert(<Text name="alertNoAppWrongMobile" />);
+                        }
                         
-                        await sendOTP(mobileNumber,email);
-                        dispatch(setLoading(false));
-                        return navigate('/DPW/otp');
                     }else{
                         dispatch(setLoading(false));
                         return setShowAlert(<Text name="alertNoAppWrongMobile" />);
@@ -124,12 +132,22 @@ export default function WalkinPhoneNumber() {
                     };
                     dispatch(setEmail(customer.email));
                     setTimeout(async () => {
-                        await createCustomer(customer);
-                        await sendOTP(mobileNumber,customer.email);
-                        dispatch(setLoading(false));
+                        const getCustomer = await createCustomer(customer);
+                        console.log('getCustomer',getCustomer);
+                        dispatch(setCustomer(getCustomer));
+                        try {
+                            const sendOTPRes = await sendOTP(mobileNumber,customer.email);
+                            dispatch(setLoading(false));
+                            if(sendOTPRes.message=="accepted"){
+                                return navigate('/DPW/otp');
+                            }else{
+                                return setErrorMessage(<Text name="alertWrongMobile" />)
+                            }
+                        } catch (error) {
+                            return setErrorMessage(<Text name="alertWrongMobile" />)
+                        }
+                        
                     }, 1000);
-
-                    return navigate('/DPW/otp');
                 }
             } catch (error) {
                 dispatch(setLoading(false));

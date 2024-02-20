@@ -11,7 +11,7 @@ import '../../common.css';
 import PhoneNumberInput from '../../includes/phoneInput/PhoneNumberInput'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { isShowModal, setEmail, setLoading, setModal } from '../../../reducers'
+import { isShowModal, setCustomer, setEmail, setLoading, setModal } from '../../../reducers'
 import ModalExit from '../../includes/modal/ModalExit'
 import $ from 'jquery';
 import { createCustomer, sendOTP } from '../../../services/api'
@@ -46,14 +46,16 @@ export default function CustomerForm(params) {
             dispatch(setLoading(true))
             dispatch(setEmail(customer.email))
             createCustomer(customer).then(a=>{
-                console.log('createCustomer',a);
-                sendOTP(customer.phoneNum,email).then(res=>{
+                console.log('getCustomer',a);
+                dispatch(setCustomer(a));
+                sendOTP(customer.phoneNum,customer.email).then(res=>{
                     dispatch(setLoading(false));
+                    navToOtpPage();
                 }).catch(err=>{
                     console.error(err);
                     dispatch(setLoading(false));
+                    return setErrorMessage(<Text name="alertWrongMobile" />)
                 });
-                navToOtpPage();
             }).catch(err=>{
                 console.error(err);
                 dispatch(setLoading(false));

@@ -71,8 +71,8 @@ const locals = {
         "ar" : "الرجاء إختيار الموعد المؤكد للتسجيل"
     },
     'noteAppCheckin' : {
-        "en" : "You can check-in from 20 minutes before the time of the appointment",
-        "ar" : "بإستطاعتك التسجيل قبل الموعد ب 20 دقيقة"
+        "en" : "You can check-in from 15 minutes before the time of the appointment",
+        "ar" : "بإستطاعتك التسجيل قبل الموعد ب 15 دقيقة"
     },
     'modalAppEarly' : {
         "en" : "It is not time to check-in to your appointment yet",

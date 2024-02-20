@@ -62,7 +62,7 @@ export const createCustomer = async (customerInfo) => {
     };
     
     const response = await axios.request(config);
-    return response
+    return response.data
 }
 
 export const sendOTP = async(number,email) => {

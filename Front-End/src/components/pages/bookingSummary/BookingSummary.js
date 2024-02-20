@@ -56,11 +56,24 @@ export default function BookingSummary(params) {
             app.services.forEach(sr => {
                 servicesIds.push(sr.id);
             });
+            const customer = app.customers[0]??[];
+            let custom3 = {
+                firstName : customer.firstName??"",
+                lastName : customer.lastName??"",
+                phoneNum : customer.properties?.phoneNumber??"",
+                email : customer.properties?.email??"",
+                company : customer.properties?.company??""
+            }
+            console.log(custom3);
             let createTicketBody = {
-                    services : servicesIds,
+                    appointmentId : app.id,
                     parameters : {
-                        custom1 : "1"
-                    }
+                        custom3 : JSON.stringify(custom3),
+                        phoneNumber: custom3.phoneNum,
+                        email : custom3.email,
+                        level : "VIP LEVEL 1",
+                    },
+                    customers: [customer.id]
             }
             let config = {
                 method: 'post',

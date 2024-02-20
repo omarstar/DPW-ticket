@@ -101,36 +101,6 @@ export default function AppointmentList(params) {
             navigate("/")
         }
     }
-    async function checkInAppt(app) {
-        try {
-            var servicesIds = [];
-            app.services.forEach(sr => {
-                servicesIds.push(sr.id);
-            });
-            let createTicketBody = {
-                    services : servicesIds,
-                    parameters : {
-                        custom1 : "1"
-                    }
-            }
-            let config = {
-                method: 'post',
-                maxBodyLength: Infinity,
-                url:  process.env.REACT_APP_API_URL + '/rest/mobile/appointment/checkin?branchId='+app.branchId+'&appointmentId='+app.id,
-                data : createTicketBody
-    
-                };
-                let visit =  await axios.request(config)
-                console.log('visit.data', visit.data)
-                dispatch(setTicket(JSON.stringify(visit.data)))
-                
-                return navigate('/DPW/ticket');
-
-        } catch (error) {
-            console.log('error in eticket create', error);
-            throw error;
-        }
-    }
     async function createTicket(app) {
         try {
             dispatch(setLoading(true));
@@ -145,17 +115,15 @@ export default function AppointmentList(params) {
                 phoneNum : customer.properties?.phoneNumber??"",
                 email : customer.properties?.email??"",
                 company : customer.properties?.company??""
-
             }
             console.log(custom3);
-
             let createTicketBody = {
                     appointmentId : app.id,
                     parameters : {
                         custom3 : JSON.stringify(custom3),
                         phoneNumber: custom3.phoneNum,
                         email : email,
-                        level : "VIP LEVEL 2",
+                        level : "VIP LEVEL 0",
                     },
                     customers: [customer.id]
             }

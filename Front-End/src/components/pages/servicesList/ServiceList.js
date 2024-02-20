@@ -141,24 +141,20 @@ export default function ServiceList(params) {
         try {
             
             const service = serviceList.find(srv => srv.id === srvid);
-            console.log('service', service)
-            console.log('branchPrefix', branchPrefix)
+            console.log('service', service);
+            console.log('branchPrefix', branchPrefix);
             if(service){
-                if([[77,78,79,80]].find(id => id === service.id)){
+                if([77,78,79,80].find(id => id === service.id)){
                     setDescText("Please book an online appointment for this service.")
                     return setShowModalInfo(true);
-
                 }else if(branchPrefix === 'LOB14'){
-                    
                     if([72,73,74,75,76].find(id => id === service.id )){
                         setDescText("Please proceed to the Sales Centre JAFZA 15 branch to select this service.")
                         return setShowModalInfo(true);
                     }else{
                         await createTicket(srvid)
                     }
-    
                 }else if(branchPrefix === 'LOB15'){
-    
                     if([72,73,74,75,76].find(id => id === service.id )){
                         await createTicket(srvid)
                     }else{
@@ -169,17 +165,24 @@ export default function ServiceList(params) {
             }
 
         } catch (error) {
-            console.log('error in finding service', error)
-            navigate("/")
+            console.error(error)
+            // navigate("/")
         }
     }
 
     async function createTicket(id) {
+        console.log(customer);
         try {
             let createTicketBody = {
                 services : [id],
                 parameters : {
-                    custom3 : "1",
+                    custom3 : JSON.stringify({
+                        firstName : customer.firstName,
+                        lastName : customer.lastName,
+                        phoneNum : customer.properties?.phoneNumber??"",
+                        email : customer.properties?.email??"",
+                        company : customer.properties?.company??"",
+                    }),
                     phoneNumber: mobileNumber,
                     email : email
                 },
@@ -236,7 +239,7 @@ export default function ServiceList(params) {
                             serviceList ? serviceList.map(srv =>  (
         
                                 <div className="button-service-item d-flex justify-content-between align-items-center">
-                                    <div onClick={()=>handleServiceSubmit(srv.id)} id={srv.id} className="service-btn-box"><button id={srv.id} className="button-wide button-fill-clr">{srv.externalName}</button></div>
+                                    <div onClick={()=>handleServiceSubmit(srv.id)} id={srv.id} className="service-btn-box"><button id={srv.id} className="button-wide button-fill-clr btn-service">{srv.externalName}</button></div>
                                     <img id={`img-` + srv.id} onClick={()=>infoButtonClicked(srv.id)} className="service-info-icon" src={srvcInfoIcon} alt="info service" />
                                 </div>
                                     ) )   : console.log("error ===>")

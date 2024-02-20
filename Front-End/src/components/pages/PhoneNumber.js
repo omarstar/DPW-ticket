@@ -10,7 +10,7 @@ import '../common.css';
 import '../../styles/mobile.css'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { getPhonenumber, isShowModal, setLoading, setModal, setPhonenumber } from '../../reducers';
+import { getPhonenumber, isShowModal, setEmail, setLoading, setModal, setPhonenumber } from '../../reducers';
 import { useNavigate } from 'react-router-dom';
 import $ from 'jquery';
 import PhoneNumberInput from '../includes/phoneInput/PhoneNumberInput';
@@ -71,11 +71,23 @@ export default function PhoneNumber() {
                     console.log('Appointments',Appointments);
                     if(Appointments.length > 0){
                         dispatch(setAppointments(Appointments));
-                        
-                        await sendOTP(mobileNumber);
+                        var getCustomerEmail='';
+                        const Appointment = Appointments[0];
+                        if(Appointment){
+                            if(Appointment.customers[0]){
+                                const customer = Appointment.customers[0]??[];
+                                getCustomerEmail = customer.properties?.email??""
+                            }
+                        }
+                        dispatch(setEmail(getCustomerEmail));
+                        const sendOTPRes =  await sendOTP(mobileNumber,getCustomerEmail);
                         dispatch(setLoading(false));
+                        if(sendOTPRes.message=="accepted"){
+                            return navigate('/DPW/otp');
+                        }else{
+                            return setShowAlert(<Text name="alertNoAppWrongMobile" />);
+                        }
 
-                        return navigate('/DPW/otp');
                     }else{
                         dispatch(setLoading(false));
 

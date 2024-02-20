@@ -210,6 +210,9 @@
     background-color: var(--royal-blue, #0068a9);
     color: #fff;
   }
+  .btn-service{
+    height: 4em;
+  }
   .btn-form-proceed {
     margin-top: 2.5rem;
   }
