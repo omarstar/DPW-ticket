@@ -65,9 +65,10 @@ export const createCustomer = async (customerInfo) => {
     return response
 }
 
-export const sendOTP = async(number) => {
+export const sendOTP = async(number,email) => {
     const customerData = {
         phoneNumber : number,
+        email : email,
     }
     console.log('customerData', customerData)
     try {

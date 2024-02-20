@@ -8,7 +8,7 @@ import "./appointment.css"
 import '../../common.css';
 
 import { useDispatch, useSelector } from 'react-redux'
-import { isShowModal, setLoading, setModal, setTicket } from '../../../reducers'
+import { isShowModal, setCustomer, setEmail, setLoading, setModal, setPhonenumber, setTicket } from '../../../reducers'
 import { useNavigate } from 'react-router'
 import ModalExit from '../../includes/modal/ModalExit'
 import { calculateRemainingTime, checkArrivalTime, formatDate } from '../../../utils'
@@ -28,7 +28,7 @@ export default function AppointmentList(params) {
 
     const doShowModal = useSelector(isShowModal);
     let {appointments} = useSelector((state) => state.appointments);
-    const {loading} = useSelector((state) => state.app);
+    const {customer,email,phoneNumber} = useSelector((state) => state.app);
 
     // appointments = appiontmentsList;//test only
     console.log('appointments',appointments);
@@ -72,6 +72,11 @@ export default function AppointmentList(params) {
     async function handleClickApp(app,status) {
 
         try {
+            const Selectedcustomer = app.customers[0]??[];
+            dispatch(setEmail(Selectedcustomer.properties?.email??""));
+            dispatch(setPhonenumber(Selectedcustomer.properties?.phoneNumber??""));
+            dispatch(setCustomer(Selectedcustomer));
+            
             if(status==='open'){
                 //navto booking summary selected app
                 
@@ -134,18 +139,31 @@ export default function AppointmentList(params) {
             app.services.forEach(sr => {
                 servicesIds.push(sr.id);
             });
+            let custom3 = {
+                firstName : customer.firstName??"",
+                lastName : customer.lastName??"",
+                phoneNum : customer.properties?.phoneNumber??"",
+                email : customer.properties?.email??"",
+                company : customer.properties?.company??""
+
+            }
+            console.log(custom3);
+
             let createTicketBody = {
-                    services : servicesIds,
+                    appointmentId : app.id,
                     parameters : {
-                        custom1 : "1"
-                    }
+                        custom3 : JSON.stringify(custom3),
+                        phoneNumber: custom3.phoneNum,
+                        email : email,
+                        level : "VIP LEVEL 2",
+                    },
+                    customers: [customer.id]
             }
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
                 url:  process.env.REACT_APP_API_URL + '/rest/mobile/visit/create',
                 data : createTicketBody
-    
                 };
                 let visit =  await axios.request(config)
                 console.log('visit.data', visit.data)

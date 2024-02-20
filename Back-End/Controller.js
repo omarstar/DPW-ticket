@@ -31,7 +31,7 @@ try {
 }
 exports.getAppointment = async (req,res) => {
   let phoneNumber = req.params.id
-  console.log();
+  console.log(phoneNumber);
   const Branches = await getBranches();
   try {
     let getAppointmentConfig = {

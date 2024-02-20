@@ -11,7 +11,7 @@ import '../../common.css';
 import "./servicesList.css"
 
 import axios from "axios"
-import { isShowModal, setBranchid, setLoading, setModal, setTicket } from '../../../reducers';
+import { getPhonenumber, isShowModal, setBranchid, setLoading, setModal, setTicket } from '../../../reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import ModalExit from '../../includes/modal/ModalExit'
 import ModalInfo from '../../includes/modal/ModalInfo'
@@ -24,8 +24,9 @@ export default function ServiceList(params) {
 
     const [showModalInfo, setShowModalInfo] = useState(false);
     const [descText, setDescText] = useState("")
+    let mobileNumber = useSelector(getPhonenumber);
 
-    let {loading, category, branchPrefix} = useSelector((state) => state.app);
+    let {loading, category, branchPrefix,email,customer} = useSelector((state) => state.app);
 
     let modalInfoData = {
         titleText: <Text name="titleServiceModal" />,
@@ -176,17 +177,19 @@ export default function ServiceList(params) {
     async function createTicket(id) {
         try {
             let createTicketBody = {
-                    services : [id],
-                    parameters : {
-                        custom1 : "1"
-                    }
+                services : [id],
+                parameters : {
+                    custom3 : "1",
+                    phoneNumber: mobileNumber,
+                    email : email
+                },
+                customers : [customer.id]
             }
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
                 url:  process.env.REACT_APP_API_URL + '/rest/mobile/visit/create',
                 data : createTicketBody
-    
                 };
                let visit =  await axios.request(config)
                console.log('visit.data', visit.data)

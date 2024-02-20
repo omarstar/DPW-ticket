@@ -37,7 +37,7 @@ export default function WalkOtp(params) {
     const dispatch = useDispatch();
 
     const doShowModal = useSelector(isShowModal);
-    const {flow, branchPrefix} = useSelector((state) => state.app);
+    const {flow, branchPrefix,email} = useSelector((state) => state.app);
 
     const modalExitData = {
         titleText: <Text name="titleExitModal" />,
@@ -101,7 +101,7 @@ export default function WalkOtp(params) {
        const resendOtpAndRestartTimer = async () => {
         try {
             dispatch(setLoading(true));
-            await sendOTP(mobileNumber);
+            await sendOTP(mobileNumber,email);
             dispatch(setLoading(false));
             // Restart the countdown timer
             setMinutes(1);

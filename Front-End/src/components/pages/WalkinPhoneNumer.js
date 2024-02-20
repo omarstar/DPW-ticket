@@ -10,7 +10,7 @@ import '../common.css';
 import '../../styles/mobile.css'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { getPhonenumber, isShowModal, setLoading, setModal, setPhonenumber } from '../../reducers';
+import { getPhonenumber, isShowModal, setEmail, setLoading, setModal, setPhonenumber } from '../../reducers';
 import { validateEmail, validateEmptyField, validateInput } from '../../utils/index';
 import { useNavigate } from 'react-router-dom';
 import $ from 'jquery';
@@ -30,7 +30,7 @@ export default function WalkinPhoneNumber() {
     let {CurrentLang} = useSelector((state) => state.app);
 
     // const {phoneNumber} = useSelector((state) => state.app);
-    const {flow , branchPrefix} = useSelector((state) => state.app);
+    const {flow , branchPrefix,email} = useSelector((state) => state.app);
 
     const phoneInputRef = useRef();
     
@@ -108,7 +108,7 @@ export default function WalkinPhoneNumber() {
                     if(Appointments.length > 0){
                         dispatch(setAppointments(Appointments));
                         
-                        await sendOTP(mobileNumber);
+                        await sendOTP(mobileNumber,email);
                         dispatch(setLoading(false));
                         return navigate('/DPW/otp');
                     }else{
@@ -122,9 +122,12 @@ export default function WalkinPhoneNumber() {
                         email : $('#input-walkin-email').val(),
                         company : $('#input-walkin-company').val(), 
                     };
-                    await createCustomer(customer);
-                    await sendOTP(mobileNumber);
-                    dispatch(setLoading(false));
+                    dispatch(setEmail(customer.email));
+                    setTimeout(async () => {
+                        await createCustomer(customer);
+                        await sendOTP(mobileNumber,customer.email);
+                        dispatch(setLoading(false));
+                    }, 1000);
 
                     return navigate('/DPW/otp');
                 }

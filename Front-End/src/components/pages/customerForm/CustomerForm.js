@@ -11,7 +11,7 @@ import '../../common.css';
 import PhoneNumberInput from '../../includes/phoneInput/PhoneNumberInput'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { isShowModal, setLoading, setModal } from '../../../reducers'
+import { isShowModal, setEmail, setLoading, setModal } from '../../../reducers'
 import ModalExit from '../../includes/modal/ModalExit'
 import $ from 'jquery';
 import { createCustomer, sendOTP } from '../../../services/api'
@@ -23,7 +23,7 @@ import { getLocalTranslate } from '../../../utils/language'
 export default function CustomerForm(params) {
     const navigate = useNavigate();
     const Appstate = useSelector((state)=>state.app);
-    const {CurrentLang} = Appstate;
+    const {CurrentLang,email} = Appstate;
 
     const navToOtpPage = () => {
         navigate('/DPW/otp')
@@ -41,11 +41,13 @@ export default function CustomerForm(params) {
                 company : $('#input-companyName2').val()
 
             };
+
             console.log('creating customer')
             dispatch(setLoading(true))
+            dispatch(setEmail(customer.email))
             createCustomer(customer).then(a=>{
                 console.log('createCustomer',a);
-                sendOTP(customer.phoneNum).then(res=>{
+                sendOTP(customer.phoneNum,email).then(res=>{
                     dispatch(setLoading(false));
                 }).catch(err=>{
                     console.error(err);
