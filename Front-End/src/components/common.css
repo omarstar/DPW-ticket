@@ -213,6 +213,9 @@
   .btn-service{
     height: 4em;
   }
+  .no-scroll{
+    overflow: hidden;
+  }
   .btn-form-proceed {
     margin-top: 2.5rem;
   }

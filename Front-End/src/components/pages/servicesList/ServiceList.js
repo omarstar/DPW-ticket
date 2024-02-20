@@ -144,7 +144,7 @@ export default function ServiceList(params) {
             console.log('service', service);
             console.log('branchPrefix', branchPrefix);
             if(service){
-                if([77,78,79,80].find(id => id === service.id)){
+                if([77,78,79,80,69, 70].find(id => id === service.id)){
                     setDescText("Please book an online appointment for this service.")
                     return setShowModalInfo(true);
                 }else if(branchPrefix === 'LOB14'){
