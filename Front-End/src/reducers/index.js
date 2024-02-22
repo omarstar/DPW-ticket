@@ -7,6 +7,7 @@ const getbranchIdData = () => {
   return localStorage.getItem("branchid") ? JSON.parse(localStorage.getItem("branchid")) : {};
 }
 
+const branchesList = ["LOB14","LOB15"]
 
 const initialState = {
   branches: null,
@@ -46,7 +47,11 @@ export const counterSlice = createSlice({
 
     },
     setBranchPrefix: (state,action) => {
-      state.branchPrefix = action.payload.toUpperCase();
+      if(branchesList.some(br=> br === action.payload)){
+        state.branchPrefix = action.payload.toUpperCase();
+      }else{
+        state.branchPrefix = 'LOB14'
+      }
     },
     setLoading: (state,action) => {
       state.loading = action.payload

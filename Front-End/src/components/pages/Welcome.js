@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import Text from "../Text";
 import $ from 'jquery'
 import Footer from "../includes/footer/Footer";
-import { branchesList } from "../../utils/constants";
+
 const Welcome = () => {
     var {branch} = useParams();
     const navigate = useNavigate();
@@ -18,16 +18,25 @@ const Welcome = () => {
 
     console.log('****branch at welcome', branch)
     console.log('branchPrefix init', branchPrefix)
+    // console.log('branchesList.includes(branchPrefix)', branchesList.includes(branchPrefix))
 
-
-    if(branch && branchesList.includes(branch)){
-        console.log('branchesList.includes(branchPrefix)', branchesList.includes(branch))
+    if(branch){
         dispatch(setBranchPrefix(branch));
-    }else if(branchPrefix && branchesList.includes(branchPrefix) ){
-        dispatch(branchPrefix);
+    }else if(branchPrefix){
     }else{
+        console.log('default prefix LOB14')
         dispatch(setBranchPrefix('LOB14'));
     }
+    // if(branch && branchesList.some(branchDefined=> branchDefined == branch.toLowerCase())){
+    //     console.log('branchesList.includes(branch)')
+    //     dispatch(setBranchPrefix(branch));
+    // }else if(branchPrefix && branchesList.some(branchDefined=> branchDefined == branchPrefix.toLowerCase()) ){
+    //     console.log('branchesList.includes(branchPrefix)')
+    //     dispatch(branchPrefix);
+    // }else{
+    //     console.log('default prefix LOB14')
+    //     dispatch(setBranchPrefix('LOB14'));
+    // }
 
 
     dispatch(setLoading(false));
@@ -38,8 +47,8 @@ const Welcome = () => {
         setLang(currentLanguage);
       }, [currentLanguage]);
     
-    // let buttonLangText = lang === 'en' ? 'العربية' : "English"
-    let buttonLangText = lang === 'en' ? 'ع' : "EN"
+    let buttonLangText = lang === 'en' ? 'عربي' : "English"
+    // let buttonLangText = lang === 'en' ? 'ع' : "EN"
 
     const toggleLang = () => {
         dispatch(toggleCurrentLang());
