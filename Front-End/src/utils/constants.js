@@ -1,3 +1,4 @@
+export const branchesList = ["lob14","lob15"]
 
 export const modalExitButtonOptions = [{
     text: "Yes",

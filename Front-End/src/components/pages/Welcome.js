@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import headerLogoWhite from '../../images/JAFZA_Logo_White.svg'
-import footerBGshape from '../../images/footer-sky-bg.svg'
+// import footerBGshape from '../../images/footer-sky-bg.svg'
 import '../../styles/getStarted.css'
 import { useDispatch, useSelector } from "react-redux";
 import { selectLanguage, setBranchPrefix, setLoading, toggleCurrentLang } from "../../reducers";
@@ -8,20 +8,28 @@ import { useEffect, useState } from "react";
 import Text from "../Text";
 import $ from 'jquery'
 import Footer from "../includes/footer/Footer";
+import { branchesList } from "../../utils/constants";
 const Welcome = () => {
     var {branch} = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const currentLanguage = useSelector(selectLanguage);
     var {branchPrefix} = useSelector((state) => state.app)
-    console.log('branch at welcome', branch)
-    if(branch){
+
+    console.log('****branch at welcome', branch)
+    console.log('branchPrefix init', branchPrefix)
+
+
+    if(branch && branchesList.includes(branch)){
+        console.log('branchesList.includes(branchPrefix)', branchesList.includes(branch))
         dispatch(setBranchPrefix(branch));
+    }else if(branchPrefix && branchesList.includes(branchPrefix) ){
+        dispatch(branchPrefix);
     }else{
-        if(!branchPrefix){
-            dispatch(setBranchPrefix('LOB14'));
-        }
+        dispatch(setBranchPrefix('LOB14'));
     }
+
+
     dispatch(setLoading(false));
     console.log('currentLanguage', currentLanguage)
     const [lang, setLang] = useState(currentLanguage)

@@ -146,7 +146,8 @@ export default function AppointmentList(params) {
         }
     }
 
-    const branchName = "JAFZA LOB 14"
+    var {branchPrefix} = useSelector((state) => state.app)
+    // const branchName = "JAFZA LOB 14"
     
     return (
         <>
@@ -161,7 +162,8 @@ export default function AppointmentList(params) {
                 <div className="title-box d-flex flex-column justify-content-center align-items-center">
                     <div className="title-applist mx=4"><Text name="titleSelectApp" /></div>
                     <span className='mini-gray-apptext'><Text name="noteAppCheckin" /></span>
-                    <div className='result-title'><Text name="noteShowResults" realign />{branchName}</div>
+                    {/* <div className='result-title'><Text name="noteShowResults" realign />{branchName}</div> */}
+                    <div className='result-title'><Text name={branchPrefix!='LOB14' ? "noteShowResultsSales" : "noteShowResultsServices"} realign /></div>
                     <div className="ticket-applist-box col-12 text-center d-flex flex-column align-items-center">
                         {
                             appointments  ? appointments.map(appointment =>  (
