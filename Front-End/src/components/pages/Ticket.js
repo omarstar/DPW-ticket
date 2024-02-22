@@ -3,7 +3,7 @@ import '../includes/header/header.css'
 import '../includes/footer/footer.css'
 // import homeCircleImg from '../../images/home-circle.svg'
 import jafzaLogoColor from '../../images/JAFZA_Logo_Color.svg'
-import footerBGshape from '../../images/footer-sky-bg.svg'
+// import footerBGshape from '../../images/footer-sky-bg.svg'
 import '../common.css';
 import "./ticket.css"
 
@@ -14,7 +14,7 @@ import Queue from './Queue';
 import Turn from './Turn';
 import Loading from '../includes/loading/loading';
 import { getTicket } from '../../services/api';
-import Text from '../Text';
+// import Text from '../Text';
 import Footer from '../includes/footer/Footer';
 
 export default function Ticket() {
@@ -23,7 +23,7 @@ export default function Ticket() {
     const dispatch = useDispatch();
     let ticketLeave = useRef(3);
     const [ticketData, setTicketData] = useState(0);
-    let {loading, ticket} = useSelector((state) => state.app);
+    let {ticket} = useSelector((state) => state.app);
     ticket = JSON.parse(ticket);
 
     // ticket = {currentStatus:"CALLED",position:4,id: "A0123", currentServiceName: "servccc plapla"}//test
@@ -73,7 +73,7 @@ export default function Ticket() {
 
         const ticketStatusInterval = setInterval(()=>{
             callVisitCheck();
-        },6000);
+        }, 4000);
         return () => {
             clearInterval(ticketStatusInterval);
         }

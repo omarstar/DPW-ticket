@@ -238,7 +238,7 @@ export default function CustomerForm(params) {
                     <div className="separate-line"></div> */}
                     <div className="newcustomer-box">
                         <form id="form-newcustomer" className='d-flex flex-column align-items-start'>
-                            <div className={"title-form " + (CurrentLang === 'en' ? 'justify-content-start' : 'justify-content-end') }><Text name="txtCustomerNew" /></div>
+                            <div className={(CurrentLang === 'en' ? 'title-black justify-content-start' : 'title-form justify-content-end') }><Text name="txtCustomerNew" /></div>
                             
                             <div className="input-block">
                             <input id="input-firstname" type="text" name="first name" className="input-box tt-cap input-fullwidth" placeholder="FIRST NAME" />

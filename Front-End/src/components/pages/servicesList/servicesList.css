@@ -255,10 +255,10 @@
         color: var(--title-color, #046cac);
         text-align: center;
         letter-spacing: 0.28px;
-        text-transform: uppercase;
+        text-transform: capitalize;
         align-self: center;
         /* margin-top: 9px; */
-        font: 600 8px 'Montserrat-SemiBold', sans-serif;
+        font: 600 10px 'Montserrat-SemiBold', sans-serif;
       }
 
       .space-btn-back {

@@ -223,13 +223,6 @@ export default function WalkOtp(params) {
                 
                 <div className="title-box d-flex flex-column justify-content-center align-items-center">
                     <div className="title-black ff-bold"><Text name="titleEnterOtp" /></div>
-                    {/* <div className="title-black ff-bold">Please enter the OTP sent to your mobile number</div> */}
-                    {/* <div className="otp-set-box">
-                        <input id="otp-input-1" className="otp-num-input" type="number" maxlength="1"/>
-                        <input id="otp-input-2" className="otp-num-input" type="number" maxlength="1"/>
-                        <input id="otp-input-3" className="otp-num-input" type="number" maxlength="1"/>
-                        <input id="otp-input-4" className="otp-num-input" type="number" maxlength="1"/>
-                    </div> */}
                     <InputOtp otpValue={otp} onOtpChange={handleOtpChange} onKeyClick={handleSubmitOtp} />
                     
                     {/* {
@@ -261,20 +254,6 @@ export default function WalkOtp(params) {
                 )
             } 
         </div>
-        {/* <div className="title-box d-flex flex-column justify-content-center align-items-center">
-            <div className="title-black title-otp-text">please enter the otp sent to your mobile number</div>
-            <div className="otp-set-box">
-                <div id="otp-input-1" className="otp-num-input" type="number" maxlength="1" autofocus="autofocus">4</div>
-                <div id="otp-input-2" className="otp-num-input" type="number" maxlength="1"></div>
-                <div id="otp-input-3" className="otp-num-input" type="number" maxlength="1"></div>
-                <div id="otp-input-4" className="otp-num-input" type="number" maxlength="1"></div>
-            </div>
-            <div className="resend-otp-box">
-                <div id="resend-message" className="resend-otp-text">didn&apos;t recieve otp?</div>
-                <div id="timer" className="otp-time-text">01:59</div>
-            </div>
-            <button id="btn-otp-submit" onClick={navToServices} className="button-default space-submit-otp">SUBMIT</button>
-        </div> */}
         </>
     )
 };

@@ -80,7 +80,7 @@
     color: #046cac;
     font: 700 15px 'Montserrat-Bold', sans-serif;
     letter-spacing: 0.85px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     text-align: left;
     align-self: start;
     white-space: nowrap;
