@@ -214,8 +214,8 @@ export default function WalkOtp(params) {
         <div className="d-flex flex-column justify-content-center align-items-center bg-white">
            
             <div className="header-section">
-                {/* <img id="header-home-btn" onClick={showModel} src={homeCircleImg} alt="home circle img" className="header-homecircle-img" /> */}
-                <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecirclebk-img" />
+                <img id="header-home-btn" onClick={showModel} src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
+                {/* <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecirclebk-img" /> */}
                 <img id="btn-back-btn" onClick={HandleBack} src={backCircleImg} alt="back circle img" className="header-backcircle-img" />
                 <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
             </div>

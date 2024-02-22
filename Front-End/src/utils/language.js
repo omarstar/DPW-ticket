@@ -26,7 +26,7 @@ const locals = {
     },
     'titleEnterOtp' : {
         "en" : "Please enter the OTP sent <br> to your mobile and email.",
-        "ar" : "الرجاء إدخال رمز المرور المرسل الى رقم هاتفك المتحرك والبريد الألكتروني"
+        "ar" : "الرجاء إدخال رمز المرور لمرة واحدة المرسل الى رقم هاتفك المتحرك والبريد الألكتروني"
     },
     'noteReceiveOtp' : {
         "en" : "Didn't receive OTP?",
@@ -47,15 +47,15 @@ const locals = {
     },
     'titleServiceModal' : {
         "en" : "Service info",
-        "ar" : "معلومات عن الخدمة"
+        "ar" : "تفاصيل الخدمة"
     },
     'titlePosition' : {
         "en" : "Your position in line",
-        "ar" : "مكانك في قائمة الإنتظار"
+        "ar" : "دورك في قائمة الإنتظار"
     },
     'titleTurn' : {
         "en" : "It's your turn",
-        "ar" : "حان دورك الحين"
+        "ar" : "لقد حان دورك"
     },
     'noteProceedto' : {
         "en" : "Please proceed to",
@@ -63,28 +63,32 @@ const locals = {
     },
     'titleThankyou' : {
         "en" : "Thank you for visiting us today",
-        "ar" : "شكرا لكم على الزيارة"
+        "ar" : "شكرا لزيارتكم لنا اليوم"
     },
     'titleSelectApp' : {
         // "en" : "Please select your confirmed face-to-face appointment to check-in.",
         "en" : "Please confirm your appointment check-in",
-        "ar" : "الرجاء إختيار الموعد المؤكد للتسجيل"
+        "ar" : "الرجاء إختيار الموعد الحضوري المسجل مسبقاً"
     },
     'noteAppCheckin' : {
         "en" : "You can check-in from 15 minutes before the time of the appointment",
         "ar" : "بإستطاعتك التسجيل قبل الموعد ب 15 دقيقة"
     },
     'modalAppEarly' : {
-        "en" : "It is not time to check-in to your appointment yet",
-        "ar" : "لم يحن الوقت لتسجيل الوصول الى موعدك بعد"
+        "en" : "It is not time to check-in to your appointment yet.",
+        "ar" : ".لم يحن الوقت لتسجيل الوصول الى موعدك بعد"
     },
     'modalAppLate' : {
         "en" : "You have missed your appointment",
         "ar" : "لقد فاتك الموعد"
     },
-    'noteShowResults' : {
-        "en" : "Showing results for ",
-        "ar" : "عرض النتائج لفرع "
+    'noteShowResultsSales' : {
+        "en" : "Showing results for Jafza Sales Center",
+        "ar" : "عرض النتائج لمركز مبيعات جافزا"
+    },
+    'noteShowResultsServices' : {
+        "en" : "Showing results for Jafza Service Center",
+        "ar" : "عرض النتائج لمركز خدمات جافزا"
     },
     'noteNoServiceInfo' : {
         "en" : "No additional info found for this service",
@@ -116,7 +120,7 @@ const locals = {
     },
     'btnResendOtp' : {
         "en" : "Resend OTP",
-        "ar" : "إعادة أرسال رمز المرور"
+        "ar" : "إعادة إرسال رمز المرور لمرة واحدة"
     },
     'btnSubmit' : {
         "en" : "Submit",
@@ -128,7 +132,7 @@ const locals = {
     },
     'btnProceedWalkin' : {
         "en" : "Proceed as walk-in",
-        "ar" : "المتابعة لخدمة الحضور"
+        "ar" : "المضي قدماً كخدمة حضور"
     },
     'btnProceed' : {
         "en" : "Proceed",
@@ -164,7 +168,7 @@ const locals = {
     },
     'txtMobile' : {
         "en" : "Mobile",
-        "ar" : "الهاتف الجوال"
+        "ar" : "الهاتف ألمتحرك"
     },
     'txtEmail' : {
         "en" : "E-mail",
@@ -184,7 +188,7 @@ const locals = {
     },
     'txtAppDatetime' : {
         "en" : "Appointment Date / Time",
-        "ar" : "تاريخ ووقت الموعد"
+        "ar" : "تاريخ / وقت الموعد"
     },
     'alertEmptyField' : {
         "en" : "This field is required",
@@ -196,7 +200,7 @@ const locals = {
     },
     'alertInvalidFormat' : {
         "en" : "Invalid format",
-        "ar" : "صيغة غير صالحة"
+        "ar" : "الصيغة غير صحيحة"
     },
     'alertNetwork' : {
         "en" : "Network temporarily unavailable",
@@ -204,11 +208,11 @@ const locals = {
     },
     'alertNoAppWrongMobile' : {
         "en" : "Wrong mobile number, no appointment found",
-        "ar" : "لا يوجد مواعيد او رقم هاتفك المتحرك غير صحيح"
+        "ar" : "رقم الهاتف المتحرك غير صحيح, لم يتم العثور على موعد"
     },
     'alertWrongOtp' : {
         "en" : "Wrong OTP number",
-        "ar" : "رمز المرور غير صحيح"
+        "ar" : "رمز المرور لمرة واحدة غير صحيح"
     },
     'alertNoRecords' : {
         "en" : "No records found",

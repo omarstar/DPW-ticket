@@ -42,7 +42,7 @@ export default function CustomerForm(params) {
 
             };
 
-            console.log('creating customer')
+            console.log('creating customer in customerForm')
             dispatch(setLoading(true))
             dispatch(setEmail(customer.email))
             createCustomer(customer).then(a=>{
@@ -158,7 +158,8 @@ export default function CustomerForm(params) {
 
 
     const validateEmail = (email) => {
-		var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		// var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/;
 		return emailRegex.test(email);
 	}
     const validateInputFields = () =>{
@@ -167,7 +168,7 @@ export default function CustomerForm(params) {
 		var valLn = validateInput($('#input-lastname'), $("#alert-lastname"), validateEmptyField, CurrentLang);
 
         var valE = validateInput($('#input-email'), $("#alert-email"), validateEmptyField, CurrentLang);
-		var valC = validateInput($('#input-companyName2'), $("#alert-companyName2"), validateEmptyField, CurrentLang);
+		// var valC = validateInput($('#input-companyName2'), $("#alert-companyName2"), validateEmptyField, CurrentLang);
 		
         const isMobileEmpty = phoneInputRef.current.isInputEmpty();
         console.log('isMobileEmpty', isMobileEmpty)
@@ -184,7 +185,7 @@ export default function CustomerForm(params) {
         var isValidMobile = !isMobileEmpty && isMobileValid
         var isValidEmail = validateInput($("#input-email"), $("#alert-email"), validateEmail, CurrentLang);
 		
-		if(!valFn || !valLn || !valE || !valC || !isValidMobile || !isValidEmail){
+		if(!valFn || !valLn || !valE || !isValidMobile || !isValidEmail){
 			return false
 		}
 
@@ -202,9 +203,9 @@ export default function CustomerForm(params) {
         validateInput($(this), $("#alert-lastname"), validateEmptyField, CurrentLang);
     });
     
-    $("#input-companyName2").on("blur", function() {
-        validateInput($(this), $("#alert-companyName2"), validateEmptyField, CurrentLang);
-    });
+    // $("#input-companyName2").on("blur", function() {
+    //     validateInput($(this), $("#alert-companyName2"), validateEmptyField, CurrentLang);
+    // });
 
     const HandleBack = () => {
         navigate("/DPW/options");
@@ -214,8 +215,8 @@ export default function CustomerForm(params) {
         <div className="d-flex flex-column justify-content-center align-items-center bg-white">
             
             <div className="header-section">
-                {/* <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" /> */}
-                <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecirclebk-img" />
+                <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
+                {/* <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecirclebk-img" /> */}
                     <img id="btn-back-btn" src={backCircleImg} onClick={HandleBack} alt="back circle img" className="header-backcircle-img" />
                 <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
             </div>

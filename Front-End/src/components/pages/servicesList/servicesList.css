@@ -234,14 +234,21 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        text-align: center;
         padding: 25px 29px;
+        width: 15rem;
+        max-width: 100%;
+
       }
 
-      #cat-img-btn.img-rat{
+      /* .img-rat{
         object-fit: auto;
         object-position: center;
         width: 5.5rem;
         aspect-ratio: 1.4;
+      } */
+      .cat-img-box img {
+        aspect-ratio: 1.2;
       }
 
       .cat-text {

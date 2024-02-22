@@ -27,7 +27,7 @@ console.log('ticket info: ', ticket)
     return (
         <>
         <div className="title-black ff-bold mtop-25"><Text name="titleTurn" /></div>
-        <div className='text-center d-flex flex-column'>
+        <div className='text-center d-flex flex-column align-items-center'>
             <div className="m-0 alignment txt_color" >
             <div className="myrounded text-center col-12">
 				<span className='mini-gray-text'><Text name="noteProceedto" realign/> {servicePointName}</span>

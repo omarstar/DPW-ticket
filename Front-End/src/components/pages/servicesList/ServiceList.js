@@ -5,7 +5,7 @@ import '../../includes/footer/footer.css'
 import homeCircleImg from '../../../images/home-circle.svg'
 import backCircleImg from '../../../images/backarrow.svg'
 import jafzaLogoColor from '../../../images/JAFZA_Logo_Color.svg'
-import footerBGshape from '../../../images/footer-sky-bg.svg'
+// import footerBGshape from '../../../images/footer-sky-bg.svg'
 import srvcInfoIcon from "../../../images/icon-service-info.svg"
 import '../../common.css';
 import "./servicesList.css"
@@ -26,7 +26,7 @@ export default function ServiceList(params) {
     const [descText, setDescText] = useState("")
     let mobileNumber = useSelector(getPhonenumber);
 
-    let {loading, category, branchPrefix,email,customer} = useSelector((state) => state.app);
+    let {loading, category, branchPrefix, email, customer} = useSelector((state) => state.app);
 
     let modalInfoData = {
         titleText: <Text name="titleServiceModal" />,
@@ -144,6 +144,7 @@ export default function ServiceList(params) {
             console.log('service', service);
             console.log('branchPrefix', branchPrefix);
             if(service){
+
                 if([77,78,79,80].find(id => id === service.id)){
                     setDescText("Please book an online appointment for this service.")
                     return setShowModalInfo(true);
@@ -158,9 +159,11 @@ export default function ServiceList(params) {
                     if([72,73,74,75,76].find(id => id === service.id )){
                         await createTicket(srvid)
                     }else{
-                        setDescText("Please proceed to the Sales Centre JAFZA 15 branch to select this service.")
+                        setDescText("Please proceed to the Sales Centre JAFZA 14 branch to select this service.")
                         return setShowModalInfo(true);
                     }
+                }else{
+                    console.log('check branchPrefix')
                 }
             }
 
@@ -171,7 +174,7 @@ export default function ServiceList(params) {
     }
 
     async function createTicket(id) {
-        console.log(customer);
+        console.log("customer saved?",customer);
         try {
             let createTicketBody = {
                 services : [id],
@@ -221,8 +224,8 @@ export default function ServiceList(params) {
 
             <div className="d-flex flex-column justify-content-center align-items-center bg-white">
                 <div className="header-section">
-                    {/* <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" /> */}
-                    <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecirclebk-img" />
+                    <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
+                    {/* <img id="header-home-btn" onClick={showModel}  src={homeCircleImg} alt="home circle img" className="header-homecirclebk-img" /> */}
                     <img id="btn-back-btn" src={backCircleImg} onClick={HandleBack} alt="back circle img" className="header-backcircle-img" />
                     <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
                 </div>
