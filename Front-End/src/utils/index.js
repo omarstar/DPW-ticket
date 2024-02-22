@@ -191,7 +191,7 @@ var remainingSeconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 if(remainingHours<0){
     remainingHours = remainingHours + 1;
 }
-return remainingHours + " hr : " + Math.abs(remainingMinutes) + " min";
+return (remainingMinutes<0?"-":"") + remainingHours + " hr : " + Math.abs(remainingMinutes) + " min";
 }
 
 export const calculateRemainingTime2 = (dateString) => {
@@ -203,11 +203,15 @@ console.log('targetDate',targetDate,currentDate);
 var timeDifference = targetDate.getTime() - currentDate.getTime();
 console.log('timeDifference',timeDifference,targetDate,currentDate);
 // Calculate remaining hours, minutes, and seconds
-var remainingHours = Math.floor(timeDifference / (1000 * 60 * 60)) +1;
+var remainingHours = Math.floor(timeDifference / (1000 * 60 * 60));
 var remainingMinutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
 var remainingSeconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-return remainingHours+remainingMinutes;
+if(remainingHours<0){
+  remainingHours = remainingHours + 1;
+}
+
+return (remainingHours*60)+remainingMinutes;
 }
 
 export const formatDate = (dateString) => {
