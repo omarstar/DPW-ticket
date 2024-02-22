@@ -113,9 +113,11 @@ export default function WalkinPhoneNumber() {
                             if(sendOTPRes.message=="accepted"){
                                 return navigate('/DPW/otp');
                             }else{
+                                dispatch(setLoading(false));
                                 return setShowAlert(<Text name="alertNoAppWrongMobile" />);
                             }
                         } catch (error) {
+                            dispatch(setLoading(false));
                             return setShowAlert(<Text name="alertNoAppWrongMobile" />);
                         }
                         
@@ -132,18 +134,25 @@ export default function WalkinPhoneNumber() {
                     };
                     dispatch(setEmail(customer.email));
                     setTimeout(async () => {
-                        const getCustomer = await createCustomer(customer);
-                        console.log('getCustomer',getCustomer);
-                        dispatch(setCustomer(getCustomer));
+                        try {
+                            const getCustomer = await createCustomer(customer);
+                            console.log('getCustomer',getCustomer);
+                            dispatch(setCustomer(getCustomer));
+                        } catch (error) {
+                            dispatch(setLoading(false));
+                            return setShowAlert(<Text name="alertNetwork" />);
+                        }
                         try {
                             const sendOTPRes = await sendOTP(mobileNumber,customer.email);
                             dispatch(setLoading(false));
                             if(sendOTPRes.message=="accepted"){
                                 return navigate('/DPW/otp');
                             }else{
+                                dispatch(setLoading(false));
                                 return setErrorMessage(<Text name="alertWrongMobile" />)
                             }
                         } catch (error) {
+                            dispatch(setLoading(false));
                             return setErrorMessage(<Text name="alertWrongMobile" />)
                         }
                         
