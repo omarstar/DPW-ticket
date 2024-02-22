@@ -19,7 +19,7 @@
     text-align: center;
     /* letter-spacing: 0.48px; */
     width: 100vw;
-  min-height: 8vh;
+  min-height: 4vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -250,3 +250,6 @@
   .iti__country-list {
     width: 90vw;
   }
+.turn-title{
+  font-size: 22px;
+}
