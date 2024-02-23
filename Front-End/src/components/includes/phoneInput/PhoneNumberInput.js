@@ -76,7 +76,13 @@ const PhoneNumberInput = forwardRef(({onValidationResult}, ref) => {
           phoneInputField.current.addEventListener('blur', ()=>{
             validateMobileInput(phoneInputInstance);
           });
-  
+          
+          phoneInputField.current.addEventListener('keydown', (e)=>{
+            if(e.key === "Enter" || e.key === 'Go'){
+              validateMobileInput(phoneInputInstance);
+            }
+          });
+
           phoneInputInitialized.current = true;
   
           return () => {
