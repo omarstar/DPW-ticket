@@ -233,7 +233,24 @@ const locals = {
     'textConnectWorldOpportunities' : {
         "en" : "Connecting you to a world of opportunities",
         "ar" : "نوصلك إلى عالم من الفرص"
+    },
+    'titleServiceJafza15' : {
+        "en" : "Please proceed to Jafza Sales Center at Jafza 15 for further assistance",
+        "ar" : "يرجى التوجه الى مركز خدمات جافزا في مبنى جافزا 15 للمزيد من المساعدة"
+    },
+    'titleServiceJafza14' : {
+        "en" : "Please proceed to Jafza Sales Center at Jafza 14 for further assistance",
+        "ar" : "يرجى التوجه الى مركز خدمات جافزا في مبنى جافزا 14 للمزيد من المساعدة"
+    },
+    'textBookOnlineDesc' : {
+        "en" : "Book an online appointment with a Jafza expert",
+        "ar" : "احجز موعدًا أونلين مع أحد خبراء جافزا"
+    },
+    'btnBookOnline' : {
+        "en" : "Book Online",
+        "ar" : "حجز موعدك أونلين"
     }
+
 }
 
 export function getLocalTranslate(key,lang) {

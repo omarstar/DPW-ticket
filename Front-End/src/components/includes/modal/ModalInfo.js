@@ -10,7 +10,9 @@ const ModalInfo = ({data}) => {
                 <div id="modal-info" className="modal-desc">{descText}</div>
             </div>
             <div className="modal-btns-box d-flex flex-column justify-content-around">
-                <button id="btn-close-modal" onClick={buttonOptions[0].buttonAction} className="button-wide button-outline-clr space-btn-close border-0">{buttonOptions[0].text}</button>
+                {buttonOptions.map(btn=>(
+                    <button id="btn-close-modal" onClick={btn.buttonAction} className="button-wide button-outline-clr space-btn-close border-0">{btn.text}</button>
+                ))}
             </div>
         </div>
      );

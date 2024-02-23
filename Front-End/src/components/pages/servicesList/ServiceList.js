@@ -23,11 +23,28 @@ import Footer from '../../includes/footer/Footer'
 export default function ServiceList(params) {
 
     const [showModalInfo, setShowModalInfo] = useState(false);
+    const [showOnlineModalInfo, setShowOnlineModalInfo] = useState(false);
     const [descText, setDescText] = useState("")
     let mobileNumber = useSelector(getPhonenumber);
 
     let {loading, category, branchPrefix, email, customer} = useSelector((state) => state.app);
 
+    let modalOnlineInfoData = {
+        titleText: <Text name="titleServiceModal" />,
+        descText: descText?? <Text name="noteNoServiceInfo" />,
+        buttonOptions: [{
+            text: <Text name="btnBookOnline" />,
+            buttonAction: () => {
+                setShowOnlineModalInfo(false);
+                // navigate('/')
+            }
+        },{
+            text: <Text name="btnClose" />,
+            buttonAction: () => {
+                setShowOnlineModalInfo(false);
+            }
+        }]
+    }
     let modalInfoData = {
         titleText: <Text name="titleServiceModal" />,
         descText: descText?? <Text name="noteNoServiceInfo" />,
@@ -145,11 +162,11 @@ export default function ServiceList(params) {
             console.log('branchPrefix', branchPrefix);
             if(service){
                 if([77,78,79,80,69,70].find(id => id === service.id)){
-                    setDescText("Please book an online appointment for this service.")
-                    return setShowModalInfo(true);
+                    setDescText(<Text name="textBookOnlineDesc" />)
+                    return setShowOnlineModalInfo(true);
                 }else if(branchPrefix === 'LOB14'){
                     if([72,73,74,75,76].find(id => id === service.id )){
-                        setDescText("Please proceed to the Sales Centre JAFZA 15 branch to select this service.")
+                        setDescText(<Text name="titleServiceJafza15" />)
                         return setShowModalInfo(true);
                     }else{
                         await createTicket(srvid)
@@ -158,7 +175,7 @@ export default function ServiceList(params) {
                     if([72,73,74,75,76].find(id => id === service.id )){
                         await createTicket(srvid)
                     }else{
-                        setDescText("Please proceed to the Sales Centre JAFZA 14 branch to select this service.")
+                        setDescText(<Text name="titleServiceJafza14" />)
                         return setShowModalInfo(true);
                     }
                 }else{
@@ -264,6 +281,11 @@ export default function ServiceList(params) {
                 {
                     showModalInfo && (
                         <ModalInfo data={modalInfoData} />
+                    )
+                }
+                {
+                    showOnlineModalInfo && (
+                        <ModalInfo data={modalOnlineInfoData} />
                     )
                 }
                 
