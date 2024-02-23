@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import '../../includes/header/header.css'
 import '../../includes/footer/footer.css'
@@ -100,15 +100,16 @@ export default function WalkOtp(params) {
 
        const resendOtpAndRestartTimer = async () => {
         try {
+
             dispatch(setLoading(true));
             await sendOTP(mobileNumber,email);
             dispatch(setLoading(false));
             // Restart the countdown timer
+            setOtp('')
+            setErrorFlag('');
             setMinutes(1);
             setSeconds(0);
-  
-            setErrorFlag('');
-            setOtp('')
+            
         
             // Hide the resend button
             setShowResendButton(false);
@@ -120,12 +121,17 @@ export default function WalkOtp(params) {
         }
       };
 
+      //   const inputRef = useRef(null);
 
     const handleOtpChange = (updatedOtp) => {
         setErrorFlag('');
         //need to hide the inputs
         setOtp(updatedOtp);
+        // if(inputRef.current){
+        //     inputRef.current.focus();
+        // }
       };
+
 
     // const handleInputFocus = (index) => {
     // // Clear the OTP value for the focused input
@@ -193,6 +199,11 @@ export default function WalkOtp(params) {
         
     }
 
+    const handleClearOtp = () => {
+        console.log('clicked', otp)
+        setOtp('');
+    }
+
     const HandleBack = () => {
         if(flow === "app"){
             navigate('/DPW/mobile')
@@ -223,7 +234,9 @@ export default function WalkOtp(params) {
                 
                 <div className="title-box d-flex flex-column justify-content-center align-items-center">
                     <div className="title-black ff-bold"><Text name="titleEnterOtp" /></div>
+                    <div onClick={handleClearOtp} className='otp-clear-input'>clear<span className='otp-clear-x'>x</span></div>
                     <InputOtp otpValue={otp} onOtpChange={handleOtpChange} onKeyClick={handleSubmitOtp} />
+                    {/* <InputOtp ref={inputRef} otpValue={otp} onOtpChange={handleOtpChange} onKeyClick={handleSubmitOtp} /> */}
                     
                     {/* {
                         errorFlag && <div className="alert-text otp-error">{errorFlag} <br/> </div>

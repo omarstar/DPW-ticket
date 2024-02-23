@@ -68,7 +68,7 @@
   } */
 
   .otp-set-box {
-    margin-top: 46Px;
+    /* margin-top: 46Px; */
     height: 24px;
     /* width: 247px; */
     width: 70vw;
@@ -152,4 +152,25 @@
     /* margin-bottom: 20px; */
     white-space: nowrap;
     font: 700 10px 'Montserrat-Bold', sans-serif;
+  }
+
+  .otp-clear-input {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 1rem;
+    width: 100%;
+    font: 600 10px 'Montserrat-Bold';
+    color: var(--sky-blue);
+    margin: 46px 0 6px;
+  }
+  .otp-clear-x {
+    border: 1px solid var(--royal-blue);
+    border-radius: 50%;
+    width: 1rem;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1rem;
   }
