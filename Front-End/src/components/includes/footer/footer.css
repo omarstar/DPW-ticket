@@ -45,3 +45,10 @@
     z-index: 6;
     font: 500 12px "Montserrat-Bold";
 }
+
+@media screen and (min-width: 768px) {
+    .footer-img-icon{
+        margin: 0px 0px -24px 0px;
+    }
+
+}

@@ -175,3 +175,10 @@
     margin-top: 2.5rem;
     min-height: 24px;
   }
+
+  @media screen and (min-width: 768px) {
+    .alert-small-text{
+      font-size: 9px;
+    }
+
+  }

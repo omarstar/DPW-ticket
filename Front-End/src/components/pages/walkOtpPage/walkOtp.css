@@ -174,3 +174,10 @@
     justify-content: center;
     height: 1rem;
   }
+
+  @media screen and (min-width: 768px) {
+    .otp-clear-input, .otp-time-text, .resend-otp-text{
+      font-size: 11px;
+    }
+
+  }

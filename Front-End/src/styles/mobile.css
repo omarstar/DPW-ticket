@@ -31,7 +31,9 @@
 .btn-appmobile-box {
   height: 17vh;
 }
-
+.h-17{
+  height: 17vh;
+}
   #input-app-mobilenumber {
     letter-spacing: 1.5px !important;
     font: normal 400px 30px "Montserrat-Bold", -apple-system, Roboto, Helvetica,sans-serif;

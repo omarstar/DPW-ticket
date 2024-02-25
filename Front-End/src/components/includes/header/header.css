@@ -52,3 +52,10 @@
     right: 0.75rem;
     position: fixed;
 }
+
+@media screen and (min-width: 768px) {
+  .header-img-bg{
+    width: 150px;
+    height: 100px;
+  }
+}

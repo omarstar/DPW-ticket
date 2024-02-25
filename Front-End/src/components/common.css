@@ -197,6 +197,7 @@
       font: 700 11px 'Montserrat-Bold';
       z-index: 10;
       padding: 11px 16.5px !important;
+      /* min-height: 3rem; */
       /* box-shadow: 1px 1px 0px var(--royal-blue); */
   }
   .button-outline-clr {
@@ -254,10 +255,30 @@
   font-size: 22px;
 }
 
-
+/* common css */
 @media screen and (min-width: 768px) {
   .footer-text-connectWorld{
-    font-size: 25px;
-    bottom: 20px;
+    font-size: 1.5rem;
+    bottom: 1.875rem;
+  }
+  .welcome-body {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7rem;
+  }
+
+  .title-black{
+    font-size: 1.6rem;
+  }
+  .button-wide {
+    font-size: 0.7rem;
+  }
+
+  .input-box::placeholder {
+    font-size: 13px;
+    font-weight: 500;
   }
 }
