@@ -240,7 +240,7 @@ const locals = {
     },
     'titleServiceJafza14' : {
         "en" : "Please proceed to Jafza Sales Center at Jafza 14 for further assistance",
-        "ar" : "يرجى التوجه الى مركز خدمات جافزا في مبنى جافزا 14 للمزيد من المساعدة"
+        "ar" : "يرجى التوجه الى مركز خدمات جافزا في مبنى جافزا 14 لنتمكن من مساعدتكم"
     },
     'textBookOnlineDesc' : {
         "en" : "Book an online appointment with a Jafza expert",
@@ -248,7 +248,7 @@ const locals = {
     },
     'btnBookOnline' : {
         "en" : "Book Online",
-        "ar" : "حجز موعدك أونلين"
+        "ar" : "حجز موعد بالاتصال المرئي"
     }
 
 }
