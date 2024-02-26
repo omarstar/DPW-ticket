@@ -191,7 +191,8 @@ var remainingSeconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 if(remainingHours<0){
     remainingHours = remainingHours + 1;
 }
-return (remainingMinutes<0?"-":"") + remainingHours + " hr : " + Math.abs(remainingMinutes) + " min";
+// (remainingMinutes<0?"-":"") + 
+return remainingHours + " hr : " + Math.abs(remainingMinutes) + " min";
 }
 
 export const calculateRemainingTime2 = (dateString) => {

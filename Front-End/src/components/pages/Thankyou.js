@@ -2,7 +2,7 @@ import React from 'react';
 import '../includes/header/header.css'
 import '../includes/footer/footer.css'
 import jafzaLogoColor from '../../images/JAFZA_Logo_Color.svg'
-import footerBGshape from '../../images/footer-sky-bg.svg'
+// import footerBGshape from '../../images/footer-sky-bg.svg'
 import shakehand from '../../images/shakehand.svg'
 import '../common.css';
 import '../../styles/thankyou.css'
@@ -17,6 +17,7 @@ export default function Thankyou() {
         localStorage.clear();
         navigate('/')
     }
+    
 
     return (
         <div className="d-flex flex-column justify-content-center align-items-center bg-white">

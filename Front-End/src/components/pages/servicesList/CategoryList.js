@@ -31,7 +31,7 @@ export default function CategoryList(params) {
     // category list
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    let {loading} = useSelector((state) => state.app);
+    let {loading, branchPrefix} = useSelector((state) => state.app);
     const doShowModal = useSelector(isShowModal);
 
     const modalExitData = {
@@ -61,6 +61,7 @@ export default function CategoryList(params) {
     useEffect( () => {
         dispatch(setLoading(true));
        
+        (branchPrefix) ?
         golobalVariables('categories').then(res=>{
             var categories = JSON.parse(res.value);
             categories = categories.sort((a, b) => a.name.localeCompare(b.name))
@@ -68,7 +69,7 @@ export default function CategoryList(params) {
             setcategoryList(categories)
         }).catch(err=>{
 
-        })
+        }) : navigate('/')
         
         
 

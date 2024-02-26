@@ -67,11 +67,14 @@ const locals = {
     },
     'titleSelectApp' : {
         // "en" : "Please select your confirmed face-to-face appointment to check-in.",
-        "en" : "Please confirm your appointment check-in",
-        "ar" : "الرجاء إختيار الموعد الحضوري المسجل مسبقاً"
+        // "en" : "Please confirm your appointment check-in",
+        "en" : "Please choose your appointment to proceed",
+        // "ar" : "الرجاء إختيار الموعد الحضوري المسجل مسبقاً"
+        "ar" : "الرجاء إختيار الموعد الحضوري المسجل للمتابعة"
     },
     'noteAppCheckin' : {
-        "en" : "You can check-in from 15 minutes before the time of the appointment",
+        // "en" : "You can check-in from 15 minutes before the time of the appointment",
+        "en" : "You can check in your appointment as early as 15 minutes",
         "ar" : "بإستطاعتك التسجيل قبل الموعد ب 15 دقيقة"
     },
     'modalAppEarly' : {

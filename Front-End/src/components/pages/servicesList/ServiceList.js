@@ -93,7 +93,9 @@ export default function ServiceList(params) {
     let [serviceList , setServiceList] = useState()
 
     useEffect( () => {
+        
         dispatch(setLoading(true));
+
         async function  getServiceList() {
             let config = {
             method: 'get',
@@ -129,7 +131,7 @@ export default function ServiceList(params) {
         }
 
         // testLocal();//test only
-        getServiceList()
+        (branchPrefix) ? getServiceList() : navigate('/')
         dispatch(setLoading(false));
 
     },[])
@@ -192,21 +194,36 @@ export default function ServiceList(params) {
     async function createTicket(id) {
         console.log("customer saved?",customer);
         try {
-            let createTicketBody = {
-                services : [id],
-                parameters : {
-                    custom3 : JSON.stringify({
-                        firstName : customer.firstName,
-                        lastName : customer.lastName,
-                        phoneNum : customer.properties?.phoneNumber??"",
-                        email : customer.properties?.email??"",
-                        company : customer.properties?.company??"",
-                    }),
-                    phoneNumber: mobileNumber,
-                    email : email
-                },
-                customers : [customer.id]
+            let createTicketBody = {}
+            if(customer !== ''){
+                createTicketBody = {
+                    services : [id],
+                    parameters : {
+                        custom3 : JSON.stringify({
+                            firstName : customer?.firstName,
+                            lastName : customer?.lastName,
+                            phoneNum : customer.properties?.phoneNumber??"",
+                            email : customer.properties?.email??"",
+                            company : customer.properties?.company??"",
+                        }),
+                        phoneNumber: mobileNumber,
+                        email : email
+                    },
+                    customers : [customer.id]
+                }
+
+            }else{
+                createTicketBody = {
+                    services : [id],
+                    parameters : {
+                        phoneNumber: mobileNumber,
+                        email : email
+                    },
+                }
             }
+
+            console.log('createTicketBody', createTicketBody)
+
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
