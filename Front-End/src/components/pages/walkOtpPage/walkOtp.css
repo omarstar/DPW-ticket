@@ -180,4 +180,9 @@
       font-size: 11px;
     }
 
+    .otp-num-input{
+      width: 45px;
+      min-height: 45px;
+    }
+
   }

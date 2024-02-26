@@ -1,5 +1,5 @@
 .queue-item.selected {
-    font: 700 18px 'Montserrat-VariableFont', sans-serif;
+    font: 700 26px 'Montserrat-VariableFont', sans-serif;
     color: #fff;
     background: var(--royal-blue, #0068a9);
     /* width: 12vw; */
@@ -23,7 +23,7 @@
     background: rgba(62, 177, 200, 0.6);
     width: 8.5vw;
     height: 8.5vw;
-    font-size: 13px;
+    font-size: 18px;
     max-width: 40px;
     max-height: 34px;
 }
@@ -51,4 +51,31 @@
     height: 5vh;
     text-align: center;
     z-index: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .you-text{
+        font-size: 10px;
+    }
+
+    .queue-item.selected{
+        font-size: 28px;
+        max-width: 50px;
+        max-height: 60px;
+    }
+    .queue-item.other{
+        font-size: 20px;
+        max-width: 50px;
+        max-height: 35px;
+    }
+    .line-bg{
+        height: 6vh;
+        width: 330px;
+    }
+    .ticket-details-box{
+        max-width: 25.6rem;
+    }
+    /* .mainLineText{
+        font-size: 22px;
+    } */
 }

@@ -301,11 +301,14 @@
         font-size: 12px;
       }
       .cat-img-box{
-        padding: 32px 29px;
+        padding: 35px 29px;
         width: 14rem;
       }
       .category-btn-box{
-        width: 9rem;
+        width: 10rem;
+      }
+      .modal-desc{
+        font-size: 13px;
       }
 
     }

@@ -103,3 +103,9 @@
 .fs-sm {
     font-size: 1.2rem;
 }
+
+@media screen and (min-width: 768px) {
+    .ticket-turn-box{
+        max-width: 25.6rem;
+    }
+}

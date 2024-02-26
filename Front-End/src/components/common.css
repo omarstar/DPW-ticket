@@ -258,7 +258,7 @@
 /* common css */
 @media screen and (min-width: 768px) {
   .footer-text-connectWorld{
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     bottom: 1.875rem;
   }
   .welcome-body {
@@ -275,10 +275,20 @@
   }
   .button-wide {
     font-size: 0.7rem;
+    width: 20rem;
   }
 
   .input-box::placeholder {
     font-size: 13px;
     font-weight: 500;
+  }
+  .modal-box{
+    width: 20rem;
+  }
+  .title-modal-white{
+    font-size: 13px;
+  }
+  .mini-gray-text {
+    font-size: 0.85rem;
   }
 }
