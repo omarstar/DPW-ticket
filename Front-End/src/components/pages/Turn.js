@@ -9,6 +9,20 @@ console.log('ticket info: ', ticket)
     // const messageText = "Please proceed to counter "//you will be served by
 
     const {ticketId, currentServiceName, servicePointName} = ticket;
+    
+    function showToken()
+    {
+        const ticketElement = document.getElementById("ticketNumber");
+        if (ticketElement)
+            ticketElement.style.visibility = "visible";
+    }
+
+    function hideToken()
+    {
+        const ticketElement = document.getElementById("ticketNumber");
+        if (ticketElement)
+            ticketElement.style.visibility = "hidden";
+    }
 
     useEffect(() => {
         const audio = new Audio('../../../ding.mp3');
@@ -20,6 +34,12 @@ console.log('ticket info: ', ticket)
         audio.onended = () => {
             audio.remove();
         };
+
+        for(let i=900; i < 4500; i=i+900)
+        {
+            setTimeout(() => hideToken(), i);
+            setTimeout(() => showToken(), i + 450);
+        }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
