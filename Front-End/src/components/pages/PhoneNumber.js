@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import '../includes/header/header.css'
 import '../includes/footer/footer.css'
@@ -39,6 +39,8 @@ export default function PhoneNumber() {
 
     let mobileNumber = useSelector(getPhonenumber);
     console.log('init mobileNumber', mobileNumber)
+
+    const phoneInputRef = useRef();
   
      // validate
     //  const [errorMessage, setErrorMessage] = useState('');
@@ -63,7 +65,19 @@ export default function PhoneNumber() {
         
         console.log('validating sending otp phone nb',mobileNumber);
         //not empty and it is valid
-        if(mobileNumber !== '' && !showAlert){
+        const isMobileEmpty = phoneInputRef.current.isInputEmpty();
+        console.log('isMobileEmpty', isMobileEmpty)
+        
+        const isMobileValid = phoneInputRef.current.isValidNumber();
+        console.log('isMobileValid', isMobileValid)
+
+        
+        // if(mobileNumber !== '' && !showAlert){
+        if(isMobileEmpty)
+            setShowAlert(<Text name="alertEmptyField" />)
+        else if(!isMobileValid)
+            setShowAlert(<Text name="alertNoAppWrongMobile" />)
+        if(!isMobileEmpty && isMobileValid){
             dispatch(setLoading(true));
             try {
                 if(flow === "app"){
@@ -115,6 +129,12 @@ export default function PhoneNumber() {
   
     }
 
+    const handleKeyDown = (event) => {
+        if(event.key === 'Enter'){
+            handleMobileSubmit();
+        }
+    }
+
     // modal
     const doShowModal = useSelector(isShowModal);
 
@@ -162,8 +182,9 @@ const HandleBack = () => {
                     <div className="title-box d-flex flex-column justify-content-center align-items-center">
                         <div className="title-black ff-bold"><Text name="titleEnterMobile" /></div>
                         <div className="input-appmobile-block">
-                            <PhoneNumberInput onValidationResult={handleValidationResult}  />
+                            <PhoneNumberInput ref={phoneInputRef} onValidationResult={handleValidationResult}  />
                         </div>
+                        {/* onKeyDown={handleKeyDown} */}
                         
                        
                         <div id="alert-wrongmobile" className="alert-text ff-bold mobile-app-alert">{showAlert}</div>
