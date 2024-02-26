@@ -3,7 +3,8 @@ import '../../includes/header/header.css'
 import '../../includes/footer/footer.css'
 import homeCircleImg from '../../../images/home-circle.svg'
 import jafzaLogoColor from '../../../images/JAFZA_Logo_Color.svg'
-import footerBGshape from '../../../images/footer-sky-bg.svg'
+import backCircleImg from '../../../images/backarrow.svg'
+// import footerBGshape from '../../../images/footer-sky-bg.svg'
 import '../../common.css';
 import '../../../styles/bookingSummary.css'
 
@@ -99,11 +100,16 @@ export default function BookingSummary(params) {
         checkInAppt(selectedApp);
     }
 
+    const HandleBack = () => {
+        navigate("/DPW/appointment");
+    }
+
     
     return(
         <div className="d-flex flex-column justify-content-center align-items-center bg-white">
             <div className="header-section">
                 <img id="header-home-btn" onClick={showModel} src={homeCircleImg} alt="home circle img" className="header-homecircle-img" />
+                <img id="btn-back-btn" src={backCircleImg} onClick={HandleBack} alt="back circle img" className="header-backcircle-img" />
                 <img  srcset={jafzaLogoColor} className="header-img-bg" alt="jafza logo" />
             </div>
             <div id="page" className="page-layout d-flex flex-column justify-content-start align-items-center">
