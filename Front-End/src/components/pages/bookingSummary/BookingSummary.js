@@ -9,7 +9,7 @@ import '../../common.css';
 import '../../../styles/bookingSummary.css'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { isShowModal, setModal, setTicket } from '../../../reducers'
+import { isShowModal, setLoading, setModal, setTicket } from '../../../reducers'
 import { useNavigate } from 'react-router-dom'
 import ModalExit from '../../includes/modal/ModalExit'
 import axios from 'axios'
@@ -50,6 +50,7 @@ export default function BookingSummary(params) {
     console.log('selectedApp', selectedApp);
     console.log('selectedApp name', selectedApp.branch['name']);
 
+    dispatch(setLoading(false));
 
     async function checkInAppt(app) {
         try {
