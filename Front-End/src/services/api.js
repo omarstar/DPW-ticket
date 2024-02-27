@@ -6,7 +6,8 @@ const apiUrls = {
     createCustomer:  APPURL + '/rest/mobile/createCustomer',
     visitStatus: APPURL + '/rest/mobile/visit/status',
     golobalVariables: APPURL + '/rest/mobile/golobalVariables',
-    getAppointments: APPURL + '/rest/mobile/appointment/id/'
+    getAppointments: APPURL + '/rest/mobile/appointment/id/',
+    getOneAppointment: APPURL + '/rest/mobile/appointment/one/'
 }
 
 export const ValidateOtp = async(reqData) => {
@@ -115,5 +116,22 @@ export const getAppointments = async (phoneNum) => {
         console.error(error);
         throw error;        
 
+    }
+};
+
+export const getOneAppointment = async (publicAppId) => {
+    try {
+        const url = apiUrls['getOneAppointment'] + `${publicAppId}`;
+        let config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: url,
+            };
+        let getApnt = await axios.request(config);
+        console.log('result: ',getApnt.data);
+        return getApnt.data;
+    } catch (error) {
+        console.error(error);
+        throw error;        
     }
 };

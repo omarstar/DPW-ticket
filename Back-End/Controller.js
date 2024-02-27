@@ -56,6 +56,30 @@ exports.getAppointment = async (req,res) => {
   return res.status(500).send(JSON.stringify(error))
 }
 }
+
+exports.getOneAppointment = async (req,res) => {
+  try {
+    
+    let publicAppId = req.params.publicAid;
+    console.log('publicAppId', publicAppId)
+    let getAppointmentConfig = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: `${qmaticApiUrl}/rest/calendar-backend/api/v1/appointments/publicid/${publicAppId}`,
+      headers: {
+        'auth-token': apiAuthToken
+      }
+    };
+
+    const theApp = await axios.request(getAppointmentConfig);
+    console.log('theApp', theApp)
+    res.status(500).send(theApp)
+
+  } catch (error) {
+    return res.status(500).send(JSON.stringify(error))
+  }
+}
+
 exports.checkInAppointment = async (req,res) => {
   let appointmentId = req.query.appointmentId
   let branchId = req.query.branchId
