@@ -6,7 +6,7 @@ var qmaticMobileUrl = "http://epgqsys-1.norwayeast.cloudapp.azure.com:81";
 const apiAuthToken = 'c7a1331a-32d-11e5-bf7f-feff819acdc9f';
 const mobileAuthToken = 'd0516eee-a32d-11e5-bf7f-feff819cdc9f';
 const mobileEntryPointId =1
-
+const fs = require('fs');
 exports.welcome = async (req,res) => {
   return res.send('welcome');
 }
@@ -318,6 +318,46 @@ async function sendEmail(email , message) {
 }
 async function sendMessage(phoneNumber , message) {
   try {
+    const AuthRes = fs.readFileSync('authToken.txt', 'utf8');
+    console.log(AuthRes);
+    let data = JSON.stringify({
+      "msgCategory": "4.5",
+      "contentType": "3.1",
+      "senderAddr": "Jafza",
+      "priority": 1,
+      "recipient": parseInt(phoneNumber),
+      "msg":  message,
+      "dr": "1"
+    });
+
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: 'https://smartmessaging.etisalat.ae:5676/campaigns/submissions/sms/nb',
+      headers: { 
+        'Authorization': `bearer ${AuthRes}`, 
+        'Content-Type': 'application/json', 
+      },
+      data : data
+    };
+
+    const SmsRes = await axios.request(config);
+    console.log( SmsRes.data);
+    return SmsRes.data;
+  } catch (error) {
+    console.log("aasdsadasdasdsa",error.response);
+    if(error.response.status==401){
+      await getsendMessageToken();
+      return await sendMessage(phoneNumber , message);
+    }else{
+      return false;
+    }
+   
+    
+  }
+}
+async function getsendMessageToken() {
+  try {
     let data = JSON.stringify({
       "username": "JAFZACS",
       "password": "Dubai@2020"
@@ -336,32 +376,10 @@ async function sendMessage(phoneNumber , message) {
     const result = await axios.request(config);
 
     const AuthRes = result.data;
-    if(AuthRes.token){
-      let data = JSON.stringify({
-        "msgCategory": "4.5",
-        "contentType": "3.1",
-        "senderAddr": "Jafza",
-        "priority": 1,
-        "recipient": parseInt(phoneNumber),
-        "msg":  message,
-        "dr": "1"
-      });
+    fs.writeFileSync('authToken.txt', AuthRes.token);
 
-      let config = {
-        method: 'post',
-        maxBodyLength: Infinity,
-        url: 'https://smartmessaging.etisalat.ae:5676/campaigns/submissions/sms/nb',
-        headers: { 
-          'Authorization': `bearer ${AuthRes.token}`, 
-          'Content-Type': 'application/json', 
-        },
-        data : data
-      };
-
-      const SmsRes = await axios.request(config);
-      return SmsRes.data;
-    }
-    return result.data;
+    return AuthRes.token;
+ 
 
   } catch (error) {
     console.error(error);
