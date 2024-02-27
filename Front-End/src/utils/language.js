@@ -101,6 +101,10 @@ const locals = {
         "en" : "Your Appointment Summary",
         "ar" : "ملخص موعدك"
     },
+    'titleVirtualSummary' : {
+        "en" : "Your Appointment",
+        "ar" : "ملخص موعدك"
+    },
     'btnWalkinFlow' : {
         "en" : "Walk-in",
         "ar" : "خدمة الحضور"
@@ -239,7 +243,7 @@ const locals = {
     },
     'titleServiceJafza15' : {
         "en" : "Please proceed to Jafza Sales Center at Jafza 15 for further assistance",
-        "ar" : "يرجى التوجه الى مركز خدمات جافزا في مبنى جافزا 15 للمزيد من المساعدة"
+        "ar" : "يرجى التوجه الى مركز خدمات جافزا في مبنى جافزا 15 لنتمكن من مساعدتكم"
     },
     'titleServiceJafza14' : {
         "en" : "Please proceed to Jafza Sales Center at Jafza 14 for further assistance",
@@ -252,6 +256,30 @@ const locals = {
     'btnBookOnline' : {
         "en" : "Book Online",
         "ar" : "حجز موعد بالاتصال المرئي"
+    },
+    'joinMeeting' : {
+        "en" : "Join the meeting",
+        "ar" : "إنضم الى الاجتماع"
+    },
+    'meetingOtherDay' : {
+        "en" : "Your appointment is booked for another day. Please come back on the date of your appointment",
+        "ar" : " موعدك محجوز في غير يوم. يرجى العودة مجدداً عند أقتراب موعدك"
+    },
+    'meetingLate' : {
+        "en" : "you are too late for your appointment. please book a new appointment.",
+        "ar" : "لقد فاتك الموعد. يرجى حجز موعد جديد"
+    },
+    'meetingEarly' : {
+        "en" : "Join the meeting",
+        "ar" : "إنضم الى الاجتماع"
+    },
+    'meetingNoApp' : {
+        "en" : "Your appointment cannot be found.",
+        "ar" : "ليس لديك حجز لاي موعد "
+    },
+    'meetingArrivedApp' : {
+        "en" : "Your appointment has already been arrived.",
+        "ar" : "لقد فاتك الموعد"
     }
 
 }

@@ -65,7 +65,7 @@ exports.getOneAppointment = async (req,res) => {
     let getAppointmentConfig = {
       method: 'get',
       maxBodyLength: Infinity,
-      url: `${qmaticApiUrl}/rest/calendar-backend/api/v1/appointments/publicid/${publicAppId}`,
+      url: `${qmaticApiUrl}/rest/calendar-backend/public/api/v1/appointments/${publicAppId}`,
       headers: {
         'auth-token': apiAuthToken
       }

@@ -4,7 +4,7 @@ import "./line2.css"
 
 const Line2 = ({ activeNum = 0, onClickFuntion}) => {
     const data = [1,2,3,4,5,6];
-  activeNum = 8;
+//   activeNum = 88; //test only
     return(
         <>
             <div id="parentBox" onClick={onClickFuntion} className="flex-row-reverse">

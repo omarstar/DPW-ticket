@@ -57,7 +57,7 @@ function App() {
         <Route path="/DPW/category" element={<CategoryList />} />
         <Route path="/DPW/appointment" element={<AppointmentList />} />
         <Route path="/DPW/summary" element={<BookingSummary />} />
-        <Route path="/DPW/virtual-redirect" element={<VirtualRedirect />} />
+        <Route path="/DPW/appointmentid" element={<VirtualRedirect />} />
         <Route path="/DPW/virtual-app" element={<VirtualSummary />} />
         <Route path="/DPW/branches" element={<Branches/>} />
         {/* <Route path="/DPW/services/:id" element={<Services/>} /> */}
