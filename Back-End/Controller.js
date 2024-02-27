@@ -37,7 +37,7 @@ exports.getAppointment = async (req,res) => {
     let getAppointmentConfig = {
       method: 'get',
       maxBodyLength: Infinity,
-      url: `${qmaticApiUrl}/rest/appointment/appointments/search?branchId=4&fromDate=2024-01-28&toDate=2024-02-28`,
+      url: `${qmaticApiUrl}/rest/appointment/appointments/search?branchId=4&fromDate=2024-02-20&toDate=2024-03-28`,
       //  url: `${qmaticApiUrl}/rest/appointment/appointments/search?branchId=${utilFunctions.branchId}&fromDate=${utilFunctions.getCurrentDate()}&toDate=${utilFunctions.getNextDayDate()}`,
       headers: {
         'auth-token': apiAuthToken
@@ -69,7 +69,7 @@ exports.getAppointmentFromList = async (req,res) => {
     let getAppointmentConfig = {
       method: 'get',
       maxBodyLength: Infinity,
-      url: `${qmaticApiUrl}/rest/appointment/appointments/search?branchId=4&fromDate=2024-01-28&toDate=2024-02-28`,
+      url: `${qmaticApiUrl}/rest/appointment/appointments/search?branchId=4&fromDate=2024-02-20&toDate=2024-03-28`,
       headers: {
         'auth-token': apiAuthToken
       }
