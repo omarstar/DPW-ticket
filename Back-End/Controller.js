@@ -210,6 +210,26 @@ exports.currentVisit = async (req,res) => {
         res.status(500).send("error");
     }
 }
+
+exports.sendSms = async (req,res) => {
+  let request = req.body
+  console.log(request)
+  try {
+
+    let messageResponse = await sendMessage(request.phoneNumber, request.msg);
+    if(messageResponse){
+      return res.status("201").send({
+        message : "accepted",
+        data : messageResponse
+      })
+    }else{
+      res.status(500).send('Error');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+}
 exports.sendOTP = async (req,res) => {
   let customerData = req.body
   console.log(customerData)
