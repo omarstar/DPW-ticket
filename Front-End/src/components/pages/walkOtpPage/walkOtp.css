@@ -156,7 +156,7 @@
 
   .otp-clear-input {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     height: 1rem;
     width: 100%;

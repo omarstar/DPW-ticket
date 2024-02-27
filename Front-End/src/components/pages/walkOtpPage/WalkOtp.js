@@ -234,7 +234,6 @@ export default function WalkOtp(params) {
                 
                 <div className="title-box d-flex flex-column justify-content-center align-items-center">
                     <div className="title-black ff-bold"><Text name="titleEnterOtp" /></div>
-                    <div onClick={handleClearOtp} className='otp-clear-input'>clear<span className='otp-clear-x'>x</span></div>
                     <InputOtp otpValue={otp} onOtpChange={handleOtpChange} onKeyClick={handleSubmitOtp} />
                     {/* <InputOtp ref={inputRef} otpValue={otp} onOtpChange={handleOtpChange} onKeyClick={handleSubmitOtp} /> */}
                     
@@ -246,6 +245,8 @@ export default function WalkOtp(params) {
                         {/* <div id="resend-message" className="resend-otp-text">Didn&apos;t receive OTP?</div> */}
                         <div id="timer" className="otp-time-text">{`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</div>
                     </div>
+                    <div onClick={handleClearOtp} className='otp-clear-input'>clear<span className='otp-clear-x'>x</span></div>
+
                     <div id="alert-noappotp" style={{opacity: errorFlag ? '1' : '0'}} class="alert-noappotp-text"><Text name="alertWrongOtp" /></div>
                     <div class="otp-actions-box">
                         <button id="btn-resendotp-submit" style={{display: showResendButton ? 'flex' : 'none'}}   onClick={resendOtpAndRestartTimer} class="button-wide button-fill-clr space-submit-resendotp">
