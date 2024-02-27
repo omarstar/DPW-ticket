@@ -60,7 +60,7 @@ exports.getAppointment = async (req,res) => {
 exports.getOneAppointment = async (req,res) => {
   try {
     
-    let publicAppId = req.params.publicAid;
+    let publicAppId = req.params.id;
     console.log('publicAppId', publicAppId)
     let getAppointmentConfig = {
       method: 'get',
@@ -72,11 +72,10 @@ exports.getOneAppointment = async (req,res) => {
     };
 
     const theApp = await axios.request(getAppointmentConfig);
-    console.log('theApp', theApp)
-    res.status(500).send(theApp)
+    return res.send(theApp.data)
 
   } catch (error) {
-    return res.status(500).send(JSON.stringify(error))
+    return res.status(500).send(error)
   }
 }
 
