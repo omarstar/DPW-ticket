@@ -262,11 +262,11 @@ const locals = {
         "ar" : "إنضم الى الاجتماع"
     },
     'meetingOtherDay' : {
-        "en" : "Your appointment is booked for another day. Please come back on the date of your appointment",
+        "en" : "Your appointment is booked for another day, please come back on the date of your appointment",
         "ar" : " موعدك محجوز في غير يوم. يرجى العودة مجدداً عند أقتراب موعدك"
     },
     'meetingLate' : {
-        "en" : "you are too late for your appointment. please book a new appointment.",
+        "en" : "you are too late for your appointment, please book a new appointment.",
         "ar" : "لقد فاتك الموعد. يرجى حجز موعد جديد"
     },
     'meetingEarly' : {

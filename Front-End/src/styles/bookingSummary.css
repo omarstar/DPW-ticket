@@ -123,3 +123,10 @@
   #service-branch-val {
     text-transform: uppercase;
   }
+
+  .virtualnote-text {
+    font-size: 13px;
+    width: 80vw;
+    margin-top: 2rem;
+    color: var(--royal-text);
+  }

@@ -20,11 +20,15 @@ export default function VirtualRedirect() {
         try {
             const checkinApp = await getOneAppointment(appId);
             console.log('checkinApp saved', checkinApp)
-            dispatch(setSelectedAppointment(checkinApp));
+            if(checkinApp){
+                dispatch(setSelectedAppointment(checkinApp));
+            }else{
+                <p>the link has expired</p>
+            }
 
             // check if physical or virtual
-            // navigate('/DPW/virtual-app')
-            navigate('/DPW/summary')
+            // navigate('/DPW/virtual-app') //reading diff app publicid response
+            navigate('/DPW/summary') //reading the list app response
             
 
         } catch (error) {

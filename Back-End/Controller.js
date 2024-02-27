@@ -57,6 +57,48 @@ exports.getAppointment = async (req,res) => {
 }
 }
 
+exports.getAppointmentFromList = async (req,res) => {
+  try {
+    
+    let publicAppId = req.params.id;
+    // let branchId = req.params.bid;
+
+    const Branches = await getBranches();
+
+
+    let getAppointmentConfig = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: `${qmaticApiUrl}/rest/appointment/appointments/search?branchId=4&fromDate=2024-01-28&toDate=2024-02-28`,
+      headers: {
+        'auth-token': apiAuthToken
+      }
+    };
+    
+    const appList = await axios.request(getAppointmentConfig);
+    console.log('appList', appList);
+    
+    var filterAppList = false;
+
+    if(appList.data){
+      filterAppList = appList.data.find(a=>a.properties.publicId==publicAppId);
+      // console.log('filterAppList', filterAppList);
+    }
+
+    if(filterAppList){
+      // console.log('Branches', Branches)
+
+      filterAppList.branch = Branches.find(b=> b.id==filterAppList.branchId);
+      // console.log('filterAppList.branch', filterAppList.branch)
+      return res.send(filterAppList);
+    }
+    return res.send(filterAppList)
+
+  } catch (error) {
+    return res.status(500).send(error)
+  }
+}
+
 exports.getOneAppointment = async (req,res) => {
   try {
     

@@ -36,6 +36,13 @@
     return filteredAppointments;
   }
 
+  function filterAppointmentByPublicId(app, pId) {
+    console.log('app to filter', app)
+    console.log('pid to filet', pId)
+    const filteredAppointments = app.filter(appointment => appointment.properties && appointment?.properties?.publicId === pId);
+    console.log('filteredAppointments', filteredAppointments)
+    return filteredAppointments
+  }
 
 
 
@@ -43,5 +50,6 @@
     getCurrentDate,
     getNextDayDate,
     filterAppointmentsByPhone,
+    filterAppointmentByPublicId,
     branchId
   };

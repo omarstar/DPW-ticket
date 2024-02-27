@@ -127,9 +127,10 @@ export const getOneAppointment = async (publicAppId) => {
             maxBodyLength: Infinity,
             url: url,
             };
-            
+
         let getApnt = await axios.request(config);
-        return getApnt.data.appointment;
+        console.log('getApnt in front', getApnt.data)
+        return getApnt.data;
 
     } catch (error) {
         console.error(error);

@@ -128,13 +128,13 @@ export default function BookingSummary(params) {
                                 <div class="label-box">
                                 <div class="label-name"><Text name="txtMobile" /></div>
                                 <div class="label-dots">:</div>
-                                <div id="mobile-val" class="label-value">{selectedApp.customers[0]?.phone ?? 'N/A'}</div>
+                                <div id="mobile-val" class="label-value">{selectedApp.customers[0]?.properties?.phoneNumber ?? 'N/A'}</div>
                                 {/* <div id="mobile-val" class="label-value">+971 55 123 1234</div> */}
                                 </div>
                                 <div class="label-box">
                                 <div class="label-name"><Text name="txtEmail" /></div>
                                 <div class="label-dots">:</div>
-                                <div id="email-val" class="label-value">{selectedApp.customers[0]?.email ?? 'N/A'}</div>
+                                <div id="email-val" class="label-value">{selectedApp.customers[0]?.properties?.email ?? 'N/A'}</div>
                                 {/* <div id="email-val" class="label-value">John.doe@office365.com</div> */}
                                 </div>
                                 <div class="label-box">
@@ -158,7 +158,7 @@ export default function BookingSummary(params) {
                                 <div class="label-box">
                                 <div class="label-name"><Text name="txtAppDatetime" /></div>
                                 <div class="label-dots">:</div>
-                                <div id="selectedApp-datetime-val" class="label-value">{new Date(selectedApp.start).toLocaleString()}</div>
+                                <div id="selectedApp-datetime-val" class="label-value">{new Date(selectedApp.startTime).toLocaleString()}</div>
                                 {/* <div id="appointment-datetime-val" class="label-value">16/1/2024, 12:30 PM</div> */}
                                 </div>
                             </div>
