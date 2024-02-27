@@ -1,6 +1,7 @@
 import React from 'react'
 import "./footer.css"
-import footerBGshape from '../../../images/footer-sky-bg.svg'
+import footerBGshape from '../../../images/footer-bg.svg'
+// import footerBGshape from '../../../images/footer-sky-bg.svg'
 import Text from '../../Text'
 
 
