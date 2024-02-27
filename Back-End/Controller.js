@@ -46,10 +46,13 @@ exports.getAppointment = async (req,res) => {
 
   let appointmentList = await axios.request(getAppointmentConfig);
   var filteredAppointments = utilFunctions.filterAppointmentsByPhone(appointmentList.data , phoneNumber);
-  filteredAppointments = filteredAppointments.map(ap=>{
-    ap.branch = Branches.find(b=> b.id==ap.branchId);
-    return ap;
-  })
+  var index = 0;
+  while(filteredAppointments.length > index) {
+    filteredAppointments[index].branch = Branches.find(b=> b.id==filteredAppointments[index].branchId);
+    filteredAppointments[index].services[0] = await getservices(filteredAppointments[index].branchId,filteredAppointments[index].services[0].id);
+    index++;
+  }
+
   return res.send(filteredAppointments);
 } catch (error) {
   console.log('error', error)
@@ -512,7 +515,26 @@ async function getsendMessageToken() {
 //   }
 
 // }
+async function  getservices(branchId,serviceId) {
+  let visitsconfig = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: `${qmaticApiUrl}/rest/entrypoint/branches/${branchId}/services/${serviceId}`,
+      headers: {
+        'Referer': 'http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/',
+        'Content-Type': 'application/json',
+        'auth-token': apiAuthToken
+      },
+  };
 
+  try {
+      var visits = await axios.request(visitsconfig);
+    console.log(visits.data);
+      return visits.data
+  } catch (error) {
+      return "fail"
+  }
+}
 async function  putOTPIntoVarables(customerData,otpValue) {
   let body = {
     name : "OTP-"+customerData.phoneNumber,
