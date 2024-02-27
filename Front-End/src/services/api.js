@@ -129,7 +129,7 @@ export const getOneAppointment = async (publicAppId) => {
             };
 
         let getApnt = await axios.request(config);
-        console.log('getApnt in front', getApnt.data)
+        console.log('getApnt in front', getApnt)
         return getApnt.data;
 
     } catch (error) {
