@@ -28,7 +28,7 @@
     for (let i = 0; i < appointmentList.length; i++) {
       const appointment = appointmentList[i];
       const customerPhone = appointment.customers[0].properties.phoneNumber;
-      if(appointment.status == "CREATED" && parseInt(customerPhone) == parseInt(phone)){
+      if(appointment.status == "CREATED" && parseInt(customerPhone) == parseInt(phone) && JSON.parse(appointment.properties.custom).lang=='en'){
         filteredAppointments.push(appointment);
       }
     }
