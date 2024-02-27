@@ -82,14 +82,14 @@ exports.getAppointmentFromList = async (req,res) => {
 
     if(appList.data){
       filterAppList = appList.data.find(a=>a.properties.publicId==publicAppId);
-      // console.log('filterAppList', filterAppList);
+      console.log('filterAppList', filterAppList);
     }
 
     if(filterAppList){
-      // console.log('Branches', Branches)
+      console.log('Branches', Branches)
 
       filterAppList.branch = Branches.find(b=> b.id==filterAppList.branchId);
-      // console.log('filterAppList.branch', filterAppList.branch)
+      console.log('filterAppList.branch', filterAppList.branch)
       return res.send(filterAppList);
     }
     return res.send(filterAppList)

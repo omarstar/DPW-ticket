@@ -69,15 +69,14 @@
 
   .otp-set-box {
     /* margin-top: 46Px; */
-    height: 24px;
-    /* width: 247px; */
-    width: 70vw;
-    display: flex;
-    /* max-width: 362px; */
     align-items: start;
-    justify-content: space-between;
+    display: flex;
     gap: 6px;
-    padding: 0 6.6px;
+    height: 50px;
+    justify-content: space-between;
+    padding: 5px 6.6px;
+    width: 70vw;
+    margin-top: 20px;
   }
 
   .otp-num-input {

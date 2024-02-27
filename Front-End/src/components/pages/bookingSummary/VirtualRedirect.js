@@ -19,7 +19,7 @@ export default function VirtualRedirect() {
        
         try {
             const checkinApp = await getOneAppointment(appId);
-            console.log('checkinApp saved', checkinApp)
+            console.log('checkinApp saved inVD', checkinApp)
             if(checkinApp){
                 dispatch(setSelectedAppointment(checkinApp));
             }else{
