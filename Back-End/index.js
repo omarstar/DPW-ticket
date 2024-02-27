@@ -32,6 +32,7 @@ const port = process.env.PORT || 3010;
 app.get('/list/queues' , controller.listQueues)
 app.get('/rest/mobile/services' , controller.listServices)
 app.get('/rest/mobile/appointment/id/:id' , controller.getAppointment)
+app.get('/rest/mobile/appointment/one/:id' , controller.getOneAppointment)
 app.post('/rest/mobile/appointment/checkin' , controller.checkInAppointment)
 app.get('/rest/mobile/visit/status' , controller.currentVisit)
 app.post('/rest/mobile/visit/create' , controller.createTicket)

@@ -53,7 +53,7 @@
     align-items: center;
     padding: 0;
 } */
-.threeDots{
+/* .threeDots{
     position:relative;
     text-align: center;
 }
@@ -66,7 +66,7 @@
     display:flex; flex-direction:row;
     align-items: center; justify-content: center;
     color: white;
-}
+} */
 .activeNum {
     font-size: 3rem !important;
 }

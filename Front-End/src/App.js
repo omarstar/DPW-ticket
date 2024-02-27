@@ -27,6 +27,8 @@ import TicketRedirect from './components/pages/TicketRedirect';
 import WalkinPhoneNumber from './components/pages/WalkinPhoneNumer';
 import { useSelector } from 'react-redux';
 import Loading from './components/includes/loading/loading';
+import VirtualSummary from './components/pages/bookingSummary/VirtualSummary';
+import VirtualRedirect from './components/pages/bookingSummary/VirtualRedirect';
 
 function App() {
   const {loading} = useSelector((state) => state.app);
@@ -55,6 +57,8 @@ function App() {
         <Route path="/DPW/category" element={<CategoryList />} />
         <Route path="/DPW/appointment" element={<AppointmentList />} />
         <Route path="/DPW/summary" element={<BookingSummary />} />
+        <Route path="/DPW/virtual-redirect" element={<VirtualRedirect />} />
+        <Route path="/DPW/virtual-app" element={<VirtualSummary />} />
         <Route path="/DPW/branches" element={<Branches/>} />
         {/* <Route path="/DPW/services/:id" element={<Services/>} /> */}
         <Route path="/DPW/walkin-mobile" element={<WalkinPhoneNumber/>} />
