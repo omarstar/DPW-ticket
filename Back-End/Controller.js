@@ -127,12 +127,13 @@ exports.getOneAppointment = async (req,res) => {
 exports.checkInAppointment = async (req,res) => {
   let appointmentId = req.query.appointmentId
   let branchId = req.query.branchId
-  let data = JSON.stringify({
-    appointmentId : appointmentId,
-    "parameters": {
-      branchId : branchId
-    }
-  });
+  // let data = JSON.stringify({
+  //   appointmentId : appointmentId,
+  //   "parameters": {
+  //     branchId : branchId
+  //   }
+  // });
+  var data = req.body;
   console.log(data)
     try {
       let visitCreateConfig = {
