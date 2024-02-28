@@ -23,7 +23,7 @@ export default function Queue({ticket}) {
             </div>
             <div className='ticket-details-box col-12 text-center'>
                 <h1 id="ticketNumber" className="ticket-text">{ticketId}</h1>
-                <h1 id="serviceName" className="ticket-service">{currentServiceName}</h1>
+                <h1 id="serviceName" className="ticket-service">{ticket.visit?.currentVisitService?.serviceInternalName??""}</h1>
             </div>
         </div>
         </>
