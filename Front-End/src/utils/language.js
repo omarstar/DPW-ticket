@@ -284,6 +284,38 @@ const locals = {
     'meetingArrivedApp' : {
         "en" : "Your appointment has already been arrived.",
         "ar" : "لقد فاتك الموعد"
+    },
+    'catAPM' : {
+        "en" : "Asset & Property Management",
+        "ar" : "إدارة الأصول والممتلكات"
+    },
+    'catCL' : {
+        "en" : "Contracts & Leasing",
+        "ar" : "العقود والإيجار"
+    },
+    'catCS' : {
+        "en" : "Customer Service",
+        "ar" : "خدمة الزبائن"
+    },
+    'catEA' : {
+        "en" : "Employee Affairs",
+        "ar" : "شؤون الموظفين"
+    },
+    'catLsc' : {
+        "en" : "Licensing",
+        "ar" : "الترخيص"
+    },
+    'catReO' : {
+        "en" : "Registration & Offshore",
+        "ar" : "التسجيل و خدمات خارج البلاد"
+    },
+    'catSales' : {
+        "en" : "Sales",
+        "ar" : "المبيعات"
+    },
+    'catWA' : {
+        "en" : "Workforce Affairs",
+        "ar" : "شؤون القوى العاملة"
     }
 
 }
