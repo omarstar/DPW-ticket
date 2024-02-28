@@ -8,15 +8,18 @@ function InputOtp({otpValue, onOtpChange, onKeyClick}) {
     const handleOtpChange = (event, index) => {
         const { value } = event.target;
         const digits = value.replace(/\D/g, '');
-
+    
         return onOtpChange((prevOtp) => {
             const updatedOtp = [...prevOtp];
             updatedOtp[index] = digits;
-
+            console.log("=======>>>>>>>>>>>>>>>>>>>>>===========>", updatedOtp) 
             if(digits.length === 1 && index < 3){
                 const nextInput = event.target.nextSibling;
                 if(nextInput)
                   nextInput.focus();
+            }
+            if(updatedOtp.length === 4) {
+              onKeyClick()
             }
             return updatedOtp;
         })
@@ -30,11 +33,11 @@ function InputOtp({otpValue, onOtpChange, onKeyClick}) {
         inputRefs.current[index - 1].current.focus();
         otpValue.pop();
         
-        console.log('otpValue', otpValue)
+        // console.log('otpValue', otpValue)
       }
       if (otpValue.length > 0 && otpValue[otpValue.length -1] === ''){
         otpValue.pop();
-        console.log('otpValue bk', otpValue[otpValue.length -1],otpValue.length)
+        // console.log('otpValue bk', otpValue[otpValue.length -1],otpValue.length)
       }
     };
 

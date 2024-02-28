@@ -125,8 +125,19 @@ export default function WalkOtp(params) {
 
     const handleOtpChange = (updatedOtp) => {
         setErrorFlag('');
+       
         //need to hide the inputs
         setOtp(updatedOtp);
+       
+    
+        // if(otp.length === 3) {
+        //     dispatch(setLoading(true));
+        //     setTimeout(() => {
+        //  console.log("opt length =========================" + otp.length)
+        //         handleSubmitOtp()
+        //     }, 1000);
+         
+        // }
         // if(inputRef.current){
         //     inputRef.current.focus();
         // }
@@ -150,8 +161,7 @@ export default function WalkOtp(params) {
     else if (input.length > 0 && input[input.length -1] === ''){
         input.pop();
         return "wrongFormat"
-    }else 
-        return "valid"
+    }else  return "valid"
     }
 
     const handleSubmitOtp = async () => {

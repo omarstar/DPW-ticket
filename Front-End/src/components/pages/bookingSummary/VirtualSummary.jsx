@@ -52,7 +52,8 @@ export default function VirtualSummary(params) {
     }
 
     const currentDate = new Date();
-    const appDate = new Date(selectedApp.start).toLocaleString()
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+    const appDate = new Date(selectedApp.start).toLocaleString(undefined, options);
     const onAppTime = checkAppointmentTime(selectedApp.start)
 
     const returnMeetingStatus = () => {

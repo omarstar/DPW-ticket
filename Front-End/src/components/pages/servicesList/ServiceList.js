@@ -27,7 +27,7 @@ export default function ServiceList(params) {
     const [descText, setDescText] = useState("")
     let mobileNumber = useSelector(getPhonenumber);
 
-    let {loading, category, branchPrefix, email, customer} = useSelector((state) => state.app);
+    let {loading, category, branchPrefix, email, customer, ticket} = useSelector((state) => state.app);
 
     let modalOnlineInfoData = {
         titleText: <Text name="titleServiceModal" />,
@@ -96,6 +96,11 @@ export default function ServiceList(params) {
         
         dispatch(setLoading(true));
 
+        if(ticket){
+            dispatch(setLoading(false));
+            navigate('/DPW/ticket')
+        }
+
         async function  getServiceList() {
             let config = {
             method: 'get',
@@ -155,6 +160,7 @@ export default function ServiceList(params) {
         setShowModalInfo(true);
     }
 
+
     async function  handleServiceSubmit(srvid) {
         //
         try {
@@ -171,11 +177,21 @@ export default function ServiceList(params) {
                         setDescText(<Text name="titleServiceJafza15" />)
                         return setShowModalInfo(true);
                     }else{
-                        await createTicket(srvid)
+                        if(!ticket){
+                            await createTicket(srvid)
+                        }
+                        else{
+                            navigate('/DPW/ticket')
+                        }
                     }
                 }else if(branchPrefix === 'LOB15'){
                     if([72,73,74,75,76].find(id => id === service.id )){
-                        await createTicket(srvid)
+                        if(!ticket){
+                            await createTicket(srvid)
+                        }
+                        else{
+                            navigate('/DPW/ticket')
+                        }
                     }else{
                         setDescText(<Text name="titleServiceJafza14" />)
                         return setShowModalInfo(true);

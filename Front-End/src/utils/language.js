@@ -50,7 +50,7 @@ const locals = {
         "ar" : "تفاصيل الخدمة"
     },
     'titlePosition' : {
-        "en" : "Your position in line",
+        "en" : "Your position in queue",
         "ar" : "دورك في قائمة الإنتظار"
     },
     'titleTurn' : {
@@ -122,8 +122,8 @@ const locals = {
         "ar" : "البحث والإستمرار"
     },
     'btnConfirmProceed' : {
-        "en" : "Confirm & proceed",
-        "ar" : "التأكيد والمتابعة"
+        "en" : "Check in to appointment",
+        "ar" : "تسجيل الوصول للموعد"
     },
     'btnResendOtp' : {
         "en" : "Resend OTP",
@@ -158,7 +158,7 @@ const locals = {
         "ar" : "لا"
     },
     'txtYou' : {
-        "en" : "you",
+        "en" : "You",
         "ar" : "أنت"
     },
     'txtFirstName' : {
@@ -238,7 +238,7 @@ const locals = {
         "ar" : "للعودة"
     },
     'textConnectWorldOpportunities' : {
-        "en" : "Connecting you to a world of opportunities",
+        "en" : "Connecting You To A World Of Opportunities",
         "ar" : "نوصلك إلى عالم من الفرص"
     },
     'titleServiceJafza15' : {

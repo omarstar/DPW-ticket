@@ -266,7 +266,7 @@ export default function CustomerForm(params) {
                         {/* <div id="alert-registration" className="alert-validation-text">all fields are required</div> */}
                     </div>
                     <div className='btn-form-proceed d-flex flex-column justify-content-end align-items-center h-10'>
-                        <button id="new_customer_proceed" onClick={handleNewCustomerSubmit} className="button-wide button-fill-clr space-btn-form-proceed"><Text name="btnProceed" /></button>
+                        <button id="new_customer_proceed" onClick={handleNewCustomerSubmit} className="button-wide button-fill-clr space-btn-form-proceed"><Text name="btnContinue" /></button>
                     </div>
                 </div>
             </div>
