@@ -28,7 +28,7 @@ export default function AppointmentList(params) {
 
     const doShowModal = useSelector(isShowModal);
     let {appointments} = useSelector((state) => state.appointments);
-    const {customer,email,phoneNumber,CurrentLang} = useSelector((state) => state.app);
+    const {customer,email,phoneNumber,CurrentLang, ticket} = useSelector((state) => state.app);
 
     // appointments = appiontmentsList;//test only
     console.log('appointments',appointments);
@@ -85,7 +85,12 @@ export default function AppointmentList(params) {
                 navigate('/DPW/summary')
                 // await checkInAppt(app)
             }else if(status === 'walkin'){
-                await createTicket(app)
+                if(!ticket){
+                    await createTicket(app)
+                }
+                else{
+                    navigate('/DPW/ticket')
+                }
             }else{
                 // await createTicket(app);
                 if(status === 'remaining'){
