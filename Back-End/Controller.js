@@ -90,12 +90,11 @@ exports.getAppointmentFromList = async (req,res) => {
 
     if(filterAppList){
       console.log('Branches', Branches)
-
       filterAppList.branch = Branches.find(b=> b.id==filterAppList.branchId);
+      filterAppList.services[0] = await getservices(filterAppList.branchId,filterAppList.services[0].id);
       console.log('filterAppList.branch', filterAppList.branch)
-      return res.send(filterAppList);
     }
-    return res.send(filterAppList)
+    return res.send(filterAppList);
 
   } catch (error) {
     return res.status(500).send(error)
@@ -541,7 +540,6 @@ async function  getservices(branchId,serviceId) {
 
   try {
       var visits = await axios.request(visitsconfig);
-    console.log(visits.data);
       return visits.data
   } catch (error) {
       return "fail"
