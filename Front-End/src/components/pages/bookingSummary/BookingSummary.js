@@ -158,7 +158,7 @@ export default function BookingSummary(params) {
                                 <div class="label-box">
                                 <div class="label-name"><Text name="txtService" /></div>
                                 <div class="label-dots">:</div>
-                                <div id="service-service-val" class="label-value">{selectedApp.services[0]?.internalName ?? 'N/A'}</div>
+                                <div id="service-service-val" class="label-value">{selectedApp.services[0]?.name ?? 'N/A'}</div>
                                 {/* <div id="service-service-val" class="label-value">Admin services - employee affairs</div> */}
                                 </div>
                                 <div class="label-box">
