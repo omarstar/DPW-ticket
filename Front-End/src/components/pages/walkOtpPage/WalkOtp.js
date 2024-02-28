@@ -252,7 +252,7 @@ export default function WalkOtp(params) {
                         {/* <div id="resend-message" className="resend-otp-text">Didn&apos;t receive OTP?</div> */}
                         <div id="timer" className="otp-time-text">{`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</div>
                     </div>
-                    <div onClick={handleClearOtp} className='otp-clear-input'>clear<span className='otp-clear-x'>x</span></div>
+                    <div onClick={handleClearOtp} className='otp-clear-input'><Text name="txtClear" /><span className='otp-clear-x'>x</span></div>
 
                     <div id="alert-noappotp" style={{opacity: errorFlag ? '1' : '0'}} class="alert-noappotp-text"><Text name="alertWrongOtp" /></div>
                     <div class="otp-actions-box">

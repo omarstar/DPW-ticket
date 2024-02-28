@@ -4,7 +4,7 @@ import '../../includes/header/header.css'
 import '../../includes/footer/footer.css'
 import homeCircleImg from '../../../images/home-circle.svg'
 import jafzaLogoColor from '../../../images/JAFZA_Logo_Color.svg'
-import footerBGshape from '../../../images/footer-sky-bg.svg'
+// import footerBGshape from '../../../images/footer-sky-bg.svg'
 import '../../common.css';
 import "./servicesList.css"
 import catImg from '../../../images/service-svgrepo-white-com.svg'
@@ -12,9 +12,9 @@ import catLease from '../../../images/catIcons/contract-sign-line-svgrepo-com.sv
 import catCs from '../../../images/catIcons/customer-service-woman-svgrepo-com.svg'
 import catManagement from '../../../images/catIcons/customer-management-line-svgrepo-com.svg'
 import catEmployee from '../../../images/catIcons/development-human-network-svgrepo-com.svg'
-import catLicense from '../../../images/catIcons/license-maintenance-svgrepo-com.svg'
+import catLicense from '../../../images/catIcons/platform-managementlicense-management-svgrepo-com.svg'
 import catProperty from '../../../images/catIcons/property-svgrepo-com.svg'
-import catRegister from '../../../images/catIcons/register-svgrepo-com.svg'
+import catRegister from '../../../images/catIcons/registration-desk-register-records-office-svgrepo-com.svg'
 import catSales from '../../../images/catIcons/sales-amount-svgrepo-com.svg'
 
 import { isShowModal, setCategory, setLoading, setModal } from '../../../reducers';

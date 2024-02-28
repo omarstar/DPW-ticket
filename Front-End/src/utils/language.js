@@ -32,6 +32,10 @@ const locals = {
         "en" : "Didn't receive OTP?",
         "ar" : "لم تستلم رمز المرور لمرة واحدة؟"
     },
+    'txtClear' : {
+        "en" : "clear",
+        "ar" : "امسح"
+    },
     'titleExitModal' : {
         "en" : "Are you sure you want to cancel and start the process over again?",
         "ar" : "هل تريد إلغاء العملية والبدء من جديد؟"
@@ -227,11 +231,11 @@ const locals = {
     },
     'txtCustomerNew' : {
         "en" : "New customer",
-        "ar" : "زبون جديد"
+        "ar" : "متعامل جديد"
     },
     'txtCustomerExist' : {
         "en" : "Existing customer",
-        "ar" : "زبون الحالي"
+        "ar" : "متعامل الحالي"
     },
     'btnBack' : {
         "en" : "Back",

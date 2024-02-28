@@ -14,6 +14,10 @@ function InputOtp({otpValue, onOtpChange, onKeyClick}) {
             updatedOtp[index] = digits;
             console.log("=======>>>>>>>>>>>>>>>>>>>>>===========>", updatedOtp) 
             if(digits.length === 1 && index < 3){
+              // const nextIndex = index + 1;
+              // if (inputRefs.current[nextIndex]) {
+              //     inputRefs.current[nextIndex].current.focus();
+              // }
                 const nextInput = event.target.nextSibling;
                 if(nextInput)
                   nextInput.focus();

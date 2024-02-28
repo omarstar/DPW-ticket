@@ -108,6 +108,7 @@ export default function ServiceList(params) {
             url: process.env.REACT_APP_API_URL + '/rest/mobile/services',
             };
            let serviceListResponse = await axios.request(config);
+           console.log('serviceListResponse', serviceListResponse)
            serviceListResponse = serviceListResponse.data;
            var ids = category.services;
            console.log('category',category);
@@ -291,7 +292,7 @@ export default function ServiceList(params) {
                             serviceList ? serviceList.map(srv =>  (
         
                                 <div className="button-service-item d-flex justify-content-between align-items-center">
-                                    <div onClick={()=>handleServiceSubmit(srv.id)} id={srv.id} className="service-btn-box"><button id={srv.id} className="button-wide button-fill-clr btn-service">{srv.externalName}</button></div>
+                                    <div onClick={()=>handleServiceSubmit(srv.id)} id={srv.id} className="service-btn-box"><button id={srv.id} className="button-wide button-fill-clr btn-service">{srv.internalName}</button></div>
                                     <img id={`img-` + srv.id} onClick={()=>infoButtonClicked(srv.id)} className="service-info-icon" src={srvcInfoIcon} alt="info service" />
                                 </div>
                                     ) )   : console.log("error ===>")
