@@ -16,7 +16,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import InputOtp from '../otpPage/InputOtp'
 import { ValidateOtp, callValidateOtp, sendOTP } from '../../../services/api'
 import Text from '../../Text'
-import Footer from '../../includes/footer/Footer'
+import Footer from '../../includes/footer/Footer';
+import $ from 'jquery';
 // import Loading from '../../includes/loading/loading'
 export default function WalkOtp(params) {
 
@@ -26,13 +27,7 @@ export default function WalkOtp(params) {
     // }
 
     let mobileNumber = useSelector(getPhonenumber);
-    
-    console.log('mobileNumber', mobileNumber)
-
-
     const currentLang = useSelector(getCurrentLang);
-    console.log('currentLang', currentLang)
-
     // exit modal
     const dispatch = useDispatch();
 
@@ -125,8 +120,18 @@ export default function WalkOtp(params) {
 
     const handleOtpChange = (updatedOtp) => {
         setErrorFlag('');
+       
         //need to hide the inputs
+        console.log(updatedOtp);
         setOtp(updatedOtp);
+        var onchangeOTP = '';
+        $('.otp-num-input').each(function(){
+            onchangeOTP = onchangeOTP+$(this).val();
+        });
+        if(onchangeOTP.length==4){
+            handleSubmitOtp(onchangeOTP);
+        }
+        console.log(onchangeOTP);
         // if(inputRef.current){
         //     inputRef.current.focus();
         // }
@@ -150,21 +155,24 @@ export default function WalkOtp(params) {
     else if (input.length > 0 && input[input.length -1] === ''){
         input.pop();
         return "wrongFormat"
-    }else 
-        return "valid"
+    }else  return "valid"
     }
-
+  
     const handleSubmitOtp = async () => {
         setErrorFlag('');
         console.log('will handle validate OTP');
         dispatch(setLoading(true));
 
         try {
-            const validateResult = validateOtp(otp);
+            var publicOtp = '';
+            $('.otp-num-input').each(function(){
+                publicOtp = publicOtp+$(this).val();
+            });
+            const validateResult = validateOtp(publicOtp);
             console.log('validateResult', validateResult)
             if(validateResult === 'valid'){
-                if(otp.length === 4){
-                    let publicOtp = otp.join('');
+                if(publicOtp.length === 4){
+                    // let publicOtp = otp.join('');
                     console.log('publicOtp', publicOtp)
                     var ResultValidateOtp = ValidateOtp({
                         phoneNumber:mobileNumber,
@@ -219,7 +227,6 @@ export default function WalkOtp(params) {
     // const [showAlertElement, setShowAlertElement] = useState(false)
     // const [showResendElement, setShowResendElement] = useState(false)
 
-    console.log('the otp value', otp)
     return (
         <>
         <div className="d-flex flex-column justify-content-center align-items-center bg-white">

@@ -241,11 +241,11 @@ export default function CustomerForm(params) {
                             <div className={(CurrentLang === 'en' ? 'title-black justify-content-start' : 'title-form justify-content-end') }><Text name="txtCustomerNew" /></div>
                             
                             <div className="input-block">
-                            <input id="input-firstname" type="text" name="first name" className="input-box tt-cap input-fullwidth" placeholder="FIRST NAME" />
+                            <input id="input-firstname" type="text" name="first name" className="input-box tt-cap input-fullwidth" placeholder="First Name" />
                             <div id="alert-firstname" className="alert-small-text"></div>
                             </div>
                             <div className="input-block">
-                            <input id="input-lastname" type="text" name="last time" className="input-box tt-cap input-fullwidth" placeholder="LAST NAME" />
+                            <input id="input-lastname" type="text" name="last time" className="input-box tt-cap input-fullwidth" placeholder="Last Name" />
                             <div id="alert-lastname" className="alert-small-text"></div>
                             </div>
                             <div className="input-block">
@@ -254,11 +254,11 @@ export default function CustomerForm(params) {
                                 <div id="alert-mobile" className="alert-small-text">{errorMessage === 'valid' ? '' : errorMessage}</div>
                             </div>
                             <div className="input-block">
-                            <input id="input-email" type="email" name="email" className="input-box input-fullwidth" placeholder="E-MAIL" required style={{textTransform: 'inherit'}} />
+                            <input id="input-email" type="email" name="email" className="input-box input-fullwidth" placeholder="E-Mail" required style={{textTransform: 'inherit'}} />
                             <div id="alert-email" className="alert-small-text"></div>
                             </div>
                             <div className="input-block">
-                            <input id="input-companyName2" type="text" name="company" className="input-box tt-cap input-fullwidth" placeholder="COMPANY NAME" />
+                            <input id="input-companyName2" type="text" name="company" className="input-box tt-cap input-fullwidth" placeholder="Company Name" />
                             <div id="alert-companyName2" className="alert-small-text"></div>
                             </div>
                             
@@ -266,7 +266,7 @@ export default function CustomerForm(params) {
                         {/* <div id="alert-registration" className="alert-validation-text">all fields are required</div> */}
                     </div>
                     <div className='btn-form-proceed d-flex flex-column justify-content-end align-items-center h-10'>
-                        <button id="new_customer_proceed" onClick={handleNewCustomerSubmit} className="button-wide button-fill-clr space-btn-form-proceed"><Text name="btnProceed" /></button>
+                        <button id="new_customer_proceed" onClick={handleNewCustomerSubmit} className="button-wide button-fill-clr space-btn-form-proceed"><Text name="btnContinue" /></button>
                     </div>
                 </div>
             </div>

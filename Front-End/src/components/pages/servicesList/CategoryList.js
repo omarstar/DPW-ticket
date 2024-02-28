@@ -31,7 +31,7 @@ export default function CategoryList(params) {
     // category list
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    let {loading, branchPrefix} = useSelector((state) => state.app);
+    let {loading, branchPrefix, ticket} = useSelector((state) => state.app);
     const doShowModal = useSelector(isShowModal);
 
     const modalExitData = {
@@ -60,6 +60,11 @@ export default function CategoryList(params) {
 
     useEffect( () => {
         dispatch(setLoading(true));
+
+        if(ticket){
+            dispatch(setLoading(false));
+            navigate('/DPW/ticket')
+        }
        
         (branchPrefix) ?
         golobalVariables('categories').then(res=>{

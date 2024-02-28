@@ -15,7 +15,7 @@
   }
   .mini-gray-text {
     color: #777;
-    font: 900 0.8rem 'Montserrat-Bold', sans-serif;
+    font: 900 1rem 'Montserrat-Bold', sans-serif;
     text-align: center;
     /* letter-spacing: 0.48px; */
     width: 100vw;
@@ -143,7 +143,7 @@
   }
   .input-box::placeholder {
     color: var(--gray-text, #777);
-    font: normal 9px 'Montserrat';
+    font: italic 9px 'Montserrat';
     text-transform: capitalize;
     letter-spacing: 4.6px !important;
     padding: 0 0 12px;
@@ -247,12 +247,20 @@
   }
   .iti__dropdown-content {
     height: 33%;
+    height: 60vh !important;
   }
   .iti__country-list {
     width: 90vw;
+    max-height: 100% !important;
   }
 .turn-title{
   font-size: 22px;
+}
+.iti--allow-dropdown{
+  height: 40px !important;
+}
+
+.iti__country-list {
 }
 
 /* common css */
@@ -289,6 +297,6 @@
     font-size: 13px;
   }
   .mini-gray-text {
-    font-size: 0.85rem;
+    font-size: 1.2rem;
   }
 }

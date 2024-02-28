@@ -12,8 +12,8 @@ export default function VirtualRedirect() {
 
     // /DPW/appointmendid?appid=
     const queryParams = new URLSearchParams(location.search);
-    console.log(queryParams.getAll('appId'))
-    const appId1 = queryParams.get('appId');
+    console.log('queryParams in VD: ',queryParams)
+    const appId = queryParams.get('appId');
     
     console.log('appId',appId1);
     const callGetApp = async() => {

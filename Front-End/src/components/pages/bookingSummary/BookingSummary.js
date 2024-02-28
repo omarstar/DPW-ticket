@@ -47,6 +47,11 @@ export default function BookingSummary(params) {
 
     // checkin app
     const selectedApp = useSelector(getSelectedAppointment)?? {};
+    let appDate 
+    if(selectedApp) {
+        let  options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+         appDate = new Date(selectedApp.startTime).toLocaleString(undefined, options);
+    }
     console.log('selectedApp', selectedApp);
     console.log('selectedApp name', selectedApp.branch['name']);
 
@@ -159,7 +164,7 @@ export default function BookingSummary(params) {
                                 <div class="label-box">
                                 <div class="label-name"><Text name="txtAppDatetime" /></div>
                                 <div class="label-dots">:</div>
-                                <div id="selectedApp-datetime-val" class="label-value">{new Date(selectedApp.startTime).toLocaleString()}</div>
+                                <div id="selectedApp-datetime-val" class="label-value">{appDate}</div>
                                 {/* <div id="appointment-datetime-val" class="label-value">16/1/2024, 12:30 PM</div> */}
                                 </div>
                             </div>
