@@ -263,6 +263,14 @@ exports.currentVisit = async (req,res) => {
     let visitsconfig = {
         method: 'get',
         maxBodyLength: Infinity,
+        url: `${qmaticApiUrl}/rest/entrypoint/branches/${query.branchId}/visits/${query.visitId}`,
+        headers: { 
+        'auth-token': mobileAuthToken
+        }
+    };
+    let CurrentStatusconfig = {
+        method: 'get',
+        maxBodyLength: Infinity,
         url: `${qmaticApiUrl}/MobileTicket/MyVisit/CurrentStatus/branches/${query.branchId}/visits/${query.visitId}?checksum=${query.checksum}`,
         headers: {
             'auth-token': mobileAuthToken
@@ -270,9 +278,12 @@ exports.currentVisit = async (req,res) => {
     };
 
     try {
-        var visits = await axios.request(visitsconfig);
 
-        return res.send(visits.data);
+        var currentVisits = await axios.request(CurrentStatusconfig);
+        var returnVisit = currentVisits.data;
+        var visits = await axios.request(visitsconfig);
+        returnVisit.visit = visits.data;
+        return res.send(returnVisit);
     } catch (error) {
       console.log(error);
         res.status(500).send("error");
