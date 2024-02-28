@@ -36,7 +36,8 @@ export default function ServiceList(params) {
             text: <Text name="btnBookOnline" />,
             buttonAction: () => {
                 setShowOnlineModalInfo(false);
-                // navigate('/')
+                const externalLink = "https://epgqsys-1.norwayeast.cloudapp.azure.com:3050/"
+                window.open(externalLink, '_blank');
             }
         },{
             text: <Text name="btnClose" />,
