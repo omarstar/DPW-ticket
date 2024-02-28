@@ -318,6 +318,10 @@ exports.sendOTP = async (req,res) => {
     const otpMessage = `Welcome to Jafza! \nYour OTP is ${otpValue}. Please do not share this OTP with anyone.`;
     let messageResponse = await sendMessage(customerData.phoneNumber, otpMessage);
     let messageResponseEmail = await sendEmail(customerData.email, otpMessage);
+    setTimeout(() => {
+      customerData.otp = otpValue
+      deleteOTPFromVariable(customerData)
+    },60000)
     if(messageResponse || messageResponseEmail){
       return res.status("201").send({
         message : "accepted",
@@ -547,7 +551,7 @@ async function  getservices(branchId,serviceId) {
 }
 async function  putOTPIntoVarables(customerData,otpValue) {
   let body = {
-    name : "OTP-"+customerData.phoneNumber,
+    name : "OTP-"+otpValue+"-"+customerData.phoneNumber,
     value : otpValue
   }
   console.log(body)
@@ -576,7 +580,7 @@ async function getOTPFromVariableAndValidate(customerData) {
   let variableDataConfig = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: `${qmaticApiUrl}/rest/entrypoint/branches/${utilFunctions.branchId}/variables/${"OTP-" + customerData.phoneNumber}`,
+    url: `${qmaticApiUrl}/rest/entrypoint/branches/${utilFunctions.branchId}/variables/${"OTP-"+ customerData.otp+"-" + customerData.phoneNumber}`,
     headers: {
       'Referer': 'http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/',
       'Content-Type': 'application/json',
@@ -600,7 +604,7 @@ async function deleteOTPFromVariable(customerData){
   let variableDataConfig = {
     method: 'delete',
     maxBodyLength: Infinity,
-    url: `${qmaticApiUrl}/rest/entrypoint/branches/${utilFunctions.branchId}/variables/${"OTP-" + customerData.phoneNumber}`,
+    url: `${qmaticApiUrl}/rest/entrypoint/branches/${utilFunctions.branchId}/variables/${"OTP-"+customerData.otp+"-"+ customerData.phoneNumber}`,
     headers: {
       'Referer': 'http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/',
       'Content-Type': 'application/json',
