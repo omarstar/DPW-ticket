@@ -15,11 +15,11 @@ export default function VirtualRedirect() {
     console.log('queryParams in VD: ',queryParams)
     const appId = queryParams.get('appId');
     
-    console.log('appId',appId);
+    console.log('appId',appId1);
     const callGetApp = async() => {
        
         try {
-            const checkinApp = await getOneAppointment(appId);
+            const checkinApp = await getOneAppointment(appId1);
             console.log('checkinApp saved inVD TO BE SAVED AS APP', checkinApp)
             if(checkinApp){
                 

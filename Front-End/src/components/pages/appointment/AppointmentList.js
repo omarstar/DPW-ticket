@@ -28,7 +28,7 @@ export default function AppointmentList(params) {
 
     const doShowModal = useSelector(isShowModal);
     let {appointments} = useSelector((state) => state.appointments);
-    const {customer,email,phoneNumber} = useSelector((state) => state.app);
+    const {customer,email,phoneNumber,CurrentLang} = useSelector((state) => state.app);
 
     // appointments = appiontmentsList;//test only
     console.log('appointments',appointments);
@@ -186,7 +186,7 @@ export default function AppointmentList(params) {
                                                 <div id="app-servicename" class="applist-servicename">
                                                     { appointment.services.map(service =>  (
                                                             <div>
-                                                            {service.name}
+                                                            {service.internalName}
                                                             </div>
                                                         ))
                                                     }
