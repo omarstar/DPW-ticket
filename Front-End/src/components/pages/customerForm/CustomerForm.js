@@ -35,7 +35,7 @@ export default function CustomerForm(params) {
         if(validateInputFields()){
             let customer = {
                 firstName : $('#input-firstname').val(),
-                lastName : $('#input-lastname').val(),
+                // lastName : $('#input-lastname').val(),
                 phoneNum : Appstate.phoneNumber,
                 email : $('#input-email').val(),
                 company : $('#input-companyName2').val()
@@ -165,7 +165,7 @@ export default function CustomerForm(params) {
     const validateInputFields = () =>{
 
 		var valFn = validateInput($('#input-firstname'), $("#alert-firstname"), validateEmptyField, CurrentLang);
-		var valLn = validateInput($('#input-lastname'), $("#alert-lastname"), validateEmptyField, CurrentLang);
+		// var valLn = validateInput($('#input-lastname'), $("#alert-lastname"), validateEmptyField, CurrentLang);
 
         var valE = validateInput($('#input-email'), $("#alert-email"), validateEmptyField, CurrentLang);
 		// var valC = validateInput($('#input-companyName2'), $("#alert-companyName2"), validateEmptyField, CurrentLang);
@@ -185,7 +185,7 @@ export default function CustomerForm(params) {
         var isValidMobile = !isMobileEmpty && isMobileValid
         var isValidEmail = validateInput($("#input-email"), $("#alert-email"), validateEmail, CurrentLang);
 		
-		if(!valFn || !valLn || !valE || !isValidMobile || !isValidEmail){
+		if(!valFn || !valE || !isValidMobile || !isValidEmail){
 			return false
 		}
 
@@ -199,9 +199,9 @@ export default function CustomerForm(params) {
         validateInput($(this), $("#alert-firstname"), validateEmptyField, CurrentLang);
     });
     
-    $("#input-lastname").on("blur", function() {
-        validateInput($(this), $("#alert-lastname"), validateEmptyField, CurrentLang);
-    });
+    // $("#input-lastname").on("blur", function() {
+    //     validateInput($(this), $("#alert-lastname"), validateEmptyField, CurrentLang);
+    // });
     
     // $("#input-companyName2").on("blur", function() {
     //     validateInput($(this), $("#alert-companyName2"), validateEmptyField, CurrentLang);
@@ -241,13 +241,13 @@ export default function CustomerForm(params) {
                             <div className={(CurrentLang === 'en' ? 'title-black justify-content-start' : 'title-form justify-content-end') }><Text name="txtCustomerNew" /></div>
                             
                             <div className="input-block">
-                            <input id="input-firstname" type="text" name="first name" className="input-box tt-cap input-fullwidth" placeholder="First Name" />
+                            <input id="input-firstname" type="text" name="first name" className="input-box tt-cap input-fullwidth" placeholder="Name" />
                             <div id="alert-firstname" className="alert-small-text"></div>
                             </div>
-                            <div className="input-block">
+                            {/* <div className="input-block">
                             <input id="input-lastname" type="text" name="last time" className="input-box tt-cap input-fullwidth" placeholder="Last Name" />
                             <div id="alert-lastname" className="alert-small-text"></div>
-                            </div>
+                            </div> */}
                             <div className="input-block">
                                 <PhoneNumberInput ref={phoneInputRef} onValidationResult={handleValidationResult}  />
                             {/* <input id="input-walknew-mobilenumber" type="tel"  className="input-box input-fullwidth required" name="mobile" pattern="[0-9]*" placeholder="" onClick="this.select();" required /> */}
