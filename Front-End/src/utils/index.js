@@ -214,7 +214,11 @@ if(remainingHours<0){
 
 return (remainingHours*60)+remainingMinutes;
 }
-
+export const formatDateTime = (dateTimeString) => {
+  var options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true };
+  var formattedDateTime = new Date(dateTimeString).toLocaleString('en-US', options).replace(',', '');
+  return formattedDateTime;
+}
 export const formatDate = (dateString) => {
 // var dateString = "2024-01-12T08:30:00.000+0000";
 var dateObject = new Date(dateString);

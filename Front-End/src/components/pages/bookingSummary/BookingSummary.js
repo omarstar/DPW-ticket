@@ -16,6 +16,7 @@ import axios from 'axios'
 import { getSelectedAppointment } from '../../../reducers/appointments'
 import Text from '../../Text'
 import Footer from '../../includes/footer/Footer'
+import { formatDateTime } from '../../../utils'
 
 export default function BookingSummary(params) {
 
@@ -50,7 +51,8 @@ export default function BookingSummary(params) {
     let appDate 
     if(selectedApp) {
         let  options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' };
-         appDate = new Date(selectedApp.startTime).toLocaleString(undefined, options);
+        //  appDate = new Date(selectedApp.startTime).toLocaleString(undefined, options);
+        appDate = formatDateTime(selectedApp.startTime);
     }
     console.log('selectedApp', selectedApp);
     console.log('selectedApp name', selectedApp.branch['name']);
@@ -158,7 +160,7 @@ export default function BookingSummary(params) {
                                 <div class="label-box">
                                 <div class="label-name"><Text name="txtService" /></div>
                                 <div class="label-dots">:</div>
-                                <div id="service-service-val" class="label-value">{selectedApp.services[0]?.name ?? 'N/A'}</div>
+                                <div id="service-service-val" class="label-value">{selectedApp.services[0]?.internalName ?? 'N/A'}</div>
                                 {/* <div id="service-service-val" class="label-value">Admin services - employee affairs</div> */}
                                 </div>
                                 <div class="label-box">
