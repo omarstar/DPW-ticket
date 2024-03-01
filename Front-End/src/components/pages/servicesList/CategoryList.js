@@ -15,7 +15,7 @@ import catEmployee from '../../../images/catIcons/development-human-network-svgr
 import catLicense from '../../../images/catIcons/platform-managementlicense-management-svgrepo-com.svg'
 import catProperty from '../../../images/catIcons/property-svgrepo-com.svg'
 import catRegister from '../../../images/catIcons/registration-desk-register-records-office-svgrepo-com.svg'
-import catSales from '../../../images/catIcons/sales-amount-svgrepo-com.svg'
+import catSales from '../../../images/catIcons/handshake-sales.svg'
 
 import { isShowModal, setCategory, setLoading, setModal } from '../../../reducers';
 import { useDispatch, useSelector } from 'react-redux';
@@ -62,6 +62,7 @@ export default function CategoryList(params) {
         dispatch(setLoading(true));
 
         if(ticket){
+            console.log('ticket', ticket)
             dispatch(setLoading(false));
             navigate('/DPW/ticket')
         }
