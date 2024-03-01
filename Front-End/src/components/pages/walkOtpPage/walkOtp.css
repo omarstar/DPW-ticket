@@ -76,7 +76,7 @@
     justify-content: space-between;
     padding: 5px 6.6px;
     width: 70vw;
-    margin-top: 20px;
+    margin-top: 46px;
   }
 
   .otp-num-input {
@@ -126,7 +126,7 @@
     width: 224px;
   } */
   .otp-actions-box {
-    height: 18vh;
+    height: 14vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -161,7 +161,7 @@
     width: 100%;
     font: 600 10px 'Montserrat-Bold';
     color: var(--sky-blue);
-    margin: 46px 0 6px;
+    margin: 20px 0 6px;
   }
   .otp-clear-x {
     border: 1px solid var(--royal-blue);

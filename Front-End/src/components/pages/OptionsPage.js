@@ -7,7 +7,7 @@ import '../common.css';
 import '../../styles/options.css'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { isShowModal, setFlow, setModal } from '../../reducers'
+import { isShowModal, setFlow, setLoading, setModal } from '../../reducers'
 import ModalExit from '../includes/modal/ModalExit'
 import Text from '../Text'
 import Footer from '../includes/footer/Footer'
@@ -19,6 +19,7 @@ export default function OptionsPage(params) {
     const doShowModal = useSelector(isShowModal);
     const appState = useSelector((state)=>state.app);
     
+    dispatch(setLoading(false));
 
     const goToWalkinCustomer = () => {
         dispatch(setFlow('walkin'));

@@ -30,6 +30,7 @@ export default function PhoneNumber() {
     // const {phoneNumber} = useSelector((state) => state.app);
     const {flow , branchPrefix , loading} = useSelector((state) => state.app);
     console.log('branchPrefix in app phone', branchPrefix)
+    console.log('flow in app phone', flow)
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(setPhonenumber(''))
@@ -80,6 +81,7 @@ export default function PhoneNumber() {
         if(!isMobileEmpty && isMobileValid){
             dispatch(setLoading(true));
             try {
+
                 if(flow === "app"){
                     const Appointments = await getAppointments(mobileNumber)?? [];
                     console.log('Appointments',Appointments);
@@ -90,10 +92,12 @@ export default function PhoneNumber() {
                         if(Appointment){
                             if(Appointment.customers[0]){
                                 const customer = Appointment.customers[0]??[];
+                                console.log('customer', customer)
                                 getCustomerEmail = customer.properties?.email??""
                             }
                         }
                         dispatch(setEmail(getCustomerEmail));
+                        console.log('in app phonetoOtp ', [mobileNumber, getCustomerEmail])
                         const sendOTPRes =  await sendOTP(mobileNumber,getCustomerEmail);
                         dispatch(setLoading(false));
                         if(sendOTPRes.message=="accepted"){
@@ -114,8 +118,9 @@ export default function PhoneNumber() {
                         email : $('#input-walkin-email').val(),
         
                     };
+                    console.log('customer', customer);//test
                     await createCustomer(customer);
-                    await sendOTP(mobileNumber);
+                    await sendOTP(mobileNumber, customer.email);
                     dispatch(setLoading(false));
                     return navigate('/DPW/otp');
                 }

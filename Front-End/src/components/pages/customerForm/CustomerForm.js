@@ -159,7 +159,10 @@ export default function CustomerForm(params) {
 
     const validateEmail = (email) => {
 		// var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/;
+		// var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/;
+        // var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2,})?$/;
+        var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+(?!\.))*\.[a-zA-Z]{2,4}$/ ;
+
 		return emailRegex.test(email);
 	}
     const validateInputFields = () =>{
@@ -211,6 +214,13 @@ export default function CustomerForm(params) {
         navigate("/DPW/options");
     }
 
+    
+    const handleKeyDown = (event) => {
+        if(event.key === 'Enter'){
+            handleNewCustomerSubmit();
+        }
+    }
+
     return (
         <div className="d-flex flex-column justify-content-center align-items-center bg-white">
             
@@ -238,7 +248,7 @@ export default function CustomerForm(params) {
                     <div className="separate-line"></div> */}
                     <div className="newcustomer-box">
                         <form id="form-newcustomer" className='d-flex flex-column align-items-start'>
-                            <div className={(CurrentLang === 'en' ? 'title-black justify-content-start' : 'title-form justify-content-end') }><Text name="txtCustomerNew" /></div>
+                            <div className={(CurrentLang === 'en' ? 'title-black justify-content-start mb-4' : 'title-form justify-content-end mb-4') }><Text name="txtCustomerNew" /></div>
                             
                             <div className="input-block">
                             <input id="input-firstname" type="text" name="first name" className="input-box tt-cap input-fullwidth" placeholder="Name" />
@@ -258,7 +268,7 @@ export default function CustomerForm(params) {
                             <div id="alert-email" className="alert-small-text"></div>
                             </div>
                             <div className="input-block">
-                            <input id="input-companyName2" type="text" name="company" className="input-box tt-cap input-fullwidth" placeholder="Company Name" />
+                            <input id="input-companyName2" type="text" name="company" className="input-box tt-cap input-fullwidth" placeholder="Company Name"  onKeyDown={(e)=>handleKeyDown(e)} />
                             <div id="alert-companyName2" className="alert-small-text"></div>
                             </div>
                             
