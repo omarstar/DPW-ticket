@@ -413,6 +413,6 @@ body {
   color: white;
   font-size: 17px;
   font-weight: bold;
-  position: fixed;
-  margin-top: 60px;
+  /* position: fixed; */
+  margin-top: 4rem;
 }

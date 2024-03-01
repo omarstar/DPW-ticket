@@ -19,10 +19,13 @@ const Welcome = () => {
     console.log('****branch at welcome', branch)
     console.log('branchPrefix init', branchPrefix)
     // console.log('branchesList.includes(branchPrefix)', branchesList.includes(branchPrefix))
-
+    
     if(branch){
+        branch = branch.toUpperCase();
+        console.log('****branch to save', branch)
         dispatch(setBranchPrefix(branch));
     }else if(branchPrefix){
+        console.log('branchPrefix saved already ', branchPrefix)
     }else{
         console.log('default prefix LOB14')
         dispatch(setBranchPrefix('LOB14'));
