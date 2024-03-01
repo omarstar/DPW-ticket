@@ -56,6 +56,7 @@ export default function BookingSummary(params) {
     }
     console.log('selectedApp', selectedApp);
     console.log('selectedApp name', selectedApp.branch['name']);
+    console.log('selectedApp appDate', appDate);
 
     dispatch(setLoading(false));
 
@@ -73,6 +74,10 @@ export default function BookingSummary(params) {
                 email : customer.properties?.email??"",
                 company : customer.properties?.company??""
             }
+            var level = "VIP LEVEL 1";
+            if(JSON.parse(app.properties.custom).lang=='on'){
+                level = "VIP LEVEL 2";
+            }
             console.log(custom3);
             let createTicketBody = {
                     appointmentId : app.id,
@@ -80,7 +85,7 @@ export default function BookingSummary(params) {
                         custom3 : JSON.stringify(custom3),
                         phoneNumber: custom3.phoneNum,
                         email : custom3.email,
-                        level : "VIP LEVEL 1",
+                        level :level ,
                     },
                     customers: [customer.id]
             }

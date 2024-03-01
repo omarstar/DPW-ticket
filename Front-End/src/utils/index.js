@@ -217,6 +217,8 @@ return (remainingHours*60)+remainingMinutes;
 export const formatDateTime = (dateTimeString) => {
   var options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true };
   var formattedDateTime = new Date(dateTimeString).toLocaleString('en-US', options).replace(',', '');
+  formattedDateTime = formattedDateTime.split('/');
+  formattedDateTime = formattedDateTime[1]+"-"+formattedDateTime[0]+"-"+formattedDateTime[2]
   return formattedDateTime;
 }
 export const formatDate = (dateString) => {
