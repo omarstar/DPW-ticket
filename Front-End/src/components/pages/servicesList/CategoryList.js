@@ -7,15 +7,15 @@ import jafzaLogoColor from '../../../images/JAFZA_Logo_Color.svg'
 // import footerBGshape from '../../../images/footer-sky-bg.svg'
 import '../../common.css';
 import "./servicesList.css"
-import catImg from '../../../images/service-svgrepo-white-com.svg'
-import catLease from '../../../images/catIcons/contract-sign-line-svgrepo-com.svg'
-import catCs from '../../../images/catIcons/customer-service-woman-svgrepo-com.svg'
-import catManagement from '../../../images/catIcons/customer-management-line-svgrepo-com.svg'
-import catEmployee from '../../../images/catIcons/development-human-network-svgrepo-com.svg'
-import catLicense from '../../../images/catIcons/platform-managementlicense-management-svgrepo-com.svg'
-import catProperty from '../../../images/catIcons/property-svgrepo-com.svg'
-import catRegister from '../../../images/catIcons/registration-desk-register-records-office-svgrepo-com.svg'
-import catSales from '../../../images/catIcons/handshake-sales.svg'
+// import catImg from '../../../images/service-svgrepo-white-com.svg'
+// import catLease from '../../../images/catIcons/contract-sign-line-svgrepo-com.svg'
+// import catCs from '../../../images/catIcons/customer-service-woman-svgrepo-com.svg'
+// import catManagement from '../../../images/catIcons/customer-management-line-svgrepo-com.svg'
+// import catEmployee from '../../../images/catIcons/development-human-network-svgrepo-com.svg'
+// import catLicense from '../../../images/catIcons/platform-managementlicense-management-svgrepo-com.svg'
+// import catProperty from '../../../images/catIcons/property-svgrepo-com.svg'
+// import catRegister from '../../../images/catIcons/registration-desk-register-records-office-svgrepo-com.svg'
+// import catSales from '../../../images/catIcons/handshake-sales.svg'
 
 import { isShowModal, setCategory, setLoading, setModal } from '../../../reducers';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,7 +23,7 @@ import ModalExit from '../../includes/modal/ModalExit'
 import { useNavigate } from 'react-router-dom'
 import Loading from '../../includes/loading/loading'
 import { golobalVariables } from '../../../services/api'
-import { categoryListObject } from '../../../utils/constants'
+// import { categoryListObject } from '../../../utils/constants'
 import Text from '../../Text'
 import Footer from '../../includes/footer/Footer'
 
@@ -117,44 +117,44 @@ export default function CategoryList(params) {
                            
                             categoryList && categoryList.map((cat, index) =>  {
 
-                                let imgCatRelated;
+                                // let imgCatRelated;
 
-                                switch(cat.name){
-                                    case 'Contracts & Leasing':
-                                        imgCatRelated = catLease;
-                                        break;
-                                    case 'Customer Service':
-                                        imgCatRelated = catCs;
-                                        break;
-                                    case 'Employee Affairs':
-                                        imgCatRelated = catEmployee;
-                                        break;
-                                    case 'Asset & Property Management':
-                                        imgCatRelated = catProperty;
-                                        break;
-                                    case 'Licensing':
-                                        imgCatRelated = catLicense;
-                                        break;
-                                    case 'Registration & Offshore':
-                                        imgCatRelated = catRegister;
-                                        break;
-                                    case 'Sales':
-                                        imgCatRelated = catSales;
-                                        break;
-                                    case 'Workforce Affairs':
-                                        imgCatRelated = catManagement;
-                                        break;
+                                // switch(cat.name){
+                                //     case 'Contracts & Leasing':
+                                //         imgCatRelated = catLease;
+                                //         break;
+                                //     case 'Customer Service':
+                                //         imgCatRelated = catCs;
+                                //         break;
+                                //     case 'Employee Affairs':
+                                //         imgCatRelated = catEmployee;
+                                //         break;
+                                //     case 'Asset & Property Management':
+                                //         imgCatRelated = catProperty;
+                                //         break;
+                                //     case 'Licensing':
+                                //         imgCatRelated = catLicense;
+                                //         break;
+                                //     case 'Registration & Offshore':
+                                //         imgCatRelated = catRegister;
+                                //         break;
+                                //     case 'Sales':
+                                //         imgCatRelated = catSales;
+                                //         break;
+                                //     case 'Workforce Affairs':
+                                //         imgCatRelated = catManagement;
+                                //         break;
 
-                                    default:
-                                        imgCatRelated = catImg;
-                                };
+                                //     default:
+                                //         imgCatRelated = catImg;
+                                // };
                                 return (
                                     <div key={index} id={"cat-imgbtn"+index} className="button-category-item col-5 d-flex pb-2 justify-content-center">
                                         <div onClick={()=>handlecategorySubmit(cat)} className="category-btn-box">
                                             <button className="button-fill-clr cat-img-box">
-                                                <img clasName="img-fluid img-rat m-auto" src={imgCatRelated} alt="" />
-                                            </button>
+                                                {/* <img clasName="img-fluid img-rat m-auto" src={imgCatRelated} alt="" /> */}
                                                 <h6 className="mt-2 cat-text">{cat.name}</h6>
+                                            </button>
                                         </div>
                                     </div>
                                 )

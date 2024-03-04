@@ -235,10 +235,10 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding: 25px 29px;
+        padding: 10px 10px;
         width: 15rem;
         max-width: 100%;
-
+        min-height: 6rem;
       }
 
       /* .img-rat{
@@ -252,7 +252,8 @@
       }
 
       .cat-text {
-        color: var(--title-color, #046cac);
+        /* color: var(--title-color, #046cac); */
+        color: #fff;
         text-align: center;
         letter-spacing: 0.28px;
         text-transform: capitalize;
@@ -291,7 +292,7 @@
     }
 
     .category-btn-box {
-      width: 7rem;
+      width: 8rem;
       max-width: 10rem;
       aspect-ratio: 1/1;
     }
@@ -301,11 +302,12 @@
         font-size: 12px;
       }
       .cat-img-box{
-        padding: 35px 29px;
-        width: 14rem;
+        padding: 20px 15px;
+        width: 16rem;
+        min-height: 8rem;
       }
       .category-btn-box{
-        width: 10rem;
+        width: 12rem;
       }
       .modal-desc{
         font-size: 12px;
