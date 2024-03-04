@@ -20,7 +20,7 @@ const locals = {
         "en" : "Please enter your mobile number",
         "ar" : "الرجاء إدخال رقم هاتفك المتحرك"
     },
-    'enterDetails' : {
+    'txtEnterDetails' : {
         "en" : "Please enter your details",
         "ar" : "الرجاء إدخال معلوماتك الشخصية"
     },

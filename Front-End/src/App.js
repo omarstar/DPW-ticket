@@ -29,6 +29,7 @@ import { useSelector } from 'react-redux';
 import Loading from './components/includes/loading/loading';
 import VirtualSummary from './components/pages/bookingSummary/VirtualSummary';
 import VirtualRedirect from './components/pages/bookingSummary/VirtualRedirect';
+import CustOptions from './components/pages/CustOptions';
 
 function App() {
   const {loading} = useSelector((state) => state.app);
@@ -53,6 +54,7 @@ function App() {
         <Route path="/DPW/options" element={<OptionsPage/>} />
         <Route path="/DPW/customer" element={<CustomerForm/>} />
         <Route path="/DPW/otp" element={<WalkOtp/>} />
+        <Route path="/DPW/cust-status" element={<CustOptions/>} />
         <Route path="/DPW/services" element={<ServiceList />} />
         <Route path="/DPW/category" element={<CategoryList />} />
         <Route path="/DPW/appointment" element={<AppointmentList />} />

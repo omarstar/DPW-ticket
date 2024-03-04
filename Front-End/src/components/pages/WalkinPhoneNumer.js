@@ -30,8 +30,8 @@ export default function WalkinPhoneNumber() {
     let {CurrentLang} = useSelector((state) => state.app);
 
     // const {phoneNumber} = useSelector((state) => state.app);
-    const {flow , branchPrefix,email} = useSelector((state) => state.app);
-
+    const {flow , branchPrefix, email} = useSelector((state) => state.app);
+    console.log('flow in walk mobile', flow)
     const phoneInputRef = useRef();
     
     const dispatch = useDispatch();
@@ -103,11 +103,13 @@ export default function WalkinPhoneNumber() {
             dispatch(setLoading(true));
             try {
                 if(flow === "app"){
+                    
                     const Appointments = await getAppointments(mobileNumber)?? [];
                     console.log('Appointments',Appointments);
                     if(Appointments.length > 0){
                         dispatch(setAppointments(Appointments));
                         try {
+                            console.log('in walkin app', mobileNumber, email)
                             const sendOTPRes =  await sendOTP(mobileNumber,email);
                             dispatch(setLoading(false));
                             if(sendOTPRes.message=="accepted"){
@@ -143,6 +145,7 @@ export default function WalkinPhoneNumber() {
                             return setShowAlert(<Text name="alertNetwork" />);
                         }
                         try {
+                            console.log('in walk toOtp', [mobileNumber, customer.email])
                             const sendOTPRes = await sendOTP(mobileNumber,customer.email);
                             dispatch(setLoading(false));
                             if(sendOTPRes.message=="accepted"){
@@ -220,9 +223,8 @@ const handleKeyDown = (event) => {
                 </div>
                 <div id="page" className="page-layout d-flex justify-content-start align-items-center">
                     <div className="title-box d-flex flex-column justify-content-center align-items-center">
-                        <div className="title-black ff-bold" id='walkinShare'><Text name="enterDetails" /></div>
+                        <div className="title-black ff-bold" id='walkinShare'><Text name="txtEnterDetails" /></div>
                         <div className='lob14walkinFields'>
-
                             <div className="input-block">
                                     <input id="input-walkin-name" type="text" name="name" className="input-box tt-cap input-fullwidth" placeholder="Name" />
                                     <div id="alert-walkin-name" className="alert-small-text"></div>

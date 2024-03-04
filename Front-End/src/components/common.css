@@ -197,7 +197,7 @@
       max-width: 100%;
       font: 700 10px 'Montserrat-Bold';
       z-index: 10;
-      padding: 11px 16.5px !important;
+      padding: 0.875rem 1rem !important;
       /* min-height: 3rem; */
       /* box-shadow: 1px 1px 0px var(--royal-blue); */
   }

@@ -88,7 +88,11 @@ export default function WalkOtp(params) {
             clearInterval(timerInterval);
           };
     }, [minutes, seconds, showResendButton])
-    
+  
+        
+    useEffect(() => {
+        console.log('branchPrefix', branchPrefix)
+    }, [])
 
 
     
@@ -180,9 +184,14 @@ export default function WalkOtp(params) {
                     }).then(res=>{
                         dispatch(setLoading(false));
                         if(flow === 'walkin'){
-                            return navigate('/DPW/category');//test
+                            
+                            if(branchPrefix && branchPrefix === "LOB15"){
+                                return navigate('/DPW/cust-status');
+                            }
+                                
+                            return navigate('/DPW/category');
                         }else{
-                            return navigate('/DPW/appointment');//test
+                            return navigate('/DPW/appointment');
                         }
                     }).catch(err=>{
                         dispatch(setLoading(false));

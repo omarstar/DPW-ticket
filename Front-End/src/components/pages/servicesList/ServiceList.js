@@ -267,6 +267,9 @@ export default function ServiceList(params) {
 
    
     const HandleBack = () => {
+        if(branchPrefix && branchPrefix === "LOB15"){
+            return navigate('/DPW/cust-status');
+        }
         navigate("/DPW/category");
     }
 
