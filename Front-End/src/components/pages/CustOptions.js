@@ -5,8 +5,9 @@ import ModalExit from '../includes/modal/ModalExit'
 import Footer from '../includes/footer/Footer'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { isShowModal, setCategory, setModal } from '../../reducers';
+import { isShowModal, setCategory, setLoading, setModal } from '../../reducers';
 import Text from '../Text'
+import { golobalVariables } from '../../services/api'
 
 export default function CustOptions() {
 
@@ -17,8 +18,16 @@ export default function CustOptions() {
 
     const gotoFilteredServices = () =>{
         // dispatch(setCategory("Business Setup"));
-        dispatch(setCategory({id:'0'}));
-        navigate("/DPW/services");
+        dispatch(setLoading(true));
+        golobalVariables('categories').then(res=>{
+            var categories = JSON.parse(res.value);
+            var category = categories.find(c=> c.name=="Business Setup")
+            console.log(category);
+            dispatch(setCategory(category));
+            navigate("/DPW/services");
+            dispatch(setLoading(false));
+        })
+        
     }
     
     const gotoCategoryPage = () =>{
@@ -54,7 +63,7 @@ export default function CustOptions() {
             </div>
             <div id="page" className="page-layout d-flex justify-content-center align-items-center">
                 <div className="title-center-box d-flex flex-column justify-content-center align-items-center h-40">
-                    {/* <div className="title-black ff-bold"><Text name="titleSelectOptions" /></div> */}
+                    <div className="title-black ff-bold mb-5"><Text name="titleSelectOptions" /></div>
                     <button id="btn-filteredservice" onClick={gotoFilteredServices} className="button-wide button-fill-clr space-btn2"><Text name="txtCustomerNew" /></button>
                     <button id="btn-gotocategory" onClick={gotoCategoryPage} className="button-wide button-fill-clr space-btn1"><Text name="txtCustomerExist" /></button>
                 </div>
