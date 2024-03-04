@@ -32,12 +32,14 @@ try {
 exports.getAppointment = async (req,res) => {
   let phoneNumber = req.params.id
   console.log(phoneNumber);
+  
   const Branches = await getBranches();
+
   try {
     let getAppointmentConfig = {
       method: 'get',
       maxBodyLength: Infinity,
-      url: `${qmaticApiUrl}/rest/appointment/appointments/search?branchId=4&fromDate=2024-02-20&toDate=2024-03-28`,
+      url: `${qmaticApiUrl}/rest/appointment/appointments/search?branchId=4&fromDate=2024-02-28&toDate=2024-03-28`,
       //  url: `${qmaticApiUrl}/rest/appointment/appointments/search?branchId=${utilFunctions.branchId}&fromDate=${utilFunctions.getCurrentDate()}&toDate=${utilFunctions.getNextDayDate()}`,
       headers: {
         'auth-token': apiAuthToken
@@ -45,8 +47,11 @@ exports.getAppointment = async (req,res) => {
     };
 
   let appointmentList = await axios.request(getAppointmentConfig);
+  console.log('appointmentList', appointmentList)//test
+
   var filteredAppointments = utilFunctions.filterAppointmentsByPhone(appointmentList.data , phoneNumber);
   var index = 0;
+
   while(filteredAppointments.length > index) {
     filteredAppointments[index].branch = Branches.find(b=> b.id==filteredAppointments[index].branchId);
     filteredAppointments[index].services[0] = await getservices(filteredAppointments[index].branchId,filteredAppointments[index].services[0].id);

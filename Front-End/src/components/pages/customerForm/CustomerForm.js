@@ -42,15 +42,22 @@ export default function CustomerForm(params) {
 
             };
 
-            console.log('creating customer in customerForm')
+            console.log('creating customer in customerForm', customer)
             dispatch(setLoading(true))
             dispatch(setEmail(customer.email))
             createCustomer(customer).then(a=>{
                 console.log('getCustomer',a);
                 dispatch(setCustomer(a));
+                console.log('sending otp from cusotmer form: ', [customer.phoneNum,customer.email])
                 sendOTP(customer.phoneNum,customer.email).then(res=>{
                     dispatch(setLoading(false));
-                    navToOtpPage();
+                    if(res.message==="accepted"){
+                        return navToOtpPage();
+                    }else{
+                        dispatch(setLoading(false));
+                        return setErrorMessage(<Text name="alertWrongMobile" />)
+                    }
+                    
                 }).catch(err=>{
                     console.error(err);
                     dispatch(setLoading(false));
@@ -59,6 +66,7 @@ export default function CustomerForm(params) {
             }).catch(err=>{
                 console.error(err);
                 dispatch(setLoading(false));
+                return setErrorMessage(<Text name="alertNetwork" />);
             });
         }
     }
@@ -247,8 +255,9 @@ export default function CustomerForm(params) {
                     <button id="" onClick={handleExistingCusomterSearch} className="button-wide button-fill-clr space-btn-form-search"><Text name="btnSearchContinue" /></button>
                     <div className="separate-line"></div> */}
                     <div className="newcustomer-box">
-                        <form id="form-newcustomer" className='d-flex flex-column align-items-start'>
-                            <div className={(CurrentLang === 'en' ? 'title-black justify-content-start mb-4' : 'title-form justify-content-end mb-4') }><Text name="txtCustomerNew" /></div>
+                        <form id="form-newcustomer" className='d-flex flex-column align-items-center'>
+                            <div className='title-black justify-content-center mb-4'><Text name="txtEnterDetails" /></div>
+                            {/* <div className={(CurrentLang === 'en' ? 'title-black justify-content-start mb-4' : 'title-form justify-content-end mb-4') }><Text name="txtEnterDetails" /></div> */}
                             
                             <div className="input-block">
                             <input id="input-firstname" type="text" name="first name" className="input-box tt-cap input-fullwidth" placeholder="Name" />

@@ -27,8 +27,10 @@
 
     for (let i = 0; i < appointmentList.length; i++) {
       const appointment = appointmentList[i];
-      const customerPhone = appointment.customers[0].properties.phoneNumber;
-      if(appointment.status == "CREATED" && parseInt(customerPhone) == parseInt(phone) && JSON.parse(appointment.properties.custom).lang=='en'){
+      const customerPhone = appointment.customers[0]?.properties?.phoneNumber??"";
+      console.log('customerPhone', customerPhone);//test
+      console.log('appointment', appointment);//test
+      if(appointment.status == "CREATED" && parseInt(customerPhone) == parseInt(phone) && JSON.parse(appointment.properties?.custom??{}).lang=='en'){
         filteredAppointments.push(appointment);
       }
     }

@@ -5,7 +5,7 @@ import '../includes/footer/footer.css'
 import homeCircleImg from '../../images/home-circle.svg'
 import backCircleImg from '../../images/backarrow.svg'
 import jafzaLogoColor from '../../images/JAFZA_Logo_Color.svg'
-import footerBGshape from '../../images/footer-sky-bg.svg'
+// import footerBGshape from '../../images/footer-sky-bg.svg'
 import '../common.css';
 import '../../styles/mobile.css'
 

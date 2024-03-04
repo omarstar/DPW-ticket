@@ -24,7 +24,9 @@ export default function Ticket() {
     let ticketLeave = useRef(3);
     const [ticketData, setTicketData] = useState(0);
     let {ticket} = useSelector((state) => state.app);
-    ticket = JSON.parse(ticket);
+    if(ticket.length !== 0)
+        console.log('ticket', ticket)
+    ticket = JSON.parse(ticket);//why
 
     // ticket = {currentStatus:"CALLED",position:4,id: "A0123", currentServiceName: "servccc plapla"}//test
     // dispatch(setTicket(ticket));//test
@@ -67,7 +69,13 @@ export default function Ticket() {
     useEffect(() => {
         dispatch(setLoading(true));
 
-        
+        // if(ticket.length === 0){
+        //     console.log('ticket', ticket)
+        //     dispatch(setLoading(false));
+        //     navigate('/')
+        //     // ticket = JSON.parse(ticket);
+        // }
+
         callVisitCheck();
 
         dispatch(setLoading(false));
