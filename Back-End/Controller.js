@@ -201,7 +201,7 @@ async function  searchCustomer(phoneNumber) {
       let customerSearchConfig = {
         method: 'get',
         maxBodyLength: Infinity,
-        url: `http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/rest/entrypoint/customers/advancedSearch/?text=${parseInt(phoneNumber)}&option=EXACT`,
+        url: `http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/rest/entrypoint/customers/advancedSearch/?text=${parseInt(phoneNumber)}`,
         headers: {
           'Referer': 'http://epgqsys-1.norwayeast.cloudapp.azure.com:9090/',
           'Content-Type': 'application/json',
