@@ -43,7 +43,7 @@
     text-align: center;
     transform: translateY(50%);
     z-index: 6;
-    font: 500 12px "Montserrat-Bold";
+    font: 500 45% "Montserrat-Bold";
 }
 
 @media screen and (min-width: 768px) {

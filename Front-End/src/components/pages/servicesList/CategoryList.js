@@ -60,26 +60,30 @@ export default function CategoryList(params) {
 
     useEffect( () => {
         dispatch(setLoading(true));
-
         if(ticket){
             console.log('ticket', ticket)
             dispatch(setLoading(false));
-            navigate('/DPW/ticket')
+            return navigate('/DPW/ticket')
         }
-       
-        (branchPrefix) ?
-        golobalVariables('categories').then(res=>{
-            var categories = JSON.parse(res.value);
-            categories = categories.sort((a, b) => a.name.localeCompare(b.name))
-            console.log(categories);
-            setcategoryList(categories)
-        }).catch(err=>{
-
-        }) : navigate('/')
+        if(branchPrefix){
+            golobalVariables('categories').then(res=>{
+                var categories = JSON.parse(res.value);
+                categories = categories.sort((a, b) => a.name.localeCompare(b.name))
+                console.log(categories);
+                setcategoryList(categories);
+                dispatch(setLoading(false));
+            }).catch(err=>{
+                console.log(err);
+                dispatch(setLoading(false));
+            });
+        }else{
+            dispatch(setLoading(false));
+            return navigate('/')
+        }
+      
         
         
 
-        dispatch(setLoading(false));
 
     },[])
 
@@ -90,10 +94,10 @@ export default function CategoryList(params) {
         try {
             console.log(cat);
             dispatch(setCategory(cat));
-            navigate("/DPW/services");
+            return navigate("/DPW/services");
         } catch (error) {
             console.log('error in finding category', error);
-            navigate("/")
+            return navigate("/")
         }
     }
 

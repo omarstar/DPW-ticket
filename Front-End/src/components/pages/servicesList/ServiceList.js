@@ -138,8 +138,18 @@ export default function ServiceList(params) {
         }
 
         // testLocal();//test only
-        (branchPrefix) ? getServiceList() : navigate('/')
-        dispatch(setLoading(false));
+        if(branchPrefix){
+            getServiceList().then(res=>{
+                dispatch(setLoading(false));
+            }).catch(err=>{
+                dispatch(setLoading(false));
+            });
+        }else{
+            dispatch(setLoading(false));
+            return navigate('/');
+        }
+
+        
 
     },[])
 

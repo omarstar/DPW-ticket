@@ -144,7 +144,7 @@
   }
   .input-box::placeholder {
     color: var(--gray-text, #777);
-    font: italic 9px 'Montserrat';
+    font: 9px 'Montserrat';
     text-transform: capitalize;
     letter-spacing: 4.6px !important;
     padding: 0 0 12px;
