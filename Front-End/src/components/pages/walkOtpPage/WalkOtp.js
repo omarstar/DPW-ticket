@@ -132,9 +132,9 @@ export default function WalkOtp(params) {
         $('.otp-num-input').each(function(){
             onchangeOTP = onchangeOTP+$(this).val();
         });
-        if(onchangeOTP.length==4){
-            handleSubmitOtp(onchangeOTP);
-        }
+        // if(onchangeOTP.length==4){
+        //     handleSubmitOtp(onchangeOTP);
+        // }
         // if(inputRef.current){
         //     inputRef.current.focus();
         // }
