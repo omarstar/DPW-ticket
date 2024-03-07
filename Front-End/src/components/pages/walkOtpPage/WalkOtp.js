@@ -135,7 +135,6 @@ export default function WalkOtp(params) {
         if(onchangeOTP.length==4){
             handleSubmitOtp(onchangeOTP);
         }
-        console.log(onchangeOTP);
         // if(inputRef.current){
         //     inputRef.current.focus();
         // }
@@ -151,7 +150,7 @@ export default function WalkOtp(params) {
     // });
     // };
 
-    const validateOtp = (input) => {
+    const validateOtpInput = (input) => {
     if(input.length === 0)
         return "emptyField"
     else if(input.length < 4)
@@ -172,7 +171,7 @@ export default function WalkOtp(params) {
             $('.otp-num-input').each(function(){
                 publicOtp = publicOtp+$(this).val();
             });
-            const validateResult = validateOtp(publicOtp);
+            const validateResult = validateOtpInput(publicOtp);
             console.log('validateResult', validateResult)
             if(validateResult === 'valid'){
                 if(publicOtp.length === 4){
@@ -187,9 +186,10 @@ export default function WalkOtp(params) {
                             
                             if(branchPrefix && branchPrefix === "LOB15"){
                                 return navigate('/DPW/cust-status');
+                            }else{
+                                return navigate('/DPW/category');
                             }
                                 
-                            return navigate('/DPW/category');
                         }else{
                             return navigate('/DPW/appointment');
                         }
