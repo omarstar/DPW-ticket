@@ -60,11 +60,11 @@ export default function CategoryList(params) {
 
     useEffect( () => {
         dispatch(setLoading(true));
-        if(ticket){
-            console.log('ticket', ticket)
-            dispatch(setLoading(false));
-            return navigate('/DPW/ticket')
-        }
+        // if(ticket){
+        //     console.log('ticket', ticket)
+        //     dispatch(setLoading(false));
+        //     return navigate('/DPW/ticket')
+        // }
         if(branchPrefix){
             golobalVariables('categories').then(res=>{
                 var categories = JSON.parse(res.value);
