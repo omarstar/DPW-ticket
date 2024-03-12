@@ -27,7 +27,7 @@ export default function ServiceList(params) {
     const [descText, setDescText] = useState("")
     let mobileNumber = useSelector(getPhonenumber);
 
-    let {loading, category, branchPrefix, email, customer, ticket} = useSelector((state) => state.app);
+    let {loading, category, branchPrefix, email, customer, ticket,CurrentLang} = useSelector((state) => state.app);
 
     let modalOnlineInfoData = {
         titleText: <Text name="titleServiceModal" />,
@@ -306,7 +306,7 @@ export default function ServiceList(params) {
                             serviceList ? serviceList.map(srv =>  (
         
                                 <div className="button-service-item d-flex justify-content-between align-items-center">
-                                    <div onClick={()=>handleServiceSubmit(srv.id)} id={srv.id} className="service-btn-box"><button id={srv.id} className="button-wide button-fill-clr btn-service">{srv.internalName}</button></div>
+                                    <div onClick={()=>handleServiceSubmit(srv.id)} id={srv.id} className="service-btn-box"><button id={srv.id} className="button-wide button-fill-clr btn-service">{CurrentLang=="en"?srv.internalName:srv.externalName}</button></div>
                                     <img id={`img-` + srv.id} onClick={()=>infoButtonClicked(srv.id)} className="service-info-icon" src={srvcInfoIcon} alt="info service" />
                                 </div>
                                     ) )   : console.log("error ===>")

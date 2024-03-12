@@ -165,6 +165,10 @@ const locals = {
         "en" : "You",
         "ar" : "أنت"
     },
+    'name' : {
+        "en" : "Name",
+        "ar" : "الإسم"
+    },
     'txtFirstName' : {
         "en" : "First Name",
         "ar" : "الاسم"
@@ -186,8 +190,8 @@ const locals = {
         "ar" : "البريد الإلكتروني"
     },
     'txtCompany' : {
-        "en" : "Company",
-        "ar" : "الشركة"
+        "en" : "Company Name",
+        "ar" : "إسم الشركة"
     },
     'txtBranch' : {
         "en" : "Branch Name",

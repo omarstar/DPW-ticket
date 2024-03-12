@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Text from "../Text";
 import $ from 'jquery'
 import Footer from "../includes/footer/Footer";
+import { getLocalTranslate } from "../../utils/language";
 
 const Welcome = () => {
     var {branch} = useParams();
@@ -62,6 +63,7 @@ const Welcome = () => {
                 $(this).parent().addClass('directionRtL')
             }
         })
+       
         
     };
     

@@ -260,24 +260,24 @@ export default function CustomerForm(params) {
                             {/* <div className={(CurrentLang === 'en' ? 'title-black justify-content-start mb-4' : 'title-form justify-content-end mb-4') }><Text name="txtEnterDetails" /></div> */}
                             
                             <div className="input-block">
-                            <input id="input-firstname" type="text" name="first name" className="input-box tt-cap input-fullwidth" placeholder="Name" />
+                            <input id="input-firstname" type="text" name="first name" className="input-box tt-cap input-fullwidth language-input" data-lang="name" placeholder={getLocalTranslate('name',CurrentLang)} />
                             <div id="alert-firstname" className="alert-small-text"></div>
                             </div>
                             {/* <div className="input-block">
                             <input id="input-lastname" type="text" name="last time" className="input-box tt-cap input-fullwidth" placeholder="Last Name" />
                             <div id="alert-lastname" className="alert-small-text"></div>
                             </div> */}
-                            <div className="input-block">
+                            <div className="">
                                 <PhoneNumberInput ref={phoneInputRef} onValidationResult={handleValidationResult}  />
                             {/* <input id="input-walknew-mobilenumber" type="tel"  className="input-box input-fullwidth required" name="mobile" pattern="[0-9]*" placeholder="" onClick="this.select();" required /> */}
                                 <div id="alert-mobile" className="alert-small-text">{errorMessage === 'valid' ? '' : errorMessage}</div>
                             </div>
                             <div className="input-block">
-                            <input id="input-email" type="email" name="email" className="input-box input-fullwidth" placeholder="E-Mail" required style={{textTransform: 'inherit'}} />
+                            <input id="input-email" type="email" name="email" className="input-box input-fullwidth" placeholder={getLocalTranslate('txtEmail',CurrentLang)} required style={{textTransform: 'inherit'}} />
                             <div id="alert-email" className="alert-small-text"></div>
                             </div>
                             <div className="input-block">
-                            <input id="input-companyName2" type="text" name="company" className="input-box tt-cap input-fullwidth" placeholder="Company Name"  onKeyDown={(e)=>handleKeyDown(e)} />
+                            <input id="input-companyName2" type="text" name="company" className="input-box tt-cap input-fullwidth" placeholder={getLocalTranslate('txtCompany',CurrentLang)}  onKeyDown={(e)=>handleKeyDown(e)} />
                             <div id="alert-companyName2" className="alert-small-text"></div>
                             </div>
                             

@@ -31,7 +31,7 @@ export default function CategoryList(params) {
     // category list
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    let {loading, branchPrefix, ticket} = useSelector((state) => state.app);
+    let {loading, branchPrefix, ticket,CurrentLang} = useSelector((state) => state.app);
     const doShowModal = useSelector(isShowModal);
 
     const modalExitData = {
@@ -157,7 +157,7 @@ export default function CategoryList(params) {
                                         <div onClick={()=>handlecategorySubmit(cat)} className="category-btn-box">
                                             <button className="button-fill-clr cat-img-box">
                                                 {/* <img clasName="img-fluid img-rat m-auto" src={imgCatRelated} alt="" /> */}
-                                                <h6 className="mt-2 cat-text">{cat.name}</h6>
+                                                <h6 className="mt-2 cat-text">{CurrentLang=="en"?cat.name:cat.name_ar}</h6>
                                             </button>
                                         </div>
                                     </div>

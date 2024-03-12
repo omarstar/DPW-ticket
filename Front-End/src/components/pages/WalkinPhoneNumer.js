@@ -20,6 +20,7 @@ import { createCustomer, getAppointments, sendOTP } from '../../services/api';
 import { setAppointments } from '../../reducers/appointments';
 import Text from '../Text';
 import Footer from '../includes/footer/Footer';
+import { getLocalTranslate } from '../../utils/language';
 
 export default function WalkinPhoneNumber() {
     
@@ -226,7 +227,7 @@ const handleKeyDown = (event) => {
                         <div className="title-black ff-bold" id='walkinShare'><Text name="txtEnterDetails" /></div>
                         <div className='lob14walkinFields'>
                             <div className="input-block">
-                                    <input id="input-walkin-name" type="text" name="name" className="input-box tt-cap input-fullwidth" placeholder="Name" />
+                                    <input id="input-walkin-name" type="text" name="name" className="input-box tt-cap input-fullwidth" placeholder={getLocalTranslate('name',CurrentLang)} />
                                     <div id="alert-walkin-name" className="alert-small-text"></div>
                             </div>
                         </div>
@@ -237,11 +238,11 @@ const handleKeyDown = (event) => {
                         <div className='lob14walkinFields h-15'>
                             
                             <div className="input-block">
-                            <input id="input-walkin-email" type="email" name="email" className="input-box input-fullwidth" placeholder="E-mail" required/>
+                            <input id="input-walkin-email" type="email" name="email" className="input-box input-fullwidth" placeholder={getLocalTranslate('txtEmail',CurrentLang)} required/>
                             <div id="alert-walkin-email" className="alert-small-text"></div>
                             </div>
                             <div className="input-block">
-                                <input id="input-walkin-company" type="text" name="company" className="input-box tt-cap input-fullwidth" placeholder="Company Name" onKeyDown={(e)=>handleKeyDown(e)} />
+                                <input id="input-walkin-company" type="text" name="company" className="input-box tt-cap input-fullwidth" placeholder={getLocalTranslate('txtCompany',CurrentLang)} onKeyDown={(e)=>handleKeyDown(e)} />
                                 <div id="alert-walkin-company" className="alert-small-text"></div>
                             </div>
                         </div>
