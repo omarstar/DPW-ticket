@@ -3,12 +3,13 @@ import headerLogoWhite from '../../images/JAFZA_Logo_White.svg'
 // import footerBGshape from '../../images/footer-sky-bg.svg'
 import '../../styles/getStarted.css'
 import { useDispatch, useSelector } from "react-redux";
-import { selectLanguage, setBranchPrefix, setLoading, toggleCurrentLang } from "../../reducers";
+import { resetState, selectLanguage, setBranchPrefix, setLoading, toggleCurrentLang } from "../../reducers";
 import { useEffect, useState } from "react";
 import Text from "../Text";
 import $ from 'jquery'
 import Footer from "../includes/footer/Footer";
 import { getLocalTranslate } from "../../utils/language";
+import { clearPersistedState } from "../../store";
 
 const Welcome = () => {
     var {branch} = useParams();
@@ -20,6 +21,10 @@ const Welcome = () => {
     console.log('****branch at welcome', branch)
     console.log('branchPrefix init', branchPrefix)
     // console.log('branchesList.includes(branchPrefix)', branchesList.includes(branchPrefix))
+    useEffect(() => {
+        dispatch(resetState());
+        localStorage.clear();
+    },[])
     
     if(branch){
         branch = branch.toUpperCase();
