@@ -198,7 +198,7 @@
       font: 700 14px 'Montserrat-Bold';
       z-index: 10;
       padding: 5px 10px !important;
-      /* min-height: 3rem; */
+      min-height: 3rem;
       /* box-shadow: 1px 1px 0px var(--royal-blue); */
   }
   .button-outline-clr {

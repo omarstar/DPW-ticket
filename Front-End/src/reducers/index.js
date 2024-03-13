@@ -1,12 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const getLocalTicketData = () => {
-  return localStorage.getItem("ticket") ? JSON.parse(localStorage.getItem("ticket")) : {};
-}
-const getbranchIdData = () => {
-  return localStorage.getItem("branchid") ? JSON.parse(localStorage.getItem("branchid")) : {};
-}
-
 const branchesList = ["LOB14","LOB15"]
 
 const initialState = {
@@ -15,7 +8,7 @@ const initialState = {
   branchPrefix : null,
   category : null,
   flow: "",
-  ticket: getLocalTicketData,
+  ticket: null,
   splash: true,
   loading: true,
   thankyou: false,
@@ -25,7 +18,7 @@ const initialState = {
   phoneNumber: '',
   customer: '',
   email: '',
-  branchid: getbranchIdData
+  branchid: null
 }
 
 export const counterSlice = createSlice({
