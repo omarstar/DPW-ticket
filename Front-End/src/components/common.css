@@ -195,9 +195,9 @@
       align-self: center;
       width: 15rem;
       max-width: 100%;
-      font: 700 10px 'Montserrat-Bold';
+      font: 700 14px 'Montserrat-Bold';
       z-index: 10;
-      padding: 0.875rem 1rem !important;
+      padding: 5px 10px !important;
       /* min-height: 3rem; */
       /* box-shadow: 1px 1px 0px var(--royal-blue); */
   }
@@ -213,7 +213,7 @@
     color: #fff;
   }
   .btn-service{
-    height: 5em;
+    height: 4em;
   }
   .no-scroll{
     overflow: hidden;
